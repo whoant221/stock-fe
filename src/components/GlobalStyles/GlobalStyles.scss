@@ -1,4 +1,33 @@
 @import 'normalize.scss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #7200a1;
+    --bg-main-color: #170f23;
+    --bg-sidebar-left: #231b2e;
+    --bg-sidebar-right: #120822;
+    --bg-music-control: #120c1c;
+    --navigation-text: #dadada;
+    --text-primary: #fff;
+    --text-secondary: rgba(255, 255, 255, 0.5);
+    --white-color: #fff;
+    --black-color: #000;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --link-text-hover: #c662ef;
+
+    --music-ctrl-height: 90px;
+    --header-height: 70px;
+    --sidebar-left-width: 90px;
+
+    --offset-x-second: calc(0px - ((230px - (230px * var(--scale-rate-second))) / 2 + 20px));
+    --offset-x-third: calc(0px - ((230px - (230px * var(--scale-rate-third))) / 2 + 40px));
+    --scale-rate-second: calc(196 / 230);
+    --scale-rate-third: calc(162 / 230);
+}
 
 * {
     margin: 0;
@@ -7,12 +36,12 @@
 }
 
 html {
-    font-size: 62.5%;
+    color: var(--text-primary);
 }
 
 body {
-    font-family: var(--font-family);
-    font-size: 1.6rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     line-height: 1.5;
     text-rendering: optimizespeed;
     color: var(--text-color);
@@ -30,3 +59,4 @@ a {
     
     text-decoration: none;
 }
+

@@ -1,0 +1,15 @@
+.container {
+    height: calc(100vh - var(--music-ctrl-height));
+    background-color: var(--bg-main-color);
+}
+
+.main-container {
+    padding: 0 59px;
+    overflow-y: auto;
+    background-color: var(--bg-main-color);
+}
+
+.content {
+    margin-top: var(--header-height);
+}
+

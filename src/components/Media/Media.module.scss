@@ -1,0 +1,37 @@
+.cd {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    margin-right: 10px;
+    overflow: hidden;
+    &.large {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+.cd-thumb {
+    width: 100%;
+    height: auto;
+}
+
+.media-content {
+    overflow: hidden;
+    text-align: left;
+}
+
+.song-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.36;
+    max-width: 240px;
+}
+
+.singer-name {
+    margin-top: 2px;
+    color: var(--text-secondary);
+}
+
+.action {
+    margin-left: 10px;
+}
