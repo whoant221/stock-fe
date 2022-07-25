@@ -1,13 +1,22 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.largeCd .cd{
+        width: 64px;
+        height: 64px;
+    }
+    &.largeContent .media-content{
+        max-width: 255px;
+    }
+}
+
 .cd {
     width: 40px;
     height: 40px;
     border-radius: 4px;
     margin-right: 10px;
     overflow: hidden;
-    &.large {
-        width: 64px;
-        height: 64px;
-    }
 }
 
 .cd-thumb {
@@ -18,13 +27,18 @@
 .media-content {
     overflow: hidden;
     text-align: left;
+    max-width: 240px;
 }
 
 .song-name {
     font-weight: 500;
     color: var(--text-primary);
     line-height: 1.36;
-    max-width: 240px;
+    &.nowrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 .singer-name {

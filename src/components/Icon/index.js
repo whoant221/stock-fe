@@ -25,27 +25,24 @@ function Icon({
         noHover,
         square,
         activeNoColor,
-    });
-
-    const classSize = {
         s14,
         s18,
         s20,
         s24,
-    }
+    });
 
     return ( 
         <div className={classes}>
             { dblChildren ?
                 (isActive ? 
-                    <span className={cx('icon', classSize)}>
+                    <span className={cx('icon')}>
                         {children[1]}
                     </span> :
-                    <span className={cx('icon', classSize)}>
+                    <span className={cx('icon')}>
                         {children[0]}
                     </span> 
                 ) :
-                <span className={cx('icon', classSize)}>{children}</span>
+                <span className={cx('icon')}>{children}</span>
             }
         </div>
     );

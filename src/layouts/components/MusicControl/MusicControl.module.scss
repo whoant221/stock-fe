@@ -3,3 +3,48 @@
     background-color: var(--bg-music-control);
     border-top: 1px solid var(--border-color);
 }
+
+.control-left, .control-right {
+    width: 30%;
+}
+
+// music control right
+.control-volume {
+    .volume {
+        -webkit-appearance: none;
+        width: 70px;
+        text-align: center;
+        height: 3px;
+        outline: none;
+        background: linear-gradient(to right, #ffffff 0%, #ffffff 50%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%);
+        -webkit-transition: 0.2s;
+        transition: opacity 0.2s;
+        border-radius: 2px;
+        cursor: pointer;
+    
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background-color: #fff;
+            transition: all linear 0.2s;
+        }
+    }
+    &:hover {
+        .volume {
+            height: 5px;
+        }
+        .volume::-webkit-slider-thumb {
+            width: 10px;
+            height: 10px;
+        } 
+    }
+}
+
+.divide {
+    width: 1px;
+    height: 33px;
+    background-color: var(--border-color);
+}
