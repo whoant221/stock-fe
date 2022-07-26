@@ -15,26 +15,23 @@ function MusicControl() {
             </div>
             <PlayerBar/>
             <div className={cx('control-right', 'flex items-center justify-end')}>
-                <Icon>
-                    <i className="fal fa-tv-music"></i>
-                </Icon>
-                <Icon s14>
-                    <i className="fal fa-microphone"></i>
-                </Icon>
-                <Icon s14>
-                    <i className="fal fa-window-restore"></i>
-                </Icon>
+                <Icon icon={<i className="fal fa-tv-music"></i>}/>
+                <Icon s14 icon={<i className="fal fa-microphone"></i>}/>
+                <Icon s14 icon={<i className="fal fa-window-restore"></i>}/>
                 <div className={cx('control-volume', 'flex items-center')}>
-                    <Icon dblChildren isActive activeNoColor>
-                        <i class="fal fa-volume"></i>
-                        <i class="fal fa-volume-mute"></i>
-                    </Icon>
+                    <Icon 
+                        activeNoColor
+                        icon={<i class="fal fa-volume"></i>}    
+                        activeIcon={<i class="fal fa-volume-mute"></i>}
+                    />
                     <input id="volume" class={cx("volume")} type="range" value="50" step="1" min="0" max="100"></input>
                 </div>
                 <span className={cx('divide', 'block mx-5')}></span>
-                <Icon noHover s14 square activeNoColor isActive>
-                    <i class="fal fa-list-music"></i>
-                </Icon>
+                <Icon 
+                    s14 hover square activeNoColor
+                    icon={<i class="fal fa-list-music"></i>}
+                    activeIcon={<i class="fal fa-list-music"></i>}
+                />
             </div>
 
         </div>

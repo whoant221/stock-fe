@@ -4,25 +4,24 @@ import styles from './Icon.module.scss';
 const cx = classNames.bind(styles)
 // icon size 14px 16px 18px 20px 24px
 function Icon({ 
-    children,
-    dblChildren=false,
+    className,
+    icon,
+    activeIcon,
     isActive=false,
     activeNoColor=false,
     square=false,
-    noHover=false,
+    hover=false,
     
     s14,
     s18,
     s20,
     s24,
-    className,
 }) {
 
     const classes = cx('wrapper', {
         [className]: className,
-        dblChildren,
-        isActive,
-        noHover,
+        active: isActive,
+        hover,
         square,
         activeNoColor,
         s14,
@@ -31,19 +30,10 @@ function Icon({
         s24,
     });
 
-    return ( 
+    return (
         <div className={classes}>
-            { dblChildren ?
-                (isActive ? 
-                    <span className={cx('icon')}>
-                        {children[1]}
-                    </span> :
-                    <span className={cx('icon')}>
-                        {children[0]}
-                    </span> 
-                ) :
-                <span className={cx('icon')}>{children}</span>
-            }
+            <span className={cx('icon')}>{icon}</span>
+            <span className={cx('icon', 'active-icon')}>{activeIcon}</span>
         </div>
     );
 }

@@ -15,6 +15,7 @@ const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.search, component: Search },
     { path: config.routes.user, component: User },
+    { path: config.routes.following, component: User },
     { path: config.routes.zingchart, component: Zingchart },
     { path: config.routes.radio, component: Radio },
     { path: config.routes.nhacmoi, component: Nhacmoi},

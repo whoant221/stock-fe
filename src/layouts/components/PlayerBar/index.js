@@ -9,22 +9,30 @@ function PlayerBar() {
     return ( 
         <div className={cx('wrapper', 'grow')}>
             <div className={cx('control-btns', 'flex justify-center grow')}>
-                <Icon s18 className={cx('icon')}>
-                    <i class="fal fa-random"></i>
-                </Icon>
-                <Icon s18 className={cx('icon')}>
-                    <i class="fal fa-step-backward"></i>
-                </Icon>
-                <Icon dblChildren s14 activeNoColor className={cx('icon', 'icon-play')}>
-                    <i class="fas fa-play"></i>
-                    <i class="fas fa-pause"></i>
-                </Icon>
-                <Icon s18 className={cx('icon')}>
-                    <i class="fal fa-step-forward"></i>
-                </Icon>
-                <Icon s18 isActive className={cx('icon')}>
-                    <i class="fal fa-repeat"></i>
-                </Icon>
+                <Icon 
+                    s18 className={cx('icon')}
+                    icon={<i class="fal fa-random"></i>}   
+                    activeIcon={<i class="fal fa-random"></i>}   
+                />
+                <Icon 
+                    s18 className={cx('icon')}
+                    icon={<i class="fal fa-step-backward"></i>}
+                />
+                <Icon 
+                    s14 activeNoColor isActive
+                    className={cx('icon', 'icon-play')}
+                    icon={<i class="fas fa-play"></i>}   
+                    activeIcon={<i class="fas fa-pause"></i>}   
+                />
+                <Icon 
+                    s18 className={cx('icon')}
+                    icon={<i class="fal fa-step-forward"></i>}   
+                />
+                <Icon 
+                    s18 className={cx('icon')}
+                    icon={<i class="fal fa-repeat"></i>}   
+                    activeIcon={<i class="fal fa-repeat"></i>}   
+                />
             </div>
 
             <div className={cx('control-time', 'flex grow justify-center items-center')}>

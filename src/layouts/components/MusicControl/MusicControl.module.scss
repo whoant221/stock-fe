@@ -1,4 +1,6 @@
 .wrapper {
+    position: relative;
+    z-index: 100;
     height: var(--music-ctrl-height);
     background-color: var(--bg-music-control);
     border-top: 1px solid var(--border-color);

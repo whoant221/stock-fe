@@ -9,11 +9,31 @@
     justify-content: center;
     transition: all linear 0.2s;
 
+    &.active {
+
+        .icon {
+            display: none;
+        }
+        .active-icon{
+            display: block;
+            color: var(--primary-color);
+        }
+    }
+
+    &.activeNoColor {
+        &.hover {
+            background-color: var(--primary-color);
+        }
+        .icon {
+            color: var(--white-color);
+        }
+    }
+
     &:hover {
         background-color: var(--border-color);
     }
 
-    &.noHover {
+    &.hover {
         background-color: var(--border-color);
     }
 
@@ -47,23 +67,11 @@
     }
 }
 
-.isActive .icon {
-    color: var(--primary-color);
-}
-
-.isActive.activeNoColor.wrapper  {
-    &.noHover {
-        background-color: var(--primary-color);
-    }
-    .icon {
-        color: var(--white-color);
-    }
-}
-
-.icon {
+.icon, .active-icon {
     font-size: 1rem;
     color: var(--white-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
+
+.active-icon {
+    display: none;
 }

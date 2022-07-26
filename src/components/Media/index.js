@@ -22,13 +22,11 @@ function Media({ largeCd, largeContent, nowrap }) {
                 <div className={cx('singer-name', 'text-xs')}>Đức Phúc</div>
             </div>
             <div className={cx('action','flex')}>
-                <Icon dblChildren>
-                    <i className="fal fa-heart"></i>
-                    <i className="fas fa-heart"></i>
-                </Icon>
-                <Icon >
-                    <i className="far fa-ellipsis-h"></i>
-                </Icon>
+                <Icon 
+                    icon={<i className="fal fa-heart"></i>}
+                    activeIcon={<i className="fas fa-heart"></i>}
+                />
+                <Icon icon={<i className="far fa-ellipsis-h"></i>}/>
             </div>
         </div>
      );

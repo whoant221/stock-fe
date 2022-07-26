@@ -1,0 +1,37 @@
+
+.menu-item {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    border-left: 3px solid transparent;
+    padding: 7px 25px; 
+    font-weight: 700;
+
+    &.active {
+        background-color: var(--border-color);
+        border-left: 3px solid var(--primary-color);
+        .icon, 
+        .title {
+            color: var(--text-primary);
+        }
+    }
+    &.noActive {
+        background-color: transparent;
+        border-left: 3px solid transparent;
+        .icon, 
+        .title {
+            color: var(--navigation-text);
+        }
+    }
+}
+
+.title {
+    font-size: 13px;
+    color: var(--navigation-text);
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 22px;
+    color: var(--navigation-text);
+}
