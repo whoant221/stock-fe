@@ -11,27 +11,27 @@ function PlayerBar() {
             <div className={cx('control-btns', 'flex justify-center grow')}>
                 <Icon 
                     s18 className={cx('icon')}
-                    icon={<i class="fal fa-random"></i>}   
-                    activeIcon={<i class="fal fa-random"></i>}   
+                    icon={<i className="fal fa-random"></i>}   
+                    activeIcon={<i className="fal fa-random"></i>}   
                 />
                 <Icon 
                     s18 className={cx('icon')}
-                    icon={<i class="fal fa-step-backward"></i>}
+                    icon={<i className="fal fa-step-backward"></i>}
                 />
                 <Icon 
                     s14 activeNoColor isActive
                     className={cx('icon', 'icon-play')}
-                    icon={<i class="fas fa-play"></i>}   
-                    activeIcon={<i class="fas fa-pause"></i>}   
+                    icon={<i className="fas fa-play"></i>}   
+                    activeIcon={<i className="fas fa-pause"></i>}   
                 />
                 <Icon 
                     s18 className={cx('icon')}
-                    icon={<i class="fal fa-step-forward"></i>}   
+                    icon={<i className="fal fa-step-forward"></i>}   
                 />
                 <Icon 
                     s18 className={cx('icon')}
-                    icon={<i class="fal fa-repeat"></i>}   
-                    activeIcon={<i class="fal fa-repeat"></i>}   
+                    icon={<i className="fal fa-repeat"></i>}   
+                    activeIcon={<i className="fal fa-repeat"></i>}   
                 />
             </div>
 

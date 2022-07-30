@@ -16,7 +16,7 @@ function DefaultLayout({ children }) {
                     <Header />
                     <div className={cx('content')}>{children}</div>
                 </div>
-                <SidebarRight />
+                {/* <SidebarRight /> */}
             </div>
             <MusicControl />
         </div>

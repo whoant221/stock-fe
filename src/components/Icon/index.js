@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './Icon.module.scss';
 
 const cx = classNames.bind(styles)
-// icon size 14px 16px 18px 20px 24px
+
 function Icon({ 
     className,
     icon,
@@ -12,6 +12,7 @@ function Icon({
     square=false,
     hover=false,
     
+    btn,
     s14,
     s18,
     s20,
@@ -24,6 +25,7 @@ function Icon({
         hover,
         square,
         activeNoColor,
+        btn,
         s14,
         s18,
         s20,

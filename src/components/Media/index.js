@@ -1,6 +1,8 @@
 import classNames from "classnames/bind";
-import styles from './Media.module.scss';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; // optional
 
+import styles from './Media.module.scss';
 import Icon from '~/components/Icon';
 
 const cx = classNames.bind(styles)
@@ -22,11 +24,20 @@ function Media({ largeCd, largeContent, nowrap }) {
                 <div className={cx('singer-name', 'text-xs')}>Đức Phúc</div>
             </div>
             <div className={cx('action','flex')}>
-                <Icon 
-                    icon={<i className="fal fa-heart"></i>}
-                    activeIcon={<i className="fas fa-heart"></i>}
-                />
-                <Icon icon={<i className="far fa-ellipsis-h"></i>}/>
+                <Tippy content="Thêm vào thư viện">
+                    <div className="icon">
+                        <Icon 
+                            icon={<i className="fal fa-heart"></i>}
+                            activeIcon={<i className="fas fa-heart"></i>}
+                        />
+                    </div>
+                </Tippy>
+                
+                <Tippy content="Xem thêm">
+                    <div className="icon">
+                        <Icon icon={<i className="far fa-ellipsis-h"></i>}/>
+                    </div>
+                </Tippy>
             </div>
         </div>
      );
