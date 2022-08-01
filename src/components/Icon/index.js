@@ -11,6 +11,7 @@ function Icon({
     activeNoColor=false,
     square=false,
     hover=false,
+    onClick,
     
     btn,
     s14,
@@ -33,7 +34,7 @@ function Icon({
     });
 
     return (
-        <div className={classes}>
+        <div className={classes} onClick={onClick}>
             <span className={cx('icon')}>{icon}</span>
             <span className={cx('icon', 'active-icon')}>{activeIcon}</span>
         </div>
