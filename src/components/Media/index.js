@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
@@ -8,6 +9,16 @@ import Icon from '~/components/Icon';
 const cx = classNames.bind(styles)
 
 function Media({ largeCd, largeContent, nowrap }) {
+
+    const [heart, setHeart] = useState(false)
+
+    const handleToggleHeart = () => {
+        if(heart === false) {
+            setHeart(true)
+        } else {
+            setHeart(false)
+        }
+    }
 
     const classes = cx('wrapper', {
         largeCd,
@@ -24,9 +35,13 @@ function Media({ largeCd, largeContent, nowrap }) {
                 <div className={cx('singer-name', 'text-xs')}>Đức Phúc</div>
             </div>
             <div className={cx('action','flex')}>
-                <Tippy content="Thêm vào thư viện">
-                    <div className="icon">
+                <Tippy content="Thêm vào thư viện" hideOnClick='false'>
+                    <div 
+                        className="icon"
+                    >
                         <Icon 
+                            onClick={handleToggleHeart}
+                            isActive={heart}
                             icon={<i className="fal fa-heart"></i>}
                             activeIcon={<i className="fas fa-heart"></i>}
                         />
