@@ -18,6 +18,16 @@
             display: block;
             color: var(--primary-color);
         }
+
+        &.mediaActive {
+            .icon {
+                display: none;
+            }
+            .active-icon{
+                display: block;
+                color: var(--white-color);
+            }
+        }
     }
 
     &.activeNoColor {

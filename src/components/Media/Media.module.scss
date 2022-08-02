@@ -2,9 +2,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    &.largeCd .cd{
-        width: 64px;
-        height: 64px;
+    background-color: transparent;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+        .action {
+            visibility: visible;
+        }
+        background-color: var(--border-color);
+    }
+    &.noHover {
+        .action {
+            visibility: visible;
+        }
+        &:hover {
+            background-color: transparent;
+        }
+    }
+    &.active {
+        background-color: var(--primary-color);
+    }
+    &.largeCd {
+        padding: 0;
+        .cd{
+            width: 64px;
+            height: 64px;
+        }
     }
     &.largeContent .media-content{
         max-width: 255px;
@@ -31,6 +55,8 @@
 }
 
 .song-name {
+    font-size: 14px;
+    text-transform: capitalize;
     font-weight: 500;
     color: var(--text-primary);
     line-height: 1.36;
@@ -42,10 +68,13 @@
 }
 
 .singer-name {
+    font-size: 12px;
     margin-top: 2px;
     color: var(--text-secondary);
 }
 
 .action {
     margin-left: 10px;
+    display: flex;
+    visibility: hidden;
 }
