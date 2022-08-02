@@ -16,9 +16,9 @@ function Search() {
     const inputRef = useRef();
     const debouncedValue = useDebounce(searchValue, 500);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    }, [debouncedValue])
+    // }, [debouncedValue])
     
     //"zingmp3-api-full": "^1.0.14"
     // const { ZingMp3 } = require("zingmp3-api-full")
