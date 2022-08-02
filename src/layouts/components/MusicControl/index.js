@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
@@ -6,14 +7,33 @@ import styles from './MusicControl.module.scss'
 import Media from '~/components/Media';
 import PlayerBar from '~/layouts/components/PlayerBar';
 import Icon from '~/components/Icon';
+import SidebarRight from '../SidebarRight';
 
 const cx = classNames.bind(styles)
 
 function MusicControl() {
+    const [toggleBtn, setToggleBtn] = useState(false)
+    const [activePlaylist, setActivePlaylist] = useState(false)
+
+    function handleTogglePlaylist() {
+        if(toggleBtn) {
+            setToggleBtn(false)
+        } else {
+            setToggleBtn(true)
+        }
+        activePlaylist ? setActivePlaylist(false) : setActivePlaylist(true)
+    }
+
     return ( 
         <div className={cx('wrapper', 'px-5 flex justify-between items-center')}>
             <div className={cx('control-left', 'flex items-center justify-start')}>
-                <Media largeCd/>
+                <Media 
+                    image='https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp…over/9/7/5/7/9757a70a3932be1bfbba5695e120a4c1.jpg'
+                    songName="Nguời âm phủ"
+                    singerName="OSAD"
+                    largeCd
+                    noHover
+                />
             </div>
             <PlayerBar/>
             <div className={cx('control-right', 'flex items-center justify-end')}>
@@ -47,13 +67,16 @@ function MusicControl() {
                 <Tippy content="Danh sách phát">
                     <div className="icon">
                         <Icon 
-                            s14 hover square activeNoColor
+                            onClick={handleTogglePlaylist}
+                            s14 hover square 
+                            activeNoColor={toggleBtn}
                             icon={<i className="fal fa-list-music"></i>}
                             activeIcon={<i className="fal fa-list-music"></i>}
                         />
                     </div>
                 </Tippy>
             </div>
+            <SidebarRight playlistActive={activePlaylist}/>
 
         </div>
      );

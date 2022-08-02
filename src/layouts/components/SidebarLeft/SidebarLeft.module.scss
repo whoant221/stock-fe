@@ -28,6 +28,7 @@
 .sidebar-divide {
     margin: 15px 0;
     position: relative;
+    
     &::after {
         content: '';
         position: absolute;
