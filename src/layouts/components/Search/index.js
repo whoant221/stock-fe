@@ -9,6 +9,8 @@ import {
 import Wrapper from '~/components/Popper';
 import { useDebounce } from '~/hooks';
 import styles from './Search.module.scss';
+import images from "~/images";
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -26,7 +28,6 @@ function Search() {
         const getTopSearch = async () => {
             try {
                 const res = await getTopKeyword()
-                console.log(res);
                 setTopSearchs(res.listKeyValue)
             } catch (error) {
                 alert(error);
@@ -45,7 +46,7 @@ function Search() {
         const getSearchResult = async () => {
             try {
                 const result = await searchByKeyword(searchValue);
-                console.log(result);
+                console.log(result["search"]["song"]["song"]);
                 setSearchResult(result)
             } catch (error) {
                 alert(error);
@@ -67,8 +68,6 @@ function Search() {
         }
     }
 
-    const defaultAvatar = 'https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp…over/9/7/5/7/9757a70a3932be1bfbba5695e120a4c1.jpg'
-
     function renderSearchResult() {
         if(searchResult && searchResult !== '') {
             return (
@@ -76,7 +75,12 @@ function Search() {
                     return (
                         <div key={item.key} className={cx('result-item')}>
                             <div className={cx('cd')}>
-                                <img className={cx('cd-thumb')} src={item.thumbnail || item['artists'][0]['imageUrl'] || defaultAvatar} alt='avata' />
+                                <Image 
+                                    className={cx('cd-thumb')}
+                                    src={item.thumbnail || item['artists'][0]['imageUrl']}
+                                    alt={item.title}
+                                    defaultAvt={images.defaultAvataSong}
+                                />
                             </div>
                             <div className={cx('media-content')}>
                                 <div className={cx('song-name','text-sm')}>{item.title}</div>
