@@ -21,6 +21,10 @@
         background-color: #432275;
         border-radius: 20px 20px 0 0;
     }
+    &.activeSearch {
+        background-color: #432275;
+        border-radius: 20px 20px 0 0;
+    }
 }
 
 .search-result {
@@ -45,6 +49,17 @@
     padding: 0 10px 8px;
 }
 
+.search-key {
+    cursor: pointer;
+    &:hover {
+        color: var(--link-text-hover);
+    }
+    i {
+        color: var(--text-primary);
+        margin-right: 10px;
+    }
+}
+
 .suggest-list {
     max-height: min((100vh - 90px) - 90px, 734px);
     overflow-y: auto;
@@ -61,11 +76,70 @@
 .suggest-item {
     font-size: 14px;
     padding: 8px 10px;
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     cursor: pointer;
     border-radius: 4px;
     &:hover {
+        span {
+            color: var(--link-text-hover);
+        }
         background-color: var(--border-color);
     }
+    i {
+        color: var(--text-primary);
+        margin-right: 10px;
+    }
+}
+
+.result-item {
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--border-color);
+    }
+
+.cd {
+    width: 52px;
+    height: 52px;
+    border-radius: 4px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.cd-thumb {
+    width: 100%;
+    height: auto;
+}
+
+.media-content {
+    overflow: hidden;
+    text-align: left;
+    max-width: 240px;
+}
+
+.song-name {
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.36;
+    &.nowrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.singer-name {
+    font-size: 12px;
+    margin-top: 2px;
+    color: var(--text-secondary);
+}
 }
