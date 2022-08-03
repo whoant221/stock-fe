@@ -6,7 +6,7 @@
     left: 240px;
     right: 0;
     padding: 0 59px;
-    height: 70px;
+    height: var(--header-height);
     min-width: 660px;
     z-index: 99;
 }
