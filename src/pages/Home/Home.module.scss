@@ -1,0 +1,25 @@
+
+
+.mb-5,
+.my-5 {
+    margin-bottom: 3rem !important;
+}
+
+.mb-md-0,
+.my-md-0 {
+    margin-bottom: 0 !important;
+}
+.a{
+    width: 200px;
+    display: inline-block !important;
+    display: flex !important;
+}
+
+.col-md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+}
