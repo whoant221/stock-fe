@@ -155,7 +155,7 @@ function Search() {
                         onChange={handleChange}
                         onFocus={() => setShowResult(true)}
                     />
-                    {!!searchValue  && (
+                    {!!searchValue && (
                         <button className={cx('clear')} onClick={handleClear}>
                             <i className="fal fa-times"></i>
                         </button>
