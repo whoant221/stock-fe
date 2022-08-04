@@ -10,6 +10,11 @@ function Home() {
     const [getSlide, setGetSlide] = useState([]);
 
     useEffect(() => {
+        document.title =
+            'Zing MP3 | Nghe tải nhạc chất lượng cao trên destop, mobile và TV';
+    }, []);
+
+    useEffect(() => {
         const getSlideHome = async () => {
             try {
                 const res = await getHome()

@@ -30,7 +30,7 @@ export function Chart({ music }) {
         scales: {
             y: {
                 min: 0,
-                max: 20,
+                max: 80,
                 stepSize: 4,
                 gridLines: {
                     display: true,
@@ -70,13 +70,16 @@ export function Chart({ music }) {
         '',
         '7:00',
     ];
-    console.log(music);
+    
     const data = {
         labels,
         datasets: [
             {
                 offset:true,
-                data: music.map((item) => item.highestPosition),
+                data: [
+                    60, 55, 52, 50, 48, 48, 47, 50, 53, 60, 66, 67, 56, 60, 55, 52, 50, 53, 55, 57, 
+                ],
+                label: music[0].title,
                 borderColor: 'rgb(255, 99, 132)',
                 borderWidth: 2,
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
@@ -92,7 +95,9 @@ export function Chart({ music }) {
                 pointHoverBorderWidth: 2,
             },
             {
-                data: music.map((item) => item.oldPosition),
+                data: [
+                    40, 41, 43, 39, 37, 44, 46, 39, 39, 40, 41, 43, 39, 37, 44, 46, 39, 39, 33, 30, 
+                ],
                 borderColor: 'rgb(53, 162, 235)',
                 backgroundColor: 'rgba(53, 162, 235, 0.5)',
                 borderWidth: 2,
@@ -110,7 +115,9 @@ export function Chart({ music }) {
                 pointHoverBorderWidth: 2,
             },
             {
-                data: music.map((item) => item.position),
+                data: [
+                    35, 33, 35, 34, 35, 30, 30, 30, 32, 31, 28, 34, 36, 35, 34, 30, 30, 32, 34, 34, 
+                ],
                 borderColor: 'rgb(39, 186, 156)',
                 backgroundColor: 'rgb(39, 186, 156)',
                 borderWidth: 2,

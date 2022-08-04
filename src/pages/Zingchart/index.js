@@ -20,10 +20,12 @@ function Zingchart() {
         };
         getDetails();
     }, []);
+
     useEffect(() => {
         document.title =
             '#zingchart | Xem bài hát, album, MV đang hot nhất hiện tại';
     }, []);
+    
     return (
         <div className={cx('wrapper')}>
             <div className={cx('blur')}></div>
