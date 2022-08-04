@@ -4,9 +4,19 @@
 }
 
 .main-container {
+    position: relative;
     padding: 0 59px;
-    overflow-y: auto;
     background-color: var(--bg-main-color);
+    overflow-y: overlay;
+    z-index: 100;
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 99px;
+    }
 }
 
 .content {
