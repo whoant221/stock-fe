@@ -3,7 +3,7 @@ import images from "~/images";
 
 const Image = forwardRef(({ src, alt, className, defaultAvt = images.defaultAvataSong, ...props }, ref) => {
     const [url, setUrl] = useState(src)
-    if(typeof url === 'object') {
+    if(typeof url === 'object' || typeof url === 'undefined') {
         setUrl(defaultAvt)
     }
     return ( 

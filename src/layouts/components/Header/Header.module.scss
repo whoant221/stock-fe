@@ -6,8 +6,9 @@
     left: 240px;
     right: 0;
     padding: 0 59px;
-    height: var(--header-height);
     min-width: 660px;
+    height: var(--header-height);
+    background-color: var(--bg-main-color);
     z-index: 99;
 }
 
