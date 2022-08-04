@@ -81,7 +81,7 @@ function Home() {
                     }
                     return(
 
-                            <div className={`itemGallary ${classActive}`} key={index}>
+                            <div className={cx(`itemGallary`, classActive)} key={index}>
                                 <img 
                                     src={item.thumbnail}   
                                     alt={index} 
