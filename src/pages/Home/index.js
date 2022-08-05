@@ -26,9 +26,6 @@ function Home() {
         getSlideHome();
     },[])
 
-    console.log(getSlide);
-
-
     const [state, setState] = useState({
         show1Index: 1,
         show2Index: 2,
@@ -86,13 +83,13 @@ function Home() {
                     }
                     return(
 
-                            <div className={cx(`itemGallary`, classActive)} key={index}>
-                                <img 
-                                    src={item.thumbnail}   
-                                    alt={index} 
-                                    className='p-3' 
-                                />
-                            </div>
+                        <div className={cx(`itemGallary`, classActive)} key={index}>
+                            <img 
+                                src={item.thumbnail}   
+                                alt={index} 
+                                className='p-3' 
+                            />
+                        </div>
        
                     )
                 }) 
@@ -108,10 +105,10 @@ function Home() {
                         {Slideshow()}
                         <button className= {cx('galleryButton', 'btn2')} onClick={() => {
                             changeSlide();
-                        }}><i class="fa fa-arrow-right"></i></button>
+                        }}><i className="fa fa-arrow-right"></i></button>
                         <button className={cx('galleryButton', 'btn1')} onClick={() => {
                             changeSlide2();
-                        }}><i class="fa fa-arrow-left"></i></button>
+                        }}><i className="fa fa-arrow-left"></i></button>
                     </div>
                 </div>
             </div>

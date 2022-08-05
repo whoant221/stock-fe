@@ -58,6 +58,7 @@ function SidebarRight({playlistActive}) {
             <div className={cx('playlist-wrapper', 'playlist', {active: activePlaylist})}>
                 <div className={cx('song-playing')}>
                     <Media 
+                        largeContent
                         image='https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp…over/9/7/5/7/9757a70a3932be1bfbba5695e120a4c1.jpg'
                         songName="Nguời âm phủ"
                         singerName="OSAD"
@@ -71,11 +72,13 @@ function SidebarRight({playlistActive}) {
                 </div>
                 <div className={cx('next-songs')}>
                     <Media 
+                        largeContent
                         image='https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp…over/9/7/5/7/9757a70a3932be1bfbba5695e120a4c1.jpg'
                         songName="Nguời âm phủ"
                         singerName="OSAD"
                     />
                     <Media 
+                        largeContent
                         image='https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp…over/9/7/5/7/9757a70a3932be1bfbba5695e120a4c1.jpg'
                         songName="Nguời âm phủ"
                         singerName="OSAD"
@@ -87,11 +90,13 @@ function SidebarRight({playlistActive}) {
                 <div className={cx('playlist')}>
                     <div className={cx('next-songs')}>
                         <Media 
+                            largeContent
                             image='https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp…over/9/7/5/7/9757a70a3932be1bfbba5695e120a4c1.jpg'
                             songName="Nguời âm phủ"
                             singerName="OSAD"
                         />
                         <Media 
+                            largeContent
                             image='https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp…over/9/7/5/7/9757a70a3932be1bfbba5695e120a4c1.jpg'
                             songName="Nguời âm phủ"
                             singerName="OSAD"
