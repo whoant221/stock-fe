@@ -13,7 +13,7 @@ function DefaultLayout({ children }) {
                 <SidebarLeft />
                 <div className={cx('main-container', 'flex-1')}>
                     <Header />
-                    <div className={cx('content')}>{children}</div>
+                    <div className={cx('page')}>{children}</div>
                 </div>
             </div>
             <MusicControl />
