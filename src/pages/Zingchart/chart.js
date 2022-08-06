@@ -10,7 +10,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
-export function Chart({ music }) {
+export function Chart({ chart }) {
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -19,6 +19,8 @@ export function Chart({ music }) {
         Title,
         Tooltip
     );
+
+    const chartItems = Object.values(chart.items)
 
     const options = {
         hover: {
@@ -30,7 +32,7 @@ export function Chart({ music }) {
         scales: {
             y: {
                 min: 0,
-                max: 80,
+                max: chart.maxScore,
                 stepSize: 4,
                 gridLines: {
                     display: true,
@@ -44,60 +46,47 @@ export function Chart({ music }) {
                 gridLines: {
                     display: true,
                 },
-            },
+            }
         },
     };
 
-    const labels = [
-        '11:00',
-        '13:00',
-        '',
-        '15:00',
-        '',
-        '17:00',
-        '',
-        '19:00',
-        '',
-        '21:00',
-        '',
-        '23:00',
-        '',
-        '1:00',
-        '',
-        '3:00',
-        '',
-        '5:00',
-        '',
-        '7:00',
-    ];
+    const labels = chart.times.map((time, index) => {
+        if(index%2==0) {
+            return `${time.hour} : 00`
+        }
+    });
     
     const data = {
         labels,
         datasets: [
             {
                 offset:true,
-                data: [
-                    60, 55, 52, 50, 48, 48, 47, 50, 53, 60, 66, 67, 56, 60, 55, 52, 50, 53, 55, 57, 
-                ],
-                label: music[0].title,
+                data: chartItems[0].map((item, index) => {
+                    if(index%2==0) {
+                        return item.counter
+                    }
+                }),
                 borderColor: 'rgb(255, 99, 132)',
-                borderWidth: 2,
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 borderCapStyle: 'butt',
                 borderDash: [],
+                borderWidth: 1,
                 tension: 0.4,
+                pointRadius: 1,
+                pointHoverRadius: 6,
+                pointBorderWidth: 0,
+                pointHoverBorderWidth: 3,
                 pointBorderColor: 'rgb(255, 99, 132)',
-                pointBorderWidth: 1,
                 pointBackgroundColor: 'rgb(255, 99, 132)',
-                pointHoverRadius: 8,
                 pointHoverBackgroundColor: 'rgb(255, 99, 132)',
-                pointHoverBorderColor: 'rgb(255, 99, 132)',
-                pointHoverBorderWidth: 2,
+                pointHoverBorderColor: 'rgb(255, 255, 255)',
             },
             {
-                data: [
-                    40, 41, 43, 39, 37, 44, 46, 39, 39, 40, 41, 43, 39, 37, 44, 46, 39, 39, 33, 30, 
-                ],
+                data: chartItems[1].map((item, index) => {
+                    if(index%2==0) {
+                        return item.counter
+                    }
+                }),
                 borderColor: 'rgb(53, 162, 235)',
                 backgroundColor: 'rgba(53, 162, 235, 0.5)',
                 borderWidth: 2,
@@ -115,9 +104,11 @@ export function Chart({ music }) {
                 pointHoverBorderWidth: 2,
             },
             {
-                data: [
-                    35, 33, 35, 34, 35, 30, 30, 30, 32, 31, 28, 34, 36, 35, 34, 30, 30, 32, 34, 34, 
-                ],
+                data: chartItems[2].map((item, index) => {
+                    if(index%2==0) {
+                        return item.counter
+                    }
+                }),
                 borderColor: 'rgb(39, 186, 156)',
                 backgroundColor: 'rgb(39, 186, 156)',
                 borderWidth: 2,

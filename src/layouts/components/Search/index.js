@@ -11,6 +11,7 @@ import { useDebounce } from '~/hooks';
 import styles from './Search.module.scss';
 import images from "~/images";
 import Image from '~/components/Image';
+import axios from 'axios';
 
 const cx = classNames.bind(styles);
 
@@ -36,24 +37,28 @@ function Search() {
         getTopSearch();
     },[])
 
-
     useEffect(() => {
-        if(!searchValue.trim()) {
-            setSearchResult()
-            return; 
-        }
-        
-        const getSearchResult = async () => {
-            try {
-                const result = await searchByKeyword(searchValue);
-                console.log(result["search"]["song"]["song"]);
-                setSearchResult(result)
-            } catch (error) {
-                alert(error);
+            if(!searchValue.trim()) {
+                setSearchResult()
+                return; 
             }
-        };
-        getSearchResult();
+
+        axios   
+            .get(`https://apizingmp3.herokuapp.com/api/search`, {
+                params: {
+                    keyword: searchValue,
+                }
+            })
+            .then((res) => {
+                setSearchResult(res.data.data)
+                console.log(res.data.data.playlists);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }, [debouncedValue])
+
+
 
     function renderTopSearch() {
         if(topSearchs) {
@@ -68,16 +73,16 @@ function Search() {
         }
     }
 
-    function renderSearchResult() {
+    function renderSongsResult() {
         if(searchResult && searchResult !== '') {
             return (
-                searchResult["search"]["song"]["song"].map(item => {
+                searchResult.songs.map(item => {
                     return (
-                        <div key={item.key} className={cx('result-item')}>
+                        <div key={item.encodeId} className={cx('result-item')}>
                             <div className={cx('cd')}>
                                 <Image 
                                     className={cx('cd-thumb')}
-                                    src={item.thumbnail || item['artists'][0]['imageUrl']}
+                                    src={item.thumbnail || item.thumbnailM}
                                     alt={item.title}
                                     defaultAvt={images.defaultAvataSong}
                                 />
@@ -85,12 +90,41 @@ function Search() {
                             <div className={cx('media-content')}>
                                 <div className={cx('song-name','text-sm')}>{item.title}</div>
                                 <div className={cx('singer-name', 'text-xs')}>
-                                    {item["artists"].map((artist, index) => (
+                                    {item.artists.map((artist, index) => (
                                         <span>
                                             {artist.name}
-                                            {item["artists"].length === index + 1 ? "" : ", "}
+                                            {item.artists.length === index + 1 ? "" : ", "}
                                         </span>
                                     ))}
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })
+            )
+        }
+    }
+
+    function renderPlaylistsResult() {
+        if(searchResult && searchResult !== '') {
+            return (
+                searchResult.playlists.map(item => {
+                    return (
+                        <div key={item.encodeId} className={cx('result-item')}>
+                            <div className={cx('cd')}>
+                                <Image 
+                                    className={cx('cd-thumb')}
+                                    src={item.thumbnail || item.thumbnailM}
+                                    alt={item.title}
+                                    defaultAvt={images.defaultAvataSong}
+                                />
+                            </div>
+                            <div className={cx('media-content')}>
+                                <div className={cx('song-name','text-sm')}>{item.title}</div>
+                                <div className={cx('singer-name', 'text-xs')}>
+                                    <span>
+                                        Playlist • {item.artistsNames}
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +168,10 @@ function Search() {
                                             <i className="fal fa-search"></i>
                                             Tìm kiếm {!!searchValue && `"${searchValue}"`}
                                         </h3>
-                                        {renderSearchResult()}
+                                        <h3 className={cx('search-title')}>Bài hát</h3>
+                                        {renderSongsResult()}
+                                        <h3 className={cx('search-title')}>Playlist</h3>
+                                        {renderPlaylistsResult()}
                                     </Fragment>
                                 ) : (
                                     <Fragment>
