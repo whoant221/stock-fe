@@ -70,12 +70,11 @@ export function Chart({ music }) {
         '',
         '7:00',
     ];
-    console.log(music);
     const data = {
         labels,
         datasets: [
             {
-                offset:true,
+                offset: true,
                 data: music.map((item) => item.highestPosition),
                 borderColor: 'rgb(255, 99, 132)',
                 borderWidth: 2,
