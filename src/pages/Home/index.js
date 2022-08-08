@@ -7,13 +7,18 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 
+
+//getAPI
+import getHome from '../../api/getHome';
+
+
+
 import config from '~/config';
 import MySlide from './Slide/MySlide';
 import NewRelease from './NewRelease/NewRelease';
 import Playlist from '~/components/Playlist';
-import styles from './Home.module.scss'
-import Image from '~/components/Image';
-import images from '~/images';
+import styles from './Home.module.scss';
+
 const cx = classNames.bind(styles)
 
 function Home() {
@@ -32,22 +37,19 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        function homePage1() {
-            axios   
-                .get(`https://apizingmp3.herokuapp.com/api/home`, {
-                    params: {
-                        page: 1,
-                    }
-                })
-                .then((res) => {
-                    setGetSlide(res.data.data.items[0].items)
-                    setNewRelease(res.data.data.items[3].items[0])
-                    setPlaylistToday(res.data.data.items[4].items)
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }
+
+        const homePage1 = async () => {
+            try {
+                const res = await getHome.homePage1();              
+                setGetSlide(res.data.data.items[0].items)
+                setNewRelease(res.data.data.items[3].items[0])
+                setPlaylistToday(res.data.data.items[4].items)
+            } catch (error) {
+                alert(error);
+            }
+        };
+
+
         function homePage2() {
             axios   
                 .get(`https://apizingmp3.herokuapp.com/api/home`, {
@@ -86,7 +88,6 @@ function Home() {
                     }
                 })
                 .then((res) => {
-                    console.log(res.data.data.items);
                     setTopNewMusic(res.data.data.items[0].items)
                 })
                 .catch((error) => {
