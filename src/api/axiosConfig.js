@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const instance = axios.create({
     baseURL:`https://apizingmp3.herokuapp.com`,
-    timeout: 10000,
+    // timeout: 10000,
 });
 
 instance.interceptors.request.use(function (config) {

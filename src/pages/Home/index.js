@@ -49,51 +49,35 @@ function Home() {
             }
         };
 
+        const homePage2 = async () => {
+            try {
+                const res = await getHome.homePage2();              
+                setNewMusic(res.data.data.items[1].items)
+                setMixArtists(res.data.data.items[0].items)
+            } catch (error) {
+                alert(error);
+            }
+        };
 
-        function homePage2() {
-            axios   
-                .get(`https://apizingmp3.herokuapp.com/api/home`, {
-                    params: {
-                        page: 2,
-                    }
-                })
-                .then((res) => {
-                    setNewMusic(res.data.data.items[1].items)
-                    setMixArtists(res.data.data.items[0].items)
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }
-        function homePage3() {
-            axios   
-                .get(`https://apizingmp3.herokuapp.com/api/home`, {
-                    params: {
-                        page: 3,
-                    }
-                })
-                .then((res) => {
-                    setWeekChart(res.data.data.items[0].items)
-                    setTop100(res.data.data.items[2].items)
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }
-        function homePage4() {
-            axios   
-                .get(`https://apizingmp3.herokuapp.com/api/home`, {
-                    params: {
-                        page: 4,
-                    }
-                })
-                .then((res) => {
-                    setTopNewMusic(res.data.data.items[0].items)
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }
+        const homePage3 = async () => {
+            try {
+                const res = await getHome.homePage2();              
+                setWeekChart(res.data.data.items[0].items)
+                setTop100(res.data.data.items[2].items)
+            } catch (error) {
+                alert(error);
+            }
+        };
+
+        const homePage4 = async () => {
+            try {
+                const res = await getHome.homePage2();              
+                setTopNewMusic(res.data.data.items[0].items)
+            } catch (error) {
+                alert(error);
+            }
+        };
+
         homePage1()
         homePage2()
         homePage3()

@@ -8,6 +8,8 @@ import styles from './Header.module.scss'
 import images from "~/images";
 import Menu from "~/components/Popper/Menu/Menu";
 
+// import ThemeModal from './ThemeModal/index'
+
 const cx = classNames.bind(styles)
 
 function Header() {
@@ -50,6 +52,7 @@ function Header() {
                 {title: "b"},
             ]
         },
+      
         {
             title: "Giới thiệu",
             leftIcon: <i className="fal fa-info-circle"></i>,
