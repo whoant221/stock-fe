@@ -7,6 +7,7 @@ function Icon({
     className,
     icon,
     activeIcon,
+    mediaActive,
     isActive=false,
     activeNoColor=false,
     square=false,
@@ -23,6 +24,7 @@ function Icon({
     const classes = cx('wrapper', {
         [className]: className,
         active: isActive,
+        mediaActive,
         hover,
         square,
         activeNoColor,
