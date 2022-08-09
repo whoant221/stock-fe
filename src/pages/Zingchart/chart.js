@@ -3,10 +3,10 @@ import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    PointElement,
     LineElement,
-    Title,
     Tooltip,
+    PointElement,
+    Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
@@ -19,10 +19,10 @@ export function Chart({ chart }) {
     ChartJS.register(
         CategoryScale,
         LinearScale,
-        PointElement,
         LineElement,
-        Title,
+        PointElement,
         Tooltip,
+        Filler
     );
 
     const chartItems = Object.values(chart.items)
@@ -36,24 +36,24 @@ export function Chart({ chart }) {
     const data2= []
     const data3= []
     chartItems[0].map((item, index) => {
-        if(index % 2 == 0 ) {
+        if(index % 2 === 0 ) {
             data1.push(item.counter)
         }
     })
     chartItems[1].map((item, index) => {
-        if(index % 2 == 0 ) {
+        if(index % 2 === 0 ) {
             data2.push(item.counter)
         }
     })
     chartItems[2].map((item, index) => {
-        if(index % 2 == 0 ) {
+        if(index % 2 === 0 ) {
             data3.push(item.counter)
         }
     })
 
     const newLabels = []
     chart.times.map((time, index) => {
-        if(index%2==0) {
+        if(index%2===0) {
             newLabels.push(`${time.hour} : 00`)
         }
     })
@@ -145,6 +145,6 @@ export function Chart({ chart }) {
     
 
     return (
-        <Line options={chartOptions} data={chartData}/>
+        <Line height="100" options={chartOptions} data={chartData}/>
     );
 }
