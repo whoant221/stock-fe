@@ -80,6 +80,7 @@ export function Chart({ chart }) {
                 pointBackgroundColor: 'rgb(255, 99, 132)',
                 pointHoverBackgroundColor: 'rgb(255, 99, 132)',
                 pointHoverBorderColor: 'rgb(255, 255, 255)',
+                
             },
             {
                 data: chartItems[1].map((item, index) => {
@@ -128,5 +129,5 @@ export function Chart({ chart }) {
         ],
     };
 
-    return <Line height='342px' width='950px' options={options} data={data} />;
+    return <Line height='342px' width='950px' className='' options={options} data={data} />;
 }

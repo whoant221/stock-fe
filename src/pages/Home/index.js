@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 import 'react-slideshow-image/dist/styles.css'
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
