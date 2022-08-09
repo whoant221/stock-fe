@@ -15,6 +15,7 @@ function Playlist({
     link,
     image,
     iconLeft,
+    iconLeftActive,
     titleIconLeft
 }) {
 
@@ -32,11 +33,14 @@ function Playlist({
                     <div className={cx('card-actions')}>
                         <Tippy content={titleIconLeft}>
                             <div>
-                                <Icon icon={iconLeft} />
+                                <Icon
+                                    icon={iconLeft}
+                                    activeIcon={iconLeftActive}
+                                />
                             </div>
                         </Tippy>
                         <Icon 
-                        s18
+                            s18
                             className={cx('icon-play')}
                             icon={<i className="fas fa-play"></i>}
                         />
