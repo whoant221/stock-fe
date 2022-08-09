@@ -1,37 +1,100 @@
+import axios from 'axios';
 import classNames from 'classnames/bind';
-import { getChart } from 'nhaccuatui-api-full/dist';
 import { useEffect, useState } from 'react';
-import { Chart } from './chart';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
+
+import { Link } from 'react-router-dom';
+import Chart from './chart';
+import Loading from './Loading/Loading';
+import MusicItem from './MusicItem/MusicItem';
 import styles from './Zingchart.module.scss';
 
 const cx = classNames.bind(styles);
 
 function Zingchart() {
     const [music, setMusic] = useState([]);
+    const [visible, setVisible] = useState(10);
+    const [offBtn, setOffBtn] = useState(false);
 
     useEffect(() => {
-        const getDetails = async () => {
-            try {
-                const a = await getChart();
-                setMusic(a.ranking.song);
-            } catch (error) {
-                alert(error);
-            }
+        const fetchData = async () => {
+            const data = await axios
+                .get(`https://apizingmp3.herokuapp.com/api/charthome`)
+                .then((res) => res.data.data);
+            setMusic(data);
         };
-        getDetails();
-    }, []);
-    useEffect(() => {
+        fetchData();
+
         document.title =
             '#zingchart | Xem bài hát, album, MV đang hot nhất hiện tại';
     }, []);
+    const handleShowMoreItems = () => {
+        setVisible((prev) => prev + 90);
+        setOffBtn(true);
+    };
+
     return (
-        <div className={cx('wrapper')}>
-            <div className={cx('blur')}></div>
-            <h1>#zingchart </h1>
-            <div className={cx('chart')}>
-                {/*  */}
-                <Chart music={music} />
-                {/*  */}
+        <div>
+            <div className={cx('wrapper-chart')}>
+                <div className={cx('blur')}></div>
+                <h1>#zingchart </h1>
+                <div className={cx('chart')}>
+                    <Chart />
+                </div>
+            </div>
+            <div className={cx('list-music')}>
+                {music.RTChart ? (
+                    music.RTChart.items.slice(0, visible).map((item, index) => (
+                        <LazyLoadComponent>
+                            <MusicItem
+                                key={index}
+                                num={index + 1}
+                                title={item.title}
+                                name={item.album ? item.album.title : ''}
+                                artistsNames={item.artistsNames}
+                                thumbnail={item.thumbnail || item.thumbnailM}
+                            />
+                        </LazyLoadComponent>
+                    ))
+                ) : (
+                    <div>
+                        <Loading />
+                    </div>
+                )}
+                {!offBtn && (
+                    <div className={cx('btn-box')}>
+                        <button
+                            onClick={handleShowMoreItems}
+                            className={cx('btn')}
+                        >
+                            Xem top 100
+                        </button>
+                    </div>
+                )}
+            </div>
+            <div className={cx('top-100')}>
+                <div className={cx('blur')}></div>
+                <div className={cx('alpha')}></div>
+                <div className={cx('title')}>
+                    <Link to='/zing-chart'>Bảng Xếp Hạng Tuần</Link>
+                </div>
+                <div className={cx('top-board')}>
+                    <div className={cx('wrapper-top-list')}>
+                        <div className={cx('content-top-list')}>
+                            <h2>Việt Nam</h2>
+                        </div>
+                    </div>
+                    <div className={cx('wrapper-top-list')}>
+                        <div className={cx('content-top-list')}>
+                            <h2>Việt Nam</h2>
+                        </div>
+                    </div>
+                    <div className={cx('wrapper-top-list')}>
+                        <div className={cx('content-top-list')}>
+                            <h2>Việt Nam</h2>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
