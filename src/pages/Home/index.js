@@ -1,11 +1,16 @@
 import classNames from 'classnames/bind';
 import 'react-slideshow-image/dist/styles.css'
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
+
+
+//getAPI
+import getHome from '../../api/getHome';
+
+
 
 import config from '~/config';
 import MySlide from './Slide/MySlide';
@@ -25,7 +30,6 @@ function Home() {
     const [top100, setTop100] = useState();
     const [topNewMusic, setTopNewMusic] = useState();
     const [playlistNewMusic, setPlaylistNewMusic] = useState();
-    const [listRadio, setListRadio] = useState();
 
     useEffect(() => {
         document.title =
@@ -33,62 +37,57 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        function homePage1() {
-            axios   
-                .get(`https://apizingmp3.herokuapp.com/api/home`, {params: {page: 1}})
-                .then((res) => {
-                    setGetSlide(res.data.data.items[0].items)
-                    setNewRelease(res.data.data.items[3].items[0])
-                    setPlaylistToday(res.data.data.items[4].items)
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }
-        function homePage2() {
-            axios   
-                .get(`https://apizingmp3.herokuapp.com/api/home`, {params: {page: 2}})
-                .then((res) => {
-                    setNewMusic(res.data.data.items[1].items)
-                    setMixArtists(res.data.data.items[0].items)
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }
-        function homePage3() {
-            axios   
-                .get(`https://apizingmp3.herokuapp.com/api/home`, {params: {page: 3}})
-                .then((res) => {
-                    setWeekChart(res.data.data.items[0].items)
-                    setTop100(res.data.data.items[2].items)
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }
-        function homePage4() {
-            axios   
-                .get(`https://apizingmp3.herokuapp.com/api/home`, {params: {page: 4}})
-                .then((res) => {
-                    setTopNewMusic(res.data.data.items[0].items)
-                    setPlaylistNewMusic(res.data.data.items[1].items)
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }
-        function homePage5() {
-            axios   
-                .get(`https://apizingmp3.herokuapp.com/api/home`, {params: {page: 5}})
-                .then((res) => {
-                    console.log(res.data.data.items);
-                    setListRadio(res.data.data.items[1].items)
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }
+
+        const homePage1 = async () => {
+            try {
+                const res = await getHome.homePage1();              
+                setGetSlide(res.data.data.items[0].items)
+                setNewRelease(res.data.data.items[3].items[0])
+                setPlaylistToday(res.data.data.items[4].items)
+            } catch (error) {
+                alert(error);
+            }
+        };
+
+        const homePage2 = async () => {
+            try {
+                const res = await getHome.homePage2();              
+                setNewMusic(res.data.data.items[1].items)
+                setMixArtists(res.data.data.items[0].items)
+            } catch (error) {
+                alert(error);
+            }
+        };
+
+        const homePage3 = async () => {
+            try {
+                const res = await getHome.homePage3();              
+                setWeekChart(res.data.data.items[0].items)
+                setTop100(res.data.data.items[2].items)
+            } catch (error) {
+                alert(error);
+            }
+        };
+
+        const homePage4 = async () => {
+            try {
+                const res = await getHome.homePage4();              
+                setTopNewMusic(res.data.data.items[0].items)
+                setPlaylistNewMusic(res.data.data.items[1].items)
+            } catch (error) {
+                alert(error);
+            }
+        };
+
+        const homePage5 = async () => {
+            try {
+                const res = await getHome.homePage5();              
+                setListRadio(res.data.data.items[1].items)
+            } catch (error) {
+                alert(error);
+            }
+        };
+
         homePage1()
         homePage2()
         homePage3()
