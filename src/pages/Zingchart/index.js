@@ -15,6 +15,7 @@ function Zingchart() {
             await axios
                 .get('https://apizingmp3.herokuapp.com/api/charthome')
                 .then((res) => {
+                    console.log(res.data.data.RTChart.chart);
                     setMusic(res.data.data);
                     setChartInfo(res.data.data.RTChart.chart)
                 })
@@ -36,10 +37,8 @@ function Zingchart() {
         <div className={cx('wrapper')}>
             <div className={cx('blur')}></div>
             <h1>#zingchart </h1>
-            <div className={cx('chart')}>
-                
+            <div className={cx('chart-container')}>
                 {chartInfo && <Chart chart={chartInfo} />}
-                
             </div>
         </div>
     );

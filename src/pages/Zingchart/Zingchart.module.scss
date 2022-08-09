@@ -2,6 +2,8 @@
     background-image: url(https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.16/static/media/bg-chart.fd766403.jpg);
     background-size: cover;
     height: 500px;
+    margin: 0 -59px;
+    padding: 0 59px;
     transform: translateY(-69px);
     position: relative;
     display: flex;
@@ -27,7 +29,8 @@
     opacity: 0.9;
 }
 
-.chart {
+.chart-container {
+    position: relative;
     height: 300px;
-    box-sizing: border-box;
+    margin-bottom: 10px;
 }
