@@ -16,8 +16,8 @@ import config from '~/config';
 import MySlide from './Slide/MySlide';
 import NewRelease from './NewRelease/NewRelease';
 import Playlist from '~/components/Playlist';
-import styles from './Home.module.scss';
-
+import styles from './Home.module.scss'
+import SlideRadio from '../Radio/SlideRadio';
 const cx = classNames.bind(styles)
 
 function Home() {
@@ -26,9 +26,11 @@ function Home() {
     const [playlistToday, setPlaylistToday] = useState();
     const [newMusic, setNewMusic] = useState();
     const [mixArtists, setMixArtists] = useState();
-    const [weekChart, setWeekChart] = useState()
-    const [top100, setTop100] = useState()
-    const [topNewMusic, setTopNewMusic] = useState()
+    const [weekChart, setWeekChart] = useState();
+    const [top100, setTop100] = useState();
+    const [topNewMusic, setTopNewMusic] = useState();
+    const [playlistNewMusic, setPlaylistNewMusic] = useState();
+    const [listRadio, setListRadio] = useState()
 
     useEffect(() => {
         document.title =
@@ -60,7 +62,7 @@ function Home() {
 
         const homePage3 = async () => {
             try {
-                const res = await getHome.homePage2();              
+                const res = await getHome.homePage3();              
                 setWeekChart(res.data.data.items[0].items)
                 setTop100(res.data.data.items[2].items)
             } catch (error) {
@@ -70,8 +72,18 @@ function Home() {
 
         const homePage4 = async () => {
             try {
-                const res = await getHome.homePage2();              
+                const res = await getHome.homePage4();              
                 setTopNewMusic(res.data.data.items[0].items)
+                setPlaylistNewMusic(res.data.data.items[1].items)
+            } catch (error) {
+                alert(error);
+            }
+        };
+
+        const homePage5 = async () => {
+            try {
+                const res = await getHome.homePage5();              
+                setListRadio(res.data.data.items[1].items)
             } catch (error) {
                 alert(error);
             }
@@ -81,9 +93,10 @@ function Home() {
         homePage2()
         homePage3()
         homePage4()
-    },[])
+        homePage5()
+    }, [])
 
-    const propsSlidePlaylist = {
+    const propsSlide5 = {
         dots: false,
         infinite: true,
         speed: 1000,
@@ -95,7 +108,7 @@ function Home() {
         arrows: false
     }
 
-    const propsSlideMusic = {
+    const propsSlide3 = {
         dots: false,
         infinite: true,
         speed: 500,
@@ -106,16 +119,29 @@ function Home() {
         pauseOnHover: true,
         arrows: false
     }
+
+    const propsSlide7 = {
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 7,
+        slidesToScroll: 6,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        pauseOnHover: true,
+        arrows: false
+    }
+    console.log(listRadio);
     
     return (
         <div className={cx('wrapper')}>
             {getSlide && <MySlide getSlide={getSlide} />}
-            <div className={cx('home-section')}>
+            <div className={cx('section')}>
                 <h3 className={cx('section-title')}>Mới Phát Hành</h3>
                 {newRelease && <NewRelease data={newRelease} />}
             </div>
 
-            <div className={cx('home-section')}>
+            <div className={cx('section')}>
                 <h3 className={cx('section-title')}>Lựa chọn hôm nay</h3>
                 <div className={cx('list-playlist')}>
                     {playlistToday && playlistToday.map((playlist) => {
@@ -136,19 +162,30 @@ function Home() {
                 </div>
             </div>
 
-            <div className={cx('home-section')}>
+            <div className={cx('section')}>
                 <h3 className={cx('section-title')}>Nghệ sĩ yêu thích</h3>
                 <div className={cx('list-slide')}>
-                    <Slider {...propsSlidePlaylist} >
+                    <Slider {...propsSlide5} >
                         {mixArtists && mixArtists.map((artist, index) => {
                             return (
                                 <div key={index} className={cx('card-wrapper')}>
-                                    <div className={cx('artists-card')}>
+                                    <a href='#' className={cx('artists-card')}>
                                         <img className={cx('card-img')} src={artist.thumbnail} />
                                         <div className={cx('card-content')}>
                                             <h4 className={cx('name-artists')}>{artist.artistsNames}</h4>
+                                            <div className={cx('thumbs')}>
+                                                {artist.song.items.map((thumb, index) => {
+                                                    if(index<3) {
+                                                        return (
+                                                            <div className={cx('thumb')}>
+                                                                <img className={cx('thumb-img')} src={thumb.thumbnail} />
+                                                            </div>
+                                                        )
+                                                    }
+                                                })}
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             )
                         })}
@@ -156,7 +193,7 @@ function Home() {
                 </div>         
             </div>
 
-            <div className={cx('home-section')}>
+            <div className={cx('section')}>
                 <h3 className={cx('section-title')}>Nhạc mới mỗi ngày</h3>
                 <div className={cx('list-playlist')}>
                     {newMusic && newMusic.map((playlist) => {
@@ -177,7 +214,7 @@ function Home() {
                 </div>
             </div>
 
-            <div className={cx('home-section')}>
+            <div className={cx('section')}>
                 <div className={cx('list-playlist')}>
                     {weekChart && weekChart.map((item) => {
                         return (
@@ -192,7 +229,7 @@ function Home() {
                 </div>
             </div>
 
-            <div className={cx('home-section')}>
+            <div className={cx('section')}>
                 <div className={cx('sectioc-header', 'flex justify-between')}>
                     <h3 className={cx('section-title')}>Top 100</h3>
                     <Link to={config.routes.top100} className={cx('section-link')}>Tất cả</Link>
@@ -222,13 +259,23 @@ function Home() {
                 </div>
             </div>
 
-            <div className={cx('home-section')}>
+            <div className={cx('section')}>
+                <div className={cx('sectioc-header', 'flex justify-between')}>
+                    <h3 className={cx('section-title')}>Radio nổi bật</h3>
+                    <Link to={config.routes.radio} className={cx('section-link')}>Tất cả</Link>
+                </div>
+                <div className={cx('list-slide')}>
+                    <SlideRadio listRadio={listRadio} />
+                </div>
+            </div>
+
+            <div className={cx('section')}>
                 <div className={cx('sectioc-header', 'flex justify-between')}>
                     <h3 className={cx('section-title')}>Nhạc mới</h3>
                     <Link to={config.routes.nhacmoi} className={cx('section-link')}>Tất cả</Link>
                 </div>
                 <div className={cx('list-slide')}>
-                    <Slider {...propsSlideMusic} >
+                    <Slider {...propsSlide3} >
                         {topNewMusic && topNewMusic.map((item, index) => {
                             return (
                                 <div key={item.encodeId} className={cx('card-wrapper')}>
@@ -250,6 +297,26 @@ function Home() {
                     </Slider >
                         
                 </div>
+            </div>
+
+            <div className={cx('section')}>
+                <Slider {...propsSlide5} >
+                    {playlistNewMusic && playlistNewMusic.map((playlist, index) => {
+                        return (
+                            <Playlist 
+                                key={playlist.encodeId}
+                                className='px-3 md:px-3.5'
+                                name={playlist.title}
+                                describe={playlist.artistsNames}
+                                link='#'        //mặc định
+                                image={playlist.thumbnail || playlist.thumbnailM}
+                                iconLeft={<i className="fal fa-heart"></i>}
+                                iconLeftActive={<i className="fas fa-heart"></i>}
+                                titleIconLeft='Thêm vào thư viện'
+                            />
+                        )
+                    })}
+                </Slider >
             </div>
         </div>
     );

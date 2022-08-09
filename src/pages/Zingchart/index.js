@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 import { Link } from 'react-router-dom';
-import Chart from './chart';
+import {Chart} from './chart';
 import Loading from './Loading/Loading';
 import MusicItem from './MusicItem/MusicItem';
 import styles from './Zingchart.module.scss';
@@ -13,6 +13,7 @@ const cx = classNames.bind(styles);
 
 function Zingchart() {
     const [music, setMusic] = useState([]);
+    const [chartInfo, setChartInfo] = useState()
     const [visible, setVisible] = useState(10);
     const [offBtn, setOffBtn] = useState(false);
 
@@ -21,8 +22,9 @@ function Zingchart() {
             const data = await axios
                 .get(`https://apizingmp3.herokuapp.com/api/charthome`)
                 .then((res) => res.data.data);
-            setMusic(data);
-        };
+                setMusic(data);
+                setChartInfo(data.RTChart.chart)
+            };
         fetchData();
 
         document.title =
@@ -39,7 +41,7 @@ function Zingchart() {
                 <div className={cx('blur')}></div>
                 <h1>#zingchart </h1>
                 <div className={cx('chart')}>
-                    <Chart />
+                    {chartInfo && <Chart chart={chartInfo} />}
                 </div>
             </div>
             <div className={cx('list-music')}>
