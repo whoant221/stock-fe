@@ -12,10 +12,14 @@ function homePage3() {
 function homePage4() {
     return axios.get('/api/home?page=4')
 }
+function homePage5() {
+    return axios.get('/api/home?page=5')
+}
 
 export default {
     homePage1,
     homePage2,
     homePage3,
     homePage4,
+    homePage5,
 }
