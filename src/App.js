@@ -26,7 +26,7 @@ function App() {
                 <Route path="" element={<DefaultLayout />}>
                   <Route path="" element={<Home />}/>
                   <Route path="/user" element={<User />}/>
-                  <Route path="/zing-chart" element={<User />}/>
+                  <Route path="/zing-chart" element={<Zingchart />}/>
                   <Route path="/zing-chart/top1001" element={<Top100Zing />}/>
                   <Route path="/radio" element={<Radio />}/>
                   <Route path="/following" element={<Follow />}/>

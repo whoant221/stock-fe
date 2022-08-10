@@ -103,13 +103,13 @@ const ItemSinger = () => {
       </div>
       <div className={`carousel__prev ${!isActive ? "unprev__carousel" : ""}`}>
         <i
-          className="fa-solid fa-chevron-left"
+          className="fal fa-angle-left"
           onClick={() => setIsActive(false)}
         ></i>
       </div>
       <div className={`carousel__next ${isActive ? "unnext__carousel" : ""}`}>
         <i
-          className="fa-solid fa-chevron-right"
+          className="fal fa-angle-right"
           onClick={() => setIsActive(true)}
         ></i>
       </div>

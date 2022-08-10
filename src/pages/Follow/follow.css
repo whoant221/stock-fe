@@ -222,3 +222,30 @@
 .play__item{
     font-size: 3.2rem;
 }
+
+.carousel__prev{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: hsla(0,0%,100%,0.1);
+    padding: 0px 16px;
+    font-size: 2rem;
+}
+.carousel__next{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: hsla(0,0%,100%,0.1);
+    padding: 2px 20px;
+    font-size: 2rem;
+}
+
+.zma__list__item{
+    
+}
+
+.item__zma{
+    width: 132px;
+    height: auto;
+    
+}
