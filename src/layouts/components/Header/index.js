@@ -7,6 +7,7 @@ import Icon from "~/components/Icon";
 import styles from './Header.module.scss'
 import images from "~/images";
 import Menu from "~/components/Popper/Menu/Menu";
+import ThemeList from './ThemeList/index'
 
 const cx = classNames.bind(styles)
 
@@ -96,14 +97,12 @@ function Header() {
                     <div className={cx('search')}><Search /></div>
                 </div>
 
-                <div className={cx('right')}
-                onClick={openToppic}
-                // onDoubleClick={closeToppic}
-                >
-                    <Tippy content="Chủ đề">
+                <div className={cx('right')}>
+                    <Tippy content="Chủ đề" >
                         
                         <div className={cx('icon')}>
-                            <Icon 
+                            <Icon
+                                onClick={openToppic}
                                 btn hover
                                 icon={<svg width="20" height="20" className="header__nav-icon" viewBox="0 0 20 20">
 								<defs>
@@ -256,13 +255,15 @@ function Header() {
                             <i className={cx("fal fa-times", "close__btn-icon")}></i>
                         </div>
                         <div className={cx("theme__header")}>
-                            <h5 className={cx("theme__header-title")}>Giao Diện</h5>
+                            <h3 className={cx("theme__header-title")}>Giao Diện</h3>
                         </div>
                         <div className={cx("theme__content")}>
                             <div className={cx("grid", "theme__container")}>
                                 {/* {modalListTheme.map((listTheme, index) => (
                                     <ThemeList key={index} listTheme={listTheme} listThemeIndex={index} onChangeTheme={handleChangeTheme} />
                                 ))} */}
+                                {/* <Dynamic/> */}
+                                <ThemeList/>
                             </div>
                         </div>
                     </div>

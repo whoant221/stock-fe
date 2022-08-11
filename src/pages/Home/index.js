@@ -11,8 +11,6 @@ import { Link } from 'react-router-dom';
 import getHome from '../../api/getHome';
 
 
-
-import config from '~/config';
 import MySlide from './Slide/MySlide';
 import NewRelease from './NewRelease/NewRelease';
 import Playlist from '~/components/Playlist';
@@ -232,7 +230,7 @@ function Home() {
             <div className={cx('section')}>
                 <div className={cx('sectioc-header', 'flex justify-between')}>
                     <h3 className={cx('section-title')}>Top 100</h3>
-                    <Link to={config.routes.top100} className={cx('section-link')}>Tất cả</Link>
+                    <Link to={'/top100'} className={cx('section-link')}>Tất cả</Link>
                 </div>
                 <div className={cx('list-playlist')}>
                     {top100 && top100.map((playlist, index) => {
@@ -262,7 +260,7 @@ function Home() {
             <div className={cx('section')}>
                 <div className={cx('sectioc-header', 'flex justify-between')}>
                     <h3 className={cx('section-title')}>Radio nổi bật</h3>
-                    <Link to={config.routes.radio} className={cx('section-link')}>Tất cả</Link>
+                    <Link to={'/radio'} className={cx('section-link')}>Tất cả</Link>
                 </div>
                 <div className={cx('list-slide')}>
                     <SlideRadio listRadio={listRadio} />
@@ -272,7 +270,7 @@ function Home() {
             <div className={cx('section')}>
                 <div className={cx('sectioc-header', 'flex justify-between')}>
                     <h3 className={cx('section-title')}>Nhạc mới</h3>
-                    <Link to={config.routes.nhacmoi} className={cx('section-link')}>Tất cả</Link>
+                    <Link to={'/nhac-moi'} className={cx('section-link')}>Tất cả</Link>
                 </div>
                 <div className={cx('list-slide')}>
                     <Slider {...propsSlide3} >
