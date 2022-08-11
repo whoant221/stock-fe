@@ -12,6 +12,10 @@ import Types from '~/pages/Types';
 import User from '~/pages/User';
 import Zingchart from '~/pages/Zingchart';
 import Follow from './pages/Follow';
+import LayoutRankTop from './pages/Zingchart/LayoutRankTop';
+import Top100VN from './pages/Zingchart/Top100VN/Top100VN';
+import Top100US from './pages/Zingchart/Top100US/Top100US';
+import Top100KOREA from './pages/Zingchart/Top100KOREA/Top100KOREA';
 
 function App() {
     return (
@@ -22,6 +26,18 @@ function App() {
                         <Route path='' element={<Home />} />
                         <Route path='/user' element={<User />} />
                         <Route path='/zing-chart' element={<Zingchart />} />
+
+
+                        {/* các page nhỏ sẽ được để trong Route cha như này */}
+                        <Route path='/zing-chart-tuan' element={<LayoutRankTop />} >
+                            <Route path='/zing-chart-tuan/Bai-hat-Viet-Nam' element={<Top100VN />} />
+                            <Route path='/zing-chart-tuan/bai-hat-US-UK' element={<Top100US />} />
+                            <Route path='/zing-chart-tuan/bai-hat-Kpop' element={<Top100KOREA />} />
+                        </Route>
+                        
+
+
+
                         <Route path='/radio' element={<Radio />} />
                         <Route path='/following' element={<Follow />} />
                         <Route path='/top100' element={<Top100 />} />

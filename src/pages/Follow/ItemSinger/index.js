@@ -4,6 +4,7 @@ const ItemSinger = () => {
   const [isActive, setIsActive] = useState(false);
 
   return (
+    
     <>
       <div
         className="zma__list__item"
@@ -101,17 +102,17 @@ const ItemSinger = () => {
           </a>
         </div>
       </div>
-      <div className={`carousel__prev ${!isActive ? "unprev__carousel" : ""}`}>
-        <i
-          className="fal fa-angle-left"
-          onClick={() => setIsActive(false)}
-        ></i>
+      <div 
+      className={`carousel__prev ${!isActive ? "unprev__carousel" : ""}`}
+      onClick={() => setIsActive(false)}
+      >
+        <i className="fal fa-angle-left"></i>
       </div>
-      <div className={`carousel__next ${isActive ? "unnext__carousel" : ""}`}>
-        <i
-          className="fal fa-angle-right"
-          onClick={() => setIsActive(true)}
-        ></i>
+      <div 
+      className={`carousel__next ${isActive ? "unnext__carousel" : ""}`}
+      onClick={() => setIsActive(true)}
+      >
+        <i className="fal fa-angle-right"></i>
       </div>
     </>
   );
