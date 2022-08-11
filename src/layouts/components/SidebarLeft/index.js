@@ -2,7 +2,6 @@ import classNames from "classnames/bind";
 import { Link } from 'react-router-dom';
 
 import styles from './SidebarLeft.module.scss'
-import config from '~/config';
 import images from "~/images";
 import Menu from './Menu/Menu';
 import MenuItem from './Menu/MenuItem';
@@ -12,34 +11,34 @@ const cx = classNames.bind(styles)
 function SidebarLeft() {
     return ( 
         <aside className={cx('wrapper')}>
-            <Link to={config.routes.home} className={cx('logo-link')}>
+            <Link to={''} className={cx('logo-link')}>
                 <img src={images.logo} className={cx('logo-img')} alt='Zing mp3'/>
             </Link>
             <div className={cx('nav')}>
                 <Menu>
                     <MenuItem 
                         title="Cá Nhân" 
-                        to={config.routes.user} 
+                        to={'/user'} 
                         icon={<i className="fal fa-user"></i>} 
                     />
                     <MenuItem
                         title="Khám phá"
-                        to={config.routes.home}
+                        to={''}
                         icon={<i className="fal fa-compact-disc"></i>}
                     />
                     <MenuItem
                         title="#zingchart"
-                        to={config.routes.zingchart}
+                        to={'/zing-chart'}
                         icon={<i className="fal fa-solid fa-chart-line"></i>}
                     />
                     <MenuItem
                         title="Radio"
-                        to={config.routes.radio}
+                        to={'/radio'}
                         icon={<i className="fal fa-signal-stream"></i>}
                     />
                     <MenuItem
                         title="Theo dõi"
-                        to={config.routes.following}
+                        to={'/following'}
                         icon={<i className="fal fa-satellite-dish"></i>}
                     />
                 </Menu>
@@ -49,22 +48,22 @@ function SidebarLeft() {
                 <Menu>
                     <MenuItem 
                         title="Nhạc Mới"
-                        to={config.routes.nhacmoi}
+                        to={'/nhac-moi'}
                         icon={<i className="fal fa-music"></i>}
                     />
                     <MenuItem 
                         title="Thể Loại"
-                        to={config.routes.types}
+                        to={'/types'}
                         icon={<i className="fal fa-icons"></i>}
                     />
                     <MenuItem 
                         title="Top 100"
-                        to={config.routes.top100}
+                        to={'/top100'}
                         icon={<i className="fal fa-star"></i>}
                     />
                     <MenuItem 
                         title="MV"
-                        to={config.routes.home}
+                        to={'/'}
                         icon={<i className="fal fa-tv-music"></i>}
                     />
                     <div className={cx("box-vip")}>
@@ -79,19 +78,19 @@ function SidebarLeft() {
                     <MenuItem 
                         noActive
                         title="Bài Hát"
-                        to={config.routes.user}
+                        to={'/user'}
                         icon={<i className="far fa-album-collection"></i>}
                     />
                     <MenuItem 
                         noActive
                         title="Playlist"
-                        to={config.routes.user}
+                        to={'/user'}
                         icon={<i className="fal fa-list-music"></i>}
                     />
                     <MenuItem 
                         noActive
                         title="Gần Đây"
-                        to={config.routes.user}
+                        to={'/user'}
                         icon={<i className="fal fa-history"></i>}
                     />
                 </Menu>
