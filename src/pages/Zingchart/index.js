@@ -47,9 +47,8 @@ function Zingchart() {
             <div className={cx('list-music')}>
                 {music.RTChart ? (
                     music.RTChart.items.slice(0, visible).map((item, index) => (
-                        <LazyLoadComponent>
+                        <LazyLoadComponent key={index}>
                             <MusicItem
-                                key={index}
                                 num={index + 1}
                                 title={item.title}
                                 name={item.album ? item.album.title : ''}

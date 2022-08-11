@@ -16,6 +16,7 @@ function Radio() {
                 .get(`https://apizingmp3.herokuapp.com/api/home`, {params: {page: 5}})
                 .then((res) => {
                     setListRadio(res.data.data.items[1].items)
+                    console.log(res.data.data.items);
                 })
                 .catch((error) => {
                     console.log(error);

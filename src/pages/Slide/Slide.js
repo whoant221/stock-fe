@@ -23,7 +23,6 @@ function Slide() {
             }
         })
         .then((res) => {
-            console.log(res.data.data.items[0].items);
             setGetSlide(res.data.data.items[0].items)
         })
         .catch((error) => {

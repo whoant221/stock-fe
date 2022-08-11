@@ -131,7 +131,6 @@ function Home() {
         pauseOnHover: true,
         arrows: false
     }
-    console.log(listRadio);
     
     return (
         <div className={cx('wrapper')}>
