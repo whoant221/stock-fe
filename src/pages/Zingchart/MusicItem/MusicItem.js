@@ -13,7 +13,7 @@ const MusicItem = (props) => {
                         props.num < 4 ? cx(`num-${props.num}`) : cx('num')
                     }
                 >
-                    {props.num}
+                    {props.num || props.number}
                 </span>
                 <span className={cx('line')}></span>
                 <img src={props.thumbnail} alt={props.title} />
