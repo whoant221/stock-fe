@@ -82,18 +82,19 @@ function Zingchart() {
                         <Link to='/zing-chart'>Bảng Xếp Hạng Tuần</Link>
                     </div>
                     <div className={cx('top-board')}>
+                        {/* thay đổi link to đúng URL */}
                         <TopMusic
-                            to='/zing-chart/top100'
+                            to='/zing-chart-tuan/Bai-hat-Viet-Nam'
                             country='Việt Nam'
                             data={music.weekChart.vn}
                         />
                         <TopMusic
-                            to='/zing-chart/top100'
+                            to='/zing-chart-tuan/bai-hat-US-UK'
                             country='US-UK'
                             data={music.weekChart.us}
                         />
                         <TopMusic
-                            to='/zing-chart/top100'
+                            to='/zing-chart-tuan/bai-hat-Kpop'
                             country='K-Pop'
                             data={music.weekChart.korea}
                         />
