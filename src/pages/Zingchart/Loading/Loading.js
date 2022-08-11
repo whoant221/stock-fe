@@ -9,692 +9,182 @@ const Loading = () => {
         <>
             <div className={cx('skeleton')}>
                 <div className={cx('skeleton')}>
-                    <Skeleton
-                        count={1}
-                        height='40px'
-                        width='40px'
-                        highlightColor='#444'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton count={1} height='40px' width='40px' />
                     <div>
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='320px'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='200px'
-                            highlightColor='rgba(20,20,20,0.8)'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
+                        <Skeleton count={1} height='16px' width='320px' />
+                        <Skeleton count={1} height='16px' width='200px' />
                     </div>
                 </div>
 
-                <Skeleton
-                    count={1}
-                    height='10px'
-                    width='30px'
-                    highlightColor='rgba(20,20,20,0.8)'
-                    baseColor='hsla(0, 0%, 100%, 0.1)'
-                />
+                <Skeleton count={1} height='10px' width='30px' />
 
                 <div className={cx('skeleton-icon')}>
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        width='30px'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
                 </div>
             </div>
             <div className={cx('skeleton')}>
                 <div className={cx('skeleton')}>
-                    <Skeleton
-                        count={1}
-                        height='40px'
-                        width='40px'
-                        highlightColor='#444'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton count={1} height='40px' width='40px' />
                     <div>
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='320px'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='200px'
-                            highlightColor='rgba(20,20,20,0.8)'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
+                        <Skeleton count={1} height='16px' width='320px' />
+                        <Skeleton count={1} height='16px' width='200px' />
                     </div>
                 </div>
 
-                <Skeleton
-                    count={1}
-                    height='10px'
-                    width='30px'
-                    highlightColor='rgba(20,20,20,0.8)'
-                    baseColor='hsla(0, 0%, 100%, 0.1)'
-                />
+                <Skeleton count={1} height='10px' width='30px' />
 
                 <div className={cx('skeleton-icon')}>
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        width='30px'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
                 </div>
             </div>
             <div className={cx('skeleton')}>
                 <div className={cx('skeleton')}>
-                    <Skeleton
-                        count={1}
-                        height='40px'
-                        width='40px'
-                        highlightColor='#444'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton count={1} height='40px' width='40px' />
                     <div>
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='320px'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='200px'
-                            highlightColor='rgba(20,20,20,0.8)'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
+                        <Skeleton count={1} height='16px' width='320px' />
+                        <Skeleton count={1} height='16px' width='200px' />
                     </div>
                 </div>
 
-                <Skeleton
-                    count={1}
-                    height='10px'
-                    width='30px'
-                    highlightColor='rgba(20,20,20,0.8)'
-                    baseColor='hsla(0, 0%, 100%, 0.1)'
-                />
+                <Skeleton count={1} height='10px' width='30px' />
 
                 <div className={cx('skeleton-icon')}>
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        width='30px'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
                 </div>
             </div>
             <div className={cx('skeleton')}>
                 <div className={cx('skeleton')}>
-                    <Skeleton
-                        count={1}
-                        height='40px'
-                        width='40px'
-                        highlightColor='#444'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton count={1} height='40px' width='40px' />
                     <div>
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='320px'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='200px'
-                            highlightColor='rgba(20,20,20,0.8)'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
+                        <Skeleton count={1} height='16px' width='320px' />
+                        <Skeleton count={1} height='16px' width='200px' />
                     </div>
                 </div>
 
-                <Skeleton
-                    count={1}
-                    height='10px'
-                    width='30px'
-                    highlightColor='rgba(20,20,20,0.8)'
-                    baseColor='hsla(0, 0%, 100%, 0.1)'
-                />
+                <Skeleton count={1} height='10px' width='30px' />
 
                 <div className={cx('skeleton-icon')}>
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        width='30px'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
                 </div>
             </div>
             <div className={cx('skeleton')}>
                 <div className={cx('skeleton')}>
-                    <Skeleton
-                        count={1}
-                        height='40px'
-                        width='40px'
-                        highlightColor='#444'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton count={1} height='40px' width='40px' />
                     <div>
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='320px'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='200px'
-                            highlightColor='rgba(20,20,20,0.8)'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
+                        <Skeleton count={1} height='16px' width='320px' />
+                        <Skeleton count={1} height='16px' width='200px' />
                     </div>
                 </div>
 
-                <Skeleton
-                    count={1}
-                    height='10px'
-                    width='30px'
-                    highlightColor='rgba(20,20,20,0.8)'
-                    baseColor='hsla(0, 0%, 100%, 0.1)'
-                />
+                <Skeleton count={1} height='10px' width='30px' />
 
                 <div className={cx('skeleton-icon')}>
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        width='30px'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
                 </div>
             </div>
             <div className={cx('skeleton')}>
                 <div className={cx('skeleton')}>
-                    <Skeleton
-                        count={1}
-                        height='40px'
-                        width='40px'
-                        highlightColor='#444'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton count={1} height='40px' width='40px' />
                     <div>
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='320px'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='200px'
-                            highlightColor='rgba(20,20,20,0.8)'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
+                        <Skeleton count={1} height='16px' width='320px' />
+                        <Skeleton count={1} height='16px' width='200px' />
                     </div>
                 </div>
 
-                <Skeleton
-                    count={1}
-                    height='10px'
-                    width='30px'
-                    highlightColor='rgba(20,20,20,0.8)'
-                    baseColor='hsla(0, 0%, 100%, 0.1)'
-                />
+                <Skeleton count={1} height='10px' width='30px' />
 
                 <div className={cx('skeleton-icon')}>
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        width='30px'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
                 </div>
             </div>
             <div className={cx('skeleton')}>
                 <div className={cx('skeleton')}>
-                    <Skeleton
-                        count={1}
-                        height='40px'
-                        width='40px'
-                        highlightColor='#444'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton count={1} height='40px' width='40px' />
                     <div>
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='320px'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='200px'
-                            highlightColor='rgba(20,20,20,0.8)'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
+                        <Skeleton count={1} height='16px' width='320px' />
+                        <Skeleton count={1} height='16px' width='200px' />
                     </div>
                 </div>
 
-                <Skeleton
-                    count={1}
-                    height='10px'
-                    width='30px'
-                    highlightColor='rgba(20,20,20,0.8)'
-                    baseColor='hsla(0, 0%, 100%, 0.1)'
-                />
+                <Skeleton count={1} height='10px' width='30px' />
 
                 <div className={cx('skeleton-icon')}>
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        width='30px'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
                 </div>
             </div>
             <div className={cx('skeleton')}>
                 <div className={cx('skeleton')}>
-                    <Skeleton
-                        count={1}
-                        height='40px'
-                        width='40px'
-                        highlightColor='#444'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton count={1} height='40px' width='40px' />
                     <div>
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='320px'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='200px'
-                            highlightColor='rgba(20,20,20,0.8)'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
+                        <Skeleton count={1} height='16px' width='320px' />
+                        <Skeleton count={1} height='16px' width='200px' />
                     </div>
                 </div>
 
-                <Skeleton
-                    count={1}
-                    height='10px'
-                    width='30px'
-                    highlightColor='rgba(20,20,20,0.8)'
-                    baseColor='hsla(0, 0%, 100%, 0.1)'
-                />
+                <Skeleton count={1} height='10px' width='30px' />
 
                 <div className={cx('skeleton-icon')}>
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        width='30px'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
                 </div>
             </div>
             <div className={cx('skeleton')}>
                 <div className={cx('skeleton')}>
-                    <Skeleton
-                        count={1}
-                        height='40px'
-                        width='40px'
-                        highlightColor='#444'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton count={1} height='40px' width='40px' />
                     <div>
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='320px'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='200px'
-                            highlightColor='rgba(20,20,20,0.8)'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
+                        <Skeleton count={1} height='16px' width='320px' />
+                        <Skeleton count={1} height='16px' width='200px' />
                     </div>
                 </div>
 
-                <Skeleton
-                    count={1}
-                    height='10px'
-                    width='30px'
-                    highlightColor='rgba(20,20,20,0.8)'
-                    baseColor='hsla(0, 0%, 100%, 0.1)'
-                />
+                <Skeleton count={1} height='10px' width='30px' />
 
                 <div className={cx('skeleton-icon')}>
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        width='30px'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
                 </div>
             </div>
             <div className={cx('skeleton')}>
                 <div className={cx('skeleton')}>
-                    <Skeleton
-                        count={1}
-                        height='40px'
-                        width='40px'
-                        highlightColor='#444'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton count={1} height='40px' width='40px' />
                     <div>
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='320px'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
-                        <Skeleton
-                            count={1}
-                            height='16px'
-                            width='200px'
-                            highlightColor='rgba(20,20,20,0.8)'
-                            baseColor='hsla(0, 0%, 100%, 0.1)'
-                        />
+                        <Skeleton count={1} height='16px' width='320px' />
+                        <Skeleton count={1} height='16px' width='200px' />
                     </div>
                 </div>
 
-                <Skeleton
-                    count={1}
-                    height='10px'
-                    width='30px'
-                    highlightColor='rgba(20,20,20,0.8)'
-                    baseColor='hsla(0, 0%, 100%, 0.1)'
-                />
+                <Skeleton count={1} height='10px' width='30px' />
 
                 <div className={cx('skeleton-icon')}>
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        width='30px'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
-                    <Skeleton
-                        circle
-                        count={1}
-                        height='30px'
-                        width='30px'
-                        highlightColor='rgba(20,20,20,0.8)'
-                        baseColor='hsla(0, 0%, 100%, 0.1)'
-                    />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
+                    <Skeleton circle count={1} height='30px' width='30px' />
                 </div>
             </div>
         </>

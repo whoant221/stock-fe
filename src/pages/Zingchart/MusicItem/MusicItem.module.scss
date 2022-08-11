@@ -20,6 +20,12 @@
             margin-right: 10px;
         }
 
+        i {
+            display: none;
+            position: absolute;
+            left: 115px;
+        }
+
         .num,
         .num-1,
         .num-2,
@@ -79,17 +85,27 @@
                 width: 40px;
                 padding: 6px;
                 margin: 0 4px;
+                letter-spacing: 1px;
+                font-weight: 800;
                 background-color: transparent;
 
                 &:hover {
                     background-color: hsla(0, 0%, 100%, 0.1);
                     border-radius: 50%;
                 }
+
+                &:hover i {
+                    display: block;
+                }
             }
         }
     }
 
     &:hover {
+        background-color: hsla(0, 0%, 100%, 0.1);
+    }
+
+    &:hover i {
         background-color: hsla(0, 0%, 100%, 0.1);
     }
 
@@ -103,7 +119,7 @@
 }
 
 .music-details {
-    width: 294px;
+    width: 35vw;
     p {
         font-size: 14px;
         line-height: 18.2px;

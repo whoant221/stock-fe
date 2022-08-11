@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Chart from './chart';
 import Loading from './Loading/Loading';
 import MusicItem from './MusicItem/MusicItem';
+import TopMusic from './TopMusic/TopMusic';
 import styles from './Zingchart.module.scss';
 
 const cx = classNames.bind(styles);
@@ -32,7 +33,7 @@ function Zingchart() {
         setVisible((prev) => prev + 90);
         setOffBtn(true);
     };
-
+    console.log(music.weekChart);
     return (
         <div>
             <div className={cx('wrapper-chart')}>
@@ -45,9 +46,8 @@ function Zingchart() {
             <div className={cx('list-music')}>
                 {music.RTChart ? (
                     music.RTChart.items.slice(0, visible).map((item, index) => (
-                        <LazyLoadComponent>
+                        <LazyLoadComponent key={index}>
                             <MusicItem
-                                key={index}
                                 num={index + 1}
                                 title={item.title}
                                 name={item.album ? item.album.title : ''}
@@ -72,30 +72,30 @@ function Zingchart() {
                     </div>
                 )}
             </div>
-            <div className={cx('top-100')}>
-                <div className={cx('blur')}></div>
-                <div className={cx('alpha')}></div>
-                <div className={cx('title')}>
-                    <Link to='/zing-chart'>Bảng Xếp Hạng Tuần</Link>
-                </div>
-                <div className={cx('top-board')}>
-                    <div className={cx('wrapper-top-list')}>
-                        <div className={cx('content-top-list')}>
-                            <h2>Việt Nam</h2>
-                        </div>
+            {music.weekChart ? (
+                <div className={cx('top-100')}>
+                    <div className={cx('blur')}></div>
+                    <div className={cx('alpha')}></div>
+                    <div className={cx('title')}>
+                        <Link to='/zing-chart'>Bảng Xếp Hạng Tuần</Link>
                     </div>
-                    <div className={cx('wrapper-top-list')}>
-                        <div className={cx('content-top-list')}>
-                            <h2>Việt Nam</h2>
-                        </div>
-                    </div>
-                    <div className={cx('wrapper-top-list')}>
-                        <div className={cx('content-top-list')}>
-                            <h2>Việt Nam</h2>
-                        </div>
+                    <div className={cx('top-board')}>
+                        <TopMusic
+                            country='Việt Nam'
+                            data={music.weekChart.vn}
+                        />
+                        <TopMusic country='US-UK' data={music.weekChart.us} />
+                        <TopMusic
+                            country='K-Pop'
+                            data={music.weekChart.korea}
+                        />
                     </div>
                 </div>
-            </div>
+            ) : (
+                <div  className={cx('loading-img')}>
+
+                </div>
+            )}
         </div>
     );
 }

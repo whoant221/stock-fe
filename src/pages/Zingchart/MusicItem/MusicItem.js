@@ -17,6 +17,7 @@ const MusicItem = (props) => {
                 </span>
                 <span className={cx('line')}></span>
                 <img src={props.thumbnail} alt={props.title} />
+                <i className='fas fa-play'></i>
                 <div className={cx('music-details')}>
                     <p>{props.title}</p>
                     <a>{props.artistsNames}</a>
@@ -26,9 +27,11 @@ const MusicItem = (props) => {
             <div className={cx('music-hover')}>
                 <div className={cx('music-hover-icon')}>
                     <span>
-                    
+                        <i className='far fa-microphone'></i>
                     </span>
-                    <span>0</span>
+                    <span>
+                        <i className='far fa-heart'></i>
+                    </span>
                     <span>...</span>
                 </div>
                 <p>05:03</p>
