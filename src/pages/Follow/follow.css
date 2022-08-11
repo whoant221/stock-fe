@@ -169,7 +169,7 @@
 }
 .follower__time{
     cursor: pointer;
-    color: var(--text-placeholder);
+    color:hsla(0,0%,100%,0.5);
     font-size: 12px;
 }
 .content__follower{
@@ -189,6 +189,7 @@
     border-radius: 10px;
     padding-bottom: 180.556%;
     position: relative;
+    
 }
 .center{
     position: absolute;
@@ -225,8 +226,8 @@
 
 .carousel__prev,
 .carousel__next{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: hsla(0,0%,100%,0.1);
     padding: 2px 20px;
@@ -253,17 +254,20 @@
 }
 
 .item__zma {
-    width: 14.2%;
+    width: 14.8%;
     position: relative;
     min-height: 1px;
     padding-left: 20px;
     padding-right: 20px;
     float: left;
     flex-shrink: 0;
-    padding: 0 20px;
+    padding: 0 14px;
+    margin-left: -2.2px;
+    margin-right: -5px; 
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    
 }
 
 .carousel__wapper {
