@@ -1,35 +1,12 @@
 
 import classNames from 'classnames/bind';
-import axios from 'axios';
 import 'react-slideshow-image/dist/styles.css'
 import { useState, useEffect } from 'react';
 import styles from './Slide.module.scss'
 
 const cx = classNames.bind(styles)
 
-function Slide() {
-    const [getSlide, setGetSlide] = useState([]);
-
-    useEffect(() => {
-        document.title =
-            'Zing MP3 | Nghe tải nhạc chất lượng cao trên destop, mobile và TV';
-    }, []);
-
-    useEffect(() => {
-        axios   
-        .get(`https://apizingmp3.herokuapp.com/api/home`, {
-            params: {
-                page: 1,
-            }
-        })
-        .then((res) => {
-            console.log(res.data.data.items[0].items);
-            setGetSlide(res.data.data.items[0].items)
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-    },[])
+function MySlide({ getSlide=[] }) {
 
     const [state, setState] = useState({
         show1Index: 1,
@@ -104,13 +81,13 @@ function Slide() {
                 {Slideshow()}
                 <button 
                     className= {cx('galleryButton', 'btn-right')} 
-                    onClick={() => { changeSlide()}
+                    onClick={() => { changeSlide2()}
                 }>
                     <i className="fal fa-angle-right"></i>
                 </button>
                 <button 
                     className={cx('galleryButton', 'btn-left')} 
-                    onClick={() => {changeSlide2()}
+                    onClick={() => {changeSlide()}
                 }>
                     <i className="fal fa-angle-left"></i>
                 </button>
@@ -119,4 +96,4 @@ function Slide() {
     );
 }
 
-export default Slide;
+export default MySlide;

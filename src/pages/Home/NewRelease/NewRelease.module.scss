@@ -1,0 +1,74 @@
+.nav-btn {
+    display: inline-block;
+    color: var(--white-color);
+    font-size: 12px;
+    font-weight: 400;
+    padding: 4px 24px;
+    text-transform: uppercase;
+    border: 1px solid;
+    border-radius: 999px;
+    margin-bottom: 20px;
+    &.active {
+        color: var(--white-color);
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+}
+
+.list-song {
+    display: flex;
+    margin: 0 -14px;
+    flex-wrap: wrap;
+}
+
+.song-item {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--border-color);
+    }
+}
+
+.cd {
+    width: 52px;
+    height: 52px;
+    border-radius: 4px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.cd-thumb {
+    width: 100%;
+    height: auto;
+}
+
+.media-content {
+    overflow: hidden;
+    text-align: left;
+    max-width: 240px;
+}
+
+.song-name {
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.36;
+    &.nowrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.singer-name,
+.time-status {
+    font-size: 12px;
+    margin-top: 2px;
+    color: var(--text-secondary);
+}

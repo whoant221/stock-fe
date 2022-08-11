@@ -1,4 +1,4 @@
-import Skeleton from 'react-loading-skeleton';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import classNames from 'classnames/bind';
 import styles from './Loading.module.scss';
@@ -6,7 +6,11 @@ const cx = classNames.bind(styles);
 
 const Loading = () => {
     return (
-        <>
+        <SkeletonTheme
+            baseColor='#444444'
+            highlightColor='#5b5b5b'
+            className={cx('skeleton-theme')}
+        >
             <div className={cx('skeleton')}>
                 <div className={cx('skeleton')}>
                     <Skeleton count={1} height='40px' width='40px' />
@@ -187,7 +191,7 @@ const Loading = () => {
                     <Skeleton circle count={1} height='30px' width='30px' />
                 </div>
             </div>
-        </>
+        </SkeletonTheme>
     );
 };
 

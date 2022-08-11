@@ -22,8 +22,8 @@
 
         i {
             display: none;
-            position: absolute;
-            left: 115px;
+            position: relative;
+            left: -35px;
         }
 
         .num,
@@ -105,7 +105,8 @@
         background-color: hsla(0, 0%, 100%, 0.1);
     }
 
-    &:hover i {
+    &:hover .music-rank i {
+        display: block;
         background-color: hsla(0, 0%, 100%, 0.1);
     }
 

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -8,104 +8,124 @@ import {
     PointElement,
     Filler,
 } from 'chart.js';
-import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    LineElement,
-    PointElement,
-    Tooltip,
-    Filler
-);
+import classNames from 'classnames/bind';
+import styles from './Zingchart.module.scss';
 
-const Chart = ({ music }) => {
+const cx = classNames.bind(styles);
+
+export function Chart({ chart }) {
+    ChartJS.register(
+        CategoryScale,
+        LinearScale,
+        LineElement,
+        PointElement,
+        Tooltip,
+        Filler
+    );
+
+    const chartItems = Object.values(chart.items)
+
     const [chartData, setChartData] = useState({
         datasets: [],
     });
 
     const [chartOptions, setChartOptions] = useState({});
+    const data1= []
+    const data2= []
+    const data3= []
+    chartItems[0].map((item, index) => {
+        if(index % 2 === 0 ) {
+            data1.push(item.counter)
+        }
+    })
+    chartItems[1].map((item, index) => {
+        if(index % 2 === 0 ) {
+            data2.push(item.counter)
+        }
+    })
+    chartItems[2].map((item, index) => {
+        if(index % 2 === 0 ) {
+            data3.push(item.counter)
+        }
+    })
+
+    const newLabels = []
+    chart.times.map((time, index) => {
+        if(index%2===0) {
+            newLabels.push(`${time.hour} : 00`)
+        }
+    })
 
     useEffect(() => {
         setChartData({
-            labels: [
-                '12:00',
-                '',
-                '14:00',
-                '',
-                '16:00',
-                '',
-                '18:00',
-                '',
-                '20:00',
-                '',
-                '22:00',
-                '',
-                '00:00',
-                '',
-                '2:00',
-                '',
-                '4:00',
-                '',
-                '6:00',
-                '',
-                '8:00',
-                '',
-                '10:00',
-                '',
-            ],
+            labels: newLabels,
             datasets: [
                 {
                     tension: 0.3,
-                    data: [
-                        1, 5, 4, 8, 9, 6, 5, 7, 4, 8, 9, 2, 1, 5, 4, 8, 9, 6, 5,
-                        7, 4, 8, 9, 2,
-                    ],
-                    borderColor: 'orange',
-                    backgroundColor: 'rgba(250, 160, 95, 0.26)',
-                    pointStyle: 'none',
-                    pointRadius: 2,
-                    pointBorderWidth: 4,
-                    pointHoverRadius: 8,
+                    data: data1,
+                    //line
+                    borderWidth: 2,
+                    borderColor: 'rgb(53, 162, 235)',
+                    //point
+                    pointRadius:3,
+                    pointBackgroundColor: 'rgb(53, 162, 235)',
+                    pointHoverRadius: 6,
                     pointHoverBackgroundColor: 'rgb(53, 162, 235)',
-                    pointHoverBorderColor: 'rgb(53, 162, 235)',
-                    pointHoverBorderWidth: 2,
-                    pointBorderColor: 'orange',
+                    //point border
+                    pointBorderWidth: 0,
+                    pointHoverBorderWidth: 3,
+                    pointHoverBorderColor: 'rgb(255, 255, 255)',
                 },
                 {
                     tension: 0.3,
-                    // data: music?.items[1].map(
-                    //     (item) => item.counter
-                    // ),
-                    borderColor: 'orange',
-                    backgroundColor: 'rgba(250, 160, 95, 0.26)',
-                    pointStyle: 'none',
-                    pointRadius: 0,
-                    pointHoverRadius: 0,
-                    pointBorderColor: 'orange',
+                    data: data2,
+                    borderWidth: 2,
+                    borderColor: 'rgb(39, 186, 156)',
+                    //point
+                    pointRadius:3,
+                    pointBackgroundColor: 'rgb(39, 186, 156)',
+                    pointHoverRadius: 6,
+                    pointHoverBackgroundColor: 'rgb(39, 186, 156)',
+                    //point border
+                    pointBorderWidth: 0,
+                    pointHoverBorderWidth: 3,
+                    pointHoverBorderColor: 'rgb(255, 255, 255)',
                 },
                 {
                     tension: 0.3,
-                    // data: music?.items[2].map(
-                    //     (item) => item.counter
-                    // ),
-                    borderColor: 'orange',
-                    backgroundColor: 'rgba(250, 160, 95, 0.26)',
-                    pointStyle: 'none',
-                    pointRadius: 0,
-                    pointBorderColor: 'orange',
+                    data: data3,
+                    borderWidth: 2,
+                    borderColor: 'rgb(255, 99, 132)',
+                    //point
+                    pointRadius: 3,
+                    pointBackgroundColor: 'rgb(255, 99, 132)',
+                    pointHoverRadius: 6,
+                    pointHoverBackgroundColor: 'rgb(255, 99, 132)',
+                    //point border
+                    pointBorderWidth: 0,
+                    pointHoverBorderWidth: 3,
+                    pointHoverBorderColor: 'rgb(255, 255, 255)',
                 },
             ],
         });
         setChartOptions({
+            layout: {
+                padding: 20
+            },
             responsive: true,
+            hover: {
+                mode: 'nearest',
+                axis: 'x',
+                intersect: false
+            },
             scales: {
                 y: {
                     beginAtZero: true,
                     min: 0,
-                    max: 10,
-                    stepSize: 1,
+                    max: chart.maxScore,
+                    stepSize: 1000,
                     grid: {
                         display: true,
                     },
@@ -122,8 +142,9 @@ const Chart = ({ music }) => {
             },
         });
     }, []);
+    
 
-    return <Line options={chartOptions} data={chartData} height='70px' />;
-};
-
-export default Chart;
+    return (
+        <Line height="100" options={chartOptions} data={chartData}/>
+    );
+}

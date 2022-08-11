@@ -41,7 +41,7 @@ const TopMusic = (props) => {
             ))}
 
             <div className={cx('all-items')}>
-                <Link to={`top-100-viet-nam`}>Xem tất cả</Link>
+                <Link to={props.to}>Xem tất cả</Link>
             </div>
         </div>
     );
