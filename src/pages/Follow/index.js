@@ -74,7 +74,7 @@ const Follow = () => {
                     }}
                   >
                     <span className={cx("controller__itemmedia", "play__item", "center")}>
-                      <i class="far fa-play-circle"></i>
+                      <i className="far fa-play-circle"></i>
                     </span>
                   </div>
                 </div>
@@ -122,7 +122,7 @@ const Follow = () => {
                     }}
                   >
                     {/* <span className={cx("controller__itemmedia play__item center">
-                      <i class="far fa-play-circle"></i>
+                      <i className="far fa-play-circle"></i>
                     </span> */}
                   </div>
                 </div>
@@ -170,7 +170,7 @@ const Follow = () => {
                     }}
                   >
                     {/* <span className={cx("controller__itemmedia play__item center">
-                      <i class="far fa-play-circle"></i>
+                      <i className="far fa-play-circle"></i>
                     </span> */}
                   </div>
                 </div>
@@ -222,7 +222,7 @@ const Follow = () => {
                     }}
                   >
                     {/* <span className={cx("controller__itemmedia play__item center">
-                      <i class="far fa-play-circle"></i>
+                      <i className="far fa-play-circle"></i>
                     </span> */}
                   </div>
                 </div>
@@ -271,7 +271,7 @@ const Follow = () => {
                     }}
                   >
                     <span className={cx("controller__itemmedia", "play__item", "center")}>
-                      <i class="far fa-play-circle"></i>
+                      <i className="far fa-play-circle"></i>
                     </span>
                   </div>
                 </div>
@@ -319,7 +319,7 @@ const Follow = () => {
                     }}
                   >
                     <span className={cx("controller__itemmedia play__item center">
-                      <i class="far fa-play-circle"></i>
+                      <i className="far fa-play-circle"></i>
                     </span>
                   </div> */}
                 </div>
@@ -368,7 +368,7 @@ const Follow = () => {
                     }}
                   >
                     {/* <span className={cx("controller__itemmedia play__item center">
-                      <i class="far fa-play-circle"></i>
+                      <i className="far fa-play-circle"></i>
                     </span> */}
                   </div>
                 </div>
