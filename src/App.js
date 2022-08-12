@@ -15,6 +15,8 @@ import Types from '~/pages/Types';
 import Top100 from '~/pages/Top100';
 import Follow from './pages/Follow';
 import Top100Zing from './pages/Zingchart/Top100Zing';
+import Playlist from './pages/User/Playlist';
+import History from './pages/User/History';
 
 
 
@@ -26,6 +28,9 @@ function App() {
                 <Route path="" element={<DefaultLayout />}>
                   <Route path="" element={<Home />}/>
                   <Route path="/user" element={<User />}/>
+                  <Route path="/user/song" element={<User />} />
+                  <Route path="/user/playlist" element={<Playlist />} />
+                  <Route path="/user/history" element={<History />} />
                   <Route path="/zing-chart" element={<Zingchart />}/>
                   <Route path="/zing-chart/top1001" element={<Top100Zing />}/>
                   <Route path="/radio" element={<Radio />}/>

@@ -78,19 +78,19 @@ function SidebarLeft() {
                     <MenuItem 
                         noActive
                         title="Bài Hát"
-                        to={'/user'}
+                        to={'/user/song'}
                         icon={<i className="far fa-album-collection"></i>}
                     />
                     <MenuItem 
                         noActive
                         title="Playlist"
-                        to={'/user'}
+                        to={'/user/playlist'}
                         icon={<i className="fal fa-list-music"></i>}
                     />
                     <MenuItem 
                         noActive
                         title="Gần Đây"
-                        to={'/user'}
+                        to={'/user/history'}
                         icon={<i className="fal fa-history"></i>}
                     />
                 </Menu>

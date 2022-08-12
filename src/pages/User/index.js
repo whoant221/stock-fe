@@ -124,23 +124,23 @@ function User() {
                             <h4 className={cx('lib-heading')}>Thời gian</h4>
                         </div>
                         <div className={cx('song-list')}>
-                                {mySongs.map(song => {
-                                    return (
-                                        <div className={cx('song-item')}>
-                                            <i className="fal fa-music"></i>
-                                            <Media
-                                                key={song.id}
-                                                largeContent
-                                                noHover
-                                                image={song.thumbnail}
-                                                songName={song.name}
-                                                singerName={song.singer}
-                                            />
-                                            <span className={cx('time')}>{song.time}</span>
-                                        </div>
-                                    )
-                                })}
-                            </div>
+                            {mySongs.map(song => {
+                                return (
+                                    <div className={cx('song-item')}>
+                                        <i className="fal fa-music"></i>
+                                        <Media
+                                            key={song.id}
+                                            largeContent
+                                            noHover
+                                            image={song.thumbnail}
+                                            songName={song.name}
+                                            singerName={song.singer}
+                                        />
+                                        <span className={cx('time')}>{song.time}</span>
+                                    </div>
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>

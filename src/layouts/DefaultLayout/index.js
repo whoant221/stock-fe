@@ -14,13 +14,12 @@ function DefaultLayout({ children }) {
                 <SidebarLeft />
                 <div className={cx('main-container', 'flex-1')}>
                     <Header />
-                    
                     <div className={cx('page')}>
                         <Outlet/>
                     </div>
+                    <MusicControl />
                 </div>
             </div>
-            <MusicControl />
         </div>
     );
 }
