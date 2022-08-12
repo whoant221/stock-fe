@@ -5,8 +5,8 @@
 }
 .hr-top{
     border-top: 1px solid hsla(0,0%,100%,0.1);
-    margin-left: -90px;
-    margin-right: -90px;
+    margin-left: -50px;
+    margin-right: -50px;
 }
 .MV{
     flex-shrink: 0;
@@ -60,4 +60,8 @@
     color: var(--navigation-text);
     margin: 0 20px;
     line-height: normal;
+}
+
+.mar-b-30 {
+    margin-bottom: 30px!important;
 }

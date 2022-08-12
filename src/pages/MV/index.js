@@ -28,7 +28,7 @@ function MV() {
             
 
         </piv>
-        <div className={cx('hr-top')}/>
+        <div className={cx('hr-top','mar-b-30')}/>
 
         <Outlet/>
     </div>

@@ -17,6 +17,8 @@ function Header() {
     let classActive = '';
     const [checkToppic, setCheckToppic] = useState(false);
 
+
+
     const openToppic = () =>{
         setCheckToppic(true)
     }
@@ -229,6 +231,7 @@ function Header() {
                             />
                         </div>
                     </Tippy>
+
                     <Menu items={settingMenu}>
                         <div className={cx('icon')}>
                             <Icon
@@ -238,6 +241,7 @@ function Header() {
                             />
                         </div>
                     </Menu>
+
                     <Menu items={userMenu}>
                         <img
                             alt='avatar'
