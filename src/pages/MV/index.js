@@ -15,7 +15,7 @@ function MV() {
 
   return (
     <div>
-        <piv className={cx('flex')}>
+        <div className={cx('flex')}>
             <div className={cx('MV')}>MV</div>
             <div className={cx("hr-right")}></div>
 
@@ -27,7 +27,7 @@ function MV() {
             </div>
             
 
-        </piv>
+        </div>
         <div className={cx('hr-top','mar-b-30')}/>
 
         <Outlet/>
