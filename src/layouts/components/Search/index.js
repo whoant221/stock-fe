@@ -152,7 +152,7 @@ function Search() {
     };
 
     return ( 
-        <div>
+        <div> 
             <HeadlessTippy
                 interactive
                 placement={'bottom'}

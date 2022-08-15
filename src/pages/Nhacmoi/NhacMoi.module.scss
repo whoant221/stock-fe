@@ -1,0 +1,44 @@
+.wrapper {
+    transform: translateY(-100px);
+
+    .blur {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 380px;
+        z-index: 0;
+        display: block;
+        background: url(https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.19/static/media/new-release-bg.73d8f976.jpg)
+            top/cover no-repeat;
+        -webkit-filter: grayscale(1);
+        filter: grayscale(1);
+    }
+
+    .alpha {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 380px;
+        z-index: 0;
+        background-image: linear-gradient(
+            180deg,
+            hsla(0, 0%, 100%, 0) 37%,
+            #170f23
+        );
+    }
+    .alpha1 {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0.8;
+        height: 380px;
+        z-index: 0;
+        background-image: linear-gradient(180deg, #170f23, #170f23);
+    }
+}
