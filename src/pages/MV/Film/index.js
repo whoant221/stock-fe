@@ -118,15 +118,59 @@ function Film() {
                   <div className={cx('video-queue', 'is-vertical')}>
                     <div className={cx('list-playing')}>
                       <div className={cx('container', 'mar-b-30')}>
-                        <div className={cx('list-playing-header')}></div>
+                        <div className={cx('list-playing-header')}>
+                          <h3 className={cx('pull-left', 'title')}> Danh Sách Phát </h3>
+                          <button className={cx('zm-btn', 'zm-auto-play-switch', 'pull-left', 'button')}>
+                            <div> Tự Động Phát</div>
+                            <i className={cx('icon_right', 'far fa-toggle-on')}></i>
+                            {/* <i className={cx('icon_right', 'far fa-toggle-off')}></i> */}
+                          </button>
+                        </div>
+                        <div className={cx('list-playing-body')}>
+                          <div className={cx('list-playing-body-content')}>
+                            <div className={cx('zm-carousel-wrapper')}>
+                              <div className={cx('zm-carousel')}>
+                                <div className={cx('zm-carousel__container')}>
+                                  <div className={cx('zm-carousel-item', 'is-fullhd-1.2', 'is-widescreen-2', 'is-desktop-20', 'is-touch-3', 'is-tablet-3')}>
+                                    <div className={cx('zm-card', 'video-item', 'video-active')}>
+                                      <div className={cx('zm-card-image', 'video-image')}>
+                                        <figure className={cx('image', 'is-48x48')}>
+                                          <img src='https://photo-resize-zmp3.zmdcdn.me/w600_r300x169_webp/thumb_video/8/2/6/2/8262c9f3b9c6d6fd96cd64bfe5ca0c25.jpg'></img>
+                                        </figure>
+                                        <div className={cx('opacity')}></div>
+                                        <div className={cx('zm-box', 'zm-actions', 'video-actions')}>
+                                          <button className={cx('zm-btn', 'action-play', 'button')}>
+                                            <i className={cx('icon', 'action-play', 'fas fa-play')}></i>
+                                          </button> 
+                                        </div>
+                                      </div>
+                                      <div className={cx('media')}>
+                                        <div className={cx('media-content')}>
+                                          <div className={cx('title')}>
+                                            <Link to={'#'}>
+                                              <span>Cum Cắc Cùm Cum</span>
+                                            </Link>
+                                          </div>
+                                          <div className={cx('')}></div>
+                                          <div className={cx('')}></div>
+                                        </div>                                  
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+               
                   
                   
                   
-                  <div className={cx('')}></div>
-                  <div className={cx('')}></div>
+                  
+                  
                   <div className={cx('')}></div>
                   <div className={cx('')}></div>
               </div>
