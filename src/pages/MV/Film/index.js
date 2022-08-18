@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 
 function Film() {
   return (
-    <div className={cx('video-container')}>
+    <div style={{backgroundImage:`url(https://photo-resize-zmp3.zmdcdn.me/w600_r300x169_jpeg/thumb_video/4/2/42b2a9729ac01f00652cb4eb5841ba62_1434613466.jpg)`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}} className={cx('video-container')}>
         <div className={cx('video-header')}>
             <div className={cx('level')}>
                 <div className={cx('level-left')}>
@@ -67,7 +67,7 @@ function Film() {
                     <i className={cx('icon','fal fa-chevron-down')}></i>
                   </div>
                   {/* <div className={cx('--z--player')}> */}
-                    <iframe className={cx('class')} preload='metadata' src='https://vnso-zn-23-tf-mcloud-bf-s7-mv-zmp3.zmdcdn.me/AqGT9yFoe48/6a574b3cbc7855260c69/09e9d50d95487c162559/720/Tim-Piano-Cover.mp4?authen=exp=1660791034~acl=/AqGT9yFoe48/*~hmac=d087ed3b1c152e90db3de49d12c50112'></iframe>
+                    <iframe className={cx('class')} preload='metadata' src='https://vnso-zn-23-tf-mcloud-bf-s7-mv-zmp3.zmdcdn.me/AqGT9yFoe48/6a574b3cbc7855260c69/09e9d50d95487c162559/720/Tim-Piano-Cover.mp4?authen=exp=1660965481~acl=/AqGT9yFoe48/*~hmac=8f2fcaf4597b4f6c1bb761b4511840fa'></iframe>
 
                     {/* <div className={cx('--z--zpl-settings-menu', 
                     '--z--show'
@@ -143,16 +143,224 @@ function Film() {
                                             <i className={cx('icon', 'action-play', 'fas fa-play')}></i>
                                           </button> 
                                         </div>
+                                        {/* <div className={cx('zm-brand')}>03:33</div> */}
+                                        <div className={cx('zm-brand-playing')}>Đang phát</div>
                                       </div>
                                       <div className={cx('media')}>
                                         <div className={cx('media-content')}>
                                           <div className={cx('title')}>
-                                            <Link to={'#'}>
+                                            <Link className={cx('name_header')} to={'#'}>
                                               <span>Cum Cắc Cùm Cum</span>
                                             </Link>
                                           </div>
-                                          <div className={cx('')}></div>
-                                          <div className={cx('')}></div>
+                                          <div className={cx('subtitle', 'is-one-line')}>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>Nguyễn Đình Vũ</Link>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>, ACV</Link>
+                                          </div>
+                                          
+                                        </div>                                  
+                                      </div>
+                                    </div>
+                                    <div className={cx('zm-card', 'video-item', 'video-active')}>
+                                      <div className={cx('zm-card-image', 'video-image')}>
+                                        <figure className={cx('image', 'is-48x48')}>
+                                          <img src='https://photo-resize-zmp3.zmdcdn.me/w600_r300x169_webp/thumb_video/8/2/6/2/8262c9f3b9c6d6fd96cd64bfe5ca0c25.jpg'></img>
+                                        </figure>
+                                        <div className={cx('opacity')}></div>
+                                        <div className={cx('zm-box', 'zm-actions', 'video-actions')}>
+                                          <button className={cx('zm-btn', 'action-play', 'button')}>
+                                            <i className={cx('icon', 'action-play', 'fas fa-play')}></i>
+                                          </button> 
+                                        </div>
+                                        {/* <div className={cx('zm-brand')}>03:33</div> */}
+                                        <div className={cx('zm-brand-playing')}>Đang phát</div>
+                                      </div>
+                                      <div className={cx('media')}>
+                                        <div className={cx('media-content')}>
+                                          <div className={cx('title')}>
+                                            <Link className={cx('name_header')} to={'#'}>
+                                              <span>Cum Cắc Cùm Cum</span>
+                                            </Link>
+                                          </div>
+                                          <div className={cx('subtitle', 'is-one-line')}>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>Nguyễn Đình Vũ</Link>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>, ACV</Link>
+                                          </div>
+                                          
+                                        </div>                                  
+                                      </div>
+                                    </div>
+                                    <div className={cx('zm-card', 'video-item', 'video-active')}>
+                                      <div className={cx('zm-card-image', 'video-image')}>
+                                        <figure className={cx('image', 'is-48x48')}>
+                                          <img src='https://photo-resize-zmp3.zmdcdn.me/w600_r300x169_webp/thumb_video/8/2/6/2/8262c9f3b9c6d6fd96cd64bfe5ca0c25.jpg'></img>
+                                        </figure>
+                                        <div className={cx('opacity')}></div>
+                                        <div className={cx('zm-box', 'zm-actions', 'video-actions')}>
+                                          <button className={cx('zm-btn', 'action-play', 'button')}>
+                                            <i className={cx('icon', 'action-play', 'fas fa-play')}></i>
+                                          </button> 
+                                        </div>
+                                        {/* <div className={cx('zm-brand')}>03:33</div> */}
+                                        <div className={cx('zm-brand-playing')}>Đang phát</div>
+                                      </div>
+                                      <div className={cx('media')}>
+                                        <div className={cx('media-content')}>
+                                          <div className={cx('title')}>
+                                            <Link className={cx('name_header')} to={'#'}>
+                                              <span>Cum Cắc Cùm Cum</span>
+                                            </Link>
+                                          </div>
+                                          <div className={cx('subtitle', 'is-one-line')}>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>Nguyễn Đình Vũ</Link>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>, ACV</Link>
+                                          </div>
+                                          
+                                        </div>                                  
+                                      </div>
+                                    </div>
+                                    <div className={cx('zm-card', 'video-item', 'video-active')}>
+                                      <div className={cx('zm-card-image', 'video-image')}>
+                                        <figure className={cx('image', 'is-48x48')}>
+                                          <img src='https://photo-resize-zmp3.zmdcdn.me/w600_r300x169_webp/thumb_video/8/2/6/2/8262c9f3b9c6d6fd96cd64bfe5ca0c25.jpg'></img>
+                                        </figure>
+                                        <div className={cx('opacity')}></div>
+                                        <div className={cx('zm-box', 'zm-actions', 'video-actions')}>
+                                          <button className={cx('zm-btn', 'action-play', 'button')}>
+                                            <i className={cx('icon', 'action-play', 'fas fa-play')}></i>
+                                          </button> 
+                                        </div>
+                                        {/* <div className={cx('zm-brand')}>03:33</div> */}
+                                        <div className={cx('zm-brand-playing')}>Đang phát</div>
+                                      </div>
+                                      <div className={cx('media')}>
+                                        <div className={cx('media-content')}>
+                                          <div className={cx('title')}>
+                                            <Link className={cx('name_header')} to={'#'}>
+                                              <span>Cum Cắc Cùm Cum</span>
+                                            </Link>
+                                          </div>
+                                          <div className={cx('subtitle', 'is-one-line')}>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>Nguyễn Đình Vũ</Link>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>, ACV</Link>
+                                          </div>
+                                          
+                                        </div>                                  
+                                      </div>
+                                    </div>
+                                    <div className={cx('zm-card', 'video-item', 'video-active')}>
+                                      <div className={cx('zm-card-image', 'video-image')}>
+                                        <figure className={cx('image', 'is-48x48')}>
+                                          <img src='https://photo-resize-zmp3.zmdcdn.me/w600_r300x169_webp/thumb_video/8/2/6/2/8262c9f3b9c6d6fd96cd64bfe5ca0c25.jpg'></img>
+                                        </figure>
+                                        <div className={cx('opacity')}></div>
+                                        <div className={cx('zm-box', 'zm-actions', 'video-actions')}>
+                                          <button className={cx('zm-btn', 'action-play', 'button')}>
+                                            <i className={cx('icon', 'action-play', 'fas fa-play')}></i>
+                                          </button> 
+                                        </div>
+                                        {/* <div className={cx('zm-brand')}>03:33</div> */}
+                                        <div className={cx('zm-brand-playing')}>Đang phát</div>
+                                      </div>
+                                      <div className={cx('media')}>
+                                        <div className={cx('media-content')}>
+                                          <div className={cx('title')}>
+                                            <Link className={cx('name_header')} to={'#'}>
+                                              <span>Cum Cắc Cùm Cum</span>
+                                            </Link>
+                                          </div>
+                                          <div className={cx('subtitle', 'is-one-line')}>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>Nguyễn Đình Vũ</Link>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>, ACV</Link>
+                                          </div>
+                                          
+                                        </div>                                  
+                                      </div>
+                                    </div>
+                                    <div className={cx('zm-card', 'video-item', 'video-active')}>
+                                      <div className={cx('zm-card-image', 'video-image')}>
+                                        <figure className={cx('image', 'is-48x48')}>
+                                          <img src='https://photo-resize-zmp3.zmdcdn.me/w600_r300x169_webp/thumb_video/8/2/6/2/8262c9f3b9c6d6fd96cd64bfe5ca0c25.jpg'></img>
+                                        </figure>
+                                        <div className={cx('opacity')}></div>
+                                        <div className={cx('zm-box', 'zm-actions', 'video-actions')}>
+                                          <button className={cx('zm-btn', 'action-play', 'button')}>
+                                            <i className={cx('icon', 'action-play', 'fas fa-play')}></i>
+                                          </button> 
+                                        </div>
+                                        {/* <div className={cx('zm-brand')}>03:33</div> */}
+                                        <div className={cx('zm-brand-playing')}>Đang phát</div>
+                                      </div>
+                                      <div className={cx('media')}>
+                                        <div className={cx('media-content')}>
+                                          <div className={cx('title')}>
+                                            <Link className={cx('name_header')} to={'#'}>
+                                              <span>Cum Cắc Cùm Cum</span>
+                                            </Link>
+                                          </div>
+                                          <div className={cx('subtitle', 'is-one-line')}>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>Nguyễn Đình Vũ</Link>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>, ACV</Link>
+                                          </div>
+                                          
+                                        </div>                                  
+                                      </div>
+                                    </div>
+                                    <div className={cx('zm-card', 'video-item', 'video-active')}>
+                                      <div className={cx('zm-card-image', 'video-image')}>
+                                        <figure className={cx('image', 'is-48x48')}>
+                                          <img src='https://photo-resize-zmp3.zmdcdn.me/w600_r300x169_webp/thumb_video/8/2/6/2/8262c9f3b9c6d6fd96cd64bfe5ca0c25.jpg'></img>
+                                        </figure>
+                                        <div className={cx('opacity')}></div>
+                                        <div className={cx('zm-box', 'zm-actions', 'video-actions')}>
+                                          <button className={cx('zm-btn', 'action-play', 'button')}>
+                                            <i className={cx('icon', 'action-play', 'fas fa-play')}></i>
+                                          </button> 
+                                        </div>
+                                        {/* <div className={cx('zm-brand')}>03:33</div> */}
+                                        <div className={cx('zm-brand-playing')}>Đang phát</div>
+                                      </div>
+                                      <div className={cx('media')}>
+                                        <div className={cx('media-content')}>
+                                          <div className={cx('title')}>
+                                            <Link className={cx('name_header')} to={'#'}>
+                                              <span>Cum Cắc Cùm Cum</span>
+                                            </Link>
+                                          </div>
+                                          <div className={cx('subtitle', 'is-one-line')}>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>Nguyễn Đình Vũ</Link>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>, ACV</Link>
+                                          </div>
+                                          
+                                        </div>                                  
+                                      </div>
+                                    </div>
+                                    <div className={cx('zm-card', 'video-item', 'video-active')}>
+                                      <div className={cx('zm-card-image', 'video-image')}>
+                                        <figure className={cx('image', 'is-48x48')}>
+                                          <img src='https://photo-resize-zmp3.zmdcdn.me/w600_r300x169_webp/thumb_video/8/2/6/2/8262c9f3b9c6d6fd96cd64bfe5ca0c25.jpg'></img>
+                                        </figure>
+                                        <div className={cx('opacity')}></div>
+                                        <div className={cx('zm-box', 'zm-actions', 'video-actions')}>
+                                          <button className={cx('zm-btn', 'action-play', 'button')}>
+                                            <i className={cx('icon', 'action-play', 'fas fa-play')}></i>
+                                          </button> 
+                                        </div>
+                                        {/* <div className={cx('zm-brand')}>03:33</div> */}
+                                        <div className={cx('zm-brand-playing')}>Đang phát</div>
+                                      </div>
+                                      <div className={cx('media')}>
+                                        <div className={cx('media-content')}>
+                                          <div className={cx('title')}>
+                                            <Link className={cx('name_header')} to={'#'}>
+                                              <span>Cum Cắc Cùm Cum</span>
+                                            </Link>
+                                          </div>
+                                          <div className={cx('subtitle', 'is-one-line')}>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>Nguyễn Đình Vũ</Link>
+                                            <Link className={cx('is-ghost', 'hover')} to={'#'}>, ACV</Link>
+                                          </div>
+                                          
                                         </div>                                  
                                       </div>
                                     </div>
@@ -160,19 +368,17 @@ function Film() {
                                 </div>
                               </div>
                             </div>
+
+                            <div className={cx('track-horizontal')}>
+                              <div className={cx('track-horizontal_mini')}></div>
+                            </div>
+
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-               
+                  </div>                  
                   
-                  
-                  
-                  
-                  
-                  <div className={cx('')}></div>
-                  <div className={cx('')}></div>
               </div>
             </div>
           </div>
