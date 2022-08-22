@@ -1,5 +1,16 @@
+import classNames from 'classnames/bind';
+import styles from './NhacMoi.module.scss';
+
+const cx = classNames.bind(styles);
+
 function Nhacmoi() {
-    return <h2>Nhacmoi page</h2>;
+    return (
+        <div className={cx('wrapper')} >
+            <div className={cx('blur')}></div>
+            <div className={cx('alpha')}></div>
+            <div className={cx('alpha1')}></div>
+        </div>
+    );
 }
 
 export default Nhacmoi;

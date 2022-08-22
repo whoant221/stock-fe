@@ -1,10 +1,7 @@
 import classNames from 'classnames/bind';
-// import { useState, useEffect } from 'react';
-
 import SlideRadio from './SlideRadio';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-
 import styles from './Radio.module.scss'
 const cx = classNames.bind(styles)
 
@@ -23,6 +20,9 @@ function Radio() {
                 })
         }
         homePage5()
+
+        document.title =
+            'Radio | Xem bài hát, album, MV đang hot nhất hiện tại';
     }, [])
     
     return <div className={cx('wrapper')}>

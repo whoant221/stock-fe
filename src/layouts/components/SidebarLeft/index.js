@@ -63,7 +63,7 @@ function SidebarLeft() {
                     />
                     <MenuItem 
                         title="MV"
-                        to={'/'}
+                        to={'/the-loai-video/Viet-Nam'}
                         icon={<i className="fal fa-tv-music"></i>}
                     />
                     <div className={cx("box-vip")}>
