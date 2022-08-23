@@ -10,6 +10,9 @@ import Radio from '~/pages/Radio';
 import Top100 from '~/pages/Top100';
 import Types from '~/pages/Types';
 import User from '~/pages/User';
+import Song from './pages/User/Song';
+import Playlist from './pages/User/Playlist';
+import History from './pages/User/History';
 import Zingchart from '~/pages/Zingchart';
 import Follow from './pages/Follow';
 import LayoutRankTop from './pages/Zingchart/LayoutRankTop';
@@ -21,8 +24,6 @@ import MVVN from './pages/MV/VN';
 import MVUS from './pages/MV/US-UK';
 import MVKpop from './pages/MV/Kpop';
 import MVHoaTau from './pages/MV/HoaTau';
-import Playlist from './pages/User/Playlist';
-import History from './pages/User/History';
 
 
 
@@ -34,7 +35,7 @@ function App() {
                     <Route path='' element={<DefaultLayout />}>
                         <Route path='' element={<Home />} />
                         <Route path='/user' element={<User />}> 
-                            <Route path="/user/song" element={<User />} />
+                            <Route path="/user/music/song" element={<Song />} />
                             <Route path="/user/playlist" element={<Playlist />} />
                             <Route path="/user/history" element={<History />} />
                         </Route>

@@ -18,7 +18,7 @@ function SidebarLeft() {
                 <Menu>
                     <MenuItem 
                         title="Cá Nhân" 
-                        to={'/user'} 
+                        to={'/user/music/song'} 
                         icon={<i className="fal fa-user"></i>} 
                     />
                     <MenuItem
@@ -78,7 +78,7 @@ function SidebarLeft() {
                     <MenuItem 
                         noActive
                         title="Bài Hát"
-                        to={'/user/song'}
+                        to={'/user/music/song'}
                         icon={<i className="far fa-album-collection"></i>}
                     />
                     <MenuItem 
