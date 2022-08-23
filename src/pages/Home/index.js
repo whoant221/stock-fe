@@ -5,18 +5,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
-
-
 //getAPI
 import getHome from '../../api/getHome';
-
-
 import MySlide from './Slide/MySlide';
 import NewRelease from './NewRelease/NewRelease';
 import Playlist from '~/components/Playlist';
 import styles from './Home.module.scss'
 import SlideRadio from '../Radio/SlideRadio';
 const cx = classNames.bind(styles)
+
 
 function Home() {
     const [getSlide, setGetSlide] = useState();

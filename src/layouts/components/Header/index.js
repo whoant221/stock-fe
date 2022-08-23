@@ -207,7 +207,6 @@ function Header() {
                         </div>
 
                     </Tippy> 
-
                     <Tippy content="Nâng cấp VIP">
                         <div className={cx('icon')}>
                             <Icon

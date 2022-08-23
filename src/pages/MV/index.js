@@ -3,9 +3,15 @@ import React from 'react'
 import { Link, Outlet } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import styles from './MV.module.scss';
+import Menu from './NavbarMV/Menu';
+import MenuItem from './NavbarMV/MenuItem';
 const cx = classNames.bind(styles);
 
 function MV() {
+
+  let classAction = ''
+  const [checkAction, setCheckAction] = useState(false);
+  
 
   useEffect(() => {
     document.title =
@@ -15,21 +21,20 @@ function MV() {
 
   return (
     <div>
-        <piv className={cx('flex')}>
+        <div className={cx('flex')}>
             <div className={cx('MV')}>MV</div>
             <div className={cx("hr-right")}></div>
 
-            <div className={cx('item')}>
-              <Link to={'/the-loai-video/Viet-Nam'} className={cx('item-VN','action')}>VIỆT NAM</Link>
-              <Link to={'/the-loai-video/Au-My'} className={cx('item-AM')}>US-UK</Link>
-              <Link to={'/the-loai-video/Han-Quoc'} className={cx('item-HQ')}>KPOP</Link>
-              <Link to={'/the-loai-video/Khong-Loi'} className={cx('item-KL')}>HÒA TẤU</Link>
-            </div>
+            <Menu>
+              <MenuItem title={"VIỆT NAM"} to={'/the-loai-video/Viet-Nam'}/>
+              <MenuItem title={"US-UK"} to={'/the-loai-video/Au-My'}/>
+              <MenuItem title={"KPOP"} to={'/the-loai-video/Han-Quoc'}/>
+              <MenuItem title={"HÒA TẤU"} to={'/the-loai-video/Khong-Loi'}/>
+            </Menu>
             
 
-        </piv>
+        </div>
         <div className={cx('hr-top','mar-b-30')}/>
-
         <Outlet/>
     </div>
 

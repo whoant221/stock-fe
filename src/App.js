@@ -24,6 +24,7 @@ import MVVN from './pages/MV/VN';
 import MVUS from './pages/MV/US-UK';
 import MVKpop from './pages/MV/Kpop';
 import MVHoaTau from './pages/MV/HoaTau';
+import Film from './pages/MV/Film';
 
 
 
@@ -42,15 +43,11 @@ function App() {
                         
                         <Route path='/zing-chart' element={<Zingchart />} />
 
-
-                        {/* các page nhỏ sẽ được để trong Route cha như này */}
                         <Route path='/zing-chart-tuan' element={<LayoutRankTop />} >
                             <Route path='/zing-chart-tuan/Bai-hat-Viet-Nam' element={<Top100VN />} />
                             <Route path='/zing-chart-tuan/bai-hat-US-UK' element={<Top100US />} />
                             <Route path='/zing-chart-tuan/bai-hat-Kpop' element={<Top100KOREA />} />
                         </Route>
-
-
 
                         <Route path='/the-loai-video' element={<MV />} >
                             <Route path='/the-loai-video/Viet-Nam' element={<MVVN />} />
@@ -59,13 +56,15 @@ function App() {
                             <Route path='/the-loai-video/Khong-Loi' element={<MVHoaTau />} />
                         </Route>
 
-
                         <Route path='/radio' element={<Radio />} />
                         <Route path='/following' element={<Follow />} />
                         <Route path='/top100' element={<Top100 />} />
                         <Route path='/nhac-moi' element={<Nhacmoi />} />
                         <Route path='/types' element={<Types />} />
                     </Route>
+
+                    <Route path='/thanh' element={<Film/>} />
+
                 </Routes>
             </div>
         </Router>
