@@ -10,6 +10,9 @@ import Radio from '~/pages/Radio';
 import Top100 from '~/pages/Top100';
 import Types from '~/pages/Types';
 import User from '~/pages/User';
+import Song from './pages/User/Song';
+import Playlist from './pages/User/Playlist';
+import History from './pages/User/History';
 import Zingchart from '~/pages/Zingchart';
 import Follow from './pages/Follow';
 import LayoutRankTop from './pages/Zingchart/LayoutRankTop';
@@ -32,7 +35,12 @@ function App() {
                 <Routes>
                     <Route path='' element={<DefaultLayout />}>
                         <Route path='' element={<Home />} />
-                        <Route path='/user' element={<User />} />
+                        <Route path='/user' element={<User />}> 
+                            <Route path="/user/music/song" element={<Song />} />
+                            <Route path="/user/playlist" element={<Playlist />} />
+                            <Route path="/user/history" element={<History />} />
+                        </Route>
+                        
                         <Route path='/zing-chart' element={<Zingchart />} />
 
                         <Route path='/zing-chart-tuan' element={<LayoutRankTop />} >

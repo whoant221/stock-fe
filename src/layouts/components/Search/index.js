@@ -51,7 +51,6 @@ function Search() {
             })
             .then((res) => {
                 setSearchResult(res.data.data)
-                console.log(res.data.data.playlists);
             })
             .catch((error) => {
                 console.log(error);
@@ -91,7 +90,7 @@ function Search() {
                                 <div className={cx('song-name','text-sm')}>{item.title}</div>
                                 <div className={cx('singer-name', 'text-xs')}>
                                     {item.artists.map((artist, index) => (
-                                        <span>
+                                        <span key={index}>
                                             {artist.name}
                                             {item.artists.length === index + 1 ? "" : ", "}
                                         </span>
