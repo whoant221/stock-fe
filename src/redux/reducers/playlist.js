@@ -4,18 +4,16 @@ import zingStorage from "~/utils/storage";
 //songReducer để xử lí các action liên quan đến song
 
 const initialState = {
-    isPlaying: false,
-    librarySong: zingStorage.getLibrarySong() || [],
+    libraryPlaylist: zingStorage.getLibraryPlaylist() || [],
 }
 
 const songReducer = (state = initialState, actions) => {
     switch (actions.type) {
-        case types.ADD_SONG_TO_LIBRARY:
-            console.log(actions, state);
-            zingStorage.setLibrarySong([...state.librarySong, actions.payload])
+        case types.ADD_PLAYLIST_TO_LIBRARY:
+            zingStorage.setLibrarySong([...state.libraryPlaylist, actions.payload])
             return {
                 ...state,
-                librarySong: [...state.librarySong, actions.payload]
+                librarySong: [...state.libraryPlaylist, actions.payload]
             }
         
         default:

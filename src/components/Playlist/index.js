@@ -5,6 +5,7 @@ import styles from './Playlist.module.scss';
 import Icon from "~/components/Icon";
 import Image from '~/components/Image'
 import images from "~/images";
+import HeartIcon from "../Icon/Heart";
 
 const cx = classNames.bind(styles)
 
@@ -14,9 +15,7 @@ function Playlist({
     describe,
     link,
     image,
-    iconLeft,
-    iconLeftActive,
-    titleIconLeft
+    data,
 }) {
 
     return ( 
@@ -31,14 +30,7 @@ function Playlist({
                         defaultAvt={images.defaultAvataAlbum}
                     />   
                     <div className={cx('card-actions')}>
-                        <Tippy content={titleIconLeft}>
-                            <div>
-                                <Icon
-                                    icon={iconLeft}
-                                    activeIcon={iconLeftActive}
-                                />
-                            </div>
-                        </Tippy>
+                        <HeartIcon/>
                         <Icon 
                             s18
                             className={cx('icon-play')}

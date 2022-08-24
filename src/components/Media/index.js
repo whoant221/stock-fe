@@ -40,7 +40,7 @@ function Media({
                     <div className={cx('singer-name', 'text-xs')}>{singerName}</div>
                 </div>
                 <div className={cx('action')}>
-                    <HeartIcon />
+                    <HeartIcon activeNoColor={isActive} />
                     
                     <Tippy content="Xem thêm">
                         <div className="icon">
