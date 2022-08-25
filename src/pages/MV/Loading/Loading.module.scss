@@ -1,0 +1,123 @@
+
+.column {
+    display: block;
+    flex-shrink: 1;
+    padding: 0 15px;
+    margin-left: -8px;
+}
+
+
+
+.media {
+    align-items: center;
+    display: flex;
+    text-align: left;
+    padding: 10px 0px;
+    border-radius: 5px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.media-left {
+    margin-right: 10px;
+}
+.media-left, .media-right {
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+a, a.active, a:hover {
+    text-decoration: none;
+}
+
+a {
+    cursor: pointer;
+    color: inherit;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+}
+
+.is-rounded {
+    overflow: hidden;
+    border-radius: 999px!important;
+}
+
+.is-40x40 {
+    width: 40px;
+    height: 40px;
+}
+
+.media-content {
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: left;
+    align-self: center;
+    width: 0;
+    
+}
+.media .subtitle, .media .title, .media .title a {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    line-height: normal;
+}
+
+
+
+.media .title, .media .title a {
+    display: inline-block;
+}
+
+.title {
+    font-weight: 700;
+    text-transform: capitalize;
+    display: block;
+    top: 4px;
+}
+
+.media .subtitle {
+    display: block;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.media .subtitle, .media .title, .media .title a {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    line-height: normal;
+}
+.subtitle.is-one-line {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+}
+.subtitle {
+    color: hsla(0,0%,100%,0.5);
+}
+
+.subtitle.is-one-line a {
+    color: hsla(0,0%,100%,0.5);
+}
+
+.subtitle.is-one-line a.active, .subtitle.is-one-line a:hover {
+    color: #c662ef;
+    text-decoration: underline;
+}
+
+a.active, a:hover {
+    color: #c662ef;
+}
+
+.font-nameMV{
+    font-size: 0.86rem !important;
+    font-weight: 600;
+}
+

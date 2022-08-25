@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { Link } from "react-router-dom";
 import getMV from '../../../../api/getMV';
+import Loading from '../../Loading/Loading';
 const cx = classNames.bind(styles);
 
 function Content() {
@@ -23,8 +24,6 @@ function Content() {
         MVVN()
     }, [Effect]);
 
-    console.log(getContent);
-
 
     const RenderImg = () => {
         if(getContent){
@@ -35,20 +34,21 @@ function Content() {
                         <div 
                         className={cx('zm-card', 'video-item')}                
                         >                
-                            <div 
-                                className={cx('zm-card-image', 'video-image')}
-                                >
-                                    <figure className={cx('image is-48x48')}>
-                                    <img src={item.thumbnailM}></img>
-                                    </figure>
-                                    <div className={cx('opacity')}></div>
-                                    <div className={cx('zm-box', 'zm-actions', 'video-actions')}>
-                                    <button className={cx('zm-btn', 'action-play', 'button')}>
-                                        <i className={cx('icon', 'action-play', 'ic-svg-play-circle')}></i>
-                                    </button>
-                                    </div>
-                                    <div className={cx('zm-brand')}>03:33</div>
+                            <Link
+                            to={`/video-clip/${item.encodeId}`}
+                            className={cx('zm-card-image', 'video-image')}
+                            >
+                                <figure className={cx('image is-48x48')}>
+                                <img src={item.thumbnailM}></img>
+                                </figure>
+                                <div className={cx('opacity')}></div>
+                                <div className={cx('zm-box', 'zm-actions', 'video-actions')}>
+                                <button className={cx('zm-btn', 'action-play', 'button')}>
+                                    <i className={cx('icon', 'action-play', 'ic-svg-play-circle')}></i>
+                                </button>
                                 </div>
+                                <div className={cx('zm-brand')}>03:33</div>
+                            </Link>
 
                             <div className={cx('media')}>
                                 <div className={cx('media-left')}>
@@ -59,30 +59,30 @@ function Content() {
                                 </Link>
                                 </div>
                                 <div className={cx('media-content')}>
-                                <div className={cx('title')}>
-                                    <Link className={cx('font-nameMV')} to={'/'}>
-                                    <span>
+                                    <div className={cx('title')}>
+                                        <Link className={cx('font-nameMV')} to={'/'}>
                                         <span>
-                                        <span>{item.title}</span>
+                                            <span>
+                                            <span>{item.title}</span>
+                                            </span>
+                                            {/* <span style={'position: fixed; visibility: hidden; top: 0px; left: 0px;'}>...</span> */}
                                         </span>
-                                        {/* <span style={'position: fixed; visibility: hidden; top: 0px; left: 0px;'}>...</span> */}
-                                    </span>
-                                    </Link>
-                                </div>
-                                <div className={cx('subtitle', 'is-one-line')}>                                   
-                                    {item.artists.map((items, index) => {
-                                        return(
-                                            <Link key={index} className={cx('is-ghost')} to={'/'}>{items.name} </Link>
-                                        )                                     
-                                    })}              
-                                </div>
+                                        </Link>
+                                    </div>
+                                    <div className={cx('subtitle', 'is-one-line')}>                                   
+                                        {item.artists.map((items, index) => {
+                                            return(
+                                                <Link key={index} className={cx('is-ghost')} to={'/'}>{items.name} </Link>
+                                            )                                     
+                                        })}              
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 )
             })
-        }
+        }else return(<Loading />)
     }
 
     

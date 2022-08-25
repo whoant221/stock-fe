@@ -63,7 +63,7 @@ function App() {
                         <Route path='/types' element={<Types />} />
                     </Route>
 
-                    <Route path='/thanh' element={<Film/>} />
+                    <Route path='/video-clip/:id' element={<Film/>} />
 
                 </Routes>
             </div>

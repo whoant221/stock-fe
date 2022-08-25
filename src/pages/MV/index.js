@@ -5,17 +5,29 @@ import { useState, useEffect } from 'react';
 import styles from './MV.module.scss';
 import Menu from './NavbarMV/Menu';
 import MenuItem from './NavbarMV/MenuItem';
+import {useSelector, useDispatch} from 'react-redux';
+import { addNameMV } from "../../redux/actions";
 const cx = classNames.bind(styles);
 
 function MV() {
-
-  let classAction = ''
-  const [checkAction, setCheckAction] = useState(false);
+  const dispatch = useDispatch();
+  const [getNameUrl, setGetNameUrl] = useState('');
   
+  // console.log(thanh);
+
+  const handleGetName = () => {
+    if(window.location.href == 'http://localhost:3000/the-loai-video/Viet-Nam') setGetNameUrl('Viet-Nam')
+    if(window.location.href == 'http://localhost:3000/the-loai-video/Au-My') setGetNameUrl('Au-My')
+    if(window.location.href == 'http://localhost:3000/the-loai-video/Han-Quoc') setGetNameUrl('Han-Quoc')
+    if(window.location.href == 'http://localhost:3000/the-loai-video/Khong-Loi') setGetNameUrl('Khong-Loi')
+    dispatch(addNameMV(getNameUrl));
+  }
 
   useEffect(() => {
     document.title =
     'Video | Tuyển tập nhạc hay chọn lọc';
+
+
   }, [])
 
 
@@ -25,17 +37,21 @@ function MV() {
             <div className={cx('MV')}>MV</div>
             <div className={cx("hr-right")}></div>
 
-            <Menu>
-              <MenuItem title={"VIỆT NAM"} to={'/the-loai-video/Viet-Nam'}/>
-              <MenuItem title={"US-UK"} to={'/the-loai-video/Au-My'}/>
-              <MenuItem title={"KPOP"} to={'/the-loai-video/Han-Quoc'}/>
-              <MenuItem title={"HÒA TẤU"} to={'/the-loai-video/Khong-Loi'}/>
-            </Menu>
+            <div onClick={handleGetName}> 
+              <Menu>
+                <MenuItem title={"VIỆT NAM"} to={'/the-loai-video/Viet-Nam'}/>
+                <MenuItem title={"US-UK"} to={'/the-loai-video/Au-My'}/>
+                <MenuItem title={"KPOP"} to={'/the-loai-video/Han-Quoc'}/>
+                <MenuItem title={"HÒA TẤU"} to={'/the-loai-video/Khong-Loi'}/>
+              </Menu>
+            </div>
+
             
 
         </div>
         <div className={cx('hr-top','mar-b-30')}/>
         <Outlet/>
+        
     </div>
 
     
