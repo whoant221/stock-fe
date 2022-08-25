@@ -60,3 +60,21 @@ a {
     text-decoration: none;
 }
 
+.section-title {
+    margin-bottom: 16px;
+    font-size: 20px;
+    color: var(--text-primary);
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.section-link {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    &:hover {
+        color: var(--link-text-hover);
+    }
+}
+

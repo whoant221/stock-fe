@@ -147,6 +147,7 @@ function Home() {
                                 describe={playlist.sortDescription}
                                 link='#'        //mặc định
                                 image={playlist.thumbnail || playlist.thumbnailM}
+                                data={playlist}
                             />
                         )
                     })}
@@ -196,6 +197,7 @@ function Home() {
                                 describe={playlist.sortDescription}
                                 link='#'        //mặc định
                                 image={playlist.thumbnail || playlist.thumbnailM}
+                                data={playlist}
                             />
                         )
                     })}
@@ -218,7 +220,7 @@ function Home() {
             </div>
 
             <div className={cx('section')}>
-                <div className={cx('sectioc-header', 'flex justify-between')}>
+                <div className={cx('section-header', 'flex justify-between')}>
                     <h3 className={cx('section-title')}>Top 100</h3>
                     <Link to={'/top100'} className={cx('section-link')}>Tất cả</Link>
                 </div>
@@ -237,9 +239,7 @@ function Home() {
                                     })}
                                     link='#'        //mặc định
                                     image={playlist.thumbnail || playlist.thumbnailM}
-                                    iconLeft={<i className="fal fa-heart"></i>}
-                                    iconLeftActive={<i className="fas fa-heart"></i>}
-                                    titleIconLeft='Thêm vào thư viện'
+                                    data={playlist}
                                 />
                             )
                         }
@@ -248,7 +248,7 @@ function Home() {
             </div>
 
             <div className={cx('section')}>
-                <div className={cx('sectioc-header', 'flex justify-between')}>
+                <div className={cx('section-header', 'flex justify-between')}>
                     <h3 className={cx('section-title')}>Radio nổi bật</h3>
                     <Link to={'/radio'} className={cx('section-link')}>Tất cả</Link>
                 </div>
@@ -258,7 +258,7 @@ function Home() {
             </div>
 
             <div className={cx('section')}>
-                <div className={cx('sectioc-header', 'flex justify-between')}>
+                <div className={cx('section-header', 'flex justify-between')}>
                     <h3 className={cx('section-title')}>Nhạc mới</h3>
                     <Link to={'/nhac-moi'} className={cx('section-link')}>Tất cả</Link>
                 </div>
@@ -298,9 +298,7 @@ function Home() {
                                 describe={playlist.artistsNames}
                                 link='#'        //mặc định
                                 image={playlist.thumbnail || playlist.thumbnailM}
-                                iconLeft={<i className="fal fa-heart"></i>}
-                                iconLeftActive={<i className="fas fa-heart"></i>}
-                                titleIconLeft='Thêm vào thư viện'
+                                data={playlist}
                             />
                         )
                     })}

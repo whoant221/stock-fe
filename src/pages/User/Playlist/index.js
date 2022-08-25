@@ -3,27 +3,12 @@ import { NavLink } from "react-router-dom";
 
 import styles from '../User.module.scss';
 import Playlist from "~/components/Playlist";
-import images from "~/images";
+import zingStorage from "~/utils/storage";
 
 const cx = classNames.bind(styles)
 
 function UserPlaylist() {
-    const userPlaylists = [
-        {
-            id: 1,
-            name: 'My playlist',
-            describe: 'Zing mp3',
-            image: images.defaultAvataAlbum,
-            link: '#'
-        },
-        {
-            id: 2,
-            name: 'Demo',
-            describe: 'Tuan, Thanh, Vu',
-            image: images.defaultAvataSong,
-            link: '#'
-        }
-    ]
+    const userPlaylists = zingStorage.getLibraryPlaylist().slice().reverse() || []
 
     return ( 
         <div className={cx('child-container')}>
@@ -48,15 +33,14 @@ function UserPlaylist() {
                 </div>
                 {userPlaylists.map((playlist) => {
                         return (
-                            <Playlist 
-                                key={playlist.id}
-                                className='w-[25%] px-3 md:w-[20%] md:px-3.5 mb-7'
-                                name={playlist.name}
-                                describe={playlist.describe}
-                                link={playlist.link}
-                                image={playlist.image}
-                                iconLeft={<i className="fal fa-times"></i>}
-                                titleIconLeft='Xóa'
+                            <Playlist
+                                key={playlist.encodeId}
+                                className='w-[25%] px-3 md:w-[20%] md:px-3.5 mb-6'
+                                name={playlist.title}
+                                describe={playlist.sortDescription}
+                                link={'#'}
+                                image={playlist.thumbnail || playlist.thumbnailM}
+                                data={playlist}
                             />
                         )
                     })}

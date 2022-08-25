@@ -14,12 +14,16 @@ const cx = classNames.bind(styles)
 function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: null} }) {
     const dispatch = useDispatch()
     const librarySong = useSelector(state => state.songReducer.librarySong)
-    
-    // let isInLibrary = librarySong.findIndex(song => song.encodeId === data.encodeId) !== -1;
+    const libraryPlaylist = useSelector(state => state.playlistReducer.libraryPlaylist)
+
     const checkSong = () => {
-        return librarySong.findIndex(song => song.encodeId === data.encodeId) !== -1;
-        // findIndex nếu không có trong mảng sẽ trả về -1, so sánh !== -1 sẽ trả về true/false
-        // dự kiến sẽ check cả libraryPlaylist nên cho vào hàm
+        if(library === 'librarySong') {
+            return librarySong.findIndex(song => song.encodeId === data.encodeId) !== -1;
+            // findIndex nếu không có trong mảng sẽ trả về -1, so sánh !== -1 sẽ trả về true/false
+        }
+        else if(library === 'libraryPlaylist') {
+            return libraryPlaylist.findIndex(playlist => playlist.encodeId === data.encodeId) !== -1;
+        }
     }
     const [isActive, setIsActive] = useState(checkSong)
     let title = isActive ? 'Xóa khỏi thư viện' : 'Thêm vào thư viện'
@@ -30,7 +34,12 @@ function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: nu
     }
 
     const handleAdd = (data) => {
-        dispatch(actions.addSongToLibrary(data))
+        if(library === 'librarySong') {
+            dispatch(actions.addSongToLibrary(data))
+        }
+        else if(library === 'libraryPlaylist') {
+            dispatch(actions.addPlaylistToLibrary(data))
+        }
     }
 
     const handleRemove = (data) => {

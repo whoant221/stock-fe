@@ -11,7 +11,6 @@ const initialState = {
 const songReducer = (state = initialState, actions) => {
     switch (actions.type) {
         case types.ADD_SONG_TO_LIBRARY:
-            console.log(actions, state);
             zingStorage.setLibrarySong([...state.librarySong, actions.payload])
             return {
                 ...state,

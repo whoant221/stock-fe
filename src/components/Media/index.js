@@ -14,6 +14,7 @@ function Media({
     songName,
     singerName,
     mediaActive,
+    data,
 
     largeCd, 
     largeContent, 
@@ -40,7 +41,7 @@ function Media({
                     <div className={cx('singer-name', 'text-xs')}>{singerName}</div>
                 </div>
                 <div className={cx('action')}>
-                    <HeartIcon activeNoColor={isActive} />
+                    <HeartIcon activeNoColor={isActive} data={data} />
                     
                     <Tippy content="Xem thêm">
                         <div className="icon">
