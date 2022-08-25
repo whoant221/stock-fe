@@ -21,12 +21,14 @@ const createStorage = (LOCAL_STORAGE_KEY) => {
 const storage = createStorage("zingmp3")
 
 const LIBRARY_SONG = 'librarySong';
+const LIBRARY_PLAYLIST = 'libraryPlaylist';
 
 const zingStorage = {
     setLibrarySong: (data) => storage.set(LIBRARY_SONG, data),
     getLibrarySong: () => storage.get(LIBRARY_SONG),
 
-
+    setLibraryPlaylist: (data) => storage.set(LIBRARY_PLAYLIST, data),
+    getLibraryPlaylist: () => storage.get(LIBRARY_PLAYLIST),
 }
 
 export default zingStorage;
