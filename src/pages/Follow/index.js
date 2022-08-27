@@ -48,15 +48,15 @@ const Follow = () => {
         </div>
 
 
-        <div onClick={handleClick} >Click me</div>
-        <div thanh={thanh}>
-          {thanh.map((item, index) => {
-            console.log(item.data.id);
-            return(
-              <div key={index}>{item.data.id}</div>
-            )
-          })}
-        </div>
+        {/* <div onClick={handleClick} >Click me</div>
+          <div thanh={thanh}>
+            {thanh.map((item, index) => {
+              console.log(item.data.id);
+              return(
+                <div key={index}>{item.data.id}</div>
+              )
+            })}
+        </div> */}
 
 
 

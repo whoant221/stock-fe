@@ -12,7 +12,7 @@ const ItemSinger = () => {
       <div
         className={cx("zma__list__item")}
         style={{
-          transform: `${isActive ? "translate3d(-700px, 0px, 0px)" : ""}`,
+          transform: `${isActive ? "translate3d(-600px, 0px, 0px)" : ""}`,
         }}
       >
         <div className={cx("item__zma")}>
@@ -87,7 +87,6 @@ const ItemSinger = () => {
             />
           </a>
         </div>
-
         <div className={cx("item__zma")}>
           <a href="#">
             <img
@@ -105,18 +104,21 @@ const ItemSinger = () => {
           </a>
         </div>
       </div>
-      <div 
-      className={`carousel__prev ${!isActive ? "unprev__carousel" : ""}`}
+      
+      <button 
+      className={cx('zm-btn', 'zm-carousel-control-prev', 'button', 'carousel__prev', `${!isActive ? "unprev__carousel" : ""}`)}
       onClick={() => setIsActive(false)}
       >
         <i className="fal fa-angle-left"></i>
-      </div>
-      <div 
-      className={`carousel__next ${isActive ? "unnext__carousel" : ""}`}
+      </button>
+
+      <button 
+      className={cx('zm-btn', 'zm-carousel-control-next', 'zm-disabled', 'button', 'carousel__next', `${isActive ? "unnext__carousel" : ""}`)}
       onClick={() => setIsActive(true)}
       >
         <i className="fal fa-angle-right"></i>
-      </div>
+      </button>
+      
     </>
   );
 };
