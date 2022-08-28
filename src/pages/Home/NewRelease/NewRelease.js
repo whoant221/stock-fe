@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './NewRelease.module.scss'
 import images from '~/images';
 import Image from '~/components/Image';
+import HeartIcon from '~/components/Icon/Heart';
 const cx = classNames.bind(styles)
 
 function NewRelease({ data }) {
@@ -34,6 +35,7 @@ function NewRelease({ data }) {
                                         <div className={cx('time-status')}>{song.streamingStatus} ngày trước</div>
                                     </div>
                                 </div>
+                                <HeartIcon data={song} />
                             </div>
                         )
                     }

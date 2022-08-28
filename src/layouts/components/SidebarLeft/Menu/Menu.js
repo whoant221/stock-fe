@@ -1,4 +1,3 @@
-
 function Menu({ children }) {
     return <nav>{children}</nav>;
 }

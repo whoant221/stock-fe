@@ -147,9 +147,6 @@ function Home() {
                                 describe={playlist.sortDescription}
                                 link='#'        //mặc định
                                 image={playlist.thumbnail || playlist.thumbnailM}
-                                iconLeft={<i className="fal fa-heart"></i>}
-                                iconLeftActive={<i className="fas fa-heart"></i>}
-                                titleIconLeft='Thêm vào thư viện'
                             />
                         )
                     })}
@@ -199,9 +196,6 @@ function Home() {
                                 describe={playlist.sortDescription}
                                 link='#'        //mặc định
                                 image={playlist.thumbnail || playlist.thumbnailM}
-                                iconLeft={<i className="fal fa-heart"></i>}
-                                iconLeftActive={<i className="fas fa-heart"></i>}
-                                titleIconLeft='Thêm vào thư viện'
                             />
                         )
                     })}
