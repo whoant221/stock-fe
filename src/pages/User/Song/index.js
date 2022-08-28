@@ -5,8 +5,8 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from '../User.module.scss';
 import Icon from "~/components/Icon";
 import Playlist from "~/components/Playlist";
-import Media from "~/components/Media";
 import zingStorage from "~/utils/storage";
+import MusicItem from "~/components/MusicItem";
 
 const cx = classNames.bind(styles)
 
@@ -78,26 +78,25 @@ function UserSong() {
                 <div>
                     <a href="#" className={cx('nav-btn', 'active')}>Yêu thích</a>
                     <div className={cx('library-song')}>
-                        <div className={cx('lib-header')}>
-                            <h4 className={cx('lib-heading')}>Bài hát</h4>
-                            <h4 className={cx('lib-heading')}>Thời gian</h4>
+                        <div className={cx('lib-header', 'media')}>
+                            <div className={cx('media-left')}>
+                                <h4 className={cx('lib-heading')}>Bài hát</h4>
+                            </div>
+                            <div className={cx('media-content')}>
+                                <h4 className={cx('lib-heading')}>Album</h4>
+                            </div>
+                            <div className={cx('media-right')}>
+                                <h4 className={cx('lib-heading')}>Thời gian</h4>
+                            </div>
                         </div>
                         <div className={cx('song-list')}>
                             {mySongs.map(song => {
                                 return (
-                                    <div key={song.encodeId} className={cx('song-item')}>
-                                        <i className="fal fa-music"></i>
-                                        <Media
-                                            largeContent
-                                            noHover
-                                            image={song.thumbnail}
-                                            songName={song.title}
-                                            singerName={song.artistsNames}
-                                            data={song}
-                                        />
-                                        <span className={cx('time')}>{song.time}</span>
-                                    </div>
-                                )
+                                    <MusicItem 
+                                        key={song.end}
+                                        song={song}
+                                    />
+                                )   
                             })}
                         </div>
                     </div>
