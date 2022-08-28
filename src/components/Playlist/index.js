@@ -30,7 +30,7 @@ function Playlist({
                         defaultAvt={images.defaultAvataAlbum}
                     />   
                     <div className={cx('card-actions')}>
-                        <HeartIcon/>
+                        <HeartIcon data={data} library={'libraryPlaylist'}/>
                         <Icon 
                             s18
                             className={cx('icon-play')}

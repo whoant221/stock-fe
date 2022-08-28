@@ -117,12 +117,35 @@
 
 .lib-header {
     height: 46px;
-    padding: 10px 20px 10px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     border-bottom: 1px solid var(--border-color);
     user-select: none;
+}
+
+.media {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.media-left {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    width: 50%;
+    margin-right: 10px;
+    .lib-heading {
+        margin-left: 25px;
+    }
+}
+
+.media-content {
+    flex: 1 1 auto;
+}
+
+.media-right {
+    margin-left: 10px;
+    flex: 0 0 auto;
 }
 
 .lib-heading {

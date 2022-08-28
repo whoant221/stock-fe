@@ -7,13 +7,13 @@ const initialState = {
     libraryPlaylist: zingStorage.getLibraryPlaylist() || [],
 }
 
-const songReducer = (state = initialState, actions) => {
+const playlistReducer = (state = initialState, actions) => {
     switch (actions.type) {
         case types.ADD_PLAYLIST_TO_LIBRARY:
-            zingStorage.setLibrarySong([...state.libraryPlaylist, actions.payload])
+            zingStorage.setLibraryPlaylist([...state.libraryPlaylist, actions.payload])
             return {
                 ...state,
-                librarySong: [...state.libraryPlaylist, actions.payload]
+                libraryPlaylist: [...state.libraryPlaylist, actions.payload]
             }
         
         default:
@@ -21,4 +21,4 @@ const songReducer = (state = initialState, actions) => {
     }
 }
 
-export default songReducer;
+export default playlistReducer;
