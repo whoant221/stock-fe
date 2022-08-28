@@ -11,7 +11,7 @@ import styles from './Icon.module.scss';
 
 const cx = classNames.bind(styles)
 
-function HeartIcon({activeNoColor, data = {encodeId: null} }) {
+function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: null} }) {
     const dispatch = useDispatch()
     const librarySong = useSelector(state => state.songReducer.librarySong)
     const libraryPlaylist = useSelector(state => state.playlistReducer.libraryPlaylist)
