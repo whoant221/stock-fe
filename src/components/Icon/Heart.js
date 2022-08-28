@@ -1,17 +1,17 @@
 import classNames from 'classnames/bind';
 import { useState, useEffect } from 'react';
 import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css'; 
+import 'tippy.js/dist/tippy.css';
 import { useSelector, useDispatch } from 'react-redux';
 
-import * as actions from '~/redux/actions'
+import * as actions from '~/redux/actions';
 import zingStorage from '~/utils/storage';
 
 import styles from './Icon.module.scss';
 
 const cx = classNames.bind(styles)
 
-function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: null} }) {
+function HeartIcon({activeNoColor, data = {encodeId: null} }) {
     const dispatch = useDispatch()
     const librarySong = useSelector(state => state.songReducer.librarySong)
     const libraryPlaylist = useSelector(state => state.playlistReducer.libraryPlaylist)
@@ -26,8 +26,9 @@ function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: nu
         }
     }
     const [isActive, setIsActive] = useState(checkSong)
+
     let title = isActive ? 'Xóa khỏi thư viện' : 'Thêm vào thư viện'
-   
+
     const handleClick = () => {
         !isActive ? handleAdd(data): handleRemove(data);
         setIsActive(!isActive)
@@ -50,7 +51,7 @@ function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: nu
 
     return (  
         <>
-            <Tippy 
+            <Tippy
                 content={title}
                 hideOnClick='true'
             >

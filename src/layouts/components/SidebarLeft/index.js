@@ -1,14 +1,22 @@
 import classNames from "classnames/bind";
 import { Link } from 'react-router-dom';
-
+import { useState, useEffect } from 'react';
 import styles from './SidebarLeft.module.scss'
 import images from "~/images";
 import Menu from './Menu/Menu';
 import MenuItem from './Menu/MenuItem';
+import {useSelector, useDispatch} from 'react-redux';
 
 const cx = classNames.bind(styles)
 
 function SidebarLeft() {
+    
+    const [nameNV, setNameMV] = useState('Viet-Nam');
+    const thanh = useSelector(state => state.songReducer.nameMV)
+    console.log(thanh[1]);
+
+    // console.log(nameNV);
+
     return ( 
         <aside className={cx('wrapper')}>
             <Link to={''} className={cx('logo-link')}>
@@ -63,7 +71,8 @@ function SidebarLeft() {
                     />
                     <MenuItem 
                         title="MV"
-                        to={'/the-loai-video/Viet-Nam'}
+                        thanh={thanh}
+                        to={`/the-loai-video/${thanh[1]===undefined ? nameNV :thanh[1]}`}
                         icon={<i className="fal fa-tv-music"></i>}
                     />
                     <div className={cx("box-vip")}>
