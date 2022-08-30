@@ -11,10 +11,10 @@ function Radio() {
     useEffect(() => {
         function homePage5() {
             axios   
-                .get(`https://apizingmp3.herokuapp.com/api/home`, {params: {page: 5}})
+                .get('https://zingmp3.vn/api/v2/app/get/config?ctime=1660314862&version=1.7.20&sig=160fa8a4f9115b0f4712b5ae1a7e15b43747f8cdd6076f8646f740550e6b42a0ec9a823e76c5719bf0d9c246a25dc55247c6df28a35c4cbc5e44cf1292d5e50c&apiKey=X5BM3w8N7MKozC0B85o4KMlzLZKhV00y&fbclid=IwAR3UiPSxjiZQKWDmG6F53X9Z1XW90QSt8H7iLWx_mCcwn6T8WkThRg9etvI')
                 .then((res) => {
-                    setListRadio(res.data.data.items[1].items)
-                    console.log(res.data.data.items);
+                    // setListRadio(res.data.data.items[1].items)
+                    // console.log(res.data);
                 })
                 .catch((error) => {
                     console.log(error);

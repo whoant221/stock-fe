@@ -60,7 +60,7 @@ function Zingchart() {
                     ))
                 ) : (
                     <div>
-                        <Loading />
+                        <Loading />                       
                     </div>
                 )}
                 {!offBtn && (

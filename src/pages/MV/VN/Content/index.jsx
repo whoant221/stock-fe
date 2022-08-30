@@ -18,8 +18,9 @@ function Content() {
             try {
                 const res = await getMV.getMVVN();             
                 setGetContent(res.data.data.items)
-            } catch (error) {
-                alert(error);
+            } 
+            catch (error) {
+                // alert(error);
             }
         };
         MVVN()

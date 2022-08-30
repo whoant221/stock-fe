@@ -7,29 +7,30 @@ import Menu from './NavbarMV/Menu';
 import MenuItem from './NavbarMV/MenuItem';
 import {useSelector, useDispatch} from 'react-redux';
 import { addNameMV } from "../../redux/actions";
+import * as actions from '~/redux/actions';
 const cx = classNames.bind(styles);
 
 function MV() {
   const dispatch = useDispatch();
   const [getNameUrl, setGetNameUrl] = useState('');
-  
-  // console.log(thanh);
 
   const handleGetName = () => {
-    if(window.location.href == 'http://localhost:3000/the-loai-video/Viet-Nam') setGetNameUrl('Viet-Nam')
-    if(window.location.href == 'http://localhost:3000/the-loai-video/Au-My') setGetNameUrl('Au-My')
-    if(window.location.href == 'http://localhost:3000/the-loai-video/Han-Quoc') setGetNameUrl('Han-Quoc')
-    if(window.location.href == 'http://localhost:3000/the-loai-video/Khong-Loi') setGetNameUrl('Khong-Loi')
-    dispatch(addNameMV(getNameUrl));
+    if(window.location.href === 'http://localhost:3000/the-loai-video/Viet-Nam') setGetNameUrl('Viet-Nam')
+    if(window.location.href === 'http://localhost:3000/the-loai-video/Au-My') setGetNameUrl('Au-My')
+    if(window.location.href === 'http://localhost:3000/the-loai-video/Han-Quoc') setGetNameUrl('Han-Quoc')
+    if(window.location.href === 'http://localhost:3000/the-loai-video/Khong-Loi') setGetNameUrl('Khong-Loi')
+    dispatch(actions.addNameMV(getNameUrl));
   }
 
   useEffect(() => {
     document.title =
     'Video | Tuyển tập nhạc hay chọn lọc';
-
-
   }, [])
 
+  useEffect(() => {
+    dispatch(actions.addNameMV(getNameUrl));
+    console.log(getNameUrl);
+  }, [getNameUrl]);
 
   return (
     <div>
@@ -45,8 +46,7 @@ function MV() {
                 <MenuItem title={"HÒA TẤU"} to={'/the-loai-video/Khong-Loi'}/>
               </Menu>
             </div>
-
-            
+         
 
         </div>
         <div className={cx('hr-top','mar-b-30')}/>

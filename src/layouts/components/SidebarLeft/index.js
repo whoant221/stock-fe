@@ -13,7 +13,7 @@ function SidebarLeft() {
     
     const [nameNV, setNameMV] = useState('Viet-Nam');
     const thanh = useSelector(state => state.songReducer.nameMV)
-    console.log(thanh[1]);
+    console.log('Menu:',thanh[1]);
 
     // console.log(nameNV);
 
@@ -72,7 +72,7 @@ function SidebarLeft() {
                     <MenuItem 
                         title="MV"
                         thanh={thanh}
-                        to={`/the-loai-video/${thanh[1]===undefined ? nameNV :thanh[1]}`}
+                        to={`/the-loai-video/${thanh[1]==='' ? nameNV :thanh[1]}`}
                         icon={<i className="fal fa-tv-music"></i>}
                     />
                     <div className={cx("box-vip")}>

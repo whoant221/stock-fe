@@ -29,7 +29,8 @@ const songReducer = (state = initialState, actions) => {
                 list: newList,
             }
         case types.SET_ACTIVE_GET_NAME_MV: 
-            const nameMV =[state.nameMV]
+        
+            let nameMV =[state.nameMV]
             nameMV.push(actions.payload)    
             return {
                 ...state,
