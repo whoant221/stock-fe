@@ -11,11 +11,18 @@ const cx = classNames.bind(styles)
 
 function SidebarLeft() {
     
+    
     const [nameNV, setNameMV] = useState('Viet-Nam');
     const thanh = useSelector(state => state.songReducer.nameMV)
-    console.log('Menu:',thanh[1]);
+    // console.log('Menu:',thanh[1]);
 
-    // console.log(nameNV);
+    
+    // useEffect(() => {
+    //     if(thanh[1] === undefined || thanh[1] === '' ) setNameMV(thanh[1])   
+    //     else setNameMV(thanh[1])
+    //     console.log(nameNV);
+    // }, [nameNV]);
+
 
     return ( 
         <aside className={cx('wrapper')}>
@@ -72,7 +79,7 @@ function SidebarLeft() {
                     <MenuItem 
                         title="MV"
                         thanh={thanh}
-                        to={`/the-loai-video/${thanh[1]==='' ? nameNV :thanh[1]}`}
+                        to={`/the-loai-video/${thanh[1] === undefined || thanh[1] === '' ? nameNV : thanh[1]}`}
                         icon={<i className="fal fa-tv-music"></i>}
                     />
                     <div className={cx("box-vip")}>

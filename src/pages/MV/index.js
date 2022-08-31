@@ -19,7 +19,6 @@ function MV() {
     if(window.location.href === 'http://localhost:3000/the-loai-video/Au-My') setGetNameUrl('Au-My')
     if(window.location.href === 'http://localhost:3000/the-loai-video/Han-Quoc') setGetNameUrl('Han-Quoc')
     if(window.location.href === 'http://localhost:3000/the-loai-video/Khong-Loi') setGetNameUrl('Khong-Loi')
-    dispatch(actions.addNameMV(getNameUrl));
   }
 
   useEffect(() => {
@@ -29,7 +28,6 @@ function MV() {
 
   useEffect(() => {
     dispatch(actions.addNameMV(getNameUrl));
-    console.log(getNameUrl);
   }, [getNameUrl]);
 
   return (
