@@ -21,9 +21,9 @@ function UserSong() {
         })
     }, [])
     //.slice().reverse(): đảo ngược mảng mà không thay đổi mảng ban đầu
-    const userPlaylists = zingStorage.getLibraryPlaylist().slice().reverse() || []
+    const userPlaylists = zingStorage.getLibraryPlaylist()?.slice().reverse() || []
 
-    const mySongs = zingStorage.getLibrarySong().slice().reverse() || []
+    const mySongs = zingStorage.getLibrarySong()?.slice().reverse() || []
 
     return (
         <div className={cx('wrapper')}>
@@ -64,6 +64,13 @@ function UserSong() {
                             )
                         }
                     })}
+                    <Playlist
+                        key={0}
+                        className='w-[25%] px-3 md:w-[20%] md:px-3.5'
+                        name='For U'
+                        describe='Zing mp3'
+                        link={"#"}
+                    />
                 </div>
             </div>
             <div className={cx('songs-wrapper')}>

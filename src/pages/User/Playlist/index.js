@@ -8,7 +8,7 @@ import zingStorage from "~/utils/storage";
 const cx = classNames.bind(styles)
 
 function UserPlaylist() {
-    const userPlaylists = zingStorage.getLibraryPlaylist().slice().reverse() || []
+    const userPlaylists = zingStorage.getLibraryPlaylist()?.slice().reverse() || []
 
     return ( 
         <div className={cx('child-container')}>
