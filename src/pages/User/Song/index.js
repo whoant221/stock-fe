@@ -64,13 +64,6 @@ function UserSong() {
                             )
                         }
                     })}
-                    <Playlist
-                        key={0}
-                        className='w-[25%] px-3 md:w-[20%] md:px-3.5'
-                        name='For U'
-                        describe='Zing mp3'
-                        link={"#"}
-                    />
                 </div>
             </div>
             <div className={cx('songs-wrapper')}>

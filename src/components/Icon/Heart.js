@@ -44,9 +44,16 @@ function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: nu
     }
 
     const handleRemove = (data) => {
-        const position = librarySong.findIndex(song => song.encodeId === data.encodeId);
-        librarySong.splice(position, 1);
-        zingStorage.setLibrarySong(librarySong);
+        if(library === 'librarySong') {
+            const position = librarySong.findIndex(song => song.encodeId === data.encodeId);
+            librarySong.splice(position, 1);
+            zingStorage.setLibrarySong(librarySong);
+        }
+        else if(library === 'libraryPlaylist') {
+            const position = libraryPlaylist.findIndex(playlist => playlist.encodeId === data.encodeId);
+            libraryPlaylist.splice(position, 1);
+            zingStorage.setLibraryPlaylist(libraryPlaylist);
+        }
     }
 
     return (  
