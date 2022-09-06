@@ -10,8 +10,6 @@ import {useSelector} from 'react-redux';
 const cx = classNames.bind(styles)
 
 function SidebarLeft() {
-
-    const [nameUrl, setNameUrl] = useState('song');
     
     const thanhMV = useSelector(state => state.songReducer.nameMV)
     const thanhHistory = useSelector(state => state.songReducer.nameHistory)
@@ -97,7 +95,7 @@ function SidebarLeft() {
                     <MenuItem 
                         noActive
                         title="Gần Đây"
-                        to={`/history/${thanhHistory[1] === undefined || thanhHistory[1] === '' ? nameUrl : thanhHistory[1]}`}
+                        to={`/history/${thanhHistory[1] === undefined || thanhHistory === ''? 'song' : thanhHistory[1]}`}
                         icon={<i className="fal fa-history"></i>}
                     />
                 </Menu>
