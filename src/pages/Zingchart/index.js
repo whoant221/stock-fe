@@ -25,7 +25,6 @@ function Zingchart() {
                 .then((res) => res.data.data);
             setMusic(data);
             setChartInfo(data.RTChart.chart);
-            console.log(data.RTChart.items);
         };
         fetchData();
 

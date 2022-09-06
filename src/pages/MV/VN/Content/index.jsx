@@ -76,7 +76,7 @@ function Content() {
                                         {item.artists.map((items, index) => {
                                             return(
                                                 <Link key={index} className={cx('is-ghost')} to={'/'}>{items.name} </Link>
-                                            )                                     
+                                            )                                  
                                         })}              
                                     </div>
                                 </div>

@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import Loading from '../Loading/Loading';
-import MusicItem from '../MusicItem/MusicItem';
+import MusicItem from '~/components/MusicItem';
 import styles from './Top100KOREA.module.scss';
 
 const cx = classNames.bind(styles);

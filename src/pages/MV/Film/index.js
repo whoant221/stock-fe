@@ -22,8 +22,6 @@ function Film() {
     
   },[id])
 
-  console.log(listrender.recommends);
-
 
 
 

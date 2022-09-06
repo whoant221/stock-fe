@@ -6,7 +6,6 @@ import styles from './MV.module.scss';
 import Menu from './NavbarMV/Menu';
 import MenuItem from './NavbarMV/MenuItem';
 import {useSelector, useDispatch} from 'react-redux';
-import { addNameMV } from "../../redux/actions";
 import * as actions from '~/redux/actions';
 const cx = classNames.bind(styles);
 
@@ -20,15 +19,16 @@ function MV() {
     if(window.location.href === 'http://localhost:3000/the-loai-video/Han-Quoc') setGetNameUrl('Han-Quoc')
     if(window.location.href === 'http://localhost:3000/the-loai-video/Khong-Loi') setGetNameUrl('Khong-Loi')
   }
-
+  useEffect(() => {
+    dispatch(actions.addNameMV(getNameUrl));
+  }, [getNameUrl]);
+  
   useEffect(() => {
     document.title =
     'Video | Tuyển tập nhạc hay chọn lọc';
   }, [])
 
-  useEffect(() => {
-    dispatch(actions.addNameMV(getNameUrl));
-  }, [getNameUrl]);
+
 
   return (
     <div>

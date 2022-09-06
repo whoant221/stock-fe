@@ -1,12 +1,11 @@
-<<<<<<< HEAD
+
 .wrapper {
-=======
+
 .banner {
     margin: calc(var(--header-height) * -1) -59px 0;
     background: transparent;
     position: relative;
 
->>>>>>> 16bf490960f21f3970e36edd7c8710fb5d6e7c47
     .blur {
         position: absolute;
         top: 0;
@@ -50,7 +49,7 @@
 }
 
 .container {
-<<<<<<< HEAD
+
     position: relative;
 
     .title {
@@ -77,7 +76,7 @@
     .space {
         height: 60px;
         width: 100%;
-=======
+
     flex-grow: 1;
     margin: 0 auto;
     position: relative;
@@ -95,6 +94,7 @@
 
     .icon-play {
         margin-left: 8px !important;
->>>>>>> 16bf490960f21f3970e36edd7c8710fb5d6e7c47
+
     }
+}}
 }

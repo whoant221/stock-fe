@@ -5,24 +5,16 @@ import styles from './SidebarLeft.module.scss'
 import images from "~/images";
 import Menu from './Menu/Menu';
 import MenuItem from './Menu/MenuItem';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 const cx = classNames.bind(styles)
 
 function SidebarLeft() {
-    
-    
-    const [nameNV, setNameMV] = useState('Viet-Nam');
-    const thanh = useSelector(state => state.songReducer.nameMV)
-    // console.log('Menu:',thanh[1]);
 
+    const [nameUrl, setNameUrl] = useState('song');
     
-    // useEffect(() => {
-    //     if(thanh[1] === undefined || thanh[1] === '' ) setNameMV(thanh[1])   
-    //     else setNameMV(thanh[1])
-    //     console.log(nameNV);
-    // }, [nameNV]);
-
+    const thanhMV = useSelector(state => state.songReducer.nameMV)
+    const thanhHistory = useSelector(state => state.songReducer.nameHistory)
 
     return ( 
         <aside className={cx('wrapper')}>
@@ -77,9 +69,8 @@ function SidebarLeft() {
                         icon={<i className="fal fa-star"></i>}
                     />
                     <MenuItem 
-                        title="MV"
-                        thanh={thanh}
-                        to={`/the-loai-video/${thanh[1] === undefined || thanh[1] === '' ? nameNV : thanh[1]}`}
+                        title="MV"                      
+                        to={`/the-loai-video/${thanhMV[1] === undefined || thanhMV[1] === '' ? 'Viet-Nam' : thanhMV[1]}`}
                         icon={<i className="fal fa-tv-music"></i>}
                     />
                     <div className={cx("box-vip")}>
@@ -100,13 +91,13 @@ function SidebarLeft() {
                     <MenuItem 
                         noActive
                         title="Playlist"
-                        to={'/user/playlist'}
+                        to={'/playlist'}
                         icon={<i className="fal fa-list-music"></i>}
                     />
                     <MenuItem 
                         noActive
                         title="Gần Đây"
-                        to={'/user/history'}
+                        to={`/history/${thanhHistory[1] === undefined || thanhHistory[1] === '' ? nameUrl : thanhHistory[1]}`}
                         icon={<i className="fal fa-history"></i>}
                     />
                 </Menu>
