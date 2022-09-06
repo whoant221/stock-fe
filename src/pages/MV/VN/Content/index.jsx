@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import { Link } from "react-router-dom";
 import getMV from '../../../../api/getMV';
 import Loading from '../../Loading/Loading';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -57,7 +58,7 @@ function Content() {
                                 <div className={cx('media-left')}>
                                 <Link to={'/'}>
                                     <figure className={cx('image', 'is-40x40', 'is-rounded')}>
-                                    <img src={item.artist.thumbnail}></img>
+                                    <Image src={item?.artist?.thumbnail}/>
                                     </figure>
                                 </Link>
                                 </div>

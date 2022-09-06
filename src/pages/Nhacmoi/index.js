@@ -38,15 +38,11 @@ function Nhacmoi() {
                     {music.items ? (
                         music.items.map((item, index) => (
                             <LazyLoadComponent key={index}>
-                                <MusicItem
-                                    num={index + 1}
-                                    title={item.title}
-                                    name={item.album ? item.album.title : ''}
-                                    artistsNames={item.artistsNames}
-                                    thumbnail={
-                                        item.thumbnail || item.thumbnailM
-                                    }
-                                />
+                                <MusicItem 
+                                song={item}
+                                ranking
+                                number={index+ 1}
+                            />
                             </LazyLoadComponent>
                         ))
                     ) : (
