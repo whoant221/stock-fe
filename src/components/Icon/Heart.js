@@ -12,6 +12,7 @@ import styles from './Icon.module.scss';
 const cx = classNames.bind(styles)
 
 function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: null} }) {
+    
     const dispatch = useDispatch()
     const librarySong = useSelector(state => state.songReducer.librarySong)
     const libraryPlaylist = useSelector(state => state.playlistReducer.libraryPlaylist)
@@ -19,7 +20,6 @@ function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: nu
     const checkSong = () => {
         if(library === 'librarySong') {
             return librarySong.findIndex(song => song.encodeId === data.encodeId) !== -1;
-            // findIndex nếu không có trong mảng sẽ trả về -1, so sánh !== -1 sẽ trả về true/false
         }
         else if(library === 'libraryPlaylist') {
             return libraryPlaylist.findIndex(playlist => playlist.encodeId === data.encodeId) !== -1;

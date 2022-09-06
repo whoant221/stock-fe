@@ -25,6 +25,14 @@ import MVUS from './pages/MV/US-UK';
 import MVKpop from './pages/MV/Kpop';
 import MVHoaTau from './pages/MV/HoaTau';
 import Film from './pages/MV/Film';
+import PodCast from './pages/User/Podcast';
+import Album from './pages/User/Album';
+import Mv from './pages/User/Mv';
+import HistorySong from './pages/User/History/HistorySong';
+import HistoryPlayList from './pages/User/History/HistoryPlayList';
+import HistoryMv from './pages/User/History/HistoryMv';
+import HistoryRadio from './pages/User/History/HistoryRadio';
+import HistoryPodCast from './pages/User/History/HistoryPodCast';
 
 
 
@@ -36,11 +44,23 @@ function App() {
                     <Route path='' element={<DefaultLayout />}>
                         <Route path='' element={<Home />} />
                         <Route path='/user' element={<User />}> 
-                            <Route path="/user/music/song" element={<Song />} />
-                            <Route path="/user/playlist" element={<Playlist />} />
-                            <Route path="/user/history" element={<History />} />
+                            <Route path="/user/music/song" element={<Song/>} />
+                            <Route path="/user/music/podcast" element={<PodCast/>} />
+                            <Route path="/user/music/album" element={<Album/>} />
+                            <Route path="/user/music/mv" element={<Mv/>} />
                         </Route>
-                        
+
+                        <Route path="/playlist" element={<Playlist />} />
+
+                        <Route path="/history" element={<History />} >
+                            <Route path="/history/song" element={<HistorySong/>} />
+                            <Route path="/history/playlist" element={<HistoryPlayList/>} />
+                            <Route path="/history/video" element={<HistoryMv/>} />
+                            <Route path="/history/radio" element={<HistoryRadio/>} />
+                            <Route path="/history/podcast" element={<HistoryPodCast/>} />
+                        </Route>
+
+
                         <Route path='/zing-chart' element={<Zingchart />} />
 
                         <Route path='/zing-chart-tuan' element={<LayoutRankTop />} >

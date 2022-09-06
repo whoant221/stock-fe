@@ -18,8 +18,9 @@ function Content() {
             try {
                 const res = await getMV.getMVVN();             
                 setGetContent(res.data.data.items)
-            } catch (error) {
-                alert(error);
+            } 
+            catch (error) {
+                // alert(error);
             }
         };
         MVVN()
@@ -75,7 +76,7 @@ function Content() {
                                         {item.artists.map((items, index) => {
                                             return(
                                                 <Link key={index} className={cx('is-ghost')} to={'/'}>{items.name} </Link>
-                                            )                                     
+                                            )                                  
                                         })}              
                                     </div>
                                 </div>

@@ -18,7 +18,7 @@ function Content() {
                 const res = await getMV.getMVUSUK();             
                 setGetContent(res.data.data.items)
             } catch (error) {
-                alert(error);
+                // alert(error);
             }
         };
         MVVN()

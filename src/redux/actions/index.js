@@ -10,16 +10,12 @@ export const addPlaylistToLibrary = (data) => ({
     payload: data
 })
 
-export const addNewHobby = (data) => ({
-    addSong: {
-        ...data,
-    },
-    type: types.SET_ACTIVE_HOBBY,
-    payload: {data}
-
-})
-
 export const addNameMV = (data) => ({
     type: types.SET_ACTIVE_GET_NAME_MV,
+    payload: data
+})
+
+export const addNameHistory = (data) => ({
+    type: types.SET_ACTIVE_GET_NAME_HISTORY,
     payload: data
 })

@@ -1,15 +1,99 @@
-.red{
-    color: red;
-}
-.yellow{
-    color: yellow;
-}
-.green{
-    color: green;
+.wrapper {
+    .blur {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 380px;
+        z-index: 0;
+        display: block;
+        background: url(https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.19/static/media/week-chart-bg.edf332e5.jpg)
+            top/cover no-repeat;
+        -webkit-filter: grayscale(1);
+        filter: grayscale(1);
+    }
+
+    .alpha {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 380px;
+        z-index: 0;
+        background-image: linear-gradient(
+            180deg,
+            hsla(0, 0%, 100%, 0) 37%,
+            #170f23
+        );
+    }
+    .alpha1 {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0.8;
+        height: 380px;
+        z-index: 0;
+        background-image: linear-gradient(180deg, #170f23, #170f23);
+    }
+
+    .title {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-top: 36px;
+        padding-bottom: 20px;
+        h1 {
+            font-size: 40px;
+            font-weight: 800;
+        }
+        span {
+            margin-left: 5px;
+            width: 46px;
+            height: 46px;
+            background-color: #7200a1;
+            border-radius: 50%;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+        }
+    }
 }
 
-.red,
-.yellow,
-.green{
-    margin: 50px;
+.container {
+    display: flex;
+    position: relative;
+
+    a {
+        font-size: 24px;
+        font-weight: 700;
+        height: 64px;
+        padding: 15px 0;
+        margin-right: 40px;
+    }
+}
+
+.active {
+    border-bottom: 3px solid#7200a1;
+}
+
+.page {
+    position: relative;
+    margin-top: 32px ;
+
+    .date {
+        padding: 10px 15px;
+        line-height: 1;
+        font-size: 14px;
+        min-width: 120px;
+        border-radius: 999px;
+        background-color: hsla(0, 0%, 100%, 0.1);
+
+        i {
+            margin-left: 20px;
+        }
+    }
 }
