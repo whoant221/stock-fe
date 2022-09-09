@@ -19,3 +19,8 @@ export const addNameHistory = (data) => ({
     type: types.SET_ACTIVE_GET_NAME_HISTORY,
     payload: data
 })
+
+export const addValueVolume = (data) => ({
+    type: types.SET_ACTIVE_GET_ICON_VOLUME,
+    payload: data
+})

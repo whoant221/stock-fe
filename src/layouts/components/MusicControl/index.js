@@ -1,26 +1,38 @@
-import { useState } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
-
+import { useState, useEffect, } from 'react';
 import styles from './MusicControl.module.scss' 
 import Media from '~/components/Media';
 import PlayerBar from '~/layouts/components/PlayerBar';
 import Icon from '~/components/Icon';
 import SidebarRight from '../SidebarRight';
-
+import { useSelector, useDispatch } from 'react-redux';
+import zingStorage from "~/utils/storage";
+import * as actions from '~/redux/actions';
 const cx = classNames.bind(styles)
 
 function MusicControl() {
-    
+    const initValue = zingStorage.getAddValueVolume()
+    const dispatch = useDispatch();
     const [toggleBtn, setToggleBtn] = useState(false)
     const [activePlaylist, setActivePlaylist] = useState(false)
+    const [valueInput, setvalueInput] = useState(initValue);
 
-    const [valueInput, setvalueInput] = useState(50);
     const onChangeValue = (e) => {
         setvalueInput(parseInt(e.target.value));
     };
 
+    useEffect(() => {
+        dispatch(actions.addValueVolume(valueInput));
+        zingStorage.setAddValueVolume(valueInput)
+    }, [valueInput]);
+
+    // useEffect(() => {
+    //     value
+    // }, []);
+
+    
     function handleTogglePlaylist() {
         if(toggleBtn) {
             setToggleBtn(false)
