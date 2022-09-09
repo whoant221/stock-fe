@@ -1,11 +1,17 @@
 import classNames from 'classnames/bind';
 import styles from './PlayerBar.module.scss' 
-
+import { useState } from 'react';
 import Icon from '~/components/Icon';
 
 const cx = classNames.bind(styles)
 
 function PlayerBar() {
+    
+    const [valueInput, setvalueInput] = useState(0);
+    const onChangeValue = (e) => {
+        setvalueInput(parseInt(e.target.value));
+    };
+
     return ( 
         <div className={cx('wrapper', 'grow')}>
             <div className={cx('control-btns', 'flex justify-center grow')}>
@@ -37,7 +43,18 @@ function PlayerBar() {
 
             <div className={cx('control-time', 'flex grow justify-center items-center')}>
                 <div className={cx('current-time')}>00:12</div>
-                <input id="progress" className={cx("progress")} type="range" value="50" step="1" min="0" max="100"></input>
+                <input 
+                id="progress" 
+                className={cx("progress")} 
+                style={{ background: `linear-gradient(to right, #ffffff 0%, #ffffff ${valueInput}%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%)`}}
+                type="range" 
+                value={valueInput} 
+                step="1" 
+                min="0" 
+                max="100"
+                onChange={onChangeValue}
+                >
+                </input>
                 <div className={cx('total-time')}>03:12</div>
             </div>
         </div>

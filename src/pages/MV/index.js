@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import styles from './MV.module.scss';
 import Menu from './NavbarMV/Menu';
 import MenuItem from './NavbarMV/MenuItem';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import * as actions from '~/redux/actions';
 const cx = classNames.bind(styles);
 

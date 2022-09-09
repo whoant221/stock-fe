@@ -31,7 +31,7 @@ function User() {
                             </div>
                         </Tippy>
                     </h3>
-                    <Link to={"/user/playlist"} className={cx('section-link')}>Tất cả</Link>
+                    <Link to={"/playlist"} className={cx('section-link')}>Tất cả</Link>
                 </div>
                 <div className={cx('list-playlist')}>
                     {userPlaylists.map((playlist, index) => {

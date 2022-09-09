@@ -1,20 +1,38 @@
-import { useState } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
-
+import { useState, useEffect, } from 'react';
 import styles from './MusicControl.module.scss' 
 import Media from '~/components/Media';
 import PlayerBar from '~/layouts/components/PlayerBar';
 import Icon from '~/components/Icon';
 import SidebarRight from '../SidebarRight';
-
+import { useSelector, useDispatch } from 'react-redux';
+import zingStorage from "~/utils/storage";
+import * as actions from '~/redux/actions';
 const cx = classNames.bind(styles)
 
 function MusicControl() {
+    const initValue = zingStorage.getAddValueVolume()
+    const dispatch = useDispatch();
     const [toggleBtn, setToggleBtn] = useState(false)
     const [activePlaylist, setActivePlaylist] = useState(false)
+    const [valueInput, setvalueInput] = useState(initValue);
 
+    const onChangeValue = (e) => {
+        setvalueInput(parseInt(e.target.value));
+    };
+
+    useEffect(() => {
+        dispatch(actions.addValueVolume(valueInput));
+        zingStorage.setAddValueVolume(valueInput)
+    }, [valueInput]);
+
+    // useEffect(() => {
+    //     value
+    // }, []);
+
+    
     function handleTogglePlaylist() {
         if(toggleBtn) {
             setToggleBtn(false)
@@ -60,7 +78,18 @@ function MusicControl() {
                         icon={<i className="fal fa-volume"></i>}    
                         activeIcon={<i className="fal fa-volume-mute"></i>}
                     />
-                    <input id="volume" className={cx("volume")} type="range" value="50" step="1" min="0" max="100"></input>
+                    <input 
+                    id="volume"  
+                    style={{ background: `linear-gradient(to right, #ffffff 0%, #ffffff ${valueInput}%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%)`}}
+                    className={cx("volume")} 
+                    type="range" 
+                    value={valueInput}
+                    step="1" 
+                    min="0" 
+                    max="100"
+                    onChange={onChangeValue}
+                    >
+                    </input>
                 </div>
                 <span className={cx('divide', 'block mx-5')}></span>
                 

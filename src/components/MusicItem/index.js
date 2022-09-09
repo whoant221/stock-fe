@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import Icon from '../Icon';
 import HeartIcon from '../Icon/Heart';
 import Image from '../Image';
+import PlaySongIcon from '../Icon/Play/PlaySongIcon';
 
 const cx = classNames.bind(styles)
 
@@ -75,6 +76,10 @@ function MusicItemUser({ className, song, number, ranking }) {
                     )}
                     <div className={cx('thumb-wrap')}>
                         <Image className={cx('thumb-img')} src={song.thumbnail} alt={song.title} />
+                        <div className={cx('hover-items')}>
+                            <PlaySongIcon className={cx('thumb-img_playbutton')}/>
+                        </div>
+                        
                     </div>
                     <div className={cx('song-infor')}>
                         <h3 className={cx('song-name','text-sm')}>{song.title}</h3>
