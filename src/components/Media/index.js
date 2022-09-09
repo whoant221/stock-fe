@@ -15,7 +15,6 @@ function Media({
     singerName,
     mediaActive,
     data,
-
     largeCd, 
     largeContent, 
     nowrap,

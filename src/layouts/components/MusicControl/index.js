@@ -12,8 +12,14 @@ import SidebarRight from '../SidebarRight';
 const cx = classNames.bind(styles)
 
 function MusicControl() {
+    
     const [toggleBtn, setToggleBtn] = useState(false)
     const [activePlaylist, setActivePlaylist] = useState(false)
+
+    const [valueInput, setvalueInput] = useState(50);
+    const onChangeValue = (e) => {
+        setvalueInput(parseInt(e.target.value));
+    };
 
     function handleTogglePlaylist() {
         if(toggleBtn) {
@@ -60,7 +66,18 @@ function MusicControl() {
                         icon={<i className="fal fa-volume"></i>}    
                         activeIcon={<i className="fal fa-volume-mute"></i>}
                     />
-                    <input id="volume" className={cx("volume")} type="range" value="50" step="1" min="0" max="100"></input>
+                    <input 
+                    id="volume"  
+                    style={{ background: `linear-gradient(to right, #ffffff 0%, #ffffff ${valueInput}%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%)`}}
+                    className={cx("volume")} 
+                    type="range" 
+                    value={valueInput}
+                    step="1" 
+                    min="0" 
+                    max="100"
+                    onChange={onChangeValue}
+                    >
+                    </input>
                 </div>
                 <span className={cx('divide', 'block mx-5')}></span>
                 

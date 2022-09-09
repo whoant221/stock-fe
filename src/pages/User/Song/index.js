@@ -1,13 +1,18 @@
+
 import styles from '../User.module.scss';
-import zingStorage from "~/utils/storage";
-import MusicItemUser from '../../../components/MusicItemUser'
 import classNames from "classnames/bind";
+import { useEffect } from "react";
+import axios from "axios";
+import zingStorage from "~/utils/storage";
+import MusicItem from "~/components/MusicItem";
+
 const cx = classNames.bind(styles)
 
 function UserSong() {
+    //.slice().reverse(): đảo ngược mảng mà không thay đổi mảng ban đầu
+    const userPlaylists = zingStorage.getLibraryPlaylist()?.slice().reverse() || []
 
     const mySongs = zingStorage.getLibrarySong()?.slice().reverse() || []
-    console.log(mySongs);
 
     return (
         <div>
@@ -27,7 +32,7 @@ function UserSong() {
                 <div className={cx('song-list')}>
                     {mySongs.map(song => {
                         return (
-                            <MusicItemUser 
+                            <MusicItem 
                                 key={song.end}
                                 song={song}
                             />

@@ -6,7 +6,7 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 import { Chart } from './chart';
 import Loading from './Loading/Loading';
-import MusicItemUser from '~/components/MusicItemUser';
+import MusicItem from '~/components/MusicItem';
 import TopMusic from './TopMusic/TopMusic';
 import styles from './Zingchart.module.scss';
 
@@ -48,7 +48,7 @@ function Zingchart() {
                 {music.RTChart ? (
                     music.RTChart.items.slice(0, visible).map((item, index) => (
                         <LazyLoadComponent key={index}> 
-                            <MusicItemUser 
+                            <MusicItem 
                                 song={item}
                                 ranking
                                 number={index+ 1}
