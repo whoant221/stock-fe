@@ -22,6 +22,13 @@ const songReducer = (state = initialState, actions) => {
                 librarySong: [...state.librarySong, actions.payload]
             }
 
+        case types.REMOVE_SONG_IN_LIBRARY:
+            zingStorage.setLibrarySong([actions.payload]);
+            return {
+                ...state,
+                librarySong: [actions.payload]
+            }
+
         case types.SET_ACTIVE_GET_NAME_MV:      
             let nameMV =[state.nameMV]
             nameMV.push(actions.payload)     

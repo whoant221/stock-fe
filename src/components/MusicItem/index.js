@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { useState, useEffect } from 'react';
 
 import styles from './MusicItem.module.scss';
 import { useSelector } from 'react-redux';
@@ -19,8 +20,14 @@ function MusicItemUser({ className, song, number, ranking }) {
     const minuteTime = formatTime(Math.floor(song.duration / 60))
     const secondTime = formatTime(song.duration - (minuteTime * 60))
 
+    const [checkSong, setCheckSong] = useState(false)
     const librarySong = useSelector(state => state.songReducer.librarySong)
-    const isInLibrary = librarySong.findIndex(mySong => mySong.encodeId === song.encodeId) !== -1;
+
+    useEffect(() => {
+        const isInLibrary = librarySong.findIndex(mySong => mySong.encodeId === song.encodeId) !== -1;
+        setCheckSong(isInLibrary)
+        console.log(checkSong);
+    }, [librarySong])
 
     function RankingStatus({rank}) {
         if (rank < 0) {
@@ -98,7 +105,7 @@ function MusicItemUser({ className, song, number, ranking }) {
                     </div>
                     <div className={cx('items')}>
                         <div className='flex items-center content-between'>
-                            {isInLibrary ? (
+                            {checkSong ? (
                                 <div className={cx('item')}><HeartIcon data={song} /></div>
                             ) : ('')}
                             <div className={cx('item', 'duration')}>{minuteTime}:{secondTime}</div>

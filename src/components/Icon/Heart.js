@@ -46,8 +46,8 @@ function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: nu
     const handleRemove = (data) => {
         if(library === 'librarySong') {
             const position = librarySong.findIndex(song => song.encodeId === data.encodeId);
-            librarySong.splice(position, 1);
-            zingStorage.setLibrarySong(librarySong);
+            const newLibrary = librarySong.splice(position, 1);
+            dispatch(actions.removeSonginLibrary(newLibrary))
         }
         else if(library === 'libraryPlaylist') {
             const position = libraryPlaylist.findIndex(playlist => playlist.encodeId === data.encodeId);
