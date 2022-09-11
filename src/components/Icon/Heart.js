@@ -3,10 +3,8 @@ import { useState, useEffect } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { useSelector, useDispatch } from 'react-redux';
-
 import * as actions from '~/redux/actions';
 import zingStorage from '~/utils/storage';
-
 import styles from './Icon.module.scss';
 
 const cx = classNames.bind(styles)
@@ -25,6 +23,7 @@ function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: nu
             return libraryPlaylist.findIndex(playlist => playlist.encodeId === data.encodeId) !== -1;
         }
     }
+    
     const [isActive, setIsActive] = useState(checkSong)
 
     let title = isActive ? 'Xóa khỏi thư viện' : 'Thêm vào thư viện'
@@ -56,6 +55,23 @@ function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: nu
         }
     }
 
+    
+    const icon = () => {
+        return(
+            <span className={cx('icon')}>
+                <i className="fal fa-heart"></i>    
+            </span>
+        )
+    }
+    const active_icon = () => {
+        return(
+            <span className={cx('icon', 'active-icon')}>
+                <i className="fas fa-heart"></i>    
+            </span>
+        )
+    }
+
+
     return (  
         <>
             <Tippy
@@ -63,12 +79,8 @@ function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: nu
                 hideOnClick='true'
             >
                 <button className={cx('wrapper', {active: isActive, activeNoColor})} onClick={handleClick}>
-                    <span className={cx('icon')}>
-                        <i className="fal fa-heart"></i>    
-                    </span>
-                    <span className={cx('icon', 'active-icon')}>
-                        <i className="fas fa-heart"></i>    
-                    </span>
+                    {icon()}
+                    {active_icon()}
                 </button>
             </Tippy>
         </>
