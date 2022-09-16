@@ -27,7 +27,6 @@ function MusicItemUser({ className, song, number, ranking }) {
     useEffect(() => {
         const isInLibrary = librarySong.findIndex(mySong => mySong.encodeId === song.encodeId) !== -1;
         setCheckSong(isInLibrary)
-        console.log(checkSong);
     }, [librarySong])
 
     function RankingStatus({rank}) {
