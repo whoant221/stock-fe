@@ -76,7 +76,7 @@ function MusicItemUser({ className, song, number, ranking }) {
                     <div className={cx('thumb-wrap')}>
                         <Image className={cx('thumb-img')} src={song.thumbnail} alt={song.title} />
                         <div className={cx('hover-items')}>
-                            <PlaySongIcon className={cx('thumb-img_playbutton')}/>
+                            <PlaySongIcon data={song} className={cx('thumb-img_playbutton')}/>
                         </div>
                         
                     </div>

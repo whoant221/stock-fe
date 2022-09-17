@@ -28,10 +28,10 @@ function UserSong() {
                     </div>
                 </div>
                 <div className={cx('song-list')}>
-                    {mySongs.map(song => {
+                    {mySongs.map((song, index) => {
                         return (
                             <MusicItem 
-                                key={song.end}
+                                key={index}
                                 song={song}
                             />
                         )   

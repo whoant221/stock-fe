@@ -28,10 +28,6 @@ function MusicControl() {
         zingStorage.setAddValueVolume(valueInput)
     }, [valueInput]);
 
-    // useEffect(() => {
-    //     value
-    // }, []);
-
     
     function handleTogglePlaylist() {
         if(toggleBtn) {

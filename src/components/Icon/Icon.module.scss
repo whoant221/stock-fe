@@ -10,13 +10,12 @@
     transition: all linear 0.2s;
 
     &.active {
-
         .icon {
             display: none;
         }
         .active-icon{
-            display: block;
             color: var(--primary-color);
+            display: block;
         }
 
         &.mediaActive {

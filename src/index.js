@@ -12,15 +12,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 root.render(
-
-  <React.StrictMode>
-    {/* provider redux */} 
-    <Provider store={store}>
-      <GlobalStyles>         
-          <App />    
-      </GlobalStyles>
-    </Provider>
-  </React.StrictMode>,
-
+  <Provider store={store}>
+    <React.StrictMode>
+      {/* provider redux */} 
+        <GlobalStyles>         
+            <App />    
+        </GlobalStyles>
+    </React.StrictMode>,
+  </Provider>
 );
 reportWebVitals();

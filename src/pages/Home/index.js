@@ -6,6 +6,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 //getAPI
+// import {
+//     getHome,
+//     //... and many other services
+// } from "nhaccuatui-api-full";
 import getHome from '../../api/getHome';
 import MySlide from './Slide/MySlide';
 import NewRelease from './NewRelease/NewRelease';
@@ -90,6 +94,19 @@ function Home() {
         homePage4()
         homePage5()
     }, [])
+    // useEffect(() => {
+    //     const homePage1 = async () => {
+    //         try {
+    //             const res = await getHome();
+    //             setGetSlide(res.newRelease.song)
+    //         } catch (error) {
+    //             alert(error);
+    //         }
+    //     };
+    //     homePage1()
+    // }, []);
+    // console.log(getSlide);
+
 
     const propsSlide5 = {
         dots: false,
