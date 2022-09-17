@@ -10,6 +10,7 @@ import styles from './Icon.module.scss';
 const cx = classNames.bind(styles)
 
 function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: null} }) {
+    // console.log(data.encodeId);
     
     const dispatch = useDispatch()
     const librarySong = useSelector(state => state.songReducer.librarySong)

@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-
+import { useState, useEffect } from 'react';
 import styles from './MusicItem.module.scss';
 import { useSelector } from 'react-redux';
 import Icon from '../Icon';
@@ -21,7 +21,20 @@ function MusicItemUser({ className, song, number, ranking }) {
     const secondTime = formatTime(song.duration - (minuteTime * 60))
 
     const librarySong = useSelector(state => state.songReducer.librarySong)
-    const isInLibrary = librarySong.findIndex(mySong => mySong.encodeId === song.encodeId) !== -1;
+
+    const renderHeart = () => {
+        const isInLibrary = librarySong.map((mySong) => {
+            if(mySong.encodeId === song.encodeId || !undefined)
+            return (mySong.encodeId)
+        })
+        // console.log(isInLibrary);
+        if(isInLibrary ) {
+            return(
+                <div className={cx('item')}><HeartIcon data={song} /></div>
+            )
+        }
+        
+    }
 
     function RankingStatus({rank}) {
         if (rank < 0) {
@@ -70,7 +83,7 @@ function MusicItemUser({ className, song, number, ranking }) {
                     <div className={cx('thumb-wrap')}>
                         <Image className={cx('thumb-img')} src={song.thumbnail} alt={song.title} />
                         <div className={cx('hover-items')}>
-                            <PlaySongIcon className={cx('thumb-img_playbutton')}/>
+                            <PlaySongIcon data={song} className={cx('thumb-img_playbutton')}/>
                         </div>
                         
                     </div>
@@ -103,9 +116,7 @@ function MusicItemUser({ className, song, number, ranking }) {
                     </div>
                     <div className={cx('items')}>
                         <div className='flex items-center content-between'>
-                            {isInLibrary ? (
-                                <div className={cx('item')}><HeartIcon data={song} /></div>
-                            ) : ('')}
+                            {renderHeart()}
                             <div className={cx('item', 'duration')}>{minuteTime}:{secondTime}</div>
                         </div>
                     </div>
