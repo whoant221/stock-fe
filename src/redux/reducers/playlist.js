@@ -15,7 +15,6 @@ const playlistReducer = (state = initialState, actions) => {
                 ...state,
                 libraryPlaylist: [...state.libraryPlaylist, actions.payload]
             }
-        
         default:
             return state;
     }

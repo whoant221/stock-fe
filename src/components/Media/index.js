@@ -15,7 +15,6 @@ function Media({
     singerName,
     mediaActive,
     data,
-
     largeCd, 
     largeContent, 
     nowrap,
@@ -42,7 +41,6 @@ function Media({
                 </div>
                 <div className={cx('action')}>
                     <HeartIcon activeNoColor={isActive} data={data} />
-                    
                     <Tippy content="Xem thêm">
                         <div className="icon">
                             <Icon icon={<i className="far fa-ellipsis-h"></i>}/>

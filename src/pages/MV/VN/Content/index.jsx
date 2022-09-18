@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import { Link } from "react-router-dom";
 import getMV from '../../../../api/getMV';
 import Loading from '../../Loading/Loading';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -18,8 +19,9 @@ function Content() {
             try {
                 const res = await getMV.getMVVN();             
                 setGetContent(res.data.data.items)
-            } catch (error) {
-                alert(error);
+            } 
+            catch (error) {
+                // alert(error);
             }
         };
         MVVN()
@@ -56,7 +58,7 @@ function Content() {
                                 <div className={cx('media-left')}>
                                 <Link to={'/'}>
                                     <figure className={cx('image', 'is-40x40', 'is-rounded')}>
-                                    <img src={item.artist.thumbnail}></img>
+                                    <Image src={item?.artist?.thumbnail}/>
                                     </figure>
                                 </Link>
                                 </div>
@@ -75,7 +77,7 @@ function Content() {
                                         {item.artists.map((items, index) => {
                                             return(
                                                 <Link key={index} className={cx('is-ghost')} to={'/'}>{items.name} </Link>
-                                            )                                     
+                                            )                                  
                                         })}              
                                     </div>
                                 </div>

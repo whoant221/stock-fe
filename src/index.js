@@ -12,19 +12,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 root.render(
-
-  <React.StrictMode>
-    {/* provider redux */} 
-    <Provider store={store}>
-      <GlobalStyles>         
-          <App />    
-      </GlobalStyles>
-    </Provider>
-  </React.StrictMode>,
-
+  <Provider store={store}>
+    <React.StrictMode>
+      {/* provider redux */} 
+        <GlobalStyles>         
+            <App />    
+        </GlobalStyles>
+    </React.StrictMode>,
+  </Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
