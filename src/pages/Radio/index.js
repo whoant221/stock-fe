@@ -1,11 +1,9 @@
 import classNames from 'classnames/bind';
-// import { useState, useEffect } from 'react';
-
 import SlideRadio from './SlideRadio';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-
 import styles from './Radio.module.scss'
+import Loading from './Loading/Loading';
 const cx = classNames.bind(styles)
 
 function Radio() {
@@ -22,15 +20,26 @@ function Radio() {
                 })
         }
         homePage5()
+
+        document.title =
+            'Radio | Xem bài hát, album, MV đang hot nhất hiện tại';
     }, [])
-    
-    return <div className={cx('wrapper')}>
-        <div className={cx('section')}>
-            <div className={cx('list-slide')}>
-                <SlideRadio listRadio={listRadio} />
-            </div>
-        </div>
-    </div>;
+
+    const renderLoading = () => {
+        if(listRadio){
+            return(
+                <div className={cx('wrapper')}>
+                    <div className={cx('section')}>
+                        <div className={cx('list-slide')}>
+                            <SlideRadio listRadio={listRadio} />
+                        </div>
+                    </div>
+                </div>
+            )
+        }else return <><Loading/></>
+    } 
+     
+    return <>{renderLoading()}</>
 }
 
 export default Radio;

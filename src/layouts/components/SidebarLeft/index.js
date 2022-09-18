@@ -1,14 +1,19 @@
 import classNames from "classnames/bind";
 import { Link } from 'react-router-dom';
-
+import { useState, useEffect } from 'react';
 import styles from './SidebarLeft.module.scss'
 import images from "~/images";
 import Menu from './Menu/Menu';
 import MenuItem from './Menu/MenuItem';
+import {useSelector} from 'react-redux';
 
 const cx = classNames.bind(styles)
 
 function SidebarLeft() {
+    
+    const thanhMV = useSelector(state => state.songReducer.nameMV)
+    const thanhHistory = useSelector(state => state.songReducer.nameHistory)
+
     return ( 
         <aside className={cx('wrapper')}>
             <Link to={''} className={cx('logo-link')}>
@@ -18,7 +23,7 @@ function SidebarLeft() {
                 <Menu>
                     <MenuItem 
                         title="Cá Nhân" 
-                        to={'/user'} 
+                        to={'/user/music/song'} 
                         icon={<i className="fal fa-user"></i>} 
                     />
                     <MenuItem
@@ -62,8 +67,8 @@ function SidebarLeft() {
                         icon={<i className="fal fa-star"></i>}
                     />
                     <MenuItem 
-                        title="MV"
-                        to={'/'}
+                        title="MV"                      
+                        to={`/the-loai-video/${thanhMV[1] === undefined || thanhMV[1] === '' ? 'Viet-Nam' : thanhMV[1]}`}
                         icon={<i className="fal fa-tv-music"></i>}
                     />
                     <div className={cx("box-vip")}>
@@ -78,19 +83,19 @@ function SidebarLeft() {
                     <MenuItem 
                         noActive
                         title="Bài Hát"
-                        to={'/user'}
+                        to={'/user/music/song'}
                         icon={<i className="far fa-album-collection"></i>}
                     />
                     <MenuItem 
                         noActive
                         title="Playlist"
-                        to={'/user'}
+                        to={'/playlist'}
                         icon={<i className="fal fa-list-music"></i>}
                     />
                     <MenuItem 
                         noActive
                         title="Gần Đây"
-                        to={'/user'}
+                        to={`/history/${thanhHistory[1] === undefined || thanhHistory === ''? 'song' : thanhHistory[1]}`}
                         icon={<i className="fal fa-history"></i>}
                     />
                 </Menu>

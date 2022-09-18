@@ -2,8 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import Loading from '../Loading/Loading';
-import MusicItem from '../MusicItem/MusicItem';
-
+import MusicItem from '~/components/MusicItem';
 import classNames from 'classnames/bind';
 import styles from './Top100VN.module.scss';
 

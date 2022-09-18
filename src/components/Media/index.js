@@ -5,6 +5,7 @@ import 'tippy.js/dist/tippy.css'; // optional
 
 import styles from './Media.module.scss';
 import Icon from '~/components/Icon';
+import HeartIcon from "../Icon/Heart";
 
 const cx = classNames.bind(styles)
 
@@ -13,23 +14,13 @@ function Media({
     songName,
     singerName,
     mediaActive,
-
+    data,
     largeCd, 
     largeContent, 
     nowrap,
     isActive,
     noHover,
 }) {
-
-    const [heart, setHeart] = useState(false)
-
-    const handleToggleHeart = () => {
-        if(heart === false) {
-            setHeart(true)
-        } else {
-            setHeart(false)
-        }
-    }
 
     const classes = cx('wrapper', {
         active: isActive,
@@ -49,21 +40,7 @@ function Media({
                     <div className={cx('singer-name', 'text-xs')}>{singerName}</div>
                 </div>
                 <div className={cx('action')}>
-                    <Tippy 
-                        content={heart ? "Xóa khỏi thư viện" : "Thêm vào thư viện"}
-                        hideOnClick='true'
-                    >
-                        <div className="icon">
-                            <Icon 
-                                mediaActive={mediaActive}
-                                onClick={handleToggleHeart}
-                                isActive={heart}
-                                icon={<i className="fal fa-heart"></i>}
-                                activeIcon={<i className="fas fa-heart"></i>}
-                            />
-                        </div>
-                    </Tippy>
-                    
+                    <HeartIcon activeNoColor={isActive} data={data} />
                     <Tippy content="Xem thêm">
                         <div className="icon">
                             <Icon icon={<i className="far fa-ellipsis-h"></i>}/>

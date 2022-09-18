@@ -1,0 +1,21 @@
+.search-nav {
+    display: flex;
+    margin-bottom: 20px;
+}
+.container {
+    flex-grow: 1;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.columns {
+    display: -moz-flex;
+    display: flex;
+    -webkit-box-lines: multiple;
+    -moz-box-lines: multiple;
+    box-lines: multiple;
+    flex-wrap: wrap;
+    position: relative;
+    margin: 0 -15px;
+}

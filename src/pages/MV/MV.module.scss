@@ -1,0 +1,22 @@
+.flex{
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+}
+.hr-top{
+    border-top: 1px solid hsla(0,0%,100%,0.1);
+    margin-left: -50px;
+    margin-right: -50px;
+}
+.MV{
+    flex-shrink: 0;
+    font-size: 24px;
+    margin: 0;
+    padding-right: 20px;
+    font-weight: 900;
+    border-right: 1px solid hsla(0,0%,100%,.1);
+}
+
+.mar-b-30 {
+    margin-bottom: 30px!important;
+}

@@ -24,8 +24,10 @@
     height: var(--header-height);
 
     background-color: var(--bg-main-color);
-    z-index: 99;
-}
+
+    z-index: 110;
+}       
+
 
 .transparent {
     background-color: transparent;
@@ -188,3 +190,5 @@
 .theme__content::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+

@@ -27,12 +27,15 @@ function Header() {
     let classActive = '';
     const [checkToppic, setCheckToppic] = useState(false);
 
-    const openToppic = () => {
-        setCheckToppic(true);
-    };
-    const closeToppic = () => {
-        setCheckToppic(false);
-    };
+
+
+    const openToppic = () =>{
+        setCheckToppic(true)
+    }
+    const closeToppic = () =>{
+        setCheckToppic(false)
+    }
+
 
     const userMenu = [
         {
@@ -318,7 +321,7 @@ function Header() {
                         </div>
                     </Tippy>
 
-                    <Tippy content='Nâng cấp VIP'>
+                    <Tippy content="Nâng cấp VIP">
                         <div className={cx('icon')}>
                             <Icon
                                 btn
@@ -341,6 +344,7 @@ function Header() {
                             />
                         </div>
                     </Tippy>
+
                     <Menu items={settingMenu}>
                         <div className={cx('icon')}>
                             <Icon
@@ -350,6 +354,7 @@ function Header() {
                             />
                         </div>
                     </Menu>
+
                     <Menu items={userMenu}>
                         <img
                             alt='avatar'

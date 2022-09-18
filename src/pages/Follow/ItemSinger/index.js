@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import styles from './Follow.module.scss';
+import classNames from 'classnames/bind';
+const cx = classNames.bind(styles)
 
 const ItemSinger = () => {
   const [isActive, setIsActive] = useState(false);
@@ -7,12 +10,12 @@ const ItemSinger = () => {
     
     <>
       <div
-        className="zma__list__item"
+        className={cx("zma__list__item")}
         style={{
-          transform: `${isActive ? "translate3d(-580px, 0px, 0px)" : ""}`,
+          transform: `${isActive ? "translate3d(-600px, 0px, 0px)" : ""}`,
         }}
       >
-        <div className="item__zma">
+        <div className={cx("item__zma")}>
           <a href="#">
             <img
               src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/karik.png"
@@ -20,7 +23,7 @@ const ItemSinger = () => {
             />
           </a>
         </div>
-        <div className="item__zma">
+        <div className={cx("item__zma")}>
           <a href="#">
             <img
               src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/duc-phuc.png"
@@ -28,7 +31,7 @@ const ItemSinger = () => {
             />
           </a>
         </div>
-        <div className="item__zma">
+        <div className={cx("item__zma")}>
           <a href="#">
             <img
               src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/justatee.png"
@@ -36,7 +39,7 @@ const ItemSinger = () => {
             />
           </a>
         </div>
-        <div className="item__zma">
+        <div className={cx("item__zma")}>
           <a href="#">
             <img
               src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/trinh-thanh-binh.png"
@@ -44,7 +47,7 @@ const ItemSinger = () => {
             />
           </a>
         </div>
-        <div className="item__zma">
+        <div className={cx("item__zma")}>
           <a href="#">
             <img
               src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/huong-ly.png"
@@ -52,7 +55,7 @@ const ItemSinger = () => {
             />
           </a>
         </div>
-        <div className="item__zma">
+        <div className={cx("item__zma")}>
           <a href="#">
             <img
               src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/mr-siro.png"
@@ -60,7 +63,7 @@ const ItemSinger = () => {
             />
           </a>
         </div>
-        <div className="item__zma">
+        <div className={cx("item__zma")}>
           <a href="#">
             <img
               src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/jack.png"
@@ -68,7 +71,7 @@ const ItemSinger = () => {
             />
           </a>
         </div>
-        <div className="item__zma">
+        <div className={cx("item__zma")}>
           <a href="#">
             <img
               src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/erik.png"
@@ -76,7 +79,7 @@ const ItemSinger = () => {
             />
           </a>
         </div>
-        <div className="item__zma">
+        <div className={cx("item__zma")}>
           <a href="#">
             <img
               src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/chi-dan.png"
@@ -84,8 +87,7 @@ const ItemSinger = () => {
             />
           </a>
         </div>
-
-        <div className="item__zma">
+        <div className={cx("item__zma")}>
           <a href="#">
             <img
               src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/hoa-minzy.png"
@@ -93,7 +95,7 @@ const ItemSinger = () => {
             />
           </a>
         </div>
-        <div className="item__zma">
+        <div className={cx("item__zma")}>
           <a href="#">
             <img
               src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/onlyc.png"
@@ -102,18 +104,21 @@ const ItemSinger = () => {
           </a>
         </div>
       </div>
-      <div 
-      className={`carousel__prev ${!isActive ? "unprev__carousel" : ""}`}
+      
+      <button 
+      className={cx('zm-btn', 'zm-carousel-control-prev', 'button', 'carousel__prev', `${!isActive ? "unprev__carousel" : ""}`)}
       onClick={() => setIsActive(false)}
       >
         <i className="fal fa-angle-left"></i>
-      </div>
-      <div 
-      className={`carousel__next ${isActive ? "unnext__carousel" : ""}`}
+      </button>
+
+      <button 
+      className={cx('zm-btn', 'zm-carousel-control-next', 'zm-disabled', 'button', 'carousel__next', `${isActive ? "unnext__carousel" : ""}`)}
       onClick={() => setIsActive(true)}
       >
         <i className="fal fa-angle-right"></i>
-      </div>
+      </button>
+      
     </>
   );
 };
