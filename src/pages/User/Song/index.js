@@ -9,8 +9,6 @@ import MusicItem from "~/components/MusicItem";
 const cx = classNames.bind(styles)
 
 function UserSong() {
-    //.slice().reverse(): đảo ngược mảng mà không thay đổi mảng ban đầu
-    const userPlaylists = zingStorage.getLibraryPlaylist()?.slice().reverse() || []
 
     const mySongs = zingStorage.getLibrarySong()?.slice().reverse() || []
 

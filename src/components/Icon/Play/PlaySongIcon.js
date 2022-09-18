@@ -3,9 +3,11 @@ import 'tippy.js/dist/tippy.css';
 import axios from 'axios';
 import classNames from 'classnames/bind';
 import styles from './PlaySongIcon.module.scss';
+import {useDispatch} from 'react-redux';
 const cx = classNames.bind(styles)
 
 function PlaySongIcon({className, data = {encodeId: null}}) {
+  const dispatch = useDispatch();
   const audioElem = useRef();
   const classIcon = ['fas fa-play', 'fas fa-waveform']
   const [number, setNumber] = useState(0)
@@ -35,6 +37,7 @@ function PlaySongIcon({className, data = {encodeId: null}}) {
     if(number === 0){
       setNumber(1)
       audioElem.current.play()
+      console.log(data.duration);
     } 
     if(number === 1) {
       setNumber(0)

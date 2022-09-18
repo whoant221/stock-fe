@@ -43,12 +43,14 @@ function PlayerBar() {
             </div>
 
             <div className={cx('control-time', 'flex grow justify-center items-center')}>
+                
                 <div className={cx('current-time')}>
                     {Math.floor(`${valueInput}` / 60) < 10
                         ? '0' + Math.floor(`${valueInput}` / 60)
                         : Math.floor(`${valueInput}` / 60)}
                     :{`${valueInput}` % 60 < 10 ? '0' + (`${valueInput}` % 60) : `${valueInput}` % 60}
                 </div>
+
                 <input 
                 id="progress" 
                 className={cx("progress")} 

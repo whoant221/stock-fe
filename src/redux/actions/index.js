@@ -5,6 +5,11 @@ export const addSongToLibrary = (data) => ({
     payload: data
 })
 
+export const removeSonginLibrary = (data) => ({
+    type: types.REMOVE_SONG_IN_LIBRARY,
+    payload: data
+})
+
 export const addPlaylistToLibrary = (data) => ({
     type: types.ADD_PLAYLIST_TO_LIBRARY,
     payload: data
