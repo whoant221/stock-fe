@@ -59,7 +59,7 @@ function Home() {
                 setWeekChart(res.data.data.items[0].items);
                 setTop100(res.data.data.items[2].items);
             } catch (error) {
-               console.log(error);
+                console.log(error);
             }
         };
 
@@ -69,7 +69,7 @@ function Home() {
                 setTopNewMusic(res.data.data.items[0].items);
                 setPlaylistNewMusic(res.data.data.items[1].items);
             } catch (error) {
-               console.log(error);
+                console.log(error);
             }
         };
 
@@ -78,7 +78,7 @@ function Home() {
                 const res = await getHome.homePage5();
                 setListRadio(res.data.data.items[1].items);
             } catch (error) {
-               console.log(error);
+                console.log(error);
             }
         };
 
