@@ -38,11 +38,11 @@ function Nhacmoi() {
                     {music.items ? (
                         music.items.map((item, index) => (
                             <LazyLoadComponent key={index}>
-                                <MusicItem 
-                                song={item}
-                                ranking
-                                number={index+ 1}
-                            />
+                                <MusicItem
+                                    song={item}
+                                    ranking
+                                    number={index + 1}
+                                />
                             </LazyLoadComponent>
                         ))
                     ) : (
@@ -51,9 +51,7 @@ function Nhacmoi() {
                         </div>
                     )}
                 </div>
-                <div className={cx('space')}>
-
-                </div>
+                <div className={cx('space')}></div>
             </div>
         </div>
     );

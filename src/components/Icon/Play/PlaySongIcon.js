@@ -13,45 +13,52 @@ function PlaySongIcon({className, data = {encodeId: null}}) {
   const [number, setNumber] = useState(0)
   const [listrender, setlistrender] = useState();
 
+    useEffect(() => {
+        const getSong = async () => {
+            // try {
+            //     const a = await axios.get(
+            //         `https://apizingmp3.herokuapp.com/api/song?id=${data.encodeId}`
+            //     );
+            //     setlistrender(a.data.data['128']);
+            // } catch (error) {
+            //     console.log(error);
+            // }
 
-  useEffect(() => {
-    const getSong = async () => {
-      try {
-          const a = await axios.get(`https://apizingmp3.herokuapp.com/api/song?id=${data.encodeId}`);
-          setlistrender(a.data.data['128']);
-      } catch (error) {
-          alert(error);
-      }
+            setlistrender([]);
+        };
+        getSong();
+    }, []);
+
+    const radio = () => {
+        if (listrender) {
+            return (
+                <audio
+                    src={listrender}
+                    preload='metadata'
+                    ref={audioElem}
+                ></audio>
+            );
+        }
     };
-    getSong()
-  }, []);
 
-  const radio = () => {
-    if(listrender){
-      return(
-        <audio src={ listrender } preload="metadata" ref={audioElem}></audio>
-    )}
-  }
+    const handleClick = () => {
+        if (number === 0) {
+            setNumber(1);
+            audioElem.current.play();
+        }
+        if (number === 1) {
+            setNumber(0);
+            audioElem.current.pause();
+        }
+    };
 
-  const handleClick =() => {
-    if(number === 0){
-      setNumber(1)
-      audioElem.current.play()
-      console.log(data.duration);
-    } 
-    if(number === 1) {
-      setNumber(0)
-      audioElem.current.pause()
-    }
-  }
-
-  return (
-    <button className={cx('wrapper', className)} onClick={handleClick}>
-      {radio()}
-      <span className={cx('icon')}>
-        <i className={cx(classIcon[number])}></i>
-      </span>
-    </button>
-  )
+    return (
+        <button className={cx('wrapper', className)} onClick={handleClick}>
+            {radio()}
+            <span className={cx('icon')}>
+                <i className={cx(classIcon[number])}></i>
+            </span>
+        </button>
+    );
 }
-export default PlaySongIcon
+export default PlaySongIcon;
