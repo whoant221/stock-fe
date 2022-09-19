@@ -11,6 +11,7 @@ function PlaySongIcon({className, data = {encodeId: null}}) {
   const [number, setNumber] = useState(0)
   const [listrender, setlistrender] = useState();
 
+
   useEffect(() => {
     const getSong = async () => {
       try {
@@ -21,32 +22,33 @@ function PlaySongIcon({className, data = {encodeId: null}}) {
       }
     };
     getSong()
+  }, []);
 
-    if(number === 0){
-      audioElem.current.pause()
-    } 
-    if(number === 1) {
-      audioElem.current.play()
-    }
-  }, [number]);
-
+  const radio = () => {
+    if(listrender){
+      return(
+        <audio src={ listrender } preload="metadata" ref={audioElem}></audio>
+    )}
+  }
 
   const handleClick =() => {
     if(number === 0){
       console.log(audioElem.current);
       setNumber(1)
+      audioElem.current.play()
     } 
     if(number === 1) {
       setNumber(0)
+      audioElem.current.pause()
     }
   }
 
   return (
     <button className={cx('wrapper', className)} onClick={handleClick}>
-        <audio src={listrender} preload="metadata" ref={audioElem}></audio>
-        <span className={cx('icon')}>
-          <i className={cx(classIcon[number])}></i>
-        </span>
+      {radio()}
+      <span className={cx('icon')}>
+        <i className={cx(classIcon[number])}></i>
+      </span>
     </button>
   )
 }
