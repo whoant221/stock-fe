@@ -11,7 +11,6 @@ import { playMusic } from '~/redux/actions';
 const cx = classNames.bind(styles);
 
 function MusicItemUser({ className, song, number, ranking }) {
-
     const formatTime = (time) => {
         if (time < 10) {
             return `0${time}`;
@@ -81,10 +80,7 @@ function MusicItemUser({ className, song, number, ranking }) {
     };
 
     return (
-        <div
-            className={cx('wrapper', { [className]: className })}
-            onClick={() => handlePlayMusic(song)}
-        >
+        <div className={cx('wrapper', { [className]: className })}>
             <div className={cx('media')}>
                 <div className={cx('media-left')}>
                     {ranking ? (
@@ -95,7 +91,7 @@ function MusicItemUser({ className, song, number, ranking }) {
                                 }
                             >
                                 {number}
-                            </span> 
+                            </span>
                             <RankingStatus rank={song.rakingStatus} />
                         </div>
                     ) : (
@@ -109,7 +105,10 @@ function MusicItemUser({ className, song, number, ranking }) {
                             src={song.thumbnail}
                             alt={song.title}
                         />
-                        <div className={cx('hover-items')}>
+                        <div
+                            className={cx('hover-items')}
+                            onClick={() => handlePlayMusic(song)}
+                        >
                             <PlaySongIcon
                                 data={song}
                                 className={cx('thumb-img_playbutton')}

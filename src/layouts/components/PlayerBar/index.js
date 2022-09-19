@@ -5,23 +5,22 @@ import styles from './PlayerBar.module.scss';
 import { useSelector } from 'react-redux';
 const cx = classNames.bind(styles);
 
-function PlayerBar({ playSong }) {
+function PlayerBar({ playSong, musicRef }) {
     const song = useSelector((state) => state.playMusicReducer);
 
     // const [valueInput, setvalueInput] = useState(0);
     const [PlaySong, setplaySong] = useState(0);
     const [LoadingNumber, setloadingNumber] = useState();
     const [play, setPlay] = useState(true);
-    const musicRef = useRef();
-
+    // const musicRef = useRef();
 
     const onPlaying = () => {
         const duration = musicRef.current.duration;
         const ct = musicRef.current.currentTime;
-        setplaySong(ct/duration * 100);
+        setplaySong((ct / duration) * 100);
         setloadingNumber(parseInt(ct));
-    }
- 
+    };
+
     // const onChangeValue = (e) => {
     //     setvalueInput(parseInt(e.target.value));
     // };
@@ -32,7 +31,7 @@ function PlayerBar({ playSong }) {
             musicRef.current.pause();
         } else {
             setPlay(true);
-            musicRef.current.play(); 
+            musicRef.current.play();
         }
     };
     return (
@@ -89,7 +88,9 @@ function PlayerBar({ playSong }) {
                     'flex grow justify-center items-center'
                 )}
             >
-                {!LoadingNumber ? <div className={cx('current-time')}>00:00</div> :
+                {!LoadingNumber ? (
+                    <div className={cx('current-time')}>00:00</div>
+                ) : (
                     <div className={cx('current-time')}>
                         {Math.floor(`${LoadingNumber}` / 60) < 10
                             ? '0' + Math.floor(`${LoadingNumber}` / 60)
@@ -99,7 +100,7 @@ function PlayerBar({ playSong }) {
                             ? '0' + (`${LoadingNumber}` % 60)
                             : `${LoadingNumber}` % 60}
                     </div>
-                }
+                )}
 
                 {playSong && (
                     <audio
@@ -114,7 +115,7 @@ function PlayerBar({ playSong }) {
                     id='progress'
                     className={cx('progress')}
                     style={{
-                        background: `linear-gradient(to right, #ffffff 0%, #ffffff ${(PlaySong)}%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%)`,
+                        background: `linear-gradient(to right, #ffffff 0%, #ffffff ${PlaySong}%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%)`,
                     }}
                     type='range'
                     value={PlaySong}
@@ -124,7 +125,9 @@ function PlayerBar({ playSong }) {
                     // onChange={onChangeValue}
                 ></input>
 
-                {!song.duration ? <div className={cx('total-time')}>00:00</div> :
+                {!song.duration ? (
+                    <div className={cx('total-time')}>00:00</div>
+                ) : (
                     <div className={cx('total-time')}>
                         {Math.floor(`${song.duration}` / 60) < 10
                             ? '0' + Math.floor(`${song.duration}` / 60)
@@ -134,9 +137,7 @@ function PlayerBar({ playSong }) {
                             ? '0' + (`${song.duration}` % 60)
                             : `${song.duration}` % 60}
                     </div>
-                }
-                
-                
+                )}
             </div>
         </div>
     );
