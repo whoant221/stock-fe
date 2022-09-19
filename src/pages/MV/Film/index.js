@@ -15,7 +15,7 @@ function Film() {
             const a = await getMV.getDetailMV(`${id}`);
             setlistrender(a.data.data);
         } catch (error) {
-            alert(error);
+            console.log(error);
         }
     };
     getDetailFilmFC();

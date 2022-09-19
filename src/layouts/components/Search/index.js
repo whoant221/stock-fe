@@ -31,7 +31,7 @@ function Search() {
                 const res = await getTopKeyword()
                 setTopSearchs(res.listKeyValue)
             } catch (error) {
-                alert(error);
+                // alert(error);
             }
         };
         getTopSearch();
