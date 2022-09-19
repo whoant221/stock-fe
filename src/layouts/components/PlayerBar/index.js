@@ -2,17 +2,29 @@ import classNames from 'classnames/bind';
 import { useRef, useState } from 'react';
 import Icon from '~/components/Icon';
 import styles from './PlayerBar.module.scss';
-
+import { useSelector } from 'react-redux';
 const cx = classNames.bind(styles);
 
 function PlayerBar({ playSong }) {
-    const [valueInput, setvalueInput] = useState(0);
+    const song = useSelector((state) => state.playMusicReducer);
+
+    // const [valueInput, setvalueInput] = useState(0);
+    const [PlaySong, setplaySong] = useState(0);
+    const [LoadingNumber, setloadingNumber] = useState();
     const [play, setPlay] = useState(true);
     const musicRef = useRef();
 
-    const onChangeValue = (e) => {
-        setvalueInput(parseInt(e.target.value));
-    };
+
+    const onPlaying = () => {
+        const duration = musicRef.current.duration;
+        const ct = musicRef.current.currentTime;
+        setplaySong(ct/duration * 100);
+        setloadingNumber(parseInt(ct));
+    }
+ 
+    // const onChangeValue = (e) => {
+    //     setvalueInput(parseInt(e.target.value));
+    // };
 
     const handlePlayMusic = () => {
         if (play) {
@@ -20,10 +32,9 @@ function PlayerBar({ playSong }) {
             musicRef.current.pause();
         } else {
             setPlay(true);
-            musicRef.current.play();
+            musicRef.current.play(); 
         }
     };
-
     return (
         <div className={cx('wrapper', 'grow')}>
             <div className={cx('control-btns', 'flex justify-center grow')}>
@@ -78,37 +89,54 @@ function PlayerBar({ playSong }) {
                     'flex grow justify-center items-center'
                 )}
             >
-                <div className={cx('current-time')}>
-                    {Math.floor(`${valueInput}` / 60) < 10
-                        ? '0' + Math.floor(`${valueInput}` / 60)
-                        : Math.floor(`${valueInput}` / 60)}
-                    :
-                    {`${valueInput}` % 60 < 10
-                        ? '0' + (`${valueInput}` % 60)
-                        : `${valueInput}` % 60}
-                </div>
+                {!LoadingNumber ? <div className={cx('current-time')}>00:00</div> :
+                    <div className={cx('current-time')}>
+                        {Math.floor(`${LoadingNumber}` / 60) < 10
+                            ? '0' + Math.floor(`${LoadingNumber}` / 60)
+                            : Math.floor(`${LoadingNumber}` / 60)}
+                        :
+                        {`${LoadingNumber}` % 60 < 10
+                            ? '0' + (`${LoadingNumber}` % 60)
+                            : `${LoadingNumber}` % 60}
+                    </div>
+                }
+
                 {playSong && (
                     <audio
                         src={playSong['128']}
                         type='audio'
                         autoPlay
                         ref={musicRef}
+                        onTimeUpdate={onPlaying}
                     />
                 )}
                 <input
                     id='progress'
                     className={cx('progress')}
                     style={{
-                        background: `linear-gradient(to right, #ffffff 0%, #ffffff ${valueInput}%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%)`,
+                        background: `linear-gradient(to right, #ffffff 0%, #ffffff ${(PlaySong)}%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%)`,
                     }}
                     type='range'
-                    value={valueInput}
+                    value={PlaySong}
                     step='1'
                     min='0'
                     max='100'
-                    onChange={onChangeValue}
+                    // onChange={onChangeValue}
                 ></input>
-                <div className={cx('total-time')}>03:12</div>
+
+                {!song.duration ? <div className={cx('total-time')}>00:00</div> :
+                    <div className={cx('total-time')}>
+                        {Math.floor(`${song.duration}` / 60) < 10
+                            ? '0' + Math.floor(`${song.duration}` / 60)
+                            : Math.floor(`${song.duration}` / 60)}
+                        :
+                        {`${song.duration}` % 60 < 10
+                            ? '0' + (`${song.duration}` % 60)
+                            : `${song.duration}` % 60}
+                    </div>
+                }
+                
+                
             </div>
         </div>
     );

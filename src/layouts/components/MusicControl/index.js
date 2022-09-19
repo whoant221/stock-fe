@@ -40,12 +40,15 @@ function MusicControl() {
     }
 
     const song = useSelector((state) => state.playMusicReducer);
+
     useEffect(() => {
         axios
             .get(
                 `https://apizingmp3.herokuapp.com/api/song?id=${song.encodeId}`
             )
             .then((res) => setPlaySong(res.data.data));
+
+
     }, [song]);
 
     return (
