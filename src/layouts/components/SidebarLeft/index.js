@@ -1,6 +1,5 @@
 import classNames from "classnames/bind";
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import styles from './SidebarLeft.module.scss'
 import images from "~/images";
 import Menu from './Menu/Menu';

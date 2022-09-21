@@ -1,39 +1,35 @@
 import classNames from 'classnames/bind';
-import { useRef, useState } from 'react';
+import { useState,useEffect } from 'react';
 import Icon from '~/components/Icon';
 import styles from './PlayerBar.module.scss';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { addValueIsPlay } from '../../../redux/actions';
 const cx = classNames.bind(styles);
 
 function PlayerBar({ playSong, musicRef }) {
+    const dispatch = useDispatch();
     const song = useSelector((state) => state.playMusicReducer);
+    const valueVolume = useSelector((state) => state.IconProject.valueVolume['1']/100)
+    const isPlay = useSelector((state) => state.IconProject.isPlay['1'])
 
-    // const [valueInput, setvalueInput] = useState(0);
     const [PlaySong, setplaySong] = useState(0);
     const [LoadingNumber, setloadingNumber] = useState();
-    const [play, setPlay] = useState(true);
-    // const musicRef = useRef();
 
     const onPlaying = () => {
         const duration = musicRef.current.duration;
         const ct = musicRef.current.currentTime;
-        setplaySong((ct / duration) * 100);
+        setplaySong(ct/duration * 100);
         setloadingNumber(parseInt(ct));
+        musicRef.current.volume = valueVolume
     };
 
-    // const onChangeValue = (e) => {
-    //     setvalueInput(parseInt(e.target.value));
-    // };
-
-    const handlePlayMusic = () => {
-        if (play) {
-            setPlay(false);
-            musicRef.current.pause();
-        } else {
-            setPlay(true);
-            musicRef.current.play();
-        }
+    const onChangeValue = (e) => {
+        musicRef.current.currentTime = (e.target.value * Math.ceil(musicRef.current.duration)/100);
     };
+
+    
+
+
     return (
         <div className={cx('wrapper', 'grow')}>
             <div className={cx('control-btns', 'flex justify-center grow')}>
@@ -48,7 +44,7 @@ function PlayerBar({ playSong, musicRef }) {
                     className={cx('icon')}
                     icon={<i className='fal fa-step-backward'></i>}
                 />
-                {play ? (
+                {isPlay ? (
                     <Icon
                         s14
                         activeNoColor
@@ -56,7 +52,10 @@ function PlayerBar({ playSong, musicRef }) {
                         className={cx('icon', 'icon-play')}
                         icon={<i className='fas fa-play'></i>}
                         activeIcon={<i className='fas fa-pause'></i>}
-                        onClick={handlePlayMusic}
+                        onClick={() => {
+                            dispatch(addValueIsPlay(false))
+                            musicRef.current.pause();
+                        }}
                     />
                 ) : (
                     <Icon
@@ -66,7 +65,10 @@ function PlayerBar({ playSong, musicRef }) {
                         className={cx('icon', 'icon-play')}
                         icon={<i className='fas fa-play'></i>}
                         activeIcon={<i className='fas fa-play'></i>}
-                        onClick={handlePlayMusic}
+                        onClick={() => {
+                            dispatch(addValueIsPlay(true))
+                            musicRef.current.play();
+                        }}
                     />
                 )}
 
@@ -106,7 +108,7 @@ function PlayerBar({ playSong, musicRef }) {
                     <audio
                         src={playSong['128']}
                         type='audio'
-                        autoPlay
+                        autoPlay={isPlay}
                         ref={musicRef}
                         onTimeUpdate={onPlaying}
                     />
@@ -122,7 +124,7 @@ function PlayerBar({ playSong, musicRef }) {
                     step='1'
                     min='0'
                     max='100'
-                    // onChange={onChangeValue}
+                    onChange={onChangeValue}
                 ></input>
 
                 {!song.duration ? (

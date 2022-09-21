@@ -23,9 +23,7 @@ function MusicControl() {
 
     const musicRef = useRef();
 
-    const onChangeValue = (e) => {
-        musicRef.current.volume = e.target.value / 100;
-        console.log(musicRef.current.volume);
+    const onChangeValue = (e) => {    
         setvalueInput(parseInt(e.target.value));
     };
 

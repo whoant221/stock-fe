@@ -7,7 +7,6 @@ import HeartIcon from '../Icon/Heart';
 import Image from '../Image';
 import PlaySongIcon from '../Icon/Play/PlaySongIcon';
 import { playMusic } from '~/redux/actions';
-
 const cx = classNames.bind(styles);
 
 function MusicItemUser({ className, song, number, ranking }) {
@@ -99,7 +98,9 @@ function MusicItemUser({ className, song, number, ranking }) {
                             <i className='fal fa-music'></i>
                         </div>
                     )}
-                    <div className={cx('thumb-wrap')}>
+                    <div className={cx('thumb-wrap')}
+                    onClick={() => handlePlayMusic(song)}
+                    >
                         <Image
                             className={cx('thumb-img')}
                             src={song.thumbnail}
@@ -107,7 +108,6 @@ function MusicItemUser({ className, song, number, ranking }) {
                         />
                         <div
                             className={cx('hover-items')}
-                            onClick={() => handlePlayMusic(song)}
                         >
                             <PlaySongIcon
                                 data={song}

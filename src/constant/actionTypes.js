@@ -13,3 +13,6 @@ export const PLAY_MUSIC = 'PLAY_MUSIC';
 
 //Icon
 export const SET_ACTIVE_GET_ICON_VOLUME = 'SET_ACTIVE_GET_ICON_VOLUME';
+
+export const SET_ACTIVE_GET_IS_PLAY = 'SET_ACTIVE_GET_IS_PLAY';
+
