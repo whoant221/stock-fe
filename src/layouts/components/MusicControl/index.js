@@ -44,6 +44,7 @@ function MusicControl() {
     }
 
     const song = useSelector((state) => state.playMusicReducer);
+    const listSong = useSelector((state) => state.musicsOfPageReducer);
 
     useEffect(() => {
         axios

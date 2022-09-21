@@ -108,7 +108,7 @@ function MusicItemUser({ className, song, number, ranking }) {
                         <div
                             className={cx('hover-items')}
                             onClick={() => handlePlayMusic(song)}
-                        >
+                        >   
                             <PlaySongIcon
                                 data={song}
                                 className={cx('thumb-img_playbutton')}

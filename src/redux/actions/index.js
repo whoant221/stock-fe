@@ -34,3 +34,8 @@ export const playMusic = (data) => ({
     type: types.PLAY_MUSIC,
     payload: data,
 });
+
+export const musicsOfPage = (data) => ({
+    type: types.MUSICS_OF_PAGE,
+    payload: data,
+});

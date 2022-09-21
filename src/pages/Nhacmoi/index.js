@@ -5,11 +5,14 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import Loading from '../Zingchart/Loading/Loading';
 import MusicItem from '~/components/MusicItem';
 import styles from './NhacMoi.module.scss';
+import { useDispatch } from 'react-redux';
+import { musicsOfPage } from '~/redux/actions';
 
 const cx = classNames.bind(styles);
 
 function Nhacmoi() {
     const [music, setMusic] = useState([]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,11 +20,14 @@ function Nhacmoi() {
                 .get(`https://apizingmp3.herokuapp.com/api/newreleasechart`)
                 .then((res) => res.data.data);
             setMusic(data);
+            dispatch(musicsOfPage(data.items));
+
         };
         fetchData();
 
         document.title = '#zingchart tuần, #zingchart Zing - Bài hát';
     }, []);
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('blur')}></div>
