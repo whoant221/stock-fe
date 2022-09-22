@@ -9,21 +9,33 @@ function PlayerBar({ playSong, musicRef }) {
     const song = useSelector((state) => state.playMusicReducer);
 
     // const [valueInput, setvalueInput] = useState(0);
-    const [PlaySong, setplaySong] = useState(0);
+    const [PlaySong, setPlaySong] = useState(0);
     const [LoadingNumber, setloadingNumber] = useState();
     const [play, setPlay] = useState(true);
+    const [currentTime, setCurrentTime] = useState(0);
+    const currentTimeRef = useRef();
     // const musicRef = useRef();
 
     const onPlaying = () => {
         const duration = musicRef.current.duration;
         const ct = musicRef.current.currentTime;
-        setplaySong((ct / duration) * 100);
+        setPlaySong((ct / duration) * 100);
         setloadingNumber(parseInt(ct));
     };
 
-    // const onChangeValue = (e) => {
-    //     setvalueInput(parseInt(e.target.value));
-    // };
+    const onChangeValue = (e) => {
+        // setvalueInput(parseInt(e.target.value));
+        musicRef.current.currentTime = currentTimeRef.current.value;
+        changePlayerCurrentTime();
+    };
+
+    const changePlayerCurrentTime = () => {
+        currentTimeRef.current.style.setProperty(
+            '--seek-before-width',
+            `${PlaySong}%`
+        );
+        setCurrentTime(currentTimeRef.current.value);
+    };
 
     const handlePlayMusic = () => {
         if (play) {
@@ -119,10 +131,10 @@ function PlayerBar({ playSong, musicRef }) {
                     }}
                     type='range'
                     value={PlaySong}
-                    step='1'
+                    ref={currentTimeRef}
                     min='0'
                     max='100'
-                    // onChange={onChangeValue}
+                    onChange={onChangeValue}
                 ></input>
 
                 {!song.duration ? (
