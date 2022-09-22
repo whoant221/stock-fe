@@ -70,12 +70,13 @@ function Content() {
                                         </span>
                                         </Link>
                                     </div>
-                                    <div className={cx('subtitle', 'is-one-line')}>                                   
-                                        {item.artists.map((items, index) => {
-                                            return(
-                                                <Link key={index} className={cx('is-ghost')} to={'/'}>{items.name} </Link>
-                                            )                                     
-                                        })}              
+                                    <div className={cx('subtitle', 'is-one-line')}>       
+                                        {getContent ? 
+                                            item.artists.map((items, index) => {
+                                                return(
+                                                    <Link key={index} className={cx('is-ghost')} to={'/'}>{items.name} </Link>
+                                                )                                     
+                                        }): null}                                      
                                     </div>
                                 </div>
                             </div>

@@ -30,7 +30,24 @@ export const addValueVolume = (data) => ({
     payload: data,
 });
 
+export const addValueIsPlay = (data) => ({
+    type: types.SET_ACTIVE_GET_IS_PLAY,
+    payload: data,
+});
+
+export const setRandom = (data) => ({
+    type: types.SET_ACTIVE_GET_IS_RANDOM,
+    payload: data,
+});
+
+export const setLoop = (data) => ({
+    type: types.SET_ACTIVE_GET_IS_LOOP,
+    payload: data,
+});
+
 export const playMusic = (data) => ({
     type: types.PLAY_MUSIC,
     payload: data,
 });
+
+

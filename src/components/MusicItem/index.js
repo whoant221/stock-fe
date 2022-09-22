@@ -7,7 +7,6 @@ import HeartIcon from '../Icon/Heart';
 import Image from '../Image';
 import PlaySongIcon from '../Icon/Play/PlaySongIcon';
 import { playMusic } from '~/redux/actions';
-
 const cx = classNames.bind(styles);
 
 function MusicItemUser({ className, song, number, ranking }) {
@@ -59,10 +58,7 @@ function MusicItemUser({ className, song, number, ranking }) {
     };
 
     return (
-        <div
-            className={cx('wrapper', { [className]: className })}
-            onClick={() => handlePlayMusic(song)}
-        >
+        <div className={cx('wrapper', { [className]: className })}>
             <div className={cx('media')}>
                 <div className={cx('media-left')}>
                     {ranking ? (
@@ -73,7 +69,7 @@ function MusicItemUser({ className, song, number, ranking }) {
                                 }
                             >
                                 {number}
-                            </span> 
+                            </span>
                             <RankingStatus rank={song.rakingStatus} />
                         </div>
                     ) : (
@@ -81,13 +77,17 @@ function MusicItemUser({ className, song, number, ranking }) {
                             <i className='fal fa-music'></i>
                         </div>
                     )}
-                    <div className={cx('thumb-wrap')}>
+                    <div className={cx('thumb-wrap')}
+                    onClick={() => handlePlayMusic(song)}
+                    >
                         <Image
                             className={cx('thumb-img')}
                             src={song.thumbnail}
                             alt={song.title}
                         />
-                        <div className={cx('hover-items')}>
+                        <div
+                            className={cx('hover-items')}
+                        >
                             <PlaySongIcon
                                 data={song}
                                 className={cx('thumb-img_playbutton')}

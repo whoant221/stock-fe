@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './MusicControl.module.scss';
 import Media from '~/components/Media';
 import PlayerBar from '~/layouts/components/PlayerBar';
@@ -21,7 +21,9 @@ function MusicControl() {
     const [valueInput, setvalueInput] = useState(initValue);
     const [playSong, setPlaySong] = useState('');
 
-    const onChangeValue = (e) => {
+    const musicRef = useRef();
+
+    const onChangeValue = (e) => {    
         setvalueInput(parseInt(e.target.value));
     };
 
@@ -47,8 +49,6 @@ function MusicControl() {
                 `https://apizingmp3.herokuapp.com/api/song?id=${song.encodeId}`
             )
             .then((res) => setPlaySong(res.data.data));
-
-
     }, [song]);
 
     return (
@@ -73,7 +73,7 @@ function MusicControl() {
                     noHover
                 />
             </div>
-            <PlayerBar playSong={playSong} />
+            <PlayerBar playSong={playSong} musicRef={musicRef} />
             <div
                 className={cx('control-right', 'flex items-center justify-end')}
             >
