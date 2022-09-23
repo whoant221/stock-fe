@@ -32,7 +32,7 @@ const zingStorage = {
     getLibraryPlaylist: () => storage.get(LIBRARY_PLAYLIST),
 
     setAddValueVolume: (data) => storage.set(VALUE_VOLUME, data),
-    getAddValueVolume: () => storage.get(VALUE_VOLUME) || 50,
+    getAddValueVolume: () => storage.get(VALUE_VOLUME),
 } 
 
 export default zingStorage;

@@ -7,8 +7,8 @@ export const addSongToLibrary = (data) => ({
 
 export const removeSonginLibrary = (data) => ({
     type: types.REMOVE_SONG_IN_LIBRARY,
-    payload: data
-})
+    payload: data,
+});
 
 export const addPlaylistToLibrary = (data) => ({
     type: types.ADD_PLAYLIST_TO_LIBRARY,
@@ -30,12 +30,17 @@ export const addValueVolume = (data) => ({
     payload: data,
 });
 
+export const addValueIsPlay = (data) => ({
+    type: types.SET_ACTIVE_GET_IS_PLAY,
+    payload: data,
+});
+
 export const playMusic = (data) => ({
     type: types.PLAY_MUSIC,
     payload: data,
 });
 
-export const musicsOfPage = (data) => ({
+export const musicOfPage = (data) => ({
     type: types.MUSICS_OF_PAGE,
     payload: data,
 });

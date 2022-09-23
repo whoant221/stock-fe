@@ -20,13 +20,10 @@ function MusicControl() {
     const [activePlaylist, setActivePlaylist] = useState(false);
     const [valueInput, setvalueInput] = useState(initValue);
     const [playSong, setPlaySong] = useState('');
-    
 
     const musicRef = useRef();
 
     const onChangeValue = (e) => {
-        musicRef.current.volume = e.target.value / 100;
-        console.log(musicRef.current.volume);
         setvalueInput(parseInt(e.target.value));
     };
 
@@ -44,8 +41,11 @@ function MusicControl() {
         activePlaylist ? setActivePlaylist(false) : setActivePlaylist(true);
     }
 
-    const song = useSelector((state) => state.playMusicReducer);
+    //Get list song of page
     const listSong = useSelector((state) => state.musicsOfPageReducer);
+    console.log(listSong);
+
+    const song = useSelector((state) => state.playMusicReducer);
 
     useEffect(() => {
         axios

@@ -2,8 +2,8 @@ import * as types from '~/constant/actionTypes';
 import zingStorage from '~/utils/storage';
 
 const initialState = {
-    isPlaying: false,
     valueVolume: zingStorage.getAddValueVolume,
+    isPlay: '',
 };
 
 const IconProject = (state = initialState, actions) => {
@@ -15,6 +15,13 @@ const IconProject = (state = initialState, actions) => {
                 ...state,
                 valueVolume: valueVolume,
             };
+        case types.SET_ACTIVE_GET_IS_PLAY:
+                let isPlay = [state.isPlay];
+                isPlay.push(actions.payload);
+                return {
+                    ...state,
+                    isPlay: isPlay,
+                };
         default:
             return state;
     }

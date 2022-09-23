@@ -1,51 +1,35 @@
 import classNames from 'classnames/bind';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Icon from '~/components/Icon';
+import { addValueIsPlay } from '../../../redux/actions';
 import styles from './PlayerBar.module.scss';
-import { useSelector } from 'react-redux';
 const cx = classNames.bind(styles);
 
 function PlayerBar({ playSong, musicRef }) {
+    const dispatch = useDispatch();
     const song = useSelector((state) => state.playMusicReducer);
+    const valueVolume = useSelector(
+        (state) => state.IconProject.valueVolume['1'] / 100
+    );
+    const isPlay = useSelector((state) => state.IconProject.isPlay['1']);
 
-    // const [valueInput, setvalueInput] = useState(0);
-    const [PlaySong, setPlaySong] = useState(0);
+    const [PlaySong, setplaySong] = useState(0);
     const [LoadingNumber, setloadingNumber] = useState();
-    const [play, setPlay] = useState(true);
-    const [currentTime, setCurrentTime] = useState(0);
-    const currentTimeRef = useRef();
-    // const musicRef = useRef();
 
     const onPlaying = () => {
         const duration = musicRef.current.duration;
         const ct = musicRef.current.currentTime;
-        setPlaySong((ct / duration) * 100);
+        setplaySong((ct / duration) * 100);
         setloadingNumber(parseInt(ct));
+        musicRef.current.volume = valueVolume;
     };
 
     const onChangeValue = (e) => {
-        // setvalueInput(parseInt(e.target.value));
-        musicRef.current.currentTime = currentTimeRef.current.value;
-        changePlayerCurrentTime();
+        musicRef.current.currentTime =
+            (e.target.value * Math.ceil(musicRef.current.duration)) / 100;
     };
 
-    const changePlayerCurrentTime = () => {
-        currentTimeRef.current.style.setProperty(
-            '--seek-before-width',
-            `${PlaySong}%`
-        );
-        setCurrentTime(currentTimeRef.current.value);
-    };
-
-    const handlePlayMusic = () => {
-        if (play) {
-            setPlay(false);
-            musicRef.current.pause();
-        } else {
-            setPlay(true);
-            musicRef.current.play();
-        }
-    };
     return (
         <div className={cx('wrapper', 'grow')}>
             <div className={cx('control-btns', 'flex justify-center grow')}>
@@ -60,7 +44,7 @@ function PlayerBar({ playSong, musicRef }) {
                     className={cx('icon')}
                     icon={<i className='fal fa-step-backward'></i>}
                 />
-                {play ? (
+                {isPlay ? (
                     <Icon
                         s14
                         activeNoColor
@@ -68,7 +52,10 @@ function PlayerBar({ playSong, musicRef }) {
                         className={cx('icon', 'icon-play')}
                         icon={<i className='fas fa-play'></i>}
                         activeIcon={<i className='fas fa-pause'></i>}
-                        onClick={handlePlayMusic}
+                        onClick={() => {
+                            dispatch(addValueIsPlay(false));
+                            musicRef.current.pause();
+                        }}
                     />
                 ) : (
                     <Icon
@@ -78,7 +65,10 @@ function PlayerBar({ playSong, musicRef }) {
                         className={cx('icon', 'icon-play')}
                         icon={<i className='fas fa-play'></i>}
                         activeIcon={<i className='fas fa-play'></i>}
-                        onClick={handlePlayMusic}
+                        onClick={() => {
+                            dispatch(addValueIsPlay(true));
+                            musicRef.current.play();
+                        }}
                     />
                 )}
 
@@ -118,7 +108,7 @@ function PlayerBar({ playSong, musicRef }) {
                     <audio
                         src={playSong['128']}
                         type='audio'
-                        autoPlay
+                        autoPlay={isPlay}
                         ref={musicRef}
                         onTimeUpdate={onPlaying}
                     />
@@ -131,7 +121,6 @@ function PlayerBar({ playSong, musicRef }) {
                     }}
                     type='range'
                     value={PlaySong}
-                    ref={currentTimeRef}
                     min='0'
                     max='100'
                     onChange={onChangeValue}
