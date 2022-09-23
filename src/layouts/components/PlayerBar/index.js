@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Icon from '~/components/Icon';
 import styles from './PlayerBar.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { addValueIsPlay } from '../../../redux/actions';
-import { setLoop, setRandom } from '../../../redux/actions';
+import { setLoop, setRandom, playMusic } from '../../../redux/actions';
 import zingStorage from '~/utils/storage';
 const cx = classNames.bind(styles);
 
@@ -14,21 +14,49 @@ function PlayerBar({ playSong, musicRef }) {
     const valueVolume = useSelector((state) => state.IconProject.valueVolume['1']/100)
     const isPlay = useSelector((state) => state.IconProject.isPlay['1'])
     const isLoop = useSelector((state) => state.IconProject.isLoop['1'])
+    const listSong = useSelector((state) => state.playlistReducer.listSong)
     const [PlaySong, setplaySong] = useState(0);
     const [LoadingNumber, setloadingNumber] = useState();
-
+    const [ChecklistSongRamDom, setcheckListSongRamDom] = useState();
+    const [ChecklistSongUnRamDom, setcheckListSongUnRamDom] = useState();
 
     if(PlaySong){
         if(isPlay) musicRef.current.play()
         else musicRef.current.pause()
     }
 
+    console.log(listSong);
+
+    // const check = () => {
+    //     if(song.encodeId){
+    //         return(
+    //             listSong.map(index => {
+    //                 const arr = []
+    //                 arr.push(index.encodeId)
+    //                 console.log(arr);
+    //                 // console.log(arr.indexOf(song.encodeId)); 
+    //     }))
+    //     }
+    // }
+    // check()
+
+    useEffect(() => {
+        setcheckListSongRamDom(listSong[Math.floor(Math.random() * listSong.length) - 1])
+    }, [isPlay]);
+    
     //kết thúc audio sẽ làm gì ...
     const handleOnEnd = () => {
-        dispatch(addValueIsPlay(false));
-        // if(!isLoop){
-        //     alert('thanh')
-        // }
+        if(!zingStorage.getIsLoop()){
+            dispatch(addValueIsPlay(false));
+            if(zingStorage.getIsRanDom()){
+                setcheckListSongRamDom(listSong[Math.floor(Math.random() * listSong.length) - 1])
+                dispatch(playMusic(ChecklistSongRamDom));
+                dispatch(addValueIsPlay(true));
+            }else{
+                // setcheckListSongUnRamDom(listSong[listSong.length-1])
+                // console.log(ChecklistSongUnRamDom);
+            }
+        }
     }
 
     const onPlaying = () => {
@@ -142,7 +170,7 @@ function PlayerBar({ playSong, musicRef }) {
                         onClick = {handleLoop}
                     /> 
                 }
-                
+              
             </div>
             <div
                 className={cx(

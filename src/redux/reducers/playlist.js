@@ -5,6 +5,7 @@ import zingStorage from "~/utils/storage";
 
 const initialState = {
     libraryPlaylist: zingStorage.getLibraryPlaylist() || [],
+    listSong: '',
 }
 
 const playlistReducer = (state = initialState, actions) => {
@@ -14,6 +15,11 @@ const playlistReducer = (state = initialState, actions) => {
             return {
                 ...state,
                 libraryPlaylist: [...state.libraryPlaylist, actions.payload]
+            }
+        case types.LIST_SONG:          
+            return {
+                ...state,
+                listSong: [...state.listSong, actions.payload]
             }
         default:
             return state;

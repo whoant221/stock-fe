@@ -6,7 +6,7 @@ import Icon from '../Icon';
 import HeartIcon from '../Icon/Heart';
 import Image from '../Image';
 import PlaySongIcon from '../Icon/Play/PlaySongIcon';
-import { playMusic } from '~/redux/actions';
+import { playMusic, listSong } from '~/redux/actions';
 const cx = classNames.bind(styles);
 
 function MusicItemUser({ className, song, number, ranking }) {
@@ -23,12 +23,16 @@ function MusicItemUser({ className, song, number, ranking }) {
     const librarySong = useSelector((state) => state.songReducer.librarySong);
     const dispatch = useDispatch();
 
+
+    if(song){
+        dispatch(listSong(song))
+    }
+
     const renderHeart = () => {
         const isInLibrary = librarySong.map((mySong) => {
             if (mySong.encodeId === song.encodeId || !undefined)
                 return mySong.encodeId;
         });
-        // console.log(isInLibrary);
         if (isInLibrary) {
             return (
                 <div className={cx('item')}>

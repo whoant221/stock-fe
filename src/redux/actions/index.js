@@ -50,4 +50,9 @@ export const playMusic = (data) => ({
     payload: data,
 });
 
+export const listSong = (data) => ({
+    type: types.LIST_SONG,
+    payload: data,
+});
+
 
