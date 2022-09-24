@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import { Link } from "react-router-dom";
 import getMV from '../../../../api/getMV';
 import Loading from '../../Loading/Loading';
+import Image from '~/components/Image';
 const cx = classNames.bind(styles);
 
 function Content() {
@@ -18,7 +19,7 @@ function Content() {
                 const res = await getMV.getKpop();             
                 setGetContent(res.data.data.items)
             } catch (error) {
-                alert(error);
+                // alert(error);
             }
         };
         MVVN()
@@ -54,7 +55,7 @@ function Content() {
                                 <div className={cx('media-left')}>
                                 <Link to={'/'}>
                                     <figure className={cx('image', 'is-40x40', 'is-rounded')}>
-                                    <img src={item.artist.thumbnail}></img>
+                                    <Image src={item?.artist?.thumbnail}/>
                                     </figure>
                                 </Link>
                                 </div>
@@ -69,12 +70,13 @@ function Content() {
                                         </span>
                                         </Link>
                                     </div>
-                                    <div className={cx('subtitle', 'is-one-line')}>                                   
-                                        {item.artists.map((items, index) => {
-                                            return(
-                                                <Link key={index} className={cx('is-ghost')} to={'/'}>{items.name} </Link>
-                                            )                                     
-                                        })}              
+                                    <div className={cx('subtitle', 'is-one-line')}>       
+                                        {getContent ? 
+                                            item.artists.map((items, index) => {
+                                                return(
+                                                    <Link key={index} className={cx('is-ghost')} to={'/'}>{items.name} </Link>
+                                                )                                     
+                                        }): null}                                      
                                     </div>
                                 </div>
                             </div>

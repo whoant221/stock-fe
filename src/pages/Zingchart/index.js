@@ -6,9 +6,11 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 import { Chart } from './chart';
 import Loading from './Loading/Loading';
-import MusicItem from './MusicItem/MusicItem';
+import MusicItem from '~/components/MusicItem';
 import TopMusic from './TopMusic/TopMusic';
 import styles from './Zingchart.module.scss';
+import { useDispatch } from 'react-redux';
+import { musicOfPage } from '~/redux/actions';
 
 const cx = classNames.bind(styles);
 
@@ -18,12 +20,15 @@ function Zingchart() {
     const [visible, setVisible] = useState(10);
     const [offBtn, setOffBtn] = useState(false);
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
         const fetchData = async () => {
             const data = await axios
                 .get(`https://apizingmp3.herokuapp.com/api/charthome`)
                 .then((res) => res.data.data);
             setMusic(data);
+            dispatch(musicOfPage(data.RTChart.items));
             setChartInfo(data.RTChart.chart);
         };
         fetchData();
@@ -35,7 +40,6 @@ function Zingchart() {
         setVisible((prev) => prev + 90);
         setOffBtn(true);
     };
-    console.log(music.weekChart);
     return (
         <div>
             <div className={cx('wrapper-chart')}>
@@ -49,13 +53,7 @@ function Zingchart() {
                 {music.RTChart ? (
                     music.RTChart.items.slice(0, visible).map((item, index) => (
                         <LazyLoadComponent key={index}>
-                            <MusicItem
-                                num={index + 1}
-                                title={item.title}
-                                name={item.album ? item.album.title : ''}
-                                artistsNames={item.artistsNames}
-                                thumbnail={item.thumbnail || item.thumbnailM}
-                            />
+                            <MusicItem song={item} ranking number={index + 1} />
                         </LazyLoadComponent>
                     ))
                 ) : (

@@ -67,14 +67,46 @@
         .num-3 {
             -webkit-text-stroke: 1px #e35050;
         }
+    }
+}
 
-        .line {
-            display: block;
-            border-top: 2px solid #ffffff80;
-            width: 12px;
-            margin: 0 3px;
+.rank-status {
+    width: 18px;
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-primary);
+
+    .line {
+        display: block;
+        border-top: 2px solid #ffffff80;
+        width: 12px;
+        margin: 0 3px;
+    }
+
+    .status-icon {
+        width: 18px;
+        height: 18px;
+        text-align: center;
+        font-size: 18px;
+
+        &.icon-down {
+            color: #e35050;
+        }
+        &.icon-up {
+            color: #1dc186;
         }
     }
+
+    .status-num {
+        width: 18px;
+        height: 18px;
+        text-align: center;
+        font-size: 12px;
+    }
+    
 }
 
 .thumb-wrap {
@@ -89,6 +121,15 @@
 .thumb-img {
     width: 40px;
     height: 40px;
+    position: relative;
+}
+
+.thumb-img_playbutton{
+    position: absolute;
+    z-index: 1000000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .song-infor {

@@ -2,29 +2,10 @@ import React, { useContext, useEffect} from "react";
 import styles from '../Follow/ItemSinger/Follow.module.scss';
 import ItemSinger from './ItemSinger/index';
 import classNames from 'classnames/bind';
-import {useSelector, useDispatch} from 'react-redux';
-import { addNewHobby } from "../../redux/actions";
 const cx = classNames.bind(styles);
 
 
 const Follow = () => {
-  const randomID = () => {
-    return 1000 + Math.trunc((Math.random()*9000));
-  }
-
-  const dispatch = useDispatch();
-  const thanh = useSelector(state => state.songReducer.list)
-
-  const handleClick = () => {
-    const newID  = randomID();
-    const newHobby = {
-      id: newID,
-      title: `abc ${newID}`
-    }
-    dispatch(addNewHobby(newHobby));
-    localStorage.setItem('user',  JSON.stringify([...thanh]))
-  }
-
 
   useEffect(() => {
     document.title =
@@ -46,18 +27,6 @@ const Follow = () => {
             </ul>
           </div>
         </div>
-
-
-        {/* <div onClick={handleClick} >Click me</div>
-          <div thanh={thanh}>
-            {thanh.map((item, index) => {
-              console.log(item.data.id);
-              return(
-                <div key={index}>{item.data.id}</div>
-              )
-            })}
-        </div> */}
-
 
 
         <div className={cx("carousel__wapper")} style={{ marginBottom: "60px" }}>

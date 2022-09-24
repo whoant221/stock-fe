@@ -8,6 +8,7 @@ const initialState = {
     librarySong: zingStorage.getLibrarySong() || [],
     list: [],
     nameMV: '',
+    nameHistory: '',
 }
 
 
@@ -21,24 +22,31 @@ const songReducer = (state = initialState, actions) => {
                 librarySong: [...state.librarySong, actions.payload]
             }
 
-        case types.SET_ACTIVE_HOBBY: 
-            const newList =[...state.list]
-            newList.push(actions.payload)    
+        case types.REMOVE_SONG_IN_LIBRARY:
+            zingStorage.setLibrarySong([...actions.payload]);
             return {
                 ...state,
-                list: newList,
+                librarySong: [...actions.payload]
             }
-        case types.SET_ACTIVE_GET_NAME_MV: 
-            const nameMV =[state.nameMV]
-            nameMV.push(actions.payload)    
+
+        case types.SET_ACTIVE_GET_NAME_MV:      
+            let nameMV =[state.nameMV]
+            nameMV.push(actions.payload)     
             return {
                 ...state,
                 nameMV: nameMV,
             }
+
+        case types.SET_ACTIVE_GET_NAME_HISTORY:     
+            let nameHistory =[state.nameHistory]
+            nameHistory.push(actions.payload)  
+            return {
+                ...state,
+                nameHistory: nameHistory,
+            }
+            
         default:
             return state;
-
-        
     }
 }
 

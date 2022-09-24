@@ -12,7 +12,6 @@ function getKpop() {
 function getHoaTau() {
     return axios.get('/api/listmv?id=IWZ9Z086&page=max&count=147')
 }
-
 function getDetailMV(id) {
     return axios.get(`/api/video?id=${id}`)
 }

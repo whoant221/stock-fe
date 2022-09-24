@@ -65,7 +65,7 @@ function MySlide({ getSlide=[] }) {
                     return(
                         <div className={cx(`itemGallary`, classActive)} key={index}>
                             <img 
-                                src={item.banner}   
+                                src={item.banner} //banner 
                                 alt={index} 
                             />
                         </div>

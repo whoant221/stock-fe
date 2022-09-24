@@ -8,8 +8,6 @@ import { Outlet } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
-   
-
     return (
         <div className={cx('wrapper')}>
             <div className={cx('container', 'flex')}>
@@ -17,7 +15,7 @@ function DefaultLayout({ children }) {
                 <div className={cx('main-container', 'flex-1')}>
                     <Header />
                     <div className={cx('page')}>
-                        <Outlet/>
+                        <Outlet />
                     </div>
                     <MusicControl />
                 </div>
