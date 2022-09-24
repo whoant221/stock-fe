@@ -5,17 +5,20 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import Loading from '../Zingchart/Loading/Loading';
 import MusicItem from '~/components/MusicItem';
 import styles from './NhacMoi.module.scss';
+import { useDispatch } from 'react-redux';
+import { musicOfPage } from '~/redux/actions';
 
 const cx = classNames.bind(styles);
 
 function Nhacmoi() {
     const [music, setMusic] = useState([]);
-
+    const dispatch = useDispatch();
     useEffect(() => {
         const fetchData = async () => {
             const data = await axios
                 .get(`https://apizingmp3.herokuapp.com/api/newreleasechart`)
                 .then((res) => res.data.data);
+            dispatch(musicOfPage(data.items));
             setMusic(data);
         };
         fetchData();
@@ -40,6 +43,7 @@ function Nhacmoi() {
                             <LazyLoadComponent key={index}>
                                 <MusicItem
                                     song={item}
+                                    index={index}
                                     ranking
                                     number={index + 1}
                                 />

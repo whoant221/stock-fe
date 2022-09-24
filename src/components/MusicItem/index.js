@@ -1,12 +1,11 @@
 import classNames from 'classnames/bind';
-import { useState, useEffect } from 'react';
-import styles from './MusicItem.module.scss';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Icon from '../Icon';
 import HeartIcon from '../Icon/Heart';
-import Image from '../Image';
 import PlaySongIcon from '../Icon/Play/PlaySongIcon';
-import { playMusic, listSong } from '~/redux/actions';
+import { playMusic } from '~/redux/actions';
+import Image from '../Image';
+import styles from './MusicItem.module.scss';
 const cx = classNames.bind(styles);
 
 function MusicItemUser({ className, song, number, ranking }) {
@@ -21,12 +20,8 @@ function MusicItemUser({ className, song, number, ranking }) {
     const secondTime = formatTime(song.duration - minuteTime * 60);
 
     const librarySong = useSelector((state) => state.songReducer.librarySong);
+
     const dispatch = useDispatch();
-
-
-    if(song){
-        dispatch(listSong(song))
-    }
 
     const renderHeart = () => {
         const isInLibrary = librarySong.map((mySong) => {
@@ -102,17 +97,16 @@ function MusicItemUser({ className, song, number, ranking }) {
                             <i className='fal fa-music'></i>
                         </div>
                     )}
-                    <div className={cx('thumb-wrap')}
-                    onClick={() => handlePlayMusic(song)}
+                    <div
+                        className={cx('thumb-wrap')}
+                        onClick={() => handlePlayMusic(song)}
                     >
                         <Image
                             className={cx('thumb-img')}
                             src={song.thumbnail}
                             alt={song.title}
                         />
-                        <div
-                            className={cx('hover-items')}
-                        >
+                        <div className={cx('hover-items')}>
                             <PlaySongIcon
                                 data={song}
                                 className={cx('thumb-img_playbutton')}

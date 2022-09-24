@@ -23,7 +23,7 @@ function MusicControl() {
 
     const musicRef = useRef();
 
-    const onChangeValue = (e) => {    
+    const onChangeValue = (e) => {
         setvalueInput(parseInt(e.target.value));
     };
 
@@ -40,6 +40,9 @@ function MusicControl() {
         }
         activePlaylist ? setActivePlaylist(false) : setActivePlaylist(true);
     }
+
+    //Get list song of page
+    const listSong = useSelector((state) => state.musicsOfPageReducer);
 
     const song = useSelector((state) => state.playMusicReducer);
 

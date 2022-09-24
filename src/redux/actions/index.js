@@ -7,8 +7,8 @@ export const addSongToLibrary = (data) => ({
 
 export const removeSonginLibrary = (data) => ({
     type: types.REMOVE_SONG_IN_LIBRARY,
-    payload: data
-})
+    payload: data,
+});
 
 export const addPlaylistToLibrary = (data) => ({
     type: types.ADD_PLAYLIST_TO_LIBRARY,
@@ -50,9 +50,7 @@ export const playMusic = (data) => ({
     payload: data,
 });
 
-export const listSong = (data) => ({
-    type: types.LIST_SONG,
+export const musicOfPage = (data) => ({
+    type: types.MUSICS_OF_PAGE,
     payload: data,
 });
-
-
