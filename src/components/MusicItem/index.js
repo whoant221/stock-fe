@@ -1,14 +1,14 @@
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
-import { playMusic } from '~/redux/actions';
 import Icon from '../Icon';
 import HeartIcon from '../Icon/Heart';
 import PlaySongIcon from '../Icon/Play/PlaySongIcon';
+import { playMusic } from '~/redux/actions';
 import Image from '../Image';
 import styles from './MusicItem.module.scss';
 const cx = classNames.bind(styles);
 
-function MusicItemUser({ className, song, number, ranking, index }) {
+function MusicItemUser({ className, song, number, ranking }) {
     const formatTime = (time) => {
         if (time < 10) {
             return `0${time}`;
@@ -28,7 +28,6 @@ function MusicItemUser({ className, song, number, ranking, index }) {
             if (mySong.encodeId === song.encodeId || !undefined)
                 return mySong.encodeId;
         });
-        // console.log(isInLibrary);
         if (isInLibrary) {
             return (
                 <div className={cx('item')}>

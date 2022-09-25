@@ -44,8 +44,6 @@ function MusicControl() {
     //Get list song of page
     const listSong = useSelector((state) => state.musicsOfPageReducer);
 
-    // console.log('ListSong: ', listSong);
-
     const song = useSelector((state) => state.playMusicReducer);
 
     useEffect(() => {
