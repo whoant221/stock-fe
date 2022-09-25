@@ -1,20 +1,32 @@
-
 import styles from '../User.module.scss';
-import classNames from "classnames/bind";
-import { useEffect } from "react";
-import axios from "axios";
-import zingStorage from "~/utils/storage";
-import MusicItem from "~/components/MusicItem";
+import classNames from 'classnames/bind';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import zingStorage from '~/utils/storage';
+import MusicItem from '~/components/MusicItem';
+import { useDispatch } from 'react-redux';
+import { musicOfPage } from '~/redux/actions';
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 function UserSong() {
+    const [mySongs, setMySongs] = useState([]);
 
-    const mySongs = zingStorage.getLibrarySong()?.slice().reverse() || []
+    const dispatch = useDispatch();
+    useEffect(() => {
+        const mySongs = zingStorage.getLibrarySong()?.slice().reverse() || [];
+
+        if (!!mySongs) {
+            setMySongs(mySongs);
+            dispatch(musicOfPage(mySongs));
+        }
+    }, []);
 
     return (
         <div>
-            <a href="#" className={cx('nav-btn', 'active')}>Yêu thích</a>
+            <a href='#' className={cx('nav-btn', 'active')}>
+                Yêu thích
+            </a>
             <div className={cx('library-song')}>
                 <div className={cx('lib-header', 'media')}>
                     <div className={cx('media-left')}>
@@ -29,12 +41,7 @@ function UserSong() {
                 </div>
                 <div className={cx('song-list')}>
                     {mySongs.map((song, index) => {
-                        return (
-                            <MusicItem 
-                                key={index}
-                                song={song}
-                            />
-                        )   
+                        return <MusicItem key={index} song={song} />;
                     })}
                 </div>
             </div>
