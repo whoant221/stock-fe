@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Icon from '../Icon';
 import HeartIcon from '../Icon/Heart';
@@ -21,6 +22,8 @@ function MusicItemUser({ className, song, number, ranking }) {
 
     const [checkSong, setCheckSong] = useState(false)
     const librarySong = useSelector(state => state.songReducer.librarySong)
+    const currentSong = useSelector(state => state.playMusicReducer.song);
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -57,7 +60,10 @@ function MusicItemUser({ className, song, number, ranking }) {
     };
 
     return (
-        <div className={cx('wrapper', { [className]: className })}>
+        <div className={cx('wrapper', {
+                [className]: className,
+                isActive: song.encodeId === currentSong.encodeId
+            })}>
             <div className={cx('media')}>
                 <div className={cx('media-left')}>
                     {ranking ? (

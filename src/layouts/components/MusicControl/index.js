@@ -2,12 +2,13 @@ import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import styles from './MusicControl.module.scss';
 import Media from '~/components/Media';
 import PlayerBar from '~/layouts/components/PlayerBar';
 import Icon from '~/components/Icon';
 import SidebarRight from '../SidebarRight';
-import { useSelector, useDispatch } from 'react-redux';
 import zingStorage from '~/utils/storage';
 import * as actions from '~/redux/actions';
 import axios from 'axios';
@@ -22,6 +23,11 @@ function MusicControl() {
     const [playSong, setPlaySong] = useState('');
 
     const musicRef = useRef();
+
+    //Get list song of page
+    const listSong = useSelector((state) => state.musicsOfPageReducer);
+    const song = useSelector((state) => state.playMusicReducer.song);
+    console.log(song);
 
     const onChangeValue = (e) => {
         setvalueInput(parseInt(e.target.value));
@@ -53,11 +59,6 @@ function MusicControl() {
     //     }
     // };
 
-    //Get list song of page
-    const listSong = useSelector((state) => state.musicsOfPageReducer);
-
-    const song = useSelector((state) => state.playMusicReducer);
-
     useEffect(() => {
         axios
             .get(
@@ -77,15 +78,10 @@ function MusicControl() {
                 )}
             >
                 <Media
-                    image={
-                        song.thumbnail ||
-                        song.thumbnailM ||
-                        'https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp…over/9/7/5/7/9757a70a3932be1bfbba5695e120a4c1.jpg'
-                    }
-                    songName={song.title || 'Nguời âm phủ'}
-                    singerName={song.artistsNames || 'OSAD'}
+                    image={song.thumbnail || song.thumbnailM}
                     largeCd
                     noHover
+                    song={song ? song : null}
                 />
             </div>
             <PlayerBar playSong={playSong} musicRef={musicRef} />

@@ -6,15 +6,14 @@ import 'tippy.js/dist/tippy.css'; // optional
 import styles from './Media.module.scss';
 import Icon from '~/components/Icon';
 import HeartIcon from "../Icon/Heart";
+import Image from "../Image";
 
 const cx = classNames.bind(styles)
 
 function Media({ 
     image,
-    songName,
-    singerName,
     mediaActive,
-    data,
+    song,
     largeCd, 
     largeContent, 
     nowrap,
@@ -30,17 +29,17 @@ function Media({
     });
 
     return ( 
-        <div className={classes}>
+        song && (<div className={classes}>
             <div className={cx('cd')}>
                 <img className={cx('cd-thumb')} src={image} alt='cd thumb' />
             </div>
             <div className={cx('media-content')}>
                 <div className={cx('media-info')}>
-                    <div className={cx('song-name','text-sm', {nowrap})}>{songName}</div>
-                    <div className={cx('singer-name', 'text-xs')}>{singerName}</div>
+                    <div className={cx('song-name','text-sm', {nowrap})}>{song.title}</div>
+                    <div className={cx('singer-name', 'text-xs')}>{song.artistsNames}</div>
                 </div>
                 <div className={cx('action')}>
-                    <HeartIcon activeNoColor={isActive} data={data} />
+                    <HeartIcon activeNoColor={isActive} song={song} />
                     <Tippy content="Xem thêm">
                         <div className="icon">
                             <Icon icon={<i className="far fa-ellipsis-h"></i>}/>
@@ -48,7 +47,7 @@ function Media({
                     </Tippy>
                 </div>
             </div>
-        </div>
+        </div>)
      );
 }
 

@@ -23,7 +23,8 @@ function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: nu
         }
     }
     
-    const [isActive, setIsActive] = useState(checkSong)
+    console.log(checkSong());
+    const [isActive, setIsActive] = useState(checkSong())
 
     let title = isActive ? 'Xóa khỏi thư viện' : 'Thêm vào thư viện'
 

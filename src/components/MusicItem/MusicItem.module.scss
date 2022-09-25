@@ -12,6 +12,9 @@
             display: flex;
         }
     }
+    &.isActive {
+        background-color: var(--border-color);
+    }
 }
 
 .media {

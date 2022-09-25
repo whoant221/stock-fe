@@ -25,6 +25,7 @@ const LIBRARY_PLAYLIST = 'libraryPlaylist';
 const VALUE_VOLUME = 'valueVolume';
 const IS_LOOP = 'isLoop';
 const IS_RANDOM = 'isRanDom';
+const CURRENT_SONG = 'currentSong';
 
 const zingStorage = {
     setLibrarySong: (data) => storage.set(LIBRARY_SONG, data),
@@ -32,6 +33,9 @@ const zingStorage = {
 
     setLibraryPlaylist: (data) => storage.set(LIBRARY_PLAYLIST, data),
     getLibraryPlaylist: () => storage.get(LIBRARY_PLAYLIST),
+
+    setCurrentSong: (data) => storage.set(CURRENT_SONG, data) || null,
+    getCurrentSong: () => storage.get(CURRENT_SONG),
 
     setAddValueVolume: (data) => storage.set(VALUE_VOLUME, data),
     getAddValueVolume: () => storage.get(VALUE_VOLUME),
