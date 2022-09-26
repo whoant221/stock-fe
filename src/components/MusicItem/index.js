@@ -56,8 +56,7 @@ function MusicItemUser({ className, song, number, ranking }) {
     }
 
     const handlePlayMusic = (song) => {
-        dispatch(playMusic(song));
-        
+        dispatch(playMusic(song));  
     };
 
     return (

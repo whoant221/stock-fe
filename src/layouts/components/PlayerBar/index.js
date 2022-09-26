@@ -19,9 +19,9 @@ function PlayerBar({ playSong, musicRef }) {
     const [LoadingNumber, setloadingNumber] = useState();
     const [ChecklistSongRamDom, setcheckListSongRamDom] = useState(0);
 
-    if(PlaySong){
-        if(isPlay) musicRef.current.play()
-        else musicRef.current.pause()
+    if (PlaySong) {
+        if (isPlay) musicRef.current.play();
+        else musicRef.current.pause();
     }
 
     if(zingStorage.getHistorySong()){
@@ -37,10 +37,10 @@ function PlayerBar({ playSong, musicRef }) {
     useEffect(() => {
         setcheckListSongRamDom(listSong[Math.floor(Math.random() * listSong.length) - 1])
     }, [isPlay]);
-    
+
     //kết thúc audio sẽ làm gì ...
     const handleOnEnd = () => {
-        if(!zingStorage.getIsLoop()){
+        if (!zingStorage.getIsLoop()) {
             dispatch(addValueIsPlay(false));
             handleNextSong()
             dispatch(addValueIsPlay(true))
@@ -62,7 +62,7 @@ function PlayerBar({ playSong, musicRef }) {
                 dispatch(playMusic(listSong[0]));
             }
         }
-    }
+    };
 
     const handlePrevSong = () => {
         if(indexSong === 0) {
@@ -95,7 +95,7 @@ function PlayerBar({ playSong, musicRef }) {
     };
 
     useEffect(() => {
-        zingStorage.getIsRanDom()
+        zingStorage.getIsRanDom();
     }, []);
 
     const handleRandom = () => {
@@ -111,24 +111,25 @@ function PlayerBar({ playSong, musicRef }) {
     return (
         <div className={cx('wrapper', 'grow')}>
             <div className={cx('control-btns', 'flex justify-center grow')}>
-                {zingStorage.getIsRanDom() ?
+                {zingStorage.getIsRanDom() ? (
                     <Icon
                         s18
                         isActive
                         className={cx('icon')}
                         icon={<i className='fal fa-random'></i>}
                         activeIcon={<i className='fal fa-random'></i>}
-                        onClick ={handleRandom}
-                    /> :
+                        onClick={handleRandom}
+                    />
+                ) : (
                     <Icon
                         s18
                         className={cx('icon')}
                         icon={<i className='fal fa-random'></i>}
                         activeIcon={<i className='fal fa-random'></i>}
-                        onClick ={handleRandom}
+                        onClick={handleRandom}
                     />
-                }
-                
+                )}
+
                 <Icon
                     s18
                     className={cx('icon')}
@@ -153,7 +154,7 @@ function PlayerBar({ playSong, musicRef }) {
                     <Icon
                         s14
                         activeNoColor
-                        isActive 
+                        isActive
                         className={cx('icon', 'icon-play')}
                         icon={<i className='fas fa-play'></i>}
                         activeIcon={<i className='fas fa-play'></i>}
@@ -171,24 +172,24 @@ function PlayerBar({ playSong, musicRef }) {
                     onClick ={handleNextSong}
                 />
 
-                {zingStorage.getIsLoop() ? 
+                {zingStorage.getIsLoop() ? (
                     <Icon
                         s18
                         isActive
                         className={cx('icon')}
                         icon={<i className='fal fa-repeat'></i>}
                         activeIcon={<i className='fal fa-repeat'></i>}
-                        onClick = {handleLoop}
-                    /> : 
+                        onClick={handleLoop}
+                    />
+                ) : (
                     <Icon
                         s18
                         className={cx('icon')}
                         icon={<i className='fal fa-repeat'></i>}
                         activeIcon={<i className='fal fa-repeat'></i>}
-                        onClick = {handleLoop}
-                    /> 
-                }
-              
+                        onClick={handleLoop}
+                    />
+                )}
             </div>
             <div
                 className={cx(
@@ -216,7 +217,7 @@ function PlayerBar({ playSong, musicRef }) {
                         type='audio'
                         autoPlay={isPlay}
                         ref={musicRef}
-                        loop = {isLoop}
+                        loop={isLoop}
                         onTimeUpdate={onPlaying}
                         onEnded={handleOnEnd}
                     />
