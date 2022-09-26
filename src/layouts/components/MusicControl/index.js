@@ -23,11 +23,7 @@ function MusicControl() {
     const [playSong, setPlaySong] = useState('');
 
     const musicRef = useRef();
-
-    //Get list song of page
-    const listSong = useSelector((state) => state.musicsOfPageReducer);
     const song = useSelector((state) => state.playMusicReducer.song);
-    console.log(song);
 
     const onChangeValue = (e) => {
         setvalueInput(parseInt(e.target.value));
@@ -47,17 +43,17 @@ function MusicControl() {
         activePlaylist ? setActivePlaylist(false) : setActivePlaylist(true);
     }
 
-    // const handleMute = () => {
-    //     if (volume === 0) {
-    //         dispatch(setVolume(20));
-    //         audioRef.current.volume = 0.2;
-    //         radioRef.current.volume = 0.2;
-    //     } else {
-    //         dispatch(setVolume(0));
-    //         audioRef.current.volume = 0;
-    //         radioRef.current.volume = 0;
-    //     }
-    // };
+    const handleMute = () => {
+        if (zingStorage.getAddValueVolume() === 0) {
+            dispatch(actions.addValueVolume(20));
+            zingStorage.setAddValueVolume(20);
+            setvalueInput(20)
+        } else {
+            dispatch(actions.addValueVolume(0));
+            zingStorage.setAddValueVolume(0);
+            setvalueInput(0)
+        }
+    };
 
     useEffect(() => {
         axios
@@ -74,7 +70,8 @@ function MusicControl() {
             <div
                 className={cx(
                     'control-left',
-                    'flex items-center justify-start'
+                    'flex items-center justify-start',
+                    'active'
                 )}
             >
                 <Media
@@ -115,7 +112,7 @@ function MusicControl() {
                         activeNoColor
                         icon={<i className='fal fa-volume'></i>}
                         activeIcon={<i className='fal fa-volume-mute'></i>}
-                        // onClick= {handleMute}
+                        onClick= {handleMute}
                     />
                     <input
                         id='volume'
