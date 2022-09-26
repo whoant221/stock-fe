@@ -27,7 +27,6 @@ function MusicControl() {
     //Get list song of page
     const listSong = useSelector((state) => state.musicsOfPageReducer);
     const song = useSelector((state) => state.playMusicReducer.song);
-    console.log(song);
 
     const onChangeValue = (e) => {
         setvalueInput(parseInt(e.target.value));

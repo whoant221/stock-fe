@@ -35,20 +35,18 @@ function PlayerBar({ playSong, musicRef }) {
     //kết thúc audio sẽ làm gì ...
     const handleOnEnd = () => {
         if(!zingStorage.getIsLoop()){
-            dispatch(addValueIsPlay(false));
             handleNextSong()
-            dispatch(addValueIsPlay(true))
         }
     }
 
     const indexSong = listSong.findIndex(playlist => playlist.encodeId === song.encodeId)
     
     const handleNextSong = () => {
+        dispatch(addValueIsPlay(false));
         if(zingStorage.getIsRanDom()){
             const randomIndex = Math.floor(Math.random() * (listSong.length))
             setcheckListSongRamDom(listSong[randomIndex])
             dispatch(playMusic(ChecklistSongRamDom));
-            dispatch(addValueIsPlay(true))
         } else {
             if(indexSong < listSong.length - 1) {
                 dispatch(playMusic(listSong[indexSong + 1]));
@@ -56,15 +54,17 @@ function PlayerBar({ playSong, musicRef }) {
                 dispatch(playMusic(listSong[0]));
             }
         }
-        
+        dispatch(addValueIsPlay(true))
     }
 
     const handlePrevSong = () => {
+        dispatch(addValueIsPlay(false));
         if(indexSong === 0) {
             dispatch(playMusic(listSong[listSong.length - 1]));
         } else {
             dispatch(playMusic(listSong[indexSong - 1]));
         }
+        dispatch(addValueIsPlay(true))
     }
 
     const onPlaying = () => {
