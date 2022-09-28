@@ -15,7 +15,7 @@ import axios from 'axios';
 const cx = classNames.bind(styles);
 
 function MusicControl() {
-    const initValue = zingStorage.getAddValueVolume();
+    const initValue = zingStorage.getAddValueVolume() || 50;
     const dispatch = useDispatch();
     const [toggleBtn, setToggleBtn] = useState(false);
     const [activePlaylist, setActivePlaylist] = useState(false);

@@ -12,13 +12,23 @@ function PlaySongIcon({className, data = {encodeId: null}}) {
     const song = useSelector((state) => state.playMusicReducer.song);
     const classIcon = ['fas fa-play', 'fas fa-waveform']
 
+
+    if(song?.encodeId){
+        if(zingStorage.getHistorySong()){
+            if(zingStorage.getHistorySong().findIndex(playlist => playlist?.encodeId === song?.encodeId ) === -1) {
+                dispatch(addHistorySong(song))
+            }  
+        }
+        else dispatch(addHistorySong(song))
+    }
+
     const handleClick = () => {
         dispatch(addValueIsPlay(true));
-    };
 
+    };
     return (
         <>
-            {data.encodeId === song.encodeId && isPlay === true ? (
+            {data?.encodeId === song?.encodeId && isPlay === true ? (
                 <button className={cx('wrapper', className)} onClick={() => dispatch(addValueIsPlay(false))}>
                     <span className={cx('icon')}>
                         <i className={cx(classIcon[1])}></i>
@@ -26,7 +36,7 @@ function PlaySongIcon({className, data = {encodeId: null}}) {
                 </button>
             ) : null}
 
-            {data.encodeId === song.encodeId && isPlay === false ? (
+            {data?.encodeId === song?.encodeId && isPlay === false ? (
                 <button className={cx('wrapper', className)} onClick={() => dispatch(addValueIsPlay(true))}>
                     <span className={cx('icon')}>
                         <i className={cx(classIcon[0])}></i>
@@ -34,7 +44,7 @@ function PlaySongIcon({className, data = {encodeId: null}}) {
                 </button>
             ): null}
 
-            {data.encodeId !== song.encodeId ? (
+            {data?.encodeId !== song?.encodeId ? (
                 <button className={cx('wrapper', className)} onClick={handleClick}>
                     <span className={cx('icon')}>
                         <i className={cx(classIcon[0])}></i>

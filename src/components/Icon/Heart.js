@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '~/redux/actions';
 import zingStorage from '~/utils/storage';
 import styles from './Icon.module.scss';
-import { playMusic} from '../../redux/actions';
 const cx = classNames.bind(styles)
 
 function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: null} }) {
@@ -14,15 +13,8 @@ function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: nu
     const librarySong = useSelector(state => state.songReducer.librarySong)
     const libraryPlaylist = useSelector(state => state.playlistReducer.libraryPlaylist)
     const currentSong = useSelector(state => state.playMusicReducer.song)
-    const listSong = useSelector((state) => state.musicsOfPageReducer);
-    const song = useSelector((state) => state.playMusicReducer.song);
     const [isActive, setIsActive] = useState(false)
 
-    console.log(zingStorage.getCurrentSong());
-
-    if(!zingStorage.getCurrentSong()){
-        dispatch(playMusic(listSong[0]));
-    }
 
     useEffect(() => {
         const checkSong = () => {

@@ -2,7 +2,7 @@ import * as types from '~/constant/actionTypes';
 import zingStorage from '~/utils/storage';
 
 const initialState = {
-    song: zingStorage.getCurrentSong() ,
+    song: zingStorage.getCurrentSong() || null,
 };
 
 const playMusicReducer = (state = initialState, actions) => {

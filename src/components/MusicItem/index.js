@@ -7,6 +7,7 @@ import PlaySongIcon from '../Icon/Play/PlaySongIcon';
 import { playMusic } from '~/redux/actions';
 import Image from '../Image';
 import styles from './MusicItem.module.scss';
+import { addHistorySong } from '../../redux/actions';
 const cx = classNames.bind(styles);
 
 function MusicItemUser({ className, song, number, ranking }) {
@@ -19,17 +20,17 @@ function MusicItemUser({ className, song, number, ranking }) {
     }
     const minuteTime = formatTime(Math.floor(song.duration / 60))
     const secondTime = formatTime(song.duration - (minuteTime * 60))
-
     const [checkSong, setCheckSong] = useState(false)
     const librarySong = useSelector(state => state.songReducer.librarySong)
     const currentSong = useSelector(state => state.playMusicReducer.song);
-    
     const dispatch = useDispatch();
 
     useEffect(() => {
         const isInLibrary = librarySong.findIndex(mySong => mySong.encodeId === song.encodeId) !== -1;
         setCheckSong(isInLibrary)
     }, [librarySong])
+
+    
 
     function RankingStatus({rank}) {
         if (rank < 0) {
@@ -56,13 +57,13 @@ function MusicItemUser({ className, song, number, ranking }) {
     }
 
     const handlePlayMusic = (song) => {
-        dispatch(playMusic(song));  
+        dispatch(playMusic(song));
     };
 
     return (
         <div className={cx('wrapper', {
                 [className]: className,
-                isActive: song.encodeId === currentSong.encodeId     
+                isActive: song.encodeId === currentSong?.encodeId     
             })}>
             <div className={cx('media')}>
                 <div className={cx('media-left')}>

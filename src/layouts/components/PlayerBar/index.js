@@ -25,12 +25,6 @@ function PlayerBar({ playSong, musicRef }) {
         else musicRef.current.pause();
     }
 
-    // if(isPlay){
-    //     if(zingStorage.getHistorySong().findIndex(playlist => playlist.encodeId === song.encodeId) == -1){
-    //         dispatch(addHistorySong(song))
-    //     }
-    // }
-
     useEffect(() => {
         setcheckListSongRamDom(listSong[Math.floor(Math.random() * listSong.length) - 1])
     }, [isPlay]);
@@ -43,7 +37,7 @@ function PlayerBar({ playSong, musicRef }) {
         }
     }
 
-    const indexSong = listSong.findIndex(playlist => playlist.encodeId === song.encodeId)
+    const indexSong = listSong.findIndex(playlist => playlist?.encodeId === song?.encodeId)
 
     const handleNextSong = () => {
         dispatch(addValueIsPlay(false));
