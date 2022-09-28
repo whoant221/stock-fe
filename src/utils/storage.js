@@ -19,7 +19,6 @@ const createStorage = (LOCAL_STORAGE_KEY) => {
 }
 
 const storage = createStorage("zingmp3")
-
 const LIBRARY_SONG = 'librarySong';
 const HISTORY_SONG = 'historySong';
 const LIBRARY_PLAYLIST = 'libraryPlaylist';

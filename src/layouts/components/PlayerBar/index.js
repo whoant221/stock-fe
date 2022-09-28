@@ -15,6 +15,7 @@ function PlayerBar({ playSong, musicRef }) {
     const isPlay = useSelector((state) => state.IconProject.isPlay['1'])
     const isLoop = useSelector((state) => state.IconProject.isLoop['1'])
     const listSong = useSelector((state) => state.musicsOfPageReducer);
+
     const [PlaySong, setplaySong] = useState(0);
     const [LoadingNumber, setloadingNumber] = useState();
     const [ChecklistSongRamDom, setcheckListSongRamDom] = useState(0);
@@ -24,15 +25,11 @@ function PlayerBar({ playSong, musicRef }) {
         else musicRef.current.pause();
     }
 
-    if(zingStorage.getHistorySong()){
-        if(zingStorage.getHistorySong().findIndex(playlist => playlist.encodeId === song.encodeId) == -1){
-            zingStorage.setHistorySong(song)
-            dispatch(addHistorySong(song))
-        }
-    }else {
-        zingStorage.setHistorySong(song)
-        dispatch(addHistorySong(song))
-    } 
+    // if(isPlay){
+    //     if(zingStorage.getHistorySong().findIndex(playlist => playlist.encodeId === song.encodeId) == -1){
+    //         dispatch(addHistorySong(song))
+    //     }
+    // }
 
     useEffect(() => {
         setcheckListSongRamDom(listSong[Math.floor(Math.random() * listSong.length) - 1])
@@ -43,18 +40,17 @@ function PlayerBar({ playSong, musicRef }) {
         if (!zingStorage.getIsLoop()) {
             dispatch(addValueIsPlay(false));
             handleNextSong()
-            dispatch(addValueIsPlay(true))
         }
     }
 
     const indexSong = listSong.findIndex(playlist => playlist.encodeId === song.encodeId)
 
     const handleNextSong = () => {
+        dispatch(addValueIsPlay(false));
         if(zingStorage.getIsRanDom()){
             const randomIndex = Math.floor(Math.random() * (listSong.length))
             setcheckListSongRamDom(listSong[randomIndex])
             dispatch(playMusic(ChecklistSongRamDom));
-            dispatch(addValueIsPlay(true))
         } else {
             if(indexSong < listSong.length - 1) {
                 dispatch(playMusic(listSong[indexSong + 1]));
@@ -65,11 +61,13 @@ function PlayerBar({ playSong, musicRef }) {
     };
 
     const handlePrevSong = () => {
+        dispatch(addValueIsPlay(false));
         if(indexSong === 0) {
             dispatch(playMusic(listSong[listSong.length - 1]));
         } else {
             dispatch(playMusic(listSong[indexSong - 1]));
         }
+        dispatch(addValueIsPlay(true))
     }
 
     const onPlaying = () => {
@@ -81,7 +79,9 @@ function PlayerBar({ playSong, musicRef }) {
     };
 
     const onChangeValue = (e) => {
-        musicRef.current.currentTime = (e.target.value * Math.ceil(musicRef.current.duration)/100);
+        if(e.target.value){
+            musicRef.current.currentTime = (e.target.value * Math.ceil(musicRef.current.duration)/100);
+        }
     };
 
     const handleLoop = () => {
@@ -222,6 +222,7 @@ function PlayerBar({ playSong, musicRef }) {
                         onEnded={handleOnEnd}
                     />
                 )}
+                
                 <input
                     id='progress'
                     className={cx('progress')}

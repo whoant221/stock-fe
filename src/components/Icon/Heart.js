@@ -6,24 +6,36 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '~/redux/actions';
 import zingStorage from '~/utils/storage';
 import styles from './Icon.module.scss';
-
+import { playMusic} from '../../redux/actions';
 const cx = classNames.bind(styles)
 
 function HeartIcon({activeNoColor, library = 'librarySong', data = {encodeId: null} }) {
     const dispatch = useDispatch()
     const librarySong = useSelector(state => state.songReducer.librarySong)
     const libraryPlaylist = useSelector(state => state.playlistReducer.libraryPlaylist)
+    const currentSong = useSelector(state => state.playMusicReducer.song)
+    const listSong = useSelector((state) => state.musicsOfPageReducer);
+    const song = useSelector((state) => state.playMusicReducer.song);
+    const [isActive, setIsActive] = useState(false)
 
-    const checkSong = () => {
-        if(library === 'librarySong') {
-            return librarySong.findIndex(song => song.encodeId === data.encodeId) !== -1;
-        }
-        else if(library === 'libraryPlaylist') {
-            return libraryPlaylist.findIndex(playlist => playlist.encodeId === data.encodeId) !== -1;
-        }
+    console.log(zingStorage.getCurrentSong());
+
+    if(!zingStorage.getCurrentSong()){
+        dispatch(playMusic(listSong[0]));
     }
 
-    const [isActive, setIsActive] = useState(checkSong())
+    useEffect(() => {
+        const checkSong = () => {
+            if(library === 'librarySong') {
+                return librarySong.findIndex(song => song.encodeId === data.encodeId) !== -1;
+            }
+            else if(library === 'libraryPlaylist') {
+                return libraryPlaylist.findIndex(playlist => playlist.encodeId === data.encodeId) !== -1;
+            }
+        }
+        setIsActive(checkSong())
+    }, [librarySong, libraryPlaylist, currentSong])
+    
 
     let title = isActive ? 'Xóa khỏi thư viện' : 'Thêm vào thư viện'
 

@@ -19,7 +19,7 @@ function MusicControl() {
     const dispatch = useDispatch();
     const [toggleBtn, setToggleBtn] = useState(false);
     const [activePlaylist, setActivePlaylist] = useState(false);
-    const [valueInput, setvalueInput] = useState(initValue);
+    const [valueInput, setvalueInput] = useState(initValue || 50);
     const [playSong, setPlaySong] = useState('');
 
     const musicRef = useRef();
@@ -74,12 +74,17 @@ function MusicControl() {
                     'active'
                 )}
             >
-                <Media
-                    image={song.thumbnail || song.thumbnailM}
-                    largeCd
-                    noHover
-                    song={song ? song : null}
-                />
+                {song ? 
+                    <Media
+                        image={song.thumbnail || song.thumbnailM ||
+                            'https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp…over/9/7/5/7/9757a70a3932be1bfbba5695e120a4c1.jpg'}
+                        largeCd
+                        noHover
+                        song={song}
+                        songName={song.title || 'Nguời âm phủ'}
+                        singerName={song.artistsNames || 'OSAD'}
+                    />
+                :null}
             </div>
             <PlayerBar playSong={playSong} musicRef={musicRef} />
             <div

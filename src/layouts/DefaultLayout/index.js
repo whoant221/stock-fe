@@ -17,7 +17,7 @@ function DefaultLayout({ children }) {
                     <div className={cx('page')}>
                         <Outlet />
                     </div>
-                    {/* <MusicControl /> */}
+                    <MusicControl />
                 </div>
             </div>
         </div>

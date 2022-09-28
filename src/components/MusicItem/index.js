@@ -62,7 +62,7 @@ function MusicItemUser({ className, song, number, ranking }) {
     return (
         <div className={cx('wrapper', {
                 [className]: className,
-                isActive: song.encodeId === currentSong.encodeId
+                isActive: song.encodeId === currentSong.encodeId     
             })}>
             <div className={cx('media')}>
                 <div className={cx('media-left')}>
