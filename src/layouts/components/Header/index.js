@@ -2,14 +2,15 @@ import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Search from '../Search';
 import Icon from '~/components/Icon';
 import styles from './Header.module.scss';
 import images from '~/images';
 import Menu from '~/components/Popper/Menu/Menu';
 import ThemeList from './ThemeList/index';
-import LoginFunction from '../../../context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../../../firebase/config';
+import { onAuthStateChanged } from '@firebase/auth';
 
 const cx = classNames.bind(styles);
 
@@ -99,10 +100,19 @@ function Header() {
         },
     ];
 
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                navigate('/login');
+            }
+        })
+    }, [navigate]);
+
     return (
         
         <div className={color ? cx('wrapper') : cx('wrapper2')}> 
-        <LoginFunction/>
+        
             <div className={cx('inner')}>
                 <div className={cx('left')}>
                     <button className={cx('direct-btn')}>
