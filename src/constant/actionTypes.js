@@ -1,3 +1,2 @@
-
-
+export const SET_ACTIVE_GET_NAME = 'SET_ACTIVE_GET_NAME';
 

@@ -2,15 +2,24 @@ import classNames from 'classnames/bind';
 import 'tippy.js/dist/tippy.css'; // optional
 import styles from './Header.module.scss';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
+import Menu from './NavbarHeader/Menu';
+import MenuItem from './NavbarHeader/MenuItem';
+import {useSelector} from 'react-redux';
 const cx = classNames.bind(styles);
 
 function Header() {
-    const navigate = useNavigate();
+    const name = useSelector(state => state.header.name)
+    const [getNameUrl, setGetNameUrl] = useState('');
+    const handleGetName = () => {
+        if(window.location.href === 'http://localhost:3000/sellquickly/all') setGetNameUrl('all')
+        if(window.location.href === 'http://localhost:3000/sellquickly/basic') setGetNameUrl('basic')
+        if(window.location.href === 'http://localhost:3000/sellquickly/defi') setGetNameUrl('defi')
+        if(window.location.href === 'http://localhost:3000/sellquickly/layer') setGetNameUrl('layer')
+    }
 
     const propsSlide6 = {
         dots: true,
@@ -93,20 +102,6 @@ function Header() {
         },
     ]
 
-    const [sellQ, setSellQ] = useState();
-    const [sellP, setSellP] = useState();
-
-    useEffect(() => {
-        if(window.location.href === 'http://localhost:3000/sellquickly/all'){
-            setSellQ('active')
-            setSellP('')
-        } 
-        if(window.location.href === 'http://localhost:3000/sellpro'){
-           setSellP('active') 
-           setSellQ('')
-        } 
-    }, [window.location.href]);
-
     return ( 
         <div className={cx('top_header')}>
             <section className={cx("top_margin", "top-header")}>
@@ -145,25 +140,26 @@ function Header() {
                                 <span className="tf-ion-android-menu"></span>
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul className="navbar-nav ml-auto">
-                                        
-                                        <li className={cx("nav-item", sellQ)}>
-                                            <Link
-                                            className={cx("nav-link")}
-                                            to={'/sellquickly/all'}>
-                                                Mua Bán Nhanh
-                                            </Link>
-                                        </li>
-                                        <li className={cx("nav-item", sellP)}>
-                                            <Link 
-                                            className="nav-link" 
-                                            to={'/sellpro'}>
-                                                Mua Bán Chứng Khoán
-                                            </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className="nav-link" href="login.html">Sign In</a>
-                                        </li>
+                                    <ul className="navbar-nav ml-auto" onClick={handleGetName}>
+                                       <Menu>
+                                            <li className={cx("nav-item")}>
+                                                <MenuItem 
+                                                to={`/sellquickly/${name[1] === undefined || name[1] === '' ? getNameUrl : name[1]}`} 
+                                                title = {'Mua Bán Nhanh'}>                                                  
+                                                </MenuItem>
+                                            </li>
+                                            <li className={cx("nav-item")}>
+                                                <MenuItem 
+                                                to={'/sellpro'} 
+                                                title = {'Mua Bán Chứng Khoán'}>                                                    
+                                                </MenuItem>
+                                            </li>
+                                            <li className="nav-item">
+                                                <MenuItem to={'/'} title = {'Sign In'}></MenuItem>
+                                            </li>
+                                        </Menu> 
+
+
                                     </ul>
                                 </div>
                             </nav>

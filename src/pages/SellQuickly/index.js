@@ -5,13 +5,27 @@ import { Link, Outlet} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Menu from './NavbarSellQ/Menu';
 import MenuItem from './NavbarSellQ/MenuItem';
+import {useDispatch} from 'react-redux';
+import * as actions from '~/redux/actions';
 const cx = classNames.bind(styles);
 
 function SellQuickly() {
-
+  const dispatch = useDispatch();
   useEffect(() => {
     document.title = 'Bitbank | Mua Bán Nhanh, Ethereum tại Việt Nam nhanh chóng';
   }, [window.location.href]);
+
+
+  const [getNameUrl, setGetNameUrl] = useState('');
+  const handleGetName = () => {
+    if(window.location.href === 'http://localhost:3000/sellquickly/all') setGetNameUrl('all')
+    if(window.location.href === 'http://localhost:3000/sellquickly/basic') setGetNameUrl('basic')
+    if(window.location.href === 'http://localhost:3000/sellquickly/defi') setGetNameUrl('defi')
+    if(window.location.href === 'http://localhost:3000/sellquickly/layer') setGetNameUrl('layer')
+  }
+  useEffect(() => {
+    dispatch(actions.addName(getNameUrl));
+  }, [getNameUrl]);
 
   return (
     <div className={cx('maxW','layout')}>
@@ -19,7 +33,7 @@ function SellQuickly() {
         <div className={cx('main-content')}>
           <div className={cx('tabs')}>
             <div className={cx('segmented-bar')}>
-              <form className="form-inline d-flex justify-content-center md-form form-sm mt-0">
+              <form onClick={handleGetName} className="form-inline d-flex justify-content-center md-form form-sm mt-0">
                 <Menu>
                   <MenuItem title={"Tất cả"} to={'/sellquickly/all'}/>
                   <MenuItem title={"Basic"} to={'/sellquickly/basic'}/>
