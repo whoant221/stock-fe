@@ -29,7 +29,7 @@ function SellQuickly() {
                   <MenuItem title={"Tất cả"} to={'/sellquickly/all'}/>
                   <MenuItem title={"Basic"} to={'/sellquickly/basic'}/>
                   <MenuItem title={"Defi & NFT"} to={'/sellquickly/defi'}/>
-                  <MenuItem title={"Layer 1"} to={'/sellquickly/layer'}/>
+                  <MenuItem title={"Layer 1"} to={'/sellquickly/layer'}/>  
                 </Menu>
               </form>
               <form className="form-inline d-flex justify-content-center md-form form-sm mt-0">
