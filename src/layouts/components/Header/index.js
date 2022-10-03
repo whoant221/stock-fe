@@ -13,6 +13,8 @@ const cx = classNames.bind(styles);
 
 function Header() {
     const name = useSelector(state => state.header.name)
+    console.log(name[1]);
+
     const [getNameUrl, setGetNameUrl] = useState('');
     const handleGetName = () => {
         if(window.location.href === 'http://localhost:3000/sellquickly/all') setGetNameUrl('all')
@@ -144,7 +146,7 @@ function Header() {
                                        <Menu>
                                             <li className={cx("nav-item")}>
                                                 <MenuItem 
-                                                to={`/sellquickly/${name[1] === undefined || name[1] === '' ? getNameUrl : name[1]}`} 
+                                                to={`/sellquickly/${name[1] === undefined || name[1] === '' ? 'all' : name[1]}`} 
                                                 title = {'Mua Bán Nhanh'}>                                                  
                                                 </MenuItem>
                                             </li>
