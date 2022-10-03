@@ -9,11 +9,6 @@ const cx = classNames.bind(styles);
 
 function SellQuickly() {
 
-  const [all, setAll] = useState();
-  const [basic, setBasic] = useState();
-  const [defi, setDefi] = useState();
-  const [layer, setLayer] = useState();
-
   useEffect(() => {
     document.title = 'Bitbank | Mua Bán Nhanh, Ethereum tại Việt Nam nhanh chóng';
   }, [window.location.href]);

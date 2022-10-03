@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Chart from './Chart';
 import styles from './Home.module.scss';
 import Footer from '../../layouts/components/Footer'
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function Home() {
@@ -75,9 +76,10 @@ function Home() {
                     <div className="row">
                         <div className="col-12 col-md-6 align-self-center mb-4 mb-md-0">
                             <div className="align-self-center">
-                                <h2>A New Kind of Digital Currency to change the world what we think</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae deleniti ipsa labore necessitatibus culpa veritatis quo accusantium, neque enim ea ad eaque iure, quas tempore velit, quibusdam dolor illo! Explicabo.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quisquam maiores iste soluta, nihil dolorem?</p>
+                                <h2>Công ty DIGITEX Pte Ltd, trụ sở, cơ quan, đội ngũ</h2>
+                                <p>Bitbank cung cấp dịch vụ giao dịch tiền điện tử mã hóa (cryptocurrency), khởi đầu với đồng Ethereum và Bitcoin. Không những là nguồn mua bán Ethereum, Bitcoin mà cũng là nơi kí thác các giao dịch mua bán BTC, ETH của người dùng một cách minh bạch và chính xác .</p>
+                                <p>Kết nối dễ dàng qua: <Link to={'https://t.me/+R8ykfQJCv_o4ZDE1'}>https://t.me/+R8ykfQJCv_o4ZDE1</Link></p>
+                                <p>Để Bitbank có thể phục vụ bạn tốt hơn nữa nhé !</p>
                                 <a href="#" className="btn btn-main">Xem sàn</a>
                             </div>
                         </div>
@@ -97,60 +99,60 @@ function Home() {
                         <div className="col-md-4 col-sm-6 col-xs-12" >
                             <div className="service-block color-bg text-center">
                                 <div className="service-icon text-center">
-                                    <img src="images/icons/bitcoin-safety-shield.png" alt=""></img>
+                                    <img src={"https://cryptologos.cc/logos/thumbs/shiba-inu.png?v=022"} alt=""></img>
                                 </div>
-                                <h3>{'Easy & Secure'}</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+                                <h3>{'Dễ dàng và an toàn'}</h3>
+                                <p>Bảo mật cao với 2FA cho cả ví mobile và web. Lưu trữ BTC ETH USDT BNB XRP bằng ví lạnh và bảo mật đa chữ kí với đa dịch vụ, kể cả BitGo .</p>
                             </div>
                         </div>
                 
                         <div className="col-md-4 col-sm-6 col-xs-12" >
                             <div className="service-block text-center">
                                 <div className="service-icon text-center">
-                                    <img src="images/icons/bitcoin-exchange.png" alt=""></img>
+                                    <img src="https://cryptologos.cc/logos/thumbs/monolith.png?v=022" alt=""></img>
                                 </div>
-                                <h3>Instant Exchange</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+                                <h3>Trao đổi tức thì</h3>
+                                <p>Giao dịch mọi lúc mọi nơi với ví mobile, chúng tôi là sàn giao dịch đầu tiên ở Việt Nam cho phép tạo ví BTC ETH USDT BNB XRP trên điện thoại .</p>
                             </div>
                         </div>
 
                         <div className="col-md-4 col-sm-6 col-xs-12 mx-auto"  >
                             <div className="service-block color-bg text-center">
                                 <div className="service-icon text-center">
-                                    <img src="images/icons/bitcoin-network.png" alt=""></img>
+                                    <img src="https://cryptologos.cc/logos/thumbs/waykichain.png?v=022" alt=""></img>
                                 </div>
-                                <h3>Strong Network</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+                                <h3>Mạng mạnh</h3>
+                                <p>Hỗ trợ online nhanh nhất Việt Nam. Đảm bảo mọi vấn đề khó nhằn nhất được giải quyết tối đa 1 ngày làm việc .</p>
                             </div>
                         </div>
                 
                         <div className="col-md-4 col-sm-6 col-xs-12" >
                             <div className="service-block color-bg text-center">
                                 <div className="service-icon text-center">
-                                    <img src="images/icons/bitcoin-safety-shield.png" alt=""></img>
+                                    <img src="https://cryptologos.cc/logos/thumbs/chimpion.png?v=022" alt=""></img>
                                 </div>
-                                <h3>{'Easy & Secure'}</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+                                <h3>{'Nhiều ưu đãi'}</h3>
+                                <p>Miễn phí hoàn toàn nạp VND BTC ETH USDT BNB để giao dịch. Chương trình khuyến mãi đến 100% phí giao dịch .</p>
                             </div>
                         </div>
 
                         <div className="col-md-4 col-sm-6 col-xs-12" >
                             <div className="service-block color-bg text-center">
                                 <div className="service-icon text-center">
-                                    <img src="images/icons/bitcoin-safety-shield.png" alt=""></img>
+                                    <img src="https://cryptologos.cc/logos/thumbs/apecoin-ape.png?v=022" alt=""></img>
                                 </div>
-                                <h3>{'Easy & Secure'}</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+                                <h3>{'Chi phí thấp'}</h3>
+                                <p>Phí mua bán Bitcoin Ethereum USDT của chúng tôi rất thấp, nhờ đó bạn có thể mua và bán BTC ETH BNB USDT XRP với giá tốt nhất hiện tại.</p>
                             </div>
                         </div>
 
                         <div className="col-md-4 col-sm-6 col-xs-12" >
                             <div className="service-block color-bg text-center">
                                 <div className="service-icon text-center">
-                                    <img src="images/icons/bitcoin-safety-shield.png" alt=""></img>
+                                    <img src="https://cryptologos.cc/logos/thumbs/convex-finance.png?v=022" alt=""></img>
                                 </div>
-                                <h3>{'Easy & Secure'}</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+                                <h3>{'Uy tín'}</h3>
+                                <p>Giá cả Bitcoin Ethereum USDT rõ ràng minh bạch, bạn tự quyết định chính xác giá mình muốn mua hay bán .</p>
                             </div>
                         </div>
                 
@@ -163,10 +165,10 @@ function Home() {
                     <div className="row">
                     <div className="col">
                         <div className="title text-center">
-                        <h4>Bitcoin flow</h4>
-                        <h2>How It Works</h2>
+                        <h4>Bitbank flow</h4>
+                        <h2>Làm thế nào nó hoạt động</h2>
                         <span className="border"></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!</p>
+                        <p>Giao dịch mua bán Bitcoin, Ethereum tại Việt Nam nhanh chóng, khớp lệnh ngay lập tức với đúng mức giá bạn mong muốn .</p>
                         </div>
                     </div>
                     </div>
@@ -200,8 +202,8 @@ function Home() {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 text-center">
-                            <h2>Open account for free and start trading Bitcoins now!</h2>
-                            <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin bibendum auctor, <br></br> nisi elit consequat ipsum, nesagittis sem nid elit. Duis sed odio sitain elit.</p>
+                            <h2>Mở tài khoản miễn phí và bắt đầu giao dịch ngay!</h2>
+                            <p>Fiahub chính thức ra mắt phiên bản Bitbank Pro” trên Mobile App, <br></br> Sau khi nhận được phản hồi tích cực từ Quý khách hàng với “Phiên bản web”.</p>
                             <a href="" className="btn btn-main">Get Started</a>
                         </div>
                     </div> 		
@@ -214,10 +216,9 @@ function Home() {
                         <div className="col">
                             <div className="title text-center">
                                 <h4>Easy Pricing</h4>
-                                <h2>Pricing.</h2>
+                                <h2>Lấy Tiền Nhanh</h2>
                                 <span className="border"></span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque,
-                                    obcaecati atque sit!</p>
+                                <p>Rút tiền về VCB, Techcombank trong 30s. Ví VNT đảm bảo cho mọi giao dịch nhanh chóng và tiện lợi. Bạn có thể rút về tài khoản ngân hàng nhanh chóng bất kì lúc nào.</p>
                             </div>
                         </div>
                     </div>
@@ -348,13 +349,13 @@ function Home() {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="custom-pricing text-center mt-30">
-                                <p>The price will be recalculated in 27 seconds</p>
-                                <p><a href="">How is the price calculated ?</a></p>
+                                <p>Giá sẽ được tính toán lại trong 27 giây</p>
+                                <p><a href="">Giá được tính như thế nào ?</a></p>
                             </div>
                         </div>
                     </div>
                     <form className="custom-pricing-form">
-                        <h3 className="text-center">You can also input a custom amount:</h3>
+                        <h3 className="text-center">Bạn cũng có thể nhập một lượng tùy chỉnh:</h3>
                         <div className="form-row justify-content-center">
                             <div className="col-md-4">
                                 <input type="text" className="form-control mb-2" id="inlineFormInput" placeholder="BTC"></input>

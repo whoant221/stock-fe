@@ -19,9 +19,10 @@ function Header() {
         slidesToShow: 6,
         slidesToScroll: 1,
         autoplay: true,
+        arrows: true,
         autoplaySpeed: 4000,
         pauseOnHover: true,
-        arrows: false,
+        // arrows: false,
     };
 
     const san = [
@@ -111,7 +112,7 @@ function Header() {
             <section className={cx("top_margin", "top-header")}>
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-12">
+                        <div className={cx("col-md-12", 'center')}>
                             <ul className="currency-status">
                                 <Slider {...propsSlide6}>
                                     {san.map((items, index) => {  return (
@@ -145,6 +146,7 @@ function Header() {
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul className="navbar-nav ml-auto">
+                                        
                                         <li className={cx("nav-item", sellQ)}>
                                             <Link
                                             className={cx("nav-link")}
@@ -161,9 +163,6 @@ function Header() {
                                         </li>
                                         <li className="nav-item">
                                             <a className="nav-link" href="login.html">Sign In</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className="nav-link" href="signup.html">Sign Up</a>
                                         </li>
                                     </ul>
                                 </div>
