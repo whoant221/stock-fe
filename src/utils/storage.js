@@ -20,7 +20,6 @@ const createStorage = (LOCAL_STORAGE_KEY) => {
 
 const storage = createStorage("zingmp3")
 
-
 const zingStorage = {}
 
 

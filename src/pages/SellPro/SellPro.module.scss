@@ -1,0 +1,278 @@
+.main-page{
+    margin-top: 10px !important;
+    color: var(--global-text-extremeHighlight-color);
+    .main-page{
+        width: 100%;
+        height: 900px;
+        background-color: var(--global-body-bg-color);
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin-top: 0px !important;
+        .market-container {
+            display: grid;
+            flex: 1;
+            .trading-pair {
+                padding: 16px 24px;
+                background: var(--dark-theme-surface-04);
+                display: grid;
+                gap: 40px;
+                grid-template-columns: repeat(3,max-content);
+                align-items: center;
+                font-weight: 600;
+                .pair-switcher {
+                    position: relative;
+                    .toggle {
+                        cursor: pointer;
+                    }
+                    .current-coin-name {
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: var(--global-text-extremeHighlight-color);
+                        display: inline-flex;
+                        gap: 4px;
+                        align-items: center;
+                        .fix{
+                            margin-top: -6px;
+                            font-size: 14px;
+                            margin-left: 4px;
+                        }
+                    }
+                }
+                .ticker-last {
+                    display: grid;
+                    cursor: default;
+                    .market24h {
+                        order: 1;
+                        span {
+                            vertical-align: baseline;
+                        }
+                    }
+                    .lastestPrice {
+                        order: 0;
+                        font-size: 18px;
+                        span {
+                            vertical-align: baseline;
+                        }
+                    }
+                }
+                .c-up {
+                    color: var(--global-bid-color);
+                }
+                .c-down{
+                    color: var(--global-ask-color);
+                }
+                .ticker-list {
+                    display: grid;
+                    gap: 24px;
+                    grid-auto-flow: column;
+                    grid-template-columns: repeat(4,max-content);
+                    color: var(--global-text-color);
+                    .label {
+                        font-size: 14px;
+                        font-weight: 400;
+                        display: block;
+                    }
+                    .value {
+                        display: block;
+                        margin: 2px 0;
+                        color: var(--global-text-highlight-color);
+                    }
+                }
+            }
+            @media screen and (min-width: 961px){
+                .trading-pair { grid-area: f; }  
+                .chart-container { grid-area: g; }
+                .orders-container { grid-area: h;}
+                div{ background-color: var(--global-content-bg-color); }
+            }
+
+            .chart-container {
+                position: relative;
+                overflow: hidden;
+                .app{
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-box-orient: horizontal;
+                    -ms-flex-direction: row;
+                    flex-direction: row;
+                    -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                    justify-content: center;
+                    -ms-flex-wrap: wrap;
+                    flex-wrap: wrap;
+                    .k-line-chart-container {
+                        -webkit-box-orient: vertical;
+                        -ms-flex-direction: column;
+                        flex-direction: column;
+                        border-radius: 0;
+                        background-color: #fff;
+                        font-family: Open Sans,sans-serif;
+                        background-color: var(--global-chart-bg-color);
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-direction: normal;
+                        height: 100%;
+                        width: 100%;
+                        .chart-top-bar {
+                            margin-bottom: 0;
+                            padding: 0 8px 0 4px;
+                            font-size: 12px;
+                            font-weight: 500;
+                            color: #333;
+                            height: auto;
+                            min-height: 34px;
+                            .period {
+                                position: relative;
+                                text-align: left;
+                                display: inline-block;
+                                cursor: pointer;
+                                padding: 10px 8px;
+                                margin: 0 4px;
+                                color: hsla(0,0%,100%,.45);
+                                &:hover{
+                                    color: #2f6bff;
+                                }
+                            }
+                            .active{
+                                color: #2f6bff;
+                                &::after{
+                                    content: "";
+                                    width: 24px;
+                                    height: 2px;
+                                    position: absolute;
+                                    bottom: 0;
+                                    left: 50%;
+                                    bottom: 4px;
+                                    margin-left: -12px;
+                                    background-color: #2f6bff;
+                                }
+                            }
+                            .line{
+                                text-transform: uppercase;
+                                min-width: 54px;
+                                height: 34px;
+                                &::after{
+                                    content: "";
+                                    width: 1px;
+                                    height: 16px;
+                                    position: absolute;
+                                    top: 50%;
+                                    right: -4px;
+                                    margin-top: -8px;
+                                    background-color: hsla(0,0%,100%,.08);
+                                }
+                            }
+                            &::after{
+                                content: "";
+                                    width: 100%;
+                                    height: 1px;
+                                    position: absolute;
+                                    right: 0px;
+                                    margin-top: 0px;
+                                    background-color: hsla(0,0%,100%,.08);
+                            }
+                        }
+                        .k-line-chart {
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            -webkit-box-flex: 1;
+                            -ms-flex: 1;
+                            flex: 1;
+                            margin: 20px 0;
+                        }
+                    }
+                } 
+            }
+
+            .orders-container{
+                z-index: 100;
+                .tabs{
+                    .nav-tabs-wrapper {
+                        margin-bottom: 8px;
+                        position: relative;
+                        display: flex;
+                        .nav-tabs-container {
+                            overflow: auto;
+                            scroll-behavior: smooth;
+                            scrollbar-width: none;
+                            border-bottom: 1px solid var(--global-shadow);
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            flex: 1;
+                            .nav-tabs {
+                                font-size: 14px;
+                                line-height: 1.57;
+                                padding: 0 20px;
+                                align-items: center;
+                                margin-bottom: 0;
+                                display: flex;
+                                gap: 24px;
+                                width: 220px;
+                                .tab-link {
+                                    font-weight: 600!important;
+                                    padding: 16px;
+                                    padding: 8px 0;
+                                    color: var(--inside-global-text-45-color);
+                                    border-bottom: 2px solid transparent;
+                                    font-weight: 600!important;
+                                    cursor: pointer;
+                                    text-align: center;
+                                    white-space: nowrap;
+                                }
+                                .tab-link-active {
+                                    color: var(--inside-global-text-highlight-color) !important;
+                                    border-color: var(--global-primary-color) !important;
+                                }
+                            }
+                        }
+                    }
+                    .trade-history-wrapper{
+                        clear: both;
+                        min-height: 240px;
+                    }
+                    .no-orders{
+                        text-align: center;
+                        margin: 100px 0px;
+                        i{
+                            margin: 10px 0;
+                            font-size: 60px;
+                            color: rgba(156, 156, 156, 0.318);
+                        }
+                        div{
+                            color: rgb(156, 156, 156);
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+        }
+        @media screen and (min-width: 961px){
+            .market-container {
+                gap: 1px;
+                grid-area: f;
+                div{
+                    width: 100%;
+                   
+                }
+            }
+        }
+        @media screen and (min-width: 1400px){
+            .market-container {
+                grid-template:
+                    "f f f f i k" 80px
+                    "g g g g i k" min(60vh,560px)
+                    "h h h h j k"/1fr 1fr 1fr 1fr 320px 320px;
+            }
+        }
+        
+    }
+}

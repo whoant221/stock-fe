@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 function SellQuickly() {
   const dispatch = useDispatch();
   useEffect(() => {
-    document.title = 'Bitbank | Mua Bán Nhanh, Ethereum tại Việt Nam nhanh chóng';
+    document.title = 'Bitbank | Mua bán nhanh, Ethereum tại Việt Nam nhanh chóng';
   }, [window.location.href]);
 
 

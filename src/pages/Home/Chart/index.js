@@ -3,7 +3,8 @@ import generatedKLineDataList from '~/utils/generatedKLineDataList'
 import { useEffect } from 'react';
 import React from 'react'
 
-function Chart() {
+function Chart({style}) {
+  console.log(style);
 
     useEffect(() => {
         const kLineChart = init('basic-k-line')
@@ -35,7 +36,7 @@ function Chart() {
     }
 
     return (
-        <div {...tooltip} id="basic-k-line" style={{ height: 400 }}/>
+        <div {...tooltip} id="basic-k-line" style={ style }/>
     )
 }
 

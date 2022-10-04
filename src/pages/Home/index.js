@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function Home() {
+
+
     useEffect(() => {
         document.title = 'Bitbank | Giao dịch mua bán Bitcoin, Ethereum tại Việt Nam nhanh chóng';
     }, []);
@@ -85,7 +87,7 @@ function Home() {
                         </div>
                         <div className="col-12 col-md-6">
                             <div id="myDiv" className="bitcoin-graph">
-                                <Chart/>
+                                <Chart style={{height: 400}}/>
                             </div>
                         </div> 		
                     </div>

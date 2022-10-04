@@ -1582,34 +1582,50 @@ a:focus, a:hover {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
  :root {
-  --blue: #007bff;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #868e96;
-  --gray-dark: #343a40;
-  --primary: #007bff;
-  --secondary: #868e96;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --color-text: 255,255,255;
+  --global-primary-color: #4e81ff;
+  --global-error-color: #ff818e;
+  --global-ask-color: #e35e5e;
+  --global-bid-color: #2ead65;
+  --global-body-bg-color: #000;
+  --global-content-bg-color: #131e30;
+  --global-chart-bg-color: var(--global-content-bg-color);
+  --global-header-bg-color: #040d14;
+  --global-shadow: hsla(0,0%,100%,.08);
+  --global-dropdown-bg-color: #172941;
+  --global-modal-bg-color: #172941;
+  --global-text-color: hsla(0,0%,100%,.45);
+  --global-text-highlight-color: hsla(0,0%,100%,.85);
+  --global-text-extremeHighlight-color: #fff;
+  --inside-global-text-color: rgba(var(--color-text),0.45);
+  --inside-global-text-highlight-color: rgba(var(--color-text),0.85);
+  --inside-global-text-extremeHighlight-color: rgb(var(--color-text));
+  --inside-global-text-75-color: rgba(var(--color-text),0.75);
+  --inside-global-text-65-color: rgba(var(--color-text),0.65);
+  --inside-global-text-45-color: rgba(var(--color-text),0.45);
+  --inside-global-text-35-color: rgba(var(--color-text),0.35);
+  --global-table-head-bg-color: transparent;
+  --global-table-head-color: var(--global-text-color);
+  --inside-global-table-text-color: var(--inside-global-text-highlight-color);
+  --inside-global-table-head-color: var(--inside-global-text-45-color);
+  --inside-global-table-border-color: rgba(var(--color-text),0.08);
+  --inside-table-item-bg-hover: rgba(var(--color-text),0.04);
+  --global-border-color: rgba(var(--color-text),0.12);
+  --global-input-bg-color: rgba(var(--color-text),0.08);
+  --global-input-disabled-bg-color: rgba(var(--color-text),0.2);
+  --global-scrollbar-color: rgba(var(--color-text),0.08);
+  --global-color-gray-light-bg: rgba(var(--color-text),0.35);
+  --global-item-bg-hover-color: hsla(0,0%,100%,.08);
+  --dark-theme-surface-01: #131e30;
+  --dark-theme-surface-03: #040d14;
+  --dark-theme-surface-04: #161a1e;
+  --global-content-bg-color: #161a1e;
+  --global-fontSize-body-XS: 14px;
+  --global-lineHeight-body-XS: 1.57;
+  --global-bid-color: #2ead65;
+  --global-ask-color: #e35e5e;
+  --global-text-highlight-color: hsla(0,0%,100%,.85);
+  --inside-global-text-highlight-color: rgba(var(--color-text),0.85);
 }
 
 *,
@@ -1623,7 +1639,6 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -9487,3 +9502,14 @@ button.bg-dark:hover {
   visibility: hidden !important;
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+
+::-webkit-scrollbar {
+	width: 4px;
+} 
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px #31BB9E; 
+} 
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px #fff; 
+}

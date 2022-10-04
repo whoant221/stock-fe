@@ -28,9 +28,8 @@ function App() {
                             <Route path='defi' element={<Defi />} />
                             <Route path='layer' element={<Layer />} />
                         </Route>
-                        <Route path='/sellpro' element={<SellPro />} />
                     </Route>
-                    
+                    <Route path='/sellpro' element={<SellPro />}/>
                     {/* <Route path='/login' element={<Login/>} /> */}
                 </Routes>
             </div>
