@@ -3,7 +3,6 @@
     color: var(--global-text-extremeHighlight-color);
     .main-page{
         width: 100%;
-        height: 900px;
         background-color: var(--global-body-bg-color);
         padding: 0;
         display: flex;
@@ -70,7 +69,7 @@
                     grid-template-columns: repeat(4,max-content);
                     color: var(--global-text-color);
                     .label {
-                        font-size: 14px;
+                        font-size: 12px;
                         font-weight: 400;
                         display: block;
                     }
@@ -85,8 +84,15 @@
                 .trading-pair { grid-area: f; }  
                 .chart-container { grid-area: g; }
                 .orders-container { grid-area: h;}
+                .order-book {
+                    grid-area: i;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .trades { grid-area: j; }
+                .trade-container { grid-area: k;}
                 div{ background-color: var(--global-content-bg-color); }
-            }
+            }     
 
             .chart-container {
                 position: relative;
@@ -205,9 +211,9 @@
                             display: flex;
                             flex: 1;
                             .nav-tabs {
-                                font-size: 14px;
-                                line-height: 1.57;
-                                padding: 0 20px;
+                                font-size: var(--global-fontSize-body-XS);
+                                line-height: var(--global-lineHeight-body-XS);
+                                padding: 4px 20px;
                                 align-items: center;
                                 margin-bottom: 0;
                                 display: flex;
@@ -250,10 +256,391 @@
                 }
             }
 
+            .order-book{
+                .area-title {
+                    color: var(--global-text-highlight-color);
+                    font-weight: 600;
+                    padding: 16px 20px 10px;
+                    margin-bottom: 8px;
+                    box-shadow: 0 1px 0 var(--global-shadow);
+                    }
+                .orderbook-header{
+                    display: flex;
+                    gap: 18px;
+                    align-items: center;
+                    padding: 8px 16px;
+                    .orderbook-view {
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 4px;
+                        border: 1px solid transparent;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        .view_cover{
+                            color:darkgoldenrod;
+                        }
+                        .view_up{
+                            color: var(--global-bid-color);
+                        }
+                        .view_down{
+                            color: var( --global-ask-color);
+                        }
+                    }
+                    .active {
+                        border-color: var(--global-primary-color);
+                    }
+                }
+                .area-thead {
+                    display: flex;
+                    padding: 4px 14px 8px 16px;
+                    gap: 4px;
+                    font-size: 14px !important;
+                    font-weight: 400;
+                    .item-td {
+                        flex: 1 1 0%;
+                        color: var(--inside-global-text-color);
+                    }
+                    .a-right {
+                        text-align: right;
+                    }
 
+                    @media (min-width: 961px){
+                        .item-td {
+                            white-space: nowrap;
+                        }
+                    }
+                    
+                }
+                .orderbooklist-container {
+                    display: flex;
+                    flex-direction: column;
+                    max-height: 509px;
+                    padding-bottom: 6px;
+                    font-size: 14px;
+                    .area-tbody {
+                        padding: 0;
+                        color: var(--global-text-highlight-color);
+                        flex: 1 1 0%;
+                        overflow: overlay;
+                        display: flex;
+                        flex-direction: column-reverse;
+                        .item-tr {
+                            display: flex;
+                            padding: 2px 14px 2px 16px;
+                            gap: 8px;
+                            .c-up {
+                                color: var(--global-bid-color);
+                            }
+                            .c-down{
+                                color: var(--global-ask-color);
+                            }
+                            .a-right {
+                                text-align: right;
+                            }
+                        }
+                    }
+                    .orderbook-ticker {
+                        padding: 4px 16px;
+                        font-size: 20px;
+                        font-weight: 600;
+                    }
+                    .c-up {
+                        color: var(--global-bid-color);
+                    }
+                    .c-down{
+                        color: var(--global-ask-color);
+                    }
+                }
+                @media screen and (min-width: 961px){
+                    .orderbooklist-container {
+                        flex: 1;
+                        overflow: auto;
+                    } 
+                } 
+            }
 
+            .trades{
+                padding-bottom: 24px;
+                .area-title {
+                    color: var(--global-text-highlight-color);
+                    font-weight: 600;
+                    padding: 16px 20px 10px;
+                    margin-bottom: 8px;
+                    box-shadow: 0 1px 0 var(--global-shadow);
+                    font-size: var(--global-fontSize-body-XS);
+                    line-height: var(--global-lineHeight-body-XS);   
+                }
+                .area-thead {
+                    display: flex;
+                    padding: 4px 14px 8px 16px;
+                    gap: 4px;
+                    font-size: 14px !important;
+                    font-weight: 400;
+                    .item-td {
+                        flex: 1 1 0%;
+                        color: var(--inside-global-text-color);
+                    }
+                    .a-right {
+                        text-align: right;
+                    }
 
+                    @media (min-width: 961px){
+                        .item-td {
+                            white-space: nowrap;
+                        }
+                    }
+                    
+                }
+                .area-tbody {
+                    height: 312px;
+                    overflow-y: overlay;
+                    padding: 0;
+                    margin-right: 4px;
+                    color: var(--global-text-highlight-color);
+                    font-size: var(--global-fontSize-body-XS);
+                    line-height: var(--global-lineHeight-body-XS);   
+                    .item-tr {
+                        display: flex;
+                        padding: 2px 14px 2px 16px;
+                        gap: 8px;
+                        .c-up {
+                            color: var(--global-bid-color);
+                        }
+                        .c-down{
+                            color: var(--global-ask-color);
+                        }
+                        .a-right {
+                            text-align: right;
+                        }
+                    }
+                }
+            }
 
+            .trade-container {
+                color: var(--global-text-color);
+                .purchase-container{
+                    font-size: var(--global-fontSize-body-XS);
+                    line-height: var(--global-lineHeight-body-XS);
+                    .tabs{
+                        .trade-type-wrapper{
+                            .nav-tabs-wrapper {
+                                margin-bottom: 24px;
+                                position: relative;
+                                display: -webkit-box;
+                                display: -ms-flexbox;
+                                display: flex;
+                                .nav-tabs-container {
+                                    overflow: auto;
+                                    scroll-behavior: smooth;
+                                    scrollbar-width: none;
+                                    border-bottom: 1px solid var(--global-shadow);
+                                    display: -webkit-box;
+                                    display: -ms-flexbox;
+                                    display: flex;
+                                    flex: 1;
+                                    .nav-tabs {
+                                        display: flex;
+                                        gap: 24px;
+                                        margin-bottom: 24px;
+                                        margin-bottom: 0;
+                                        font-size: 16px;
+                                        line-height: 1.57;
+                                        padding: 0 20px;
+                                        align-items: center;
+                                        .tab-link {
+                                            padding: 8px 0;
+                                            color: var(--inside-global-text-45-color);
+                                            border-bottom: 2px solid transparent;
+                                            cursor: pointer;
+                                            white-space: nowrap;
+                                            padding-top: 15px;
+                                            width: 50px;
+                                            text-align: center;
+                                        }
+                                        .tab-link-active {
+                                            color: var(--inside-global-text-highlight-color);
+                                            border-color: var(--global-primary-color);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .tab-content-visible{
+                            font-size: var(--global-fontSize-body-XS);
+                            line-height: var(--global-lineHeight-body-XS);
+                            .trading-tabs {
+                                padding: 0 16px;
+                                .trading-nav-tabs {
+                                    background-color: hsla(0,0%,100%,.08);
+                                    border-radius: 4px;
+                                    display: grid;
+                                    grid-auto-flow: column;
+                                    grid-template-columns: auto auto;
+                                    text-align: center;
+                                    .tab-link {
+                                        cursor: pointer;
+                                        font-size: 14px;
+                                        line-height: 1.57;
+                                        padding: 5px 15px;
+                                        border-radius: 4px;
+                                        background-color: rgba(102, 102, 102, 0.137);
+                                    }
+                                    .tab-link-mua {
+                                        color: #fff;
+                                        background-color: var(--global-bid-color);
+                                    }
+                                
+                                    .tab-link-ban {
+                                        color: #fff;
+                                        background-color: var(--global-ask-color);
+                                    }
+                                }
+                                .unselectable {
+                                    -moz-user-select: none;
+                                    -webkit-user-select: none;
+                                    -ms-user-select: none;
+                                    user-select: none;
+                                }
+                                .tab-content {
+                                    padding: 24px 0;
+                                    .buyform{
+                                        .form-inline {
+                                            margin-bottom: 0;
+                                            max-width: 680px;
+                                            margin: 0 auto 50px;
+                                            width: 100%;
+                                            box-sizing: border-box;
+                                            .field-text {
+                                                margin-bottom: 24px;
+                                                display: flex;
+                                                margin-bottom: 16px;
+                                                justify-content: space-between;
+                                                span {
+                                                    display: inline-flex;
+                                                    gap: 4px;
+                                                    color: var(--global-text-highlight-color);
+                                                }
+                                            }
+
+                                            .field {
+                                                align-items: center;
+                                                display: grid;
+                                                grid-auto-flow: column;
+                                                display: flex;
+                                                margin-bottom: 15px;
+                                                font-size: 15px;
+                                                label {
+                                                    min-width: 116px;
+                                                    padding: 3px 12px;
+                                                    border-right: 1px solid hsla(0,0%,100%,.12);
+                                                    justify-content: inherit;
+                                                    height: auto;
+                                                    margin: 0.3rem 0px;
+                                                }
+                                                .input-field {
+                                                    border: 0;
+                                                    color: #fff;
+                                                    text-align: right;
+                                                    height: 42px;
+                                                    font-size: 14px;
+                                                    border: 1px solid transparent;
+                                                    padding: 12px;
+                                                    box-sizing: border-box;
+                                                    font-weight: 500;
+                                                    color: var(--global-text-highlight-color);
+                                                    background-color: var(--global-input-bg-color);
+                                                    height: 50px;
+                                                    font-size: 16px;
+                                                    width: 100%;
+                                                    font-family: Open Sans,sans-serif;
+                                                    &:focus {
+                                                        outline: none;
+                                                    }
+                                                }
+                                                .unit {
+                                                    padding: 10px;
+                                                    text-align: right !important;
+                                                    color: var(--inside-global-text-45-color);
+                                                    font-size: var(--global-fontSize-body-XS);
+                                                    line-height: var(--global-lineHeight-body-XS);
+                                                }
+                                            }
+
+                                            @media (min-width: 961px){
+                                                .field {
+                                                    background-color: var(--global-input-bg-color);
+                                                    border-radius: 4px;
+                                                    label {
+                                                        max-width: 180px;
+                                                        padding-right: 30px;
+                                                        display: flex;
+                                                    }
+                                                    .field-input-extend {
+                                                        width: 100%;
+                                                    }
+                                                    .input-field {
+                                                        padding-right: 0;
+                                                        width: 120px;
+                                                    }
+                                                }
+                                            }
+                                            
+                                        }
+                                        .form-control {
+                                            padding-top: 16px;
+                                            margin-bottom: 40px !important;
+                                            .primary-actions {
+                                                display: flex;
+                                                justify-content: space-between;
+                                                gap: 10px;
+                                                display: block;
+                                                .btn-medium_bid {
+                                                    padding: 9px 15px;
+                                                    padding: 10px 15px;
+                                                    border-radius: 4px;
+                                                    cursor: pointer;
+                                                    transition: opacity .3s ease-in-out;
+                                                    text-decoration: none;
+                                                    font-family: Open Sans,sans-serif;
+                                                    font-size: 16px;
+                                                    line-height: 1.5;
+                                                    display: inline-block;
+                                                    text-align: center;
+                                                    font-weight: 600;
+                                                    background-color: var(--global-bid-color);
+                                                    color: #fff;
+                                                    gap: 8px;
+                                                    margin-top: 40px !important;
+                                                }
+                                                .btn-medium_ask {
+                                                    padding: 9px 15px;
+                                                    padding: 10px 15px;
+                                                    border-radius: 4px;
+                                                    cursor: pointer;
+                                                    transition: opacity .3s ease-in-out;
+                                                    text-decoration: none;
+                                                    font-family: Open Sans,sans-serif;
+                                                    font-size: 16px;
+                                                    line-height: 1.5;
+                                                    display: inline-block;
+                                                    text-align: center;
+                                                    font-weight: 600;
+                                                    background-color: var(--global-ask-color);
+                                                    color: #fff;
+                                                    gap: 8px;
+                                                    margin-top: 40px !important;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         @media screen and (min-width: 961px){
             .market-container {
@@ -261,11 +648,10 @@
                 grid-area: f;
                 div{
                     width: 100%;
-                   
                 }
             }
         }
-        @media screen and (min-width: 1400px){
+        @media screen and (min-width: 300px){
             .market-container {
                 grid-template:
                     "f f f f i k" 80px
