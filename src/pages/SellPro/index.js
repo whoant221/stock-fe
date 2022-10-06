@@ -17,7 +17,7 @@ function SellPro() {
               <div className={cx('toggle', 'current-coin-name')}>
                 <img src="https://static.coinall.ltd/cdn/assets/imgs/221/CF408EA4DD2B5F00.png" alt="AVAX" width="28px" height="28px"></img>
                 AVAX
-                <i class={cx('fix',"fas fa-sort-down")}></i>
+                <i className={cx('fix',"fas fa-sort-down")}></i>
               </div>
             </div>
             <div className={cx('ticker-last', 'c-up')}>
@@ -65,7 +65,7 @@ function SellPro() {
                 </div>
                             
                 <div className={cx('k-line-chart')}>
-                  <Chart style={{height: 300 , width: 100+'%'}}/>
+                  <Chart style={{height: 330}}/>
                 </div>
 
               </div>
@@ -89,7 +89,7 @@ function SellPro() {
               <div className={cx('tab-content', 'tab-content-visible')}>
                 <div className={cx('trade-history-wrapper')}>
                   <div className={cx('no-orders')}>
-                    <i class="fas fa-file-search"></i>
+                    <i className="fas fa-file-search"></i>
                     <div>Chưa có lệnh</div>
                   </div>
                 </div>
@@ -102,13 +102,13 @@ function SellPro() {
             <div className={cx('area-title')}>Sổ lệnh</div>
             <div className={cx('orderbook-header')}>
               <div className={cx('orderbook-view', 'active')}> 
-                <i class={cx("fas fa-water",'view_cover')}></i>
+                <i className={cx("fas fa-water",'view_cover')}></i>
               </div>
               <div className={cx('orderbook-view')}> 
-                <i class={cx("fas fa-water-rise",'view_up')}></i>
+                <i className={cx("fas fa-water-rise",'view_up')}></i>
               </div>
               <div className={cx('orderbook-view',)}> 
-                <i class={cx("fas fa-water-lower",'view_down')}></i>
+                <i className={cx("fas fa-water-lower",'view_down')}></i>
               </div> 
             </div>
             <div className={cx('area-thead')}>
