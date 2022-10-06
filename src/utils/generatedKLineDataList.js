@@ -1,4 +1,4 @@
-export default function (baseTimestamp = Date.now(), basePrice = 5000, dataSize = 800) {
+export default function (baseTimestamp = Date.now(), basePrice = 20, dataSize = 800) {
   const dataList = []
   let timestamp = Math.floor(baseTimestamp / 60 / 1000) * 60 * 1000
   let baseValue = basePrice

@@ -1,12 +1,27 @@
 import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Nav from '~/layouts/components/Header/nav';
 import Chart from '../Home/Chart';
 import styles from './SellPro.module.scss';
+import * as actions from '~/redux/actions';
 const cx = classNames.bind(styles);
 
 function SellPro() {
+  const dispatch = useDispatch();
+
+  const [checkChart, setCheckChart] = useState('candle_solid');
+  // console.log(checkChart);
+
+  useEffect(() => {
+    document.title =
+    'Bitbank | Giao dịch chứng khoán';
+
+    // dispatch(actions.checkChart(checkChart));
+  }, [])
+
+
   return (
     <div className={cx('main-page')}>
       <Nav/>
@@ -56,7 +71,11 @@ function SellPro() {
               <div className={cx('k-line-chart-container')}>
                 <div className={cx('chart-top-bar')}>
                   <div className={cx('common-intervals')}>
-                    <span className={cx('period', 'line')}>Nến</span>
+
+                    {checkChart === 'candle_solid'
+                    ? <span className={cx('period', 'line')} onClick={() => {setCheckChart('area')}}>Nến</span>
+                    : <span className={cx('period', 'line')} onClick={() => {setCheckChart('candle_solid')}}>Đường</span>}
+
                     <span className={cx('period','active')}>15m</span>
                     <span className={cx('period')}>1H</span>
                     <span className={cx('period')}>4H</span>
@@ -65,7 +84,7 @@ function SellPro() {
                 </div>
                             
                 <div className={cx('k-line-chart')}>
-                  <Chart style={{height: 330}}/>
+                  <Chart style={{height: 330}} checkChart={checkChart}/>
                 </div>
 
               </div>
@@ -398,15 +417,6 @@ function SellPro() {
           </div>
         </div>
 
-        
-        
-        
-        
-        <div className={cx('')}></div>
-        <div className={cx('')}></div>
-        <div className={cx('')}></div>
-        <div className={cx('')}></div>
-        <div className={cx('')}></div>
       </div>
     </div>
   )

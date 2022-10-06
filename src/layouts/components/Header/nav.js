@@ -38,7 +38,7 @@ function Nav(className) {
                                             </MenuItem>
                                         </li>
                                         <li className="nav-item">
-                                            <MenuItem to={'/'} title = {'Sign In'}></MenuItem>
+                                            <MenuItem to={'/login'} title = {'Sign In'}></MenuItem>
                                         </li>
                                     </Menu> 
                                 </ul>

@@ -5,3 +5,8 @@ export const addName = (data) => ({
     payload: data,
 });
 
+export const checkChart = (data) => ({
+    type: types.SET_ACTIVE_CHECK_CHART,
+    payload: data,
+});
+

@@ -2,9 +2,16 @@ import { init, dispose } from 'klinecharts';
 import generatedKLineDataList from '~/utils/generatedKLineDataList'
 import { useEffect, useState, useRef } from 'react';
 import React from 'react'
+import { useSelector } from 'react-redux';
 
-function Chart({style}) {
+
+function Chart({style, checkChart}) {
+  // const checkChart = useSelector((state) => state.chart.checkChart);
+  // console.log(checkChart[1]);
+  console.log(checkChart);
   // console.log(style);
+
+
 
     // useEffect(() => {
     //   function updateData (kLineChart) {
@@ -34,7 +41,7 @@ function Chart({style}) {
           show: true,
           horizontal: {
             show: true,
-            size: 1,
+            size: 0.3,
             color: '#393939',
             // 'solid'|'dash'
             style: 'dash',
@@ -42,7 +49,7 @@ function Chart({style}) {
           },
           vertical: {
             show: true,
-            size: 1,
+            size: 0.3,
             color: '#393939',
             // 'solid'|'dash'
             style: 'dash',
@@ -78,6 +85,10 @@ function Chart({style}) {
       }
     }
 
+    const types = [
+      { key: 'candle_solid', text: 'Nến' },
+      { key: 'area', text: 'Đường' }
+    ]
     
     const chart = useRef()
     const [candleShowType, setCandleShowType] = useState('standard')
@@ -86,18 +97,17 @@ function Chart({style}) {
       chart.current = init('tooltip-k-line')
       chart.current.createTechnicalIndicator('MA', false, { id: 'candle_pane' })
       chart.current.applyNewData(generatedKLineDataList())
-      return () => { dispose('tooltip-k-line') }
-    }, [])
-  
-    useEffect(() => {
+      chart.current && chart.current.setStyleOptions({ candle: { type: checkChart }} )
       chart.current && chart.current.setStyleOptions(getTooltipOptions(
         candleShowType
       ))
-    }, [candleShowType])
+      return () => { dispose('tooltip-k-line') }
+    }, [checkChart])
+
 
     return (
       <>
-        <div id="tooltip-k-line" className="k-line-chart" style={ style }/>
+        <div id="tooltip-k-line" className="k-line-chart" style={ style }/>        
       </>
 
     )
