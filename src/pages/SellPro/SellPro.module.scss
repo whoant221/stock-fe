@@ -84,11 +84,6 @@
                 .trading-pair { grid-area: f; }  
                 .chart-container { grid-area: g; }
                 .orders-container { grid-area: h;}
-                .order-book {
-                    grid-area: i;
-                    display: flex;
-                    flex-direction: column;
-                }
                 .trades { grid-area: j; }
                 .trade-container { grid-area: k;}
                 div{ background-color: var(--global-content-bg-color); }
@@ -256,111 +251,6 @@
                 }
             }
 
-            .order-book{
-                .area-title {
-                    color: var(--global-text-highlight-color);
-                    font-weight: 600;
-                    padding: 16px 20px 10px;
-                    margin-bottom: 8px;
-                    box-shadow: 0 1px 0 var(--global-shadow);
-                    }
-                .orderbook-header{
-                    display: flex;
-                    gap: 18px;
-                    align-items: center;
-                    padding: 8px 16px;
-                    .orderbook-view {
-                        width: 32px;
-                        height: 32px;
-                        border-radius: 4px;
-                        border: 1px solid transparent;
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                        cursor: pointer;
-                        .view_cover{
-                            color:darkgoldenrod;
-                        }
-                        .view_up{
-                            color: var(--global-bid-color);
-                        }
-                        .view_down{
-                            color: var( --global-ask-color);
-                        }
-                    }
-                    .active {
-                        border-color: var(--global-primary-color);
-                    }
-                }
-                .area-thead {
-                    display: flex;
-                    padding: 4px 14px 8px 16px;
-                    gap: 4px;
-                    font-size: 14px !important;
-                    font-weight: 400;
-                    .item-td {
-                        flex: 1 1 0%;
-                        color: var(--inside-global-text-color);
-                    }
-                    .a-right {
-                        text-align: right;
-                    }
-
-                    @media (min-width: 961px){
-                        .item-td {
-                            white-space: nowrap;
-                        }
-                    }
-                    
-                }
-                .orderbooklist-container {
-                    display: flex;
-                    flex-direction: column;
-                    max-height: 509px;
-                    padding-bottom: 6px;
-                    font-size: 14px;
-                    .area-tbody {
-                        padding: 0;
-                        color: var(--global-text-highlight-color);
-                        flex: 1 1 0%;
-                        overflow: overlay;
-                        display: flex;
-                        flex-direction: column-reverse;
-                        .item-tr {
-                            display: flex;
-                            padding: 2px 14px 2px 16px;
-                            gap: 8px;
-                            .c-up {
-                                color: var(--global-bid-color);
-                            }
-                            .c-down{
-                                color: var(--global-ask-color);
-                            }
-                            .a-right {
-                                text-align: right;
-                            }
-                        }
-                    }
-                    .orderbook-ticker {
-                        padding: 4px 16px;
-                        font-size: 20px;
-                        font-weight: 600;
-                    }
-                    .c-up {
-                        color: var(--global-bid-color);
-                    }
-                    .c-down{
-                        color: var(--global-ask-color);
-                    }
-                }
-                @media screen and (min-width: 961px){
-                    .orderbooklist-container {
-                        flex: 1;
-                        overflow: auto;
-                    } 
-                } 
-            }
-
             .trades{
                 padding-bottom: 24px;
                 .area-title {
@@ -445,23 +335,14 @@
                                         gap: 24px;
                                         margin-bottom: 24px;
                                         margin-bottom: 0;
-                                        font-size: 16px;
+                                        font-size: 14px;
                                         line-height: 1.57;
                                         padding: 0 20px;
                                         align-items: center;
                                         .tab-link {
-                                            padding: 8px 0;
-                                            color: var(--inside-global-text-45-color);
-                                            border-bottom: 2px solid transparent;
-                                            cursor: pointer;
-                                            white-space: nowrap;
-                                            padding-top: 15px;
-                                            width: 50px;
-                                            text-align: center;
-                                        }
-                                        .tab-link-active {
-                                            color: var(--inside-global-text-highlight-color);
-                                            border-color: var(--global-primary-color);
+                                            color: var(--global-text-highlight-color);
+                                            font-weight: 600;
+                                            padding: 15px 20px 10px 0;
                                         }
                                     }
                                 }
@@ -531,6 +412,7 @@
                                                 display: flex;
                                                 margin-bottom: 15px;
                                                 font-size: 15px;
+                                                overflow: hidden;
                                                 label {
                                                     min-width: 116px;
                                                     padding: 3px 12px;

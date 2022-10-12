@@ -1,9 +1,5 @@
 
 
-body {
-	background: linear-gradient(90deg, #C7C5F4, #776BCC);		
-}
-
 a:hover{
 	text-decoration: initial !important;
 }
@@ -13,6 +9,7 @@ a:hover{
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
+	background: linear-gradient(90deg, #C7C5F4, #776BCC);	
 }
 
 .screen {		

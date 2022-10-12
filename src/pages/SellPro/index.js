@@ -1,24 +1,17 @@
 import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import Nav from '~/layouts/components/Header/nav';
 import Chart from '../Home/Chart';
+import OrderBook from './OrderBook';
 import styles from './SellPro.module.scss';
-import * as actions from '~/redux/actions';
 const cx = classNames.bind(styles);
 
 function SellPro() {
-  const dispatch = useDispatch();
-
   const [checkChart, setCheckChart] = useState('candle_solid');
-  // console.log(checkChart);
-
   useEffect(() => {
     document.title =
     'Bitbank | Giao dịch chứng khoán';
-
-    // dispatch(actions.checkChart(checkChart));
   }, [])
 
 
@@ -116,122 +109,7 @@ function SellPro() {
             </div>
           </div>
 
-          <div className={cx('order-book')}>
-
-            <div className={cx('area-title')}>Sổ lệnh</div>
-            <div className={cx('orderbook-header')}>
-              <div className={cx('orderbook-view', 'active')}> 
-                <i className={cx("fas fa-water",'view_cover')}></i>
-              </div>
-              <div className={cx('orderbook-view')}> 
-                <i className={cx("fas fa-water-rise",'view_up')}></i>
-              </div>
-              <div className={cx('orderbook-view',)}> 
-                <i className={cx("fas fa-water-lower",'view_down')}></i>
-              </div> 
-            </div>
-            <div className={cx('area-thead')}>
-              <div className={cx('item-td')}>Giá (USDT)</div>
-              <div className={cx('item-td', 'a-right')}>Số lượng (AVAX)</div>
-              <div className={cx('item-td', 'a-right')}>Tổng (USDT)</div>
-            </div>
-            <div className={cx('orderbooklist-container')}>
-              <div className={cx('area-tbody')}>
-                <div className={cx('orderbook-progress')}>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-down')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-down')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-down')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-down')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-down')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-down')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-down')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-down')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                </div>
-              </div>
-              <div className={cx('orderbook-ticker', 'c-down')}>
-                <Tippy content='Giá khớp lệnh gần nhất' placement={'right-end'}>
-                  <span>17.05</span>
-                </Tippy>
-              </div>
-              <div className={cx('area-tbody')}>
-                <div className={cx('orderbook-progress')}>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-up')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-up')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-up')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-up')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-up')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-up')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-up')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                  <div className={cx('item-tr')}>
-                    <div className={cx('c-up')}>17.04</div>
-                    <div className={cx('a-right')}>1256.475</div>
-                    <div className={cx('a-right')}>35386.591</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
+          <OrderBook/>
 
           <div className={cx('trades')}>
             <div className={cx('area-title')}>Giao dịch thị trường</div>
@@ -348,8 +226,7 @@ function SellPro() {
                   <div className={cx('nav-tabs-wrapper')}>
                     <div className={cx('nav-tabs-container')}>
                       <div className={cx('nav-tabs')}>
-                        <div className={cx('tab-link', 'tab-link-active')}>Limit</div>
-                        <div className={cx('tab-link')}>Market</div>
+                        <div className={cx('tab-link')}>Lệnh</div>
                       </div>
                     </div>
                   </div>            

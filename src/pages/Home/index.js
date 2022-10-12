@@ -348,28 +348,6 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="custom-pricing text-center mt-30">
-                                <p>Giá sẽ được tính toán lại trong 27 giây</p>
-                                <p><a href="">Giá được tính như thế nào ?</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <form className="custom-pricing-form">
-                        <h3 className="text-center">Bạn cũng có thể nhập một lượng tùy chỉnh:</h3>
-                        <div className="form-row justify-content-center">
-                            <div className="col-md-4">
-                                <input type="text" className="form-control mb-2" id="inlineFormInput" placeholder="BTC"></input>
-                            </div>
-                            <div className="col-md-4">
-                                <input type="text" className="form-control mb-2" id="inlineFormInput2" placeholder="USD"></input>
-                            </div>
-                            <div className="col-md-2">
-                                <button type="submit" className="btn btn-main mb-2">Buy</button>
-                            </div>
-                        </div>
-                    </form>
                 </div> 
             </section>
 
