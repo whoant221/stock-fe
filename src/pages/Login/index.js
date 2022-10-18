@@ -1,9 +1,14 @@
 import React from 'react';
 import styles from './login.module.scss';
 import classNames from 'classnames/bind';
+import { useEffect } from 'react';
 const cx = classNames.bind(styles);
 
 function Login() {
+  useEffect(() => {
+    document.title = 'Bitbank | Đăng nhập,Đăng ký tài khoản';
+    window.scrollTo(0, 0)
+  }, []);
 
   return (
     <div className={cx("container")}>

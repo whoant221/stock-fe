@@ -10,10 +10,10 @@ function All() {
         <thead className="grey lighten-2">
             <tr>
                 <th scope="col">Coin</th>
-                <th scope="col">Giá Mua (VNT)	</th>
+                <th scope="col">Giá Mua (VNT)</th>
                 <th scope="col">Giá Bán (VNT)</th>
-                <th scope="col">24h	</th>
-                <th scope="col">Thao Tác	</th>
+                <th scope="col">24h</th>
+                <th scope="col">Thao Tác</th>
             </tr>
         </thead>
         <tbody>

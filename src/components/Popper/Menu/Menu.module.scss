@@ -1,0 +1,31 @@
+.menu-list {
+    width: 240px;
+}
+
+.menu-item {
+    padding: 12px 20px 12px 17px;
+    display: flex;
+    align-items: center;
+    color: var(--navigation-text);
+    line-height: normal;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--border-color);
+    }
+}
+
+.title {
+    font-size: 14px;
+}
+
+.icon-left {
+    font-size: 19px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.icon-right {
+    font-size: 20px;
+    height: 20px;
+    margin-left: auto;
+}

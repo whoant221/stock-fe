@@ -17,7 +17,7 @@ function Header() {
         slidesToScroll: 1,
         autoplay: true,
         arrows: true,
-        autoplaySpeed: 4000,
+        autoplaySpeed: 2000,
         pauseOnHover: true,
     };
 

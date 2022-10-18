@@ -2,38 +2,8 @@ import { init, dispose } from 'klinecharts';
 import generatedKLineDataList from '~/utils/generatedKLineDataList'
 import { useEffect, useState, useRef } from 'react';
 import React from 'react'
-import { useSelector } from 'react-redux';
-
 
 function Chart({style, checkChart}) {
-  // const checkChart = useSelector((state) => state.chart.checkChart);
-  // console.log(checkChart[1]);
-  console.log(checkChart);
-  // console.log(style);
-
-
-
-    // useEffect(() => {
-    //   function updateData (kLineChart) {
-    //     setTimeout(() => {
-    //       if (kLineChart) {
-    //         const dataList = kLineChart.getDataList()
-    //         const lastData = dataList[dataList.length - 1]
-    //         const newData = generatedKLineDataList(lastData.timestamp, lastData.close, 1)[0]
-    //         newData.timestamp += 1000 * 60
-    //         kLineChart.updateData(newData)
-    //       }
-    //       updateData(kLineChart)
-    //     }, 1000)
-    //   }
-
-    //   const kLineChart = init('basic-k-line')
-    //   kLineChart.applyNewData(generatedKLineDataList())
-    //   updateData(kLineChart)
-    //   return () => {
-    //     dispose('basic-k-line')
-    //   }
-    // }, []);
 
     function getTooltipOptions (candleShowType, candleShowRule, technicalIndicatorShowRule) {
       return {

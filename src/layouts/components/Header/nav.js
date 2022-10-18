@@ -2,14 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Menu from './NavbarHeader/Menu';
 import MenuItem from './NavbarHeader/MenuItem';
-import {useSelector} from 'react-redux';
-import { useState, useEffect } from 'react';
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 function Nav(className) {
-    const name = useSelector(state => state.header.name)
     return (
         <section className={cx("header", "navigation", "top_margin", 'className')}>
             <div className="container">
@@ -27,14 +24,14 @@ function Nav(className) {
                                     <Menu>
                                         <li className={cx("nav-item")}>
                                             <MenuItem 
-                                            to={`/sellquickly/${name[1] === undefined || name[1] === '' ? 'all' : name[1]}`} 
-                                            title = {'Mua Bán Nhanh'}>                                                  
+                                            to={`/sellquickly`} 
+                                            title = {'Bảng Giá'}>                                                  
                                             </MenuItem>
                                         </li>
                                         <li className={cx("nav-item")}>
                                             <MenuItem 
                                             to={'/sellpro'} 
-                                            title = {'Mua Bán Chứng Khoán'}>                                                    
+                                            title = {'Biểu Đồ Kỹ Thuật'}>                                                    
                                             </MenuItem>
                                         </li>
                                         <li className="nav-item">

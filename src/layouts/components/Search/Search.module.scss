@@ -1,13 +1,15 @@
 .wrapper {
-    height: 40px;
-    background-color: var(--border-color);
-    border-radius: 20px;
     display: flex;
     align-items: center;
-    position: relative;
-    padding-right: 18px;
-
-    input {
+    border: 1px solid var(--color-theme-input-border);
+    border-radius: .25rem;
+    background-color: var(--color-theme-input-background);
+    border-width: 1px;
+    font-size: .813rem;
+    width: 100%;
+    min-height: 2rem;
+    margin: 8px 0;
+    input{
         padding-bottom: 2px;
         padding-right: 18px;
         width: 95%;
@@ -16,23 +18,19 @@
         color: #eee;
         caret-color: var(--white-color);
         background-color: transparent;
-    }
-    &:focus-within {
-        background-color: #432275;
-        border-radius: 20px 20px 0 0;
-    }
-    &.activeSearch {
-        background-color: #432275;
-        border-radius: 20px 20px 0 0;
+        border: none;
+        &:focus {
+            outline: none;
+        }
     }
 }
 
 .search-result {
-    width: 540px;
+    width: 340px;
 }
 
 .search-btn {
-    font-size: 20px;
+    font-size: 12px;
     padding: 0 10px;
     color: var(--navigation-text);
     cursor: pointer;

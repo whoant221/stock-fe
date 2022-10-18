@@ -1,57 +1,549 @@
 import classNames from 'classnames/bind';
-import Footer from '../../layouts/components/Footer';
+import { useEffect, useState } from 'react';
+import Search from '../../layouts/components/Search';
 import styles from './SellQuickly.module.scss';
-import { Link, Outlet} from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Menu from './NavbarSellQ/Menu';
-import MenuItem from './NavbarSellQ/MenuItem';
-import {useDispatch} from 'react-redux';
-import * as actions from '~/redux/actions';
 const cx = classNames.bind(styles);
 
 function SellQuickly() {
-  const dispatch = useDispatch();
-  useEffect(() => {
+
+  useEffect(() => { 
     document.title = 'Bitbank | Mua bán nhanh, Ethereum tại Việt Nam nhanh chóng';
-  }, [window.location.href]);
+    window.scrollTo(0, 0)
+  }, []);
 
+  const data = [
+    {name: 'Danh mục của tôi'},
+    {name: 'VN30'},
+    {name: 'HNX30'},
+    {name: 'HOSE'},
+    {name: 'HNX'},
+    {name: 'UPCOM'},
+    {name: 'CP Ngành'},
+    {name: 'Thỏa thuận'},
+    {name: 'Phái sinh'},
+    {name: 'Chứng quyền'},
+    {name: 'ETF'},
+    {name: 'Lô lẻ'},
+  ]
 
-  const [getNameUrl, setGetNameUrl] = useState('');
-  const handleGetName = () => {
-    if(window.location.href === 'http://localhost:3000/sellquickly/all') setGetNameUrl('all')
-    if(window.location.href === 'http://localhost:3000/sellquickly/basic') setGetNameUrl('basic')
-    if(window.location.href === 'http://localhost:3000/sellquickly/defi') setGetNameUrl('defi')
-    if(window.location.href === 'http://localhost:3000/sellquickly/layer') setGetNameUrl('layer')
-  }
-  useEffect(() => {
-    dispatch(actions.addName(getNameUrl));
-  }, [getNameUrl]);
+  
 
   return (
-    <div className={cx('maxW','layout')}>
-      <div className={cx('main-contentWrapper')}>
-        <div className={cx('main-content')}>
-          <div className={cx('tabs')}>
-            <div className={cx('segmented-bar')}>
-              <form onClick={handleGetName} className="form-inline d-flex justify-content-center md-form form-sm mt-0">
-                <Menu>
-                  <MenuItem title={"Tất cả"} to={'/sellquickly/all'}/>
-                  <MenuItem title={"Basic"} to={'/sellquickly/basic'}/>
-                  <MenuItem title={"Defi & NFT"} to={'/sellquickly/defi'}/>
-                  <MenuItem title={"Layer 1"} to={'/sellquickly/layer'}/>  
-                </Menu>
-              </form>
-              <form className="form-inline d-flex justify-content-center md-form form-sm mt-0">
-                <i className="fas fa-search" aria-hidden="true"></i>
-                <input className="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-                  aria-label="Search"></input>
-              </form>
+    <div className={cx('main-wrapper')}>
+      <div className={cx('home-page')}>
+        <div className={cx('section-price-board')}>
+          <div className={cx('price-board-wrapper')}>
+            <div className={cx('price-board-header')}>
+              <div className={cx('search')}>
+                <div className={cx('input-group')}>
+                  <Search/>
+                </div>
+              </div>
+              <div className={cx('price-board-menu-root')}>
+                {data.map((items, index)=>{
+                  return(<div className={cx('menu_items')} key={index}>{items.name}</div>)
+                })}
+              </div>
+              <div className={cx('space-x-2')}>
+                <i class="fas fa-cog"></i>
+                <div className={cx('left_icon')}>
+                  <i class="fas fa-ellipsis-v"></i>
+                </div>
+                <div className={cx('left_botton')}>
+                  <div className={cx('button_buy')}>Đặt lệnh</div>
+                </div>
+              </div>
             </div>
-              <Outlet/>
+            <div className={cx('price-board-table')}>
+              <div className={cx('ag-theme-dark')}>
+                <div className={cx('ag-layout-normal')}>
+                  <div className={cx('ag-root-wrapper-body')}>
+                    <table>
+
+                      <thead>
+                        <tr>  
+                          <th rowSpan={2}> </th>  
+                          <th rowSpan={2}>CK</th>  
+                          <th rowSpan={2}>Trần</th>  
+                          <th rowSpan={2}>Sàn</th>  
+                          <th rowSpan={2}>TC</th>  
+                          <th colSpan={6}>Bên mua</th>  
+                          <th colSpan={4}>Khớp lệnh</th>  
+                          <th colSpan={6}>Bên bán</th>  
+                          <th rowSpan={2}>Tổng KL</th>  
+                          <th rowSpan={2}>Cao</th>  
+                          <th rowSpan={2}>Thấp</th>  
+                          <th colSpan={3}>ĐTNN</th>  
+                        </tr>  
+                        <tr>  
+                          <td>Giá 3</td>  
+                          <td>KL 3</td>  
+                          <td>Giá 2</td>  
+                          <td>KL 2</td>  
+                          <td>Giá 1</td>  
+                          <td>KL 1</td>  
+                          <td>Giá</td>  
+                          <td>KL</td>  
+                          <td>+/-</td>  
+                          <td>+/- (%)</td> 
+                          <td>Giá 1</td>  
+                          <td>KL 1</td>   
+                          <td>Giá 2</td>  
+                          <td>KL 2</td>   
+                          <td>Giá 3</td>  
+                          <td>KL 3</td> 
+                          <td>NN mua</td>  
+                          <td>NN bán</td>  
+                          <td>Room</td>  
+                        </tr> 
+                      </thead>
+
+                      <tbody id={cx('customers')}>
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'green')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'red')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'yellow')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'green')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'red')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'yellow')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'green')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'red')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'yellow')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'green')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'red')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'yellow')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                                                <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'green')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'green')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'red')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'red')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                        <tr>
+                          <th className={cx('center')}><i class="fas fa-thumbtack"></i></th>
+                          <th className={cx('left', 'yellow')}>ACB</th>
+                          <th className={cx('right', 'violet', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'blue', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right', 'set_light', 'yellow')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                          <th className={cx('right')}>22.40</th>
+                        </tr> 
+                      </tbody>
+
+                    </table>  
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <Footer/>
     </div>
   )
 }

@@ -11,6 +11,7 @@ function Home() {
 
     useEffect(() => {
         document.title = 'Bitbank | Giao dịch mua bán Bitcoin, Ethereum tại Việt Nam nhanh chóng';
+        window.scrollTo(0, 0)
     }, []);
 
     return (

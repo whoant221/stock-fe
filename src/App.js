@@ -22,14 +22,9 @@ function App() {
                 <Routes>
                     <Route path='' element={<DefaultLayout />}>
                         <Route path='' element={<Home />} />
-                        <Route path='/sellquickly' element={<SellQuickly />} >
-                            <Route path='all' element={<All />} />
-                            <Route path='basic' element={<Basic />} />
-                            <Route path='defi' element={<Defi />} />
-                            <Route path='layer' element={<Layer />} />
-                        </Route>
+                        <Route path='/sellquickly' element={<SellQuickly />} />
+                        <Route path='/sellpro' element={<SellPro />}/>
                     </Route>
-                    <Route path='/sellpro' element={<SellPro />}/>
                     <Route path='/login' element={<Login/>} />
                 </Routes>
             </div>

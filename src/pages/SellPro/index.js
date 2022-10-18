@@ -10,14 +10,12 @@ const cx = classNames.bind(styles);
 function SellPro() {
   const [checkChart, setCheckChart] = useState('candle_solid');
   useEffect(() => {
-    document.title =
-    'Bitbank | Giao dịch chứng khoán';
+    document.title = 'Bitbank | Giao dịch chứng khoán';
+    window.scrollTo(0, 0)
   }, [])
 
 
   return (
-    <div className={cx('main-page')}>
-      <Nav/>
       <div className={cx('main-page')}>
         <div className={cx('market-container')}>
           <div className={cx('trading-pair')}>
@@ -295,7 +293,6 @@ function SellPro() {
         </div>
 
       </div>
-    </div>
   )
 }
 

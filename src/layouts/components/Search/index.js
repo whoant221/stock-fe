@@ -1,16 +1,12 @@
 import { useState, useEffect, useRef, Fragment } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-import {
-    searchByKeyword,
-    getTopKeyword
-  } from "nhaccuatui-api-full";
 
 import Wrapper from '~/components/Popper';
 import { useDebounce } from '~/hooks';
 import styles from './Search.module.scss';
-import images from "~/images";
-import Image from '~/components/Image';
+// import images from "~/images";
+// import Image from '~/components/Image';
 import axios from 'axios';
 
 const cx = classNames.bind(styles);
@@ -25,37 +21,37 @@ function Search() {
     
     const [topSearchs, setTopSearchs] = useState([]);
 
-    useEffect(() => {
-        const getTopSearch = async () => {
-            try {
-                const res = await getTopKeyword()
-                setTopSearchs(res.listKeyValue)
-            } catch (error) {
-                // alert(error);
-            }
-        };
-        getTopSearch();
-    },[])
+    // useEffect(() => {
+    //     const getTopSearch = async () => {
+    //         try {
+    //             const res = await getTopKeyword()
+    //             setTopSearchs(res.listKeyValue)
+    //         } catch (error) {
+    //             // alert(error);
+    //         }
+    //     };
+    //     getTopSearch();
+    // },[])
 
-    useEffect(() => {
-            if(!searchValue.trim()) {
-                setSearchResult()
-                return; 
-            }
+    // useEffect(() => {
+    //         if(!searchValue.trim()) {
+    //             setSearchResult()
+    //             return; 
+    //         }
 
-        axios   
-            .get(`https://apizingmp3.herokuapp.com/api/search`, {
-                params: {
-                    keyword: searchValue,
-                }
-            })
-            .then((res) => {
-                setSearchResult(res.data.data)
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }, [debouncedValue])
+    //     axios   
+    //         .get(`https://apizingmp3.herokuapp.com/api/search`, {
+    //             params: {
+    //                 keyword: searchValue,
+    //             }
+    //         })
+    //         .then((res) => {
+    //             setSearchResult(res.data.data)
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         })
+    // }, [debouncedValue])
 
 
 
@@ -79,12 +75,12 @@ function Search() {
                     return (
                         <div key={item.encodeId} className={cx('result-item')}>
                             <div className={cx('cd')}>
-                                <Image 
+                                {/* <Image 
                                     className={cx('cd-thumb')}
                                     src={item.thumbnail || item.thumbnailM}
                                     alt={item.title}
                                     defaultAvt={images.defaultAvataSong}
-                                />
+                                /> */}
                             </div>
                             <div className={cx('media-content')}>
                                 <div className={cx('song-name','text-sm')}>{item.title}</div>
@@ -111,12 +107,12 @@ function Search() {
                     return (
                         <div key={item.encodeId} className={cx('result-item')}>
                             <div className={cx('cd')}>
-                                <Image 
+                                {/* <Image 
                                     className={cx('cd-thumb')}
                                     src={item.thumbnail || item.thumbnailM}
                                     alt={item.title}
                                     defaultAvt={images.defaultAvataSong}
-                                />
+                                /> */}
                             </div>
                             <div className={cx('media-content')}>
                                 <div className={cx('song-name','text-sm')}>{item.title}</div>
@@ -174,7 +170,7 @@ function Search() {
                                     </Fragment>
                                 ) : (
                                     <Fragment>
-                                        <h3 className={cx('search-title')}>Tìm kiếm nhiều nhất</h3>
+                                        abc
                                         {renderTopSearch()}
                                     </Fragment>
                                 )}
@@ -184,13 +180,13 @@ function Search() {
                 )}
             >
                 <div className={cx('wrapper', {activeSearch: showResult } )}>
-                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+                    <div className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                         <i className="fal fa-search"></i>
-                    </button>
+                    </div>
                     <input
                         ref={inputRef}
                         value={searchValue}
-                        placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát..."
+                        placeholder="Tìm kiếm CK"
                         spellCheck={false}
                         onChange={handleChange}
                         onFocus={() => setShowResult(true)}
