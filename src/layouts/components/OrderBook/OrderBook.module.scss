@@ -6,6 +6,7 @@
         margin-bottom: 8px;
         box-shadow: 0 1px 0 var(--global-shadow);
         font-size: 14px;
+        width: 100% !important;
         }
     .orderbook-header{
         display: flex;
@@ -69,10 +70,12 @@
             overflow: overlay;
             display: flex;
             flex-direction: column-reverse;
+            // max-height: 140px;
             .item-tr {
                 display: flex;
                 padding: 2px 14px 2px 16px;
                 gap: 8px;
+                width: 100%;
                 .c-up {
                     color: var(--global-bid-color);
                 }
@@ -104,6 +107,7 @@
             flex: 1;
             overflow: auto;
         } 
+        div{ width: 100%;}
     } 
 }
 

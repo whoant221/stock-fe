@@ -124,7 +124,7 @@ function OrderBook() {
             </div>
             <div className={cx('orderbook-ticker', 'c-down')}>
                 <Tippy content='Giá khớp lệnh gần nhất' placement={'right-end'}>
-                <span>17.05</span>
+                    <span>17.05</span>
                 </Tippy>
             </div>
             <div className={cx('area-tbody', checkHandeDown)}>

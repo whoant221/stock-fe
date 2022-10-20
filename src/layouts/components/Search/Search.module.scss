@@ -38,6 +38,7 @@
 
 .clear {
     color: var(--navigation-text);
+    margin: 0 10px;
 }
 
 .search-title {
@@ -98,7 +99,6 @@
     border-radius: 5px;
     background-color: transparent;
     cursor: pointer;
-
     &:hover {
         background-color: var(--border-color);
     }
@@ -117,27 +117,7 @@
     height: auto;
 }
 
-.media-content {
-    overflow: hidden;
-    text-align: left;
-    max-width: 240px;
-}
 
-.song-name {
-    font-size: 14px;
-    text-transform: capitalize;
-    font-weight: 500;
-    color: var(--text-primary);
-    line-height: 1.36;
-    &.nowrap {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-}
 
-.singer-name {
-    font-size: 12px;
-    margin-top: 2px;
-    color: var(--text-secondary);
-}
+
+

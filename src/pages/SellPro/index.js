@@ -1,14 +1,14 @@
-import Tippy from '@tippyjs/react';
+
 import classNames from 'classnames/bind';
 import { useState, useEffect } from 'react';
-import Nav from '~/layouts/components/Header/nav';
-import Chart from '../Home/Chart';
-import OrderBook from './OrderBook';
+import OrderBook from '~/layouts/components/OrderBook';
+import Chart from '~/layouts/components/Chart';
 import styles from './SellPro.module.scss';
 const cx = classNames.bind(styles);
 
 function SellPro() {
   const [checkChart, setCheckChart] = useState('candle_solid');
+  
   useEffect(() => {
     document.title = 'Bitbank | Giao dịch chứng khoán';
     window.scrollTo(0, 0)

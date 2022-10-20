@@ -65,7 +65,7 @@ function Chart({style, checkChart}) {
   
     useEffect(() => {
       chart.current = init('tooltip-k-line')
-      chart.current.createTechnicalIndicator('MA', false, { id: 'candle_pane' })
+      chart.current.createTechnicalIndicator('MA', true, { id: 'candle_pane' })
       chart.current.applyNewData(generatedKLineDataList())
       chart.current && chart.current.setStyleOptions({ candle: { type: checkChart }} )
       chart.current && chart.current.setStyleOptions(getTooltipOptions(
@@ -75,12 +75,8 @@ function Chart({style, checkChart}) {
     }, [checkChart])
 
 
-    return (
-      <>
-        <div id="tooltip-k-line" className="k-line-chart" style={ style }/>        
-      </>
+    return <div id="tooltip-k-line" className="k-line-chart" style={ style }/>        
 
-    )
 }
 
 export default Chart

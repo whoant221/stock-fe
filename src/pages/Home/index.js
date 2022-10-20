@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 import { useState, useEffect } from 'react';
-import Chart from './Chart';
+import Chart from '~/layouts/components/Chart';
 import styles from './Home.module.scss';
-import Footer from '../../layouts/components/Footer'
+import Footer from '~/layouts/components/Footer'
 import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
