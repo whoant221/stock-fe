@@ -28,14 +28,8 @@ function Nav(className) {
                                             title = {'Bảng Giá'}>                                                  
                                             </MenuItem>
                                         </li>
-                                        <li className={cx("nav-item")}>
-                                            <MenuItem 
-                                            to={'/sellpro'} 
-                                            title = {'Biểu Đồ Kỹ Thuật'}>                                                    
-                                            </MenuItem>
-                                        </li>
                                         <li className="nav-item">
-                                            <MenuItem to={'/login'} title = {'Sign In'}></MenuItem>
+                                            <MenuItem to={'/register'} title = {'Sign In'}></MenuItem>
                                         </li>
                                     </Menu> 
                                 </ul>

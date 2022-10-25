@@ -44,8 +44,8 @@ function OrderBook() {
         </div>
         <div className={cx('area-thead')}>
             <div className={cx('item-td')}>Giá (USDT)</div>
-            <div className={cx('item-td', 'a-right')}>Số lượng (AVAX)</div>
-            <div className={cx('item-td', 'a-right')}>Tổng (USDT)</div>
+            <div className={cx('item-td', 'a-right')}>Số lượng</div>
+            <div className={cx('item-td', 'a-right')}>Tổng</div>
         </div>
         <div className={cx('orderbooklist-container')}>
             <div className={cx('area-tbody', checkHandelUp)}>

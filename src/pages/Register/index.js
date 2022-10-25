@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './login.module.scss';
+import styles from './Register.module.scss';
 import classNames from 'classnames/bind';
 import { useEffect } from 'react';
 const cx = classNames.bind(styles);
 
-function Login() {
+function Register() {
   useEffect(() => {
     document.title = 'Bitbank | Đăng nhập,Đăng ký tài khoản';
     window.scrollTo(0, 0)
@@ -17,25 +17,25 @@ function Login() {
           <form className={cx("login")}>
             <div className={cx("login__field")}>
               <i className={cx("login__icon", "fas fa-user")}></i>
-              <input type="text" className={cx("login__input")} placeholder="User name / Email"></input>
+              <input type="text" className={cx("login__input")} placeholder="Tên người dùng"></input>
+            </div>
+            <div className={cx("login__field")}>
+              <i className={cx("login__icon", "fas fa-map-marker-alt")}></i>
+              <input type="text" className={cx("login__input")} placeholder="Địa chỉ"></input>
+            </div>
+            <div className={cx("login__field")}>
+              <i className={cx("login__icon", "fas fa-mobile")}></i>
+              <input type="text" className={cx("login__input")} placeholder="Số điện thoại"></input>
             </div>
             <div className={cx("login__field")}>
               <i className={cx("login__icon", "fas fa-lock")}></i>
-              <input type="password" className={cx("login__input")} placeholder="Password"></input>
+              <input type="password" className={cx("login__input")} placeholder="Mật khẩu"></input>
             </div>
             <button className={cx("button", "login__submit")}>
-              <span className={cx("button__text")}>Log In Now</span>
+              <span className={cx("button__text")}>Đăng ký ngay</span>
               <i className={cx("button__icon", "fas fa-chevron-right")}></i>
             </button>				
           </form>
-          <div className={cx("social-login")}>
-            <h3>log in via</h3>
-            <div className={cx("social-icons")}>
-              <a href="#"  className={cx("social-login__icon", "fab fa-google")}></a>
-              <a href="#"  className={cx("social-login__icon", "fab fa-facebook")}></a>
-              <a href="#"  className={cx("social-login__icon", "fab fa-github")}></a>
-            </div>
-          </div>
         </div>
         <div className={cx("screen__background")}>
           <span className={cx("screen__background__shape", "screen__background__shape4")}></span>
@@ -48,4 +48,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Register

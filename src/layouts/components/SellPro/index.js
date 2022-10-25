@@ -1,12 +1,17 @@
 
 import classNames from 'classnames/bind';
 import { useState, useEffect } from 'react';
+import * as actions from '~/redux/actions';
+import {useSelector,useDispatch} from 'react-redux';
 import OrderBook from '~/layouts/components/OrderBook';
 import Chart from '~/layouts/components/Chart';
 import styles from './SellPro.module.scss';
 const cx = classNames.bind(styles);
 
 function SellPro() {
+  const thanhMV = useSelector(state => state.header.active)
+  const dispatch = useDispatch();
+
   const [checkChart, setCheckChart] = useState('candle_solid');
   
   useEffect(() => {
@@ -16,8 +21,16 @@ function SellPro() {
 
 
   return (
-      <div className={cx('main-page')}>
-        <div className={cx('market-container')}>
+      <div className={cx('main-page')} style={{display: `${thanhMV[1]===undefined ? 'none' : thanhMV[1]}`}}>
+
+        <div className={cx('main-page-map')} onClick={()=>{dispatch(actions.setLayout('none'))}}></div>
+
+        <div className={cx('market-container')}>    
+        
+          <div className={cx('market-container-icon')} onClick={()=>{dispatch(actions.setLayout('none'))}}> 
+            <i class="fal fa-times"></i>  
+          </div>
+
           <div className={cx('trading-pair')}>
             <div className={cx('pair-switcher')}>
               <div className={cx('toggle', 'current-coin-name')}>
@@ -232,10 +245,11 @@ function SellPro() {
 
                 <div className={cx('tab-content', 'tab-content-visible')}>
                   <div className={cx('trading-tabs')}>
+                    
                     <div className={cx('trading-nav-tabs')}>
                       <div className={cx('tab-link', 'tab-link-mua')}>Mua</div>
                       <div className={cx('tab-link', 
-                      // 'tab-link-ban'
+                      'tab-link-ban'
                       )}>Bán</div>
                     </div>
 
@@ -269,19 +283,6 @@ function SellPro() {
                             <label className={cx('unit')}>USDT</label>
                           </div>
                         </from>
-
-                        <from className={cx('form-control')}>
-                          <div className={cx('primary-actions')}>
-                            <div className={cx('btn-medium_bid')}>Mua</div>
-                          </div>
-                        </from>
-
-                        <from className={cx('form-control')}>
-                          <div className={cx('primary-actions')}>
-                            <div className={cx('btn-medium_ask')}>Bán</div>
-                          </div>
-                        </from>
-
 
                       </div>
                     </div>

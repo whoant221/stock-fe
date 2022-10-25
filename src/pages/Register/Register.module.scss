@@ -9,7 +9,10 @@ a:hover{
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
+	height: 100%;
+	width: 100%;
 	background: linear-gradient(90deg, #C7C5F4, #776BCC);	
+	overflow: hidden;
 }
 
 .screen {		
@@ -81,7 +84,6 @@ a:hover{
 .login {
 	width: 320px;
 	padding: 30px;
-	padding-top: 156px;
 }
 
 .login__field {
@@ -91,7 +93,7 @@ a:hover{
 
 .login__icon {
 	position: absolute;
-	top: 30px;
+	top: 34px;
 	color: #7875B5;
 }
 
@@ -104,6 +106,9 @@ a:hover{
 	font-weight: 700;
 	width: 75%;
 	transition: .2s;
+	color: #4C489D;
+	font-size: 15px ;
+	
 }
 
 .login__input:active,

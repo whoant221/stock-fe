@@ -1,18 +1,18 @@
 import * as types from "~/constant/actionTypes";
 
 const initialState = {
-    name: '' ,
+    active: '',
 }
 
 const header = (state = initialState, actions) => {
     switch (actions.type) {
 
-        case types.SET_ACTIVE_GET_NAME:      
-            let name =[state.name != '']
-            name.push(actions.payload)     
+        case types.SET_ACTIVE_LAYOUT:      
+            let active =[state.active != '']
+            active.push(actions.payload)     
             return {
                 ...state,
-                name: name,
+                active: active,
             }
         default:
                 return state;

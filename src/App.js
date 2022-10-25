@@ -5,9 +5,9 @@ import DefaultLayout from '~/layouts';
 
 //Page
 import Home from '~/pages/Home';
-import Login from './pages/Login';
-import SellPro from './pages/SellPro';
+import Register from './pages/Register';
 import SellQuickly from './pages/SellQuickly';
+import Login from './layouts/components/Login';
 
 function App() {
 
@@ -19,9 +19,9 @@ function App() {
                     <Route path='' element={<DefaultLayout />}>
                         <Route path='' element={<Home />} />
                         <Route path='/sellquickly' element={<SellQuickly />} /> 
-                        <Route path='/sellpro' element={<SellPro />}/>
                     </Route>
                      
+                    <Route path='/register' element={<Register/>} />
                     <Route path='/login' element={<Login/>} />
                 </Routes>
             </div>

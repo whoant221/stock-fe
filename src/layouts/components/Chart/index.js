@@ -55,11 +55,7 @@ function Chart({style, checkChart}) {
       }
     }
 
-    const types = [
-      { key: 'candle_solid', text: 'Nến' },
-      { key: 'area', text: 'Đường' }
-    ]
-    
+
     const chart = useRef()
     const [candleShowType, setCandleShowType] = useState('standard')
   

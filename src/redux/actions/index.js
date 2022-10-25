@@ -1,12 +1,9 @@
 import * as types from '~/constant/actionTypes';
 
-export const addName = (data) => ({
-    type: types.SET_ACTIVE_GET_NAME,
+export const setLayout = (data) => ({
+    type: types.SET_ACTIVE_LAYOUT,
     payload: data,
 });
 
-export const checkChart = (data) => ({
-    type: types.SET_ACTIVE_CHECK_CHART,
-    payload: data,
-});
+
 

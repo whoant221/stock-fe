@@ -1,14 +1,44 @@
 .main-page{
     width: 100%;
-    background-color: var(--global-body-bg-color);
+    height: 100%;
     padding: 0;
     display: flex;
     flex-direction: column;
     flex: 1;
+    position: fixed;
+    z-index: 1;
     margin-top: 0px !important;
+    justify-content: space-around;
     .market-container {
+        background-color: var(--global-body-bg-color);
         display: grid;
         flex: 1;
+        overflow: auto ;
+        position: fixed;
+        width: 80%;
+        height: 92%;
+
+        left: 10%;
+        right: 10%;
+        border-radius: 4px;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        .market-container-icon{
+            position: fixed;
+            text-align: end;
+            right: 10%;
+            width: 30px;
+            padding:0px 8px 0px 0px ;
+            font-size: 20px;
+            color: #666;
+            background-color: transparent;
+            margin: 8px;
+            &:hover{
+                background-color: #999;
+                color: #fff;
+            }
+        }
         .trading-pair {
             padding: 16px 24px;
             background: var(--dark-theme-surface-04);
@@ -465,53 +495,6 @@
                                                 }
                                             }
                                         }
-                                        
-                                    }
-                                    .form-control {
-                                        padding-top: 16px;
-                                        margin-bottom: 40px !important;
-                                        .primary-actions {
-                                            display: flex;
-                                            justify-content: space-between;
-                                            gap: 10px;
-                                            display: block;
-                                            .btn-medium_bid {
-                                                padding: 9px 15px;
-                                                padding: 10px 15px;
-                                                border-radius: 4px;
-                                                cursor: pointer;
-                                                transition: opacity .3s ease-in-out;
-                                                text-decoration: none;
-                                                font-family: Open Sans,sans-serif;
-                                                font-size: 16px;
-                                                line-height: 1.5;
-                                                display: inline-block;
-                                                text-align: center;
-                                                font-weight: 600;
-                                                background-color: var(--global-bid-color);
-                                                color: #fff;
-                                                gap: 8px;
-                                                margin-top: 40px !important;
-                                            }
-                                            .btn-medium_ask {
-                                                padding: 9px 15px;
-                                                padding: 10px 15px;
-                                                border-radius: 4px;
-                                                cursor: pointer;
-                                                transition: opacity .3s ease-in-out;
-                                                text-decoration: none;
-                                                font-family: Open Sans,sans-serif;
-                                                font-size: 16px;
-                                                line-height: 1.5;
-                                                display: inline-block;
-                                                text-align: center;
-                                                font-weight: 600;
-                                                background-color: var(--global-ask-color);
-                                                color: #fff;
-                                                gap: 8px;
-                                                margin-top: 40px !important;
-                                            }
-                                        }
                                     }
                                 }
                             }
@@ -520,6 +503,11 @@
                 }
             }
         }
+    }
+    .main-page-map{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
     }
     @media screen and (min-width: 961px){
         .market-container {
@@ -533,9 +521,9 @@
     @media screen and (min-width: 300px){
         .market-container {
             grid-template:
-                "f f f f i k" 80px
-                "g g g g i k" min(60vh,560px)
-                "h h h h j k"/1fr 1fr 1fr 1fr 320px 320px;
+                "f f f f f i" 80px
+                "g g g g g i" min(60vh,560px)
+                "h h h h j k"/1fr 1fr 1fr 1fr 280px 320px;
         }
     }
     
