@@ -66,7 +66,7 @@ function Table() {
                             arrow={false}
                             followCursor={true}
                             plugins={[followCursor]} 
-                            delay={[400,0]}
+                            theme={'table'}
                             >
                                 <tr>     
                                     <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
@@ -76,7 +76,6 @@ function Table() {
                                     followCursor={true}
                                     plugins={[followCursor]} 
                                     theme={'tomato'}
-                                    delay={[400,0]}
                                     >
                                         <th className={cx('left', colorYellow)} 
                                         onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
@@ -114,7 +113,7 @@ function Table() {
                             arrow={false}
                             followCursor={true}
                             plugins={[followCursor]} 
-                            delay={[400,0]}
+                            theme={'table'}
                             >
                                 <tr>     
                                     <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
@@ -124,7 +123,6 @@ function Table() {
                                     followCursor={true}
                                     plugins={[followCursor]} 
                                     theme={'tomato'}
-                                    delay={[400,0]}
                                     >
                                         <th className={cx('left', colorRed)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
                                     </Tippy>
@@ -161,7 +159,7 @@ function Table() {
                             arrow={false}
                             followCursor={true}
                             plugins={[followCursor]} 
-                            delay={[400,0]}
+                            theme={'table'}
                             >
                                 <tr>     
                                     <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
@@ -171,7 +169,6 @@ function Table() {
                                     followCursor={true}
                                     plugins={[followCursor]} 
                                     theme={'tomato'}
-                                    delay={[400,0]}
                                     >
                                         <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
                                     </Tippy>

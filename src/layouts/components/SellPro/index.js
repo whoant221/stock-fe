@@ -28,7 +28,7 @@ function SellPro() {
         <div className={cx('market-container')}>    
         
           <div className={cx('market-container-icon')} onClick={()=>{dispatch(actions.setLayout('none'))}}> 
-            <i class="fal fa-times"></i>  
+            <i className="fal fa-times"></i>  
           </div>
 
           <div className={cx('trading-pair')}>
@@ -256,7 +256,7 @@ function SellPro() {
                     <div className={cx('tab-content')}> 
                       <div className={cx('buyform')}>
 
-                        <from className={cx('form-inline')}>
+                        <div className={cx('form-inline')}>
                           <div className={cx('field-text')}>
                             <label>Số dư khả dụng:</label>                     
                             <span>0 USDT</span>
@@ -264,7 +264,7 @@ function SellPro() {
                           <div className={cx('field')}>
                             <label>Tỉ giá</label>
                             <div className={cx('field-input-extend')}>
-                              <input className={cx('input-field')} value={0} placeholder></input>
+                              <input className={cx('input-field')} placeholder={'0'}></input>
                             </div>
                             <label className={cx('unit')}>USDT</label>
                           </div>
@@ -278,11 +278,11 @@ function SellPro() {
                           <div className={cx('field')}>
                             <label>Tổng cộng</label>
                             <div className={cx('field-input-extend')}>
-                              <input className={cx('input-field')} placeholder></input>
+                              <input className={cx('input-field')}></input>
                             </div>
                             <label className={cx('unit')}>USDT</label>
                           </div>
-                        </from>
+                        </div>
 
                       </div>
                     </div>
