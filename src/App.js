@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import DefaultLayout from '~/layouts';
 
 //Page
-import Home from '~/pages/Home';
+// import Home from '~/pages/Home';
 import Register from './pages/Register';
 import SellQuickly from './pages/SellQuickly';
-import Login from './layouts/components/Login';
+import Login from './pages/Login';
 
 function App() {
 
@@ -17,8 +17,7 @@ function App() {
             <div className='App'>
                 <Routes>
                     <Route path='' element={<DefaultLayout />}>
-                        <Route path='' element={<Home />} />
-                        <Route path='/sellquickly' element={<SellQuickly />} /> 
+                        <Route path='/' element={<SellQuickly />} /> 
                     </Route>
                      
                     <Route path='/register' element={<Register/>} />
