@@ -69,7 +69,7 @@ function Table() {
                             theme={'table'}
                             >
                                 <tr>     
-                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
                                     <Tippy 
                                     content='Công ty | ACBsdasdasd' 
                                     arrow={false}
@@ -77,35 +77,34 @@ function Table() {
                                     plugins={[followCursor]} 
                                     theme={'tomato'}
                                     >
-                                        <th className={cx('left', colorYellow)} 
-                                        onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                        <th className={cx('left', colorYellow)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
                                     </Tippy>
 
-                                    <th className={cx('right', 'violet', 'set_light')}>22.40</th>
-                                    <th className={cx('right', 'blue', 'set_light')}>22.40</th>
-                                    <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
-                                    <th className={cx('right', colorYellow)}>22.40</th>
-                                    <th className={cx('right', colorYellow)}>22.40</th>
-                                    <th className={cx('right', colorYellow)}>22.40</th>
-                                    <th className={cx('right', colorYellow)}>22.40</th>
-                                    <th className={cx('right', colorYellow)}>22.40</th>
-                                    <th className={cx('right', colorYellow)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorYellow)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorYellow)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorYellow)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorYellow)}>22.40</th>
-                                    <th className={cx('right', colorYellow)}>22.40</th>
-                                    <th className={cx('right', colorYellow)}>22.40</th>
-                                    <th className={cx('right', colorYellow)}>22.40</th>
-                                    <th className={cx('right', colorYellow)}>22.40</th>
-                                    <th className={cx('right', colorYellow)}>22.40</th>
-                                    <th className={cx('right', colorYellow)}>22.40</th>
-                                    <th className={cx('right', 'set_light')}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorYellow)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorYellow)}>22.40</th>
-                                    <th className={cx('right')}>22.40</th>
-                                    <th className={cx('right')}>22.40</th>
-                                    <th className={cx('right')}>22.40</th>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                 </tr> 
                             </Tippy>
                             <Tippy 
@@ -127,31 +126,31 @@ function Table() {
                                         <th className={cx('left', colorRed)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
                                     </Tippy>
 
-                                    <th className={cx('right', 'violet', 'set_light')}>122.40</th>
-                                    <th className={cx('right', 'blue', 'set_light')}>22.40</th>
-                                    <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
-                                    <th className={cx('right', colorRed)}>22.40</th>
-                                    <th className={cx('right', colorRed)}>22.40</th>
-                                    <th className={cx('right', colorRed)}>22.40</th>
-                                    <th className={cx('right', colorRed)}>22.40</th>
-                                    <th className={cx('right', colorRed)}>22.40</th>
-                                    <th className={cx('right', colorRed)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorRed)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorRed)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorRed)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorRed)}>22.40</th>
-                                    <th className={cx('right', colorRed)}>22.40</th>
-                                    <th className={cx('right', colorRed)}>22.40</th>
-                                    <th className={cx('right', colorRed)}>22.40</th>
-                                    <th className={cx('right', colorRed)}>22.40</th>
-                                    <th className={cx('right', colorRed)}>22.40</th>
-                                    <th className={cx('right', colorRed)}>22.40</th>
-                                    <th className={cx('right', 'set_light')}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorRed)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorRed)}>22.40</th>
-                                    <th className={cx('right')}>22.40</th>
-                                    <th className={cx('right')}>22.40</th>
-                                    <th className={cx('right')}>22.40</th>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                 </tr> 
                             </Tippy>
                             <Tippy 
@@ -173,31 +172,31 @@ function Table() {
                                         <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
                                     </Tippy>
 
-                                    <th className={cx('right', 'violet', 'set_light')}>22.40</th>
-                                    <th className={cx('right', 'blue', 'set_light')}>22.40</th>
-                                    <th className={cx('right', 'yellow', 'set_light')}>22.40</th>
-                                    <th className={cx('right', colorGreen)}>22.40</th>
-                                    <th className={cx('right', colorGreen)}>22.40</th>
-                                    <th className={cx('right', colorGreen)}>22.40</th>
-                                    <th className={cx('right', colorGreen)}>22.40</th>
-                                    <th className={cx('right', colorGreen)}>22.40</th>
-                                    <th className={cx('right', colorGreen)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorGreen)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorGreen)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorGreen)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorGreen)}>22.40</th>
-                                    <th className={cx('right', colorGreen)}>22.40</th>
-                                    <th className={cx('right', colorGreen)}>22.40</th>
-                                    <th className={cx('right', colorGreen)}>22.40</th>
-                                    <th className={cx('right', colorGreen)}>22.40</th>
-                                    <th className={cx('right', colorGreen)}>22.40</th>
-                                    <th className={cx('right', colorGreen)}>22.40</th>
-                                    <th className={cx('right', 'set_light')}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorGreen)}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorGreen)}>22.40</th>
-                                    <th className={cx('right')}>22.40</th>
-                                    <th className={cx('right')}>22.40</th>
-                                    <th className={cx('right')}>22.40</th>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                 </tr> 
                             </Tippy>
 

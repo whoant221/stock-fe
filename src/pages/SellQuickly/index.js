@@ -1,11 +1,15 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import * as actions from '~/redux/actions';
+import {useDispatch} from 'react-redux';
+import SidebarRight from '../../layouts/components/SidebarRight'
 import Search from '../../layouts/components/Search';
 import Table from '../../layouts/components/Table';
 import styles from './SellQuickly.module.scss';
 const cx = classNames.bind(styles);
 
 function SellQuickly() {
+  const dispatch = useDispatch();
 
   useEffect(() => { 
     document.title = 'Bitbank | Mua bán nhanh, Ethereum tại Việt Nam nhanh chóng';
@@ -26,8 +30,6 @@ function SellQuickly() {
     {name: 'ETF'},
     {name: 'Lô lẻ'},
   ]
-
-  
 
   return (
     <div className={cx('main-wrapper')}>
@@ -50,7 +52,7 @@ function SellQuickly() {
                 <div className={cx('left_icon')}>
                   <i className="fas fa-ellipsis-v"></i>
                 </div>
-                <div className={cx('left_botton')}>
+                <div className={cx('left_botton')} onClick={()=>{dispatch(actions.setLayout(true))}}>
                   <div className={cx('button_buy')}>Đặt lệnh</div>
                 </div>
               </div>
@@ -59,6 +61,7 @@ function SellQuickly() {
           </div>
         </div>
       </div>
+      <SidebarRight />
     </div>
   )
 }

@@ -225,7 +225,6 @@ function SellPro() {
                 </div>
               </div>
             </div>
-
             
             
           </div>
@@ -248,9 +247,7 @@ function SellPro() {
                     
                     <div className={cx('trading-nav-tabs')}>
                       <div className={cx('tab-link', 'tab-link-mua')}>Mua</div>
-                      <div className={cx('tab-link', 
-                      'tab-link-ban'
-                      )}>Bán</div>
+                      <div className={cx('tab-link', 'tab-link-ban')}>Bán</div>
                     </div>
 
                     <div className={cx('tab-content')}> 

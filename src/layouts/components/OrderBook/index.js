@@ -4,14 +4,15 @@ import { useState, useEffect } from 'react';
 import styles from './OrderBook.module.scss';
 const cx = classNames.bind(styles);
 
-function OrderBook() {
+function OrderBook({style}) {
+
     const [checkCover, setCheckCover] = useState('active');
     const [checkUp, setCheckUp] = useState();
     const [checkDown, setCheckDown] = useState();
     const [checkHandelUp, setCheckHandeUp] = useState();
     const [checkHandeDown, setCheckHandeDown] = useState();
   return (
-    <div className={cx('order-book')}>
+    <div className={cx('order-book')} style={ style }>
         <div className={cx('area-title')}>Sổ lệnh</div>
         <div className={cx('orderbook-header')}>
             <div className={cx('orderbook-view', checkCover)} onClick={() => {
