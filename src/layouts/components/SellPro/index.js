@@ -14,6 +14,10 @@ function SellPro() {
   const dispatch = useDispatch();
 
   const [checkChart, setCheckChart] = useState('candle_solid');
+  const [check1m, setCheck1m] = useState('active');
+  const [check5m, setCheck5m] = useState('');
+  const [check15m, setCheck15m] = useState('');
+  const [check30m, setCheck30m] = useState('');
   
   useEffect(() => {
     document.title = 'Bitbank | Giao dịch chứng khoán';
@@ -81,10 +85,31 @@ function SellPro() {
                     ? <span className={cx('period', 'line')} onClick={() => {setCheckChart('area')}}>Nến</span>
                     : <span className={cx('period', 'line')} onClick={() => {setCheckChart('candle_solid')}}>Đường</span>}
 
-                    <span className={cx('period','active')}>15m</span>
-                    <span className={cx('period')}>1H</span>
-                    <span className={cx('period')}>4H</span>
-                    <span className={cx('period')}>1D</span>
+                    <span className={cx('period', check1m)} onClick={() => {
+                      setCheck1m('active')
+                      setCheck5m(null)
+                      setCheck15m(null)
+                      setCheck30m(null)
+                    }}>1m</span>
+                    <span className={cx('period', check5m)} onClick={() => {
+                      setCheck1m(null)
+                      setCheck5m('active')
+                      setCheck15m(null)
+                      setCheck30m(null)
+                    }}>5m</span>
+                    <span className={cx('period', check15m)} onClick={() => {
+                      setCheck1m(null)
+                      setCheck5m(null)
+                      setCheck15m('active')
+                      setCheck30m(null)
+                    }}>15m</span>
+                    <span className={cx('period', check30m)} onClick={() => {
+                      setCheck1m(null)
+                      setCheck5m(null)
+                      setCheck15m(null)
+                      setCheck30m('active')
+                    }}>30m</span>
+                    
                   </div>
                 </div>
                             

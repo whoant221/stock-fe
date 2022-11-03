@@ -1,21 +1,30 @@
 import React from 'react'
+import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './History.module.scss';
 const cx = classNames.bind(styles);
 
-
 function History() {
+    const [checkOpen, setCheckOpen] = useState('tab-link-active');
+    const [checkHistory, setCheckHistory] = useState();
+
   return (
     <div className={cx('orders-container')}>
         <div className={cx('tabs')}> 
             <div className={cx('nav-tabs-wrapper')}>
                 <div className={cx('nav-tabs-container')}>
                 <div className={cx('nav-tabs')}>
-                    <div className={cx('tab-link', 'tab-link-active')}>
-                    Lệnh mở
+                    <div className={cx('tab-link', checkOpen)} onClick={() => {
+                        setCheckOpen('tab-link-active')
+                        setCheckHistory(null)
+                    }}> 
+                        Lệnh mở
                     </div>
-                    <div className={cx('tab-link')}>
-                    Lịch sử đặt lệnh
+                    <div className={cx('tab-link', checkHistory)} onClick={() => {
+                        setCheckOpen(null)
+                        setCheckHistory('tab-link-active')
+                    }}> 
+                        Lịch sử đặt lệnh
                     </div>
                 </div>
                 </div>
