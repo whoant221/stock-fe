@@ -23,13 +23,13 @@ function Nav(className) {
                                 <ul className="navbar-nav ml-auto">
                                     <Menu>
                                         <li className={cx("nav-item")}>
-                                            <MenuItem 
-                                            to={`/`} 
-                                            title = {'Bảng Giá'}>                                                  
-                                            </MenuItem>
+                                            <MenuItem to={`/`} title = {'Bảng Giá'}></MenuItem>
                                         </li>
                                         <li className="nav-item">
                                             <MenuItem to={'/login'} title = {'Sign In'}></MenuItem>
+                                        </li>
+                                        <li className="nav-item">
+                                            <MenuItem to={'/profile'} title = {'Profile'}></MenuItem>
                                         </li>
                                     </Menu> 
                                 </ul>

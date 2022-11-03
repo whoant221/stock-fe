@@ -8,6 +8,8 @@ import DefaultLayout from '~/layouts';
 import Register from './pages/Register';
 import SellQuickly from './pages/SellQuickly';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
+
 
 function App() {
 
@@ -17,11 +19,12 @@ function App() {
             <div className='App'>
                 <Routes>
                     <Route path='' element={<DefaultLayout />}>
-                        <Route path='/' element={<SellQuickly />} /> 
+                        <Route path='/' element={<SellQuickly />}/> 
+                        <Route path='/profile' element={<Profile/>}/>
                     </Route>
                      
-                    <Route path='/register' element={<Register/>} />
-                    <Route path='/login' element={<Login/>} />
+                    <Route path='/register' element={<Register/>}/>
+                    <Route path='/login' element={<Login/>}/>
                 </Routes>
             </div>
         </Router>

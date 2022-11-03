@@ -24,7 +24,7 @@ function Login() {
                     <div className={cx('name')}>Mã khách hàng</div>
                     <div className={cx("form-control")}>
                         <i className="fal fa-user"></i>
-                        <input type="text" className={cx("lock")} ></input>
+                        <input type="text" className={cx("lock")} placeholder={'Họ và tên'}></input>
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@ function Login() {
                     <div className={cx('name')}>Mật khẩu</div>
                     <div className={cx("form-control")}>
                         <i className="far fa-lock-alt"></i>
-                        <input type="password" className={cx("lock")}></input>
+                        <input type="password" className={cx("lock")} placeholder={'Mật khẩu'}></input>
                     </div>	
                 </div>
 		

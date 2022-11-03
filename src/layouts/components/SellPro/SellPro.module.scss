@@ -216,68 +216,6 @@
             } 
         }
 
-        .orders-container{
-            z-index: 100;
-            .tabs{
-                .nav-tabs-wrapper {
-                    margin-bottom: 8px;
-                    position: relative;
-                    display: flex;
-                    .nav-tabs-container {
-                        overflow: auto;
-                        scroll-behavior: smooth;
-                        scrollbar-width: none;
-                        border-bottom: 1px solid var(--global-shadow);
-                        display: -webkit-box;
-                        display: -ms-flexbox;
-                        display: flex;
-                        flex: 1;
-                        .nav-tabs {
-                            font-size: var(--global-fontSize-body-XS);
-                            line-height: var(--global-lineHeight-body-XS);
-                            padding: 4px 20px;
-                            align-items: center;
-                            margin-bottom: 0;
-                            display: flex;
-                            gap: 24px;
-                            width: 220px;
-                            .tab-link {
-                                font-weight: 600!important;
-                                padding: 16px;
-                                padding: 8px 0;
-                                color: var(--inside-global-text-45-color);
-                                border-bottom: 2px solid transparent;
-                                font-weight: 600!important;
-                                cursor: pointer;
-                                text-align: center;
-                                white-space: nowrap;
-                            }
-                            .tab-link-active {
-                                color: var(--inside-global-text-highlight-color) !important;
-                                border-color: var(--global-primary-color) !important;
-                            }
-                        }
-                    }
-                }
-                .trade-history-wrapper{
-                    clear: both;
-                    min-height: 240px;
-                }
-                .no-orders{
-                    text-align: center;
-                    margin: 100px 0px;
-                    i{
-                        margin: 10px 0;
-                        font-size: 60px;
-                        color: rgba(156, 156, 156, 0.318);
-                    }
-                    div{
-                        color: rgb(156, 156, 156);
-                    }
-                }
-            }
-        }
-
         .trades{
             padding-bottom: 24px;
             .area-title {
@@ -360,8 +298,7 @@
                                 .nav-tabs {
                                     display: flex;
                                     gap: 24px;
-                                    margin-bottom: 24px;
-                                    margin-bottom: 0;
+                                    margin-bottom: 1px;
                                     font-size: 14px;
                                     line-height: 1.57;
                                     padding: 0 20px;

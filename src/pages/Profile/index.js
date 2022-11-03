@@ -1,3 +1,4 @@
+import History from '~/layouts/components/History'
 import React from 'react'
 import classNames from 'classnames/bind';
 import styles from './Profile.module.scss';
@@ -6,85 +7,60 @@ function Profile() {
   return (
     <div className={cx("container")}>
 
-        <div className="row">
-            <div className="col-sm-3">
+        <div className={cx("row")}>
+
+            <div className={cx("row_info")}>
                 
 
                 <div className="text-center">
                     <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="avatar img-circle img-thumbnail" alt="avatar"></img>
-                    <h6>Upload a different photo...</h6>
+                    <div className={cx('text-center_img')}>Tải lên một bức ảnh khác...</div>
                     <input type="file" className="text-center center-block file-upload"></input>
                 </div>
                 
                 
-                <ul className="list-group">
-                    <li className="list-group-item text-muted">Activity <i className="fa fa-dashboard fa-1x"></i></li>
-                    <li className="list-group-item text-right"><span className="pull-left"><strong>Ví</strong></span> 125</li>
-                    <li className="list-group-item text-right"><span className="pull-left"><strong>Likes</strong></span> 13</li>
-                    <li className="list-group-item text-right"><span className="pull-left"><strong>Posts</strong></span> 37</li>
-                    <li className="list-group-item text-right"><span className="pull-left"><strong>Followers</strong></span> 78</li>
-                </ul> 
+                <div className={cx("list-group")}>
+                    <div className={cx('green')}><span className={cx("pull-left")}>Số dư:</span> 125231</div>
+                    <div className={cx('violet')}><span className={cx("pull-left")}>Họ Tên:</span> Nguyễn Phúc Thanh</div>
+                    <div className={cx('blue')}><span className={cx("pull-left")}>Số điện thoại:</span> 0338091539</div>
+                    <div className={cx('yellow')}><span className={cx("pull-left")}>Địa chỉ:</span> 144 ChiLang P12 thanh pho vung tau</div>
+                </div> 
 
             
             </div>
             
-            <div className="col-sm-9">
-                
-                <div className="tab-content">
-                    <div className="tab-pane active" id="home">
-
-                        <form className="form" action="##" method="post" id="registrationForm">
-                            <div className="form-group">
-                                
-                                <div className="col-xs-6">
-                                    <label htmlFor="first_name"><h4>First name</h4></label>
-                                    <input type="text" className="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any."></input>
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                
-                                <div className="col-xs-6">
-                                    <label htmlFor="last_name"><h4>Last name</h4></label>
-                                    <input type="text" className="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any."></input>
-                                </div>
-                            </div>
-                
-                            <div className="form-group">
-                                
-                                <div className="col-xs-6">
-                                    <label htmlFor="phone"><h4>Phone</h4></label>
-                                    <input type="text" className="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any."></input>
-                                </div>
-                            </div>
-                
-                            <div className="form-group">
-                                
-                                <div className="col-xs-6">
-                                    <label htmlFor="email"><h4>Location</h4></label>
-                                    <input type="email" className="form-control" id="location" placeholder="somewhere" title="enter a location"></input>
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                
-                                <div className="col-xs-6">
-                                    <label htmlFor="password"><h4>Password</h4></label>
-                                    <input type="password" className="form-control" placeholder="password" title="enter your password."></input>
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <div className="col-xs-12">
-                                        <br></br>
-                                        <button className="btn btn-lg btn-success" > Save</button>
-                                    </div>
-                            </div>
-                        </form>
-                    
-                    </div>
-
-                
+            <div className={cx("row_update")}>
+                <div className={cx("form-group")}>        
+                    <label htmlFor="first_name"><i className="fal fa-user"></i></label>
+                    <input type="text" className="form-control" placeholder="Họ và tên"></input>
                 </div>
+    
+                <div className={cx("form-group")}>
+                    <label htmlFor="phone"><i class="fal fa-mobile"></i></label>
+                    <input type="text" className="form-control" placeholder="Số điện thoại"></input>
+                </div>
+    
+                <div className={cx("form-group")}>
+                    <label htmlFor="email"><i class="fas fa-map-marker"></i></label>
+                    <input type="email" className="form-control" id="location" placeholder="Địa chỉ"></input>
+                </div>
+
+                <div className={cx("form-group")}>
+                    <label htmlFor="password"><i className="far fa-lock-alt"></i></label>
+                    <input type="password" className="form-control" placeholder="Mật Khẩu"></input>
+                </div>
+
+
+                
+                <div className={cx("row_update-btn")}>
+                    <button className={cx("row_update-save")}> Save</button>
+                </div>
+                   
             </div>
 
+            <div className={cx("row_history")}>
+                <History/>
+            </div>
         </div>
     </div>
   )

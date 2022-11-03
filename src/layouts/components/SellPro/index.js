@@ -6,6 +6,7 @@ import {useSelector,useDispatch} from 'react-redux';
 import OrderBook from '~/layouts/components/OrderBook';
 import Chart from '~/layouts/components/Chart';
 import styles from './SellPro.module.scss';
+import History from '../History';
 const cx = classNames.bind(styles);
 
 function SellPro() {
@@ -95,30 +96,7 @@ function SellPro() {
             </div>
           </div>
 
-          <div className={cx('orders-container')}>
-            <div className={cx('tabs')}> 
-              <div className={cx('nav-tabs-wrapper')}>
-                <div className={cx('nav-tabs-container')}>
-                  <div className={cx('nav-tabs')}>
-                    <div className={cx('tab-link', 'tab-link-active')}>
-                      Lệnh mở
-                    </div>
-                    <div className={cx('tab-link')}>
-                      Lịch sử đặt lệnh
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={cx('tab-content', 'tab-content-visible')}>
-                <div className={cx('trade-history-wrapper')}>
-                  <div className={cx('no-orders')}>
-                    <i className="fas fa-file-search"></i>
-                    <div>Chưa có lệnh</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <History/>
 
           <OrderBook/>
 
