@@ -1,10 +1,45 @@
-
-import { Link } from 'react-router-dom';
+import { signInWithPopup } from '@firebase/auth';
+import { auth, googleProvider, facebookProvider, githubAuthProvider } from '~/firebase/config';
+import { getUser, addNewUser } from '~/firebase/firebaseHandler';
+import { onAuthStateChanged } from '@firebase/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import styles from './Login.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 function Login() {
+    const navigate = useNavigate();
+
+    const checkUser = async (user) => {
+        try {
+            const result = await getUser(user.uid);
+            if (result.size === 0) {
+                await addNewUser(user);
+            }
+            } catch (err) {
+                console.log(err);
+            }
+      };
+
+    const handleLogin = async (provider) => {
+        try {
+            const { user } = await signInWithPopup(auth, provider);
+            checkUser(user);
+            navigate('/');
+        } catch (error) {
+            alert(error);
+        }
+    };
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                navigate('/login');
+            }
+        })
+    }, [navigate]);
+
   return (
     <div className={cx('container')}>
         <div className={cx("content-w3ls")}>
@@ -41,7 +76,14 @@ function Login() {
                 <div className={cx("signIn")}>Đăng nhập</div>
 
                 <div className={cx('register')}>Bạn chưa có tài khoản? 
-                    <Link to={'/register'}> Mở tài khoản</Link>
+                    <Link to={'/register'}> Mở tài khoản </Link>
+                    hoặc                     
+                    <span className={cx("icon_login")} onClick={() => handleLogin(facebookProvider)}>
+                        <i class="fab fa-facebook-f"></i>
+                    </span>
+                    <span className={cx("icon_login")} onClick={() => handleLogin(googleProvider)}>
+                        <i class="fab fa-google"></i>
+                    </span>
                 </div>
             </div>
             <div className={cx("clear")}></div>

@@ -73,6 +73,16 @@ p.agileits2 {
     .register{
         text-align: center;
         font-size: .813rem!important;
+        .icon_login{
+            border: 0.1px solid rgba(128, 128, 128, 0.473);
+            border-radius: 4px;
+            padding: 4px 12px;
+            margin-left: 12px;
+        }
+        :hover{
+            cursor: pointer;
+            background-color:rgba(128, 128, 128, 0.473);
+        }
     }
     .content-agile2_img{
         width: 100%;

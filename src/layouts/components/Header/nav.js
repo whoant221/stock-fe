@@ -1,12 +1,27 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Menu from './NavbarHeader/Menu';
 import MenuItem from './NavbarHeader/MenuItem';
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
+
+import { auth } from '~/firebase/config';
+import { useEffect, useState } from 'react';
+import { onAuthStateChanged } from '@firebase/auth';
 const cx = classNames.bind(styles);
 
 function Nav(className) {
+    const navigate = useNavigate();
+    const [setUser, setSetUser] = useState(null);
+    const [setUserLogin, setSetUserLogin] = useState(null);
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (!user) setSetUser('none')
+            else setSetUserLogin('none')
+        })
+    }, [navigate]);
+
     return (
         <section className={cx("header", "navigation", "top_margin", 'className')}>
             <div className="container">
@@ -25,10 +40,12 @@ function Nav(className) {
                                         <li className={cx("nav-item")}>
                                             <MenuItem to={`/`} title = {'Bảng Giá'}></MenuItem>
                                         </li>
-                                        <li className="nav-item">
+
+                                        <li className={cx("nav-item", setUserLogin)}>
                                             <MenuItem to={'/login'} title = {'Sign In'}></MenuItem>
                                         </li>
-                                        <li className="nav-item">
+
+                                        <li className={cx("nav-item", setUser)}>
                                             <MenuItem to={'/profile'} title = {'Profile'}></MenuItem>
                                         </li>
                                     </Menu> 
