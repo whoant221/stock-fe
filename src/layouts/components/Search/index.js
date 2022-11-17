@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import Wrapper from '~/components/Popper';
 import { useDebounce } from '~/hooks';
 import styles from './Search.module.scss';
-
+import SearchMini from '../SearchMini';
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -35,7 +35,7 @@ function Search() {
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <Wrapper className="suggest">
                         <div className={cx('suggest-list')}>
-                            abc
+                            <SearchMini/>
                         </div>
                     </Wrapper>
                 </div>
