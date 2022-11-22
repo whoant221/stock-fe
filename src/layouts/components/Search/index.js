@@ -34,7 +34,7 @@ function Search() {
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <Wrapper className="suggest">
-                        <div className={cx('suggest-list')}>
+                        <div className={cx('suggest-list')}> 
                             <SearchMini/>
                         </div>
                     </Wrapper>
