@@ -172,7 +172,7 @@ function Table() {
                                         <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
                                     </Tippy>
 
-                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
                                     <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
