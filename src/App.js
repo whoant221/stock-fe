@@ -9,6 +9,7 @@ import Register from './pages/Register';
 import SellQuickly from './pages/SellQuickly';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import Refills from './pages/Refills';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
                     <Route path='' element={<DefaultLayout />}>
                         <Route path='/' element={<SellQuickly />}/> 
                         <Route path='/profile' element={<Profile/>}/>
+                        <Route path='/refills' element={<Refills/>}/>
                     </Route>
                      
                     <Route path='/register' element={<Register/>}/>
