@@ -50,7 +50,11 @@ function Nav(className) {
                                         </li>
 
                                         <li className={cx("nav-item", setUser)}>
-                                            <MenuItem to={'/Refills'} title = {'Nạp Ví'}></MenuItem>
+                                            <MenuItem to={'/refills'} title = {'Nạp Ví'}></MenuItem>
+                                        </li>
+
+                                        <li className={cx("nav-item", setUser)}>
+                                            <MenuItem to={'/withdraw'} title = {'Rút Ví'}></MenuItem>
                                         </li>
                                     </Menu> 
                                 </ul>

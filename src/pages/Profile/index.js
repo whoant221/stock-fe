@@ -10,8 +10,7 @@ function Profile() {
         <div className={cx("row")}>
 
             <div className={cx("row_info")}>
-                
-
+                 
                 <div className="text-center">
                     <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="avatar img-circle img-thumbnail" alt="avatar"></img>
                     <div className={cx('text-center_img')}>Tải lên một bức ảnh khác...</div>
@@ -26,7 +25,6 @@ function Profile() {
                     <div className={cx('yellow')}><span className={cx("pull-left")}>Địa chỉ:</span> 144 ChiLang P12 thanh pho vung tau</div>
                 </div> 
 
-            
             </div>
             
             <div className={cx("row_update")}>
