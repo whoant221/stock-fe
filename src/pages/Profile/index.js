@@ -1,9 +1,11 @@
 import History from '~/layouts/components/History'
 import React from 'react'
+import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Profile.module.scss';
 const cx = classNames.bind(styles);
 function Profile() {
+    const [openUpdate, setOpenUpdate] = useState('none');
   return (
     <div className={cx("container")}>
 
@@ -18,7 +20,7 @@ function Profile() {
                 </div>
                 
                 
-                <div className={cx("list-group")}>
+                <div className={cx("list-group")} onClick={() => setOpenUpdate('block')}>
                     <div className={cx('green')}><span className={cx("pull-left")}>Số dư:</span> 125231</div>
                     <div className={cx('violet')}><span className={cx("pull-left")}>Họ Tên:</span> Nguyễn Phúc Thanh</div>
                     <div className={cx('blue')}><span className={cx("pull-left")}>Số điện thoại:</span> 0338091539</div>
@@ -27,7 +29,7 @@ function Profile() {
 
             </div>
             
-            <div className={cx("row_update")}>
+            <div className={cx("row_update")} style={{ display: openUpdate}}>
                 <div className={cx("form-group")}>        
                     <label htmlFor="first_name"><i className="fal fa-user"></i></label>
                     <input type="text" className="form-control" placeholder="Họ và tên"></input>
@@ -51,7 +53,8 @@ function Profile() {
 
                 
                 <div className={cx("row_update-btn")}>
-                    <button className={cx("row_update-save")}> Save</button>
+                    <button className={cx("row_update-delete")} onClick={() => setOpenUpdate('nonet')}> Hủy</button>
+                    <button className={cx("row_update-save")}> Lưu</button>
                 </div>
                    
             </div>

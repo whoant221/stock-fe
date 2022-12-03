@@ -16,11 +16,14 @@
             width: 20%;
             img{ border-radius: 4px; }
             div{ font-size: .75rem; margin: 12px 0;}
+            .list-group{
+                cursor: pointer;
+            }
         }
         .row_update{
             flex: 1 1;
             padding: 0 50px;
-            display: none;
+            
             .form-group{
                 border: 0.1px solid rgba(128, 128, 128, 0.473);
                 border-radius: 4px;
@@ -43,11 +46,20 @@
                 }
             }
             .row_update-btn{
+                display: flex;
+                justify-content: space-between;
                 margin-top: 20px;
                 .row_update-save{
                     border: none;
                     padding: 8px 20px;
                     background-color: var(--color-theme-buy);
+                    border-radius: 4px;
+                    color: var(--global-text-extremeHighlight-color);
+                }
+                .row_update-delete{
+                    border: none;
+                    padding: 8px 20px;
+                    background-color: var(--color-theme-sell);
                     border-radius: 4px;
                     color: var(--global-text-extremeHighlight-color);
                 }
