@@ -36,12 +36,12 @@ function Profile() {
                 </div>
     
                 <div className={cx("form-group")}>
-                    <label htmlFor="phone"><i class="fal fa-mobile"></i></label>
+                    <label htmlFor="phone"><i className="fal fa-mobile"></i></label>
                     <input type="text" className="form-control" placeholder="Số điện thoại"></input>
                 </div>
     
                 <div className={cx("form-group")}>
-                    <label htmlFor="email"><i class="fas fa-map-marker"></i></label>
+                    <label htmlFor="email"><i className="fas fa-map-marker"></i></label>
                     <input type="email" className="form-control" id="location" placeholder="Địa chỉ"></input>
                 </div>
 
@@ -53,7 +53,7 @@ function Profile() {
 
                 
                 <div className={cx("row_update-btn")}>
-                    <button className={cx("row_update-delete")} onClick={() => setOpenUpdate('nonet')}> Hủy</button>
+                    <button className={cx("row_update-delete")} onClick={() => setOpenUpdate('none')}> Hủy</button>
                     <button className={cx("row_update-save")}> Lưu</button>
                 </div>
                    

@@ -14,8 +14,6 @@ import Withdraw from './pages/Withdraw';
 
 
 function App() {
-
-
     return (
         <Router>
             <div className='App'>

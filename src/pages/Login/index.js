@@ -2,7 +2,7 @@ import { signInWithPopup } from '@firebase/auth';
 import { auth, googleProvider, facebookProvider, githubAuthProvider } from '~/firebase/config';
 import { getUser, addNewUser } from '~/firebase/firebaseHandler';
 import { onAuthStateChanged } from '@firebase/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styles from './Login.module.scss';
 import classNames from 'classnames/bind';
@@ -10,6 +10,9 @@ const cx = classNames.bind(styles);
 
 function Login() {
     const navigate = useNavigate();
+    
+    const {info} = useParams();
+    console.log(info);
 
     const checkUser = async (user) => {
         try {
@@ -79,10 +82,10 @@ function Login() {
                     <Link to={'/register'}> Mở tài khoản </Link>
                     hoặc                     
                     <span className={cx("icon_login")} onClick={() => handleLogin(facebookProvider)}>
-                        <i class="fab fa-facebook-f"></i>
+                        <i className="fab fa-facebook-f"></i>
                     </span>
                     <span className={cx("icon_login")} onClick={() => handleLogin(googleProvider)}>
-                        <i class="fab fa-google"></i>
+                        <i className="fab fa-google"></i>
                     </span>
                 </div>
             </div>

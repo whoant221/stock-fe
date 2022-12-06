@@ -30,7 +30,7 @@ function SidebarRight() {
                         <Icon 
                             hover
                             onClick={()=>{dispatch(actions.setLayout(false))}}
-                            icon={<i class="fal fa-times"></i>}
+                            icon={<i className="fal fa-times"></i>}
                         />
                     </div>
                 </Tippy>

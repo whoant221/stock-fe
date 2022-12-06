@@ -16,7 +16,7 @@ function Refills() {
         <div className={cx('right')}>
             <div className={cx('right-text')}>HƯỚNG DẪN NẠP VÍ</div>
             <div className={cx('text')}>
-                <div className={cx('text-icon')}><i class="fas fa-map-marker-exclamation"></i></div>
+                <div className={cx('text-icon')}><i className="fas fa-map-marker-exclamation"></i></div>
                 <i className={cx('text-note')}>Vui lòng kiểm tra chính xác tài khoản chuyển tiền. Người chuyển phải chịu phí chuyển tiền phát sinh từ ngân hàng nếu có </i>
             </div>
             <div className={cx('line')}>
