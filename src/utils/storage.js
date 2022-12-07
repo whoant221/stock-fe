@@ -1,5 +1,5 @@
 //Tạo local storage
-// Hàm tạo
+// Hàm tạ<o></o>
 const createStorage = (LOCAL_STORAGE_KEY) => {
     const storage = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) ?? {}
 
@@ -19,8 +19,13 @@ const createStorage = (LOCAL_STORAGE_KEY) => {
 }
 
 const storage = createStorage("blockchain")
+const PROFILE_CLIENT = 'info_client';
 
-const zingStorage = {}
+const blockChainStorage = {
+    setInfoClient: (data) => storage.set(PROFILE_CLIENT, data),
+    removeInfoClient: () => storage.remove(PROFILE_CLIENT),
+
+}
 
 
-export default zingStorage;
+export default blockChainStorage;

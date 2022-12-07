@@ -1,8 +1,10 @@
 import { signInWithPopup } from '@firebase/auth';
 import { auth, googleProvider, facebookProvider, githubAuthProvider } from '~/firebase/config';
+import blockChainStorage from '~/utils/storage';
 import { getUser, addNewUser } from '~/firebase/firebaseHandler';
 import { onAuthStateChanged } from '@firebase/auth';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import styles from './Login.module.scss';
 import classNames from 'classnames/bind';
@@ -10,9 +12,24 @@ const cx = classNames.bind(styles);
 
 function Login() {
     const navigate = useNavigate();
+    // const dispatch = useDispatch();
     
-    const {info} = useParams();
-    console.log(info);
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+
+    const login = (e) => {
+        e.preventDefault();
+        console.log(name, password);
+        const userData = {
+            name,
+            password,
+        };
+        blockChainStorage.setInfoClient(userData)
+        setName('');
+        setPassword('');
+    };
+
+    const logout = () => { blockChainStorage.removeInfoClient() }
 
     const checkUser = async (user) => {
         try {
@@ -55,14 +72,16 @@ function Login() {
                     <img src={'https://bit-bank.io/wp-content/uploads/2021/10/BIT-BANK-_final-logo-3-01-1.png'} alt="logo"></img>
                 </div>
 
-                <div className={cx('content-agile2_header')}>Đăng nhập</div>
+                <div className={cx('content-agile2_header')} onClick={logout}>Đăng nhập</div>
 
 
                 <div className={cx('content-agile2_content')}>
                     <div className={cx('name')}>Mã khách hàng</div>
                     <div className={cx("form-control")}>
                         <i className="fal fa-user"></i>
-                        <input type="text" className={cx("lock")} placeholder={'Họ và tên'}></input>
+                        <input type="text" className={cx("lock")} placeholder={'Họ và tên'} 
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}></input>
                     </div>
                 </div>
 
@@ -71,12 +90,14 @@ function Login() {
                     <div className={cx('name')}>Mật khẩu</div>
                     <div className={cx("form-control")}>
                         <i className="far fa-lock-alt"></i>
-                        <input type="password" className={cx("lock")} placeholder={'Mật khẩu'}></input>
+                        <input type="password" className={cx("lock")} placeholder={'Mật khẩu'}
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}></input>
                     </div>	
                 </div>
 		
                 
-                <div className={cx("signIn")}>Đăng nhập</div>
+                <div className={cx("signIn")} onClick={login}>Đăng nhập</div>
 
                 <div className={cx('register')}>Bạn chưa có tài khoản? 
                     <Link to={'/register'}> Mở tài khoản </Link>
