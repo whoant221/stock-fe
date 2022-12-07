@@ -5,5 +5,9 @@ export const setLayout = (data) => ({
     payload: data,
 });
 
+export const setInfo = (data) => ({
+    type: types.SET_INFO_CLIENT,
+    payload: data,
+});
 
 

@@ -4,7 +4,8 @@ import blockChainStorage from '~/utils/storage';
 import { getUser, addNewUser } from '~/firebase/firebaseHandler';
 import { onAuthStateChanged } from '@firebase/auth';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
+import * as actions from '~/redux/actions';
 import { useEffect, useState } from 'react';
 import styles from './Login.module.scss';
 import classNames from 'classnames/bind';
@@ -12,7 +13,7 @@ const cx = classNames.bind(styles);
 
 function Login() {
     const navigate = useNavigate();
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
@@ -28,8 +29,6 @@ function Login() {
         setName('');
         setPassword('');
     };
-
-    const logout = () => { blockChainStorage.removeInfoClient() }
 
     const checkUser = async (user) => {
         try {
@@ -47,16 +46,19 @@ function Login() {
             const { user } = await signInWithPopup(auth, provider);
             checkUser(user);
             navigate('/');
+            blockChainStorage.setInfoFirebase(user)
         } catch (error) {
             alert(error);
         }
     };
+    
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (!user) {
                 navigate('/login');
             }
+            console.log(user);
         })
     }, [navigate]);
 
@@ -72,7 +74,7 @@ function Login() {
                     <img src={'https://bit-bank.io/wp-content/uploads/2021/10/BIT-BANK-_final-logo-3-01-1.png'} alt="logo"></img>
                 </div>
 
-                <div className={cx('content-agile2_header')} onClick={logout}>Đăng nhập</div>
+                <div className={cx('content-agile2_header')}>Đăng nhập</div>
 
 
                 <div className={cx('content-agile2_content')}>
@@ -97,7 +99,7 @@ function Login() {
                 </div>
 		
                 
-                <div className={cx("signIn")} onClick={login}>Đăng nhập</div>
+                <div className={cx("signIn")}>Đăng nhập</div>
 
                 <div className={cx('register')}>Bạn chưa có tài khoản? 
                     <Link to={'/register'}> Mở tài khoản </Link>

@@ -2,6 +2,7 @@ import * as types from "~/constant/actionTypes";
 
 const initialState = {
     active: '',
+    info: '',
 }
 
 const header = (state = initialState, actions) => {
@@ -13,6 +14,13 @@ const header = (state = initialState, actions) => {
             return {
                 ...state,
                 active: active,
+            }
+        case types.SET_ACTIVE_LAYOUT:      
+            let info =[state.info != '']
+            info.push(actions.payload)     
+            return {
+                ...state,
+                info: info,
             }
         default:
                 return state;

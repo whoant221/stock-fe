@@ -1,11 +1,21 @@
 import History from '~/layouts/components/History'
 import React from 'react'
 import { useEffect, useState } from 'react';
+import blockChainStorage from '~/utils/storage';
+// import {useSelector,useDispatch} from 'react-redux';
+// import * as actions from '~/redux/actions';
 import classNames from 'classnames/bind';
 import styles from './Profile.module.scss';
 const cx = classNames.bind(styles);
+
 function Profile() {
+    // const dispatch = useDispatch();
     const [openUpdate, setOpenUpdate] = useState('none');
+    // const info = useSelector(state => state.header.info)
+    // console.log(info);
+
+    const infoFirebase = blockChainStorage.getInfoFirebase()
+    
   return (
     <div className={cx("container")}>
 
@@ -14,18 +24,21 @@ function Profile() {
             <div className={cx("row_info")}>
                  
                 <div className="text-center">
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="avatar img-circle img-thumbnail" alt="avatar"></img>
+                    <img src="https://source.unsplash.com/random/200x200?sig=incrementingIdentifier" className="avatar img-circle img-thumbnail" alt="avatar"></img>
                     <div className={cx('text-center_img')}>Tải lên một bức ảnh khác...</div>
                     <input type="file" className="text-center center-block file-upload"></input>
                 </div>
                 
-                
-                <div className={cx("list-group")} onClick={() => setOpenUpdate('block')}>
-                    <div className={cx('green')}><span className={cx("pull-left")}>Số dư:</span> 125231</div>
-                    <div className={cx('violet')}><span className={cx("pull-left")}>Họ Tên:</span> Nguyễn Phúc Thanh</div>
-                    <div className={cx('blue')}><span className={cx("pull-left")}>Số điện thoại:</span> 0338091539</div>
-                    <div className={cx('yellow')}><span className={cx("pull-left")}>Địa chỉ:</span> 144 ChiLang P12 thanh pho vung tau</div>
-                </div> 
+                {infoFirebase ? infoFirebase.providerData.map((items => {
+                    return(
+                    <div className={cx("list-group")} onClick={() => setOpenUpdate('block')}>
+                        <div className={cx('green')}><span className={cx("pull-left")}>Số dư:</span> 0</div>
+                        <div className={cx('violet')}><span className={cx("pull-left")}>Họ Tên:</span> {items.displayName}</div>
+                        <div className={cx('blue')}><span className={cx("pull-left")}>Số điện thoại:</span> {items.phoneNumber}</div>
+                    </div>  
+                    )
+                })) : null}
+
 
             </div>
             

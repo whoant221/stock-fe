@@ -4,7 +4,7 @@ import Menu from './NavbarHeader/Menu';
 import MenuItem from './NavbarHeader/MenuItem';
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
-
+import blockChainStorage from '~/utils/storage';
 import { auth } from '~/firebase/config';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from '@firebase/auth';
@@ -14,6 +14,11 @@ function Nav(className) {
     const navigate = useNavigate();
     const [setUser, setSetUser] = useState(null);
     const [setUserLogin, setSetUserLogin] = useState(null);
+
+    const logout = () => { 
+        blockChainStorage.removeInfoClient()
+        blockChainStorage.removeInfoFirebase()
+    }
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -55,6 +60,10 @@ function Nav(className) {
 
                                         <li className={cx("nav-item", setUser)}>
                                             <MenuItem to={'/withdraw'} title = {'Rút Ví'}></MenuItem>
+                                        </li>
+
+                                        <li className={cx("nav-item", setUser)} onClick={logout}>
+                                            <MenuItem to={'/login'} title = {'Đăng xuất'}></MenuItem>
                                         </li>
                                     </Menu> 
                                 </ul>
