@@ -25,8 +25,6 @@ function Profile() {
                  
                 <div className="text-center">
                     <img src="https://source.unsplash.com/random/200x200?sig=incrementingIdentifier" className="avatar img-circle img-thumbnail" alt="avatar"></img>
-                    <div className={cx('text-center_img')}>Tải lên một bức ảnh khác...</div>
-                    <input type="file" className="text-center center-block file-upload"></input>
                 </div>
                 
                 {infoFirebase ? infoFirebase.providerData.map((items => {

@@ -80,11 +80,9 @@ function SellPro() {
               <div className={cx('k-line-chart-container')}>
                 <div className={cx('chart-top-bar')}>
                   <div className={cx('common-intervals')}>
-
                     {checkChart === 'candle_solid'
                     ? <span className={cx('period', 'line')} onClick={() => {setCheckChart('area')}}>Nến</span>
                     : <span className={cx('period', 'line')} onClick={() => {setCheckChart('candle_solid')}}>Đường</span>}
-
                     <span className={cx('period', check1m)} onClick={() => {
                       setCheck1m('active')
                       setCheck5m(null)
@@ -109,7 +107,6 @@ function SellPro() {
                       setCheck15m(null)
                       setCheck30m('active')
                     }}>30m</span>
-                    
                   </div>
                 </div>
                             

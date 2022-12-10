@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './SearchMini.module.scss';
 const cx = classNames.bind(styles);
-
 function SearchMini() {
   return (
     <>
@@ -33,8 +32,6 @@ function SearchMini() {
             </div>
         </div>
     </>
-
-
   )
 }
 

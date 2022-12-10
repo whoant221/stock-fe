@@ -29,12 +29,12 @@ function Table() {
                                 <th rowSpan={2}>Sàn</th>  
                                 <th rowSpan={2}>TC</th>  
                                 <th colSpan={6}>Bên mua</th>  
-                                <th colSpan={4}>Khớp lệnh</th>  
+                                <th colSpan={2}>Khớp lệnh</th>  
                                 <th colSpan={6}>Bên bán</th>  
                                 <th rowSpan={2}>Tổng KL</th>  
                                 <th rowSpan={2}>Cao</th>  
                                 <th rowSpan={2}>Thấp</th>  
-                                <th colSpan={3}>ĐTNN</th>  
+ 
                             </tr>  
                             <tr>  
                                 <td>Giá 3</td>  
@@ -45,17 +45,13 @@ function Table() {
                                 <td>KL 1</td>  
                                 <td>Giá</td>  
                                 <td>KL</td>  
-                                <td>+/-</td>  
-                                <td>+/- (%)</td> 
                                 <td>Giá 1</td>  
                                 <td>KL 1</td>   
                                 <td>Giá 2</td>  
                                 <td>KL 2</td>   
                                 <td>Giá 3</td>  
                                 <td>KL 3</td> 
-                                <td>NN mua</td>  
-                                <td>NN bán</td>  
-                                <td>Room</td>
+                        
                             </tr> 
                         </thead>
 
@@ -75,11 +71,9 @@ function Table() {
                                     arrow={false}
                                     followCursor={true}
                                     plugins={[followCursor]} 
-                                    theme={'tomato'}
-                                    >
+                                    theme={'tomato'}>
                                         <th className={cx('left', colorYellow)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
                                     </Tippy>
-
                                     <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
@@ -91,8 +85,6 @@ function Table() {
                                     <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
@@ -102,9 +94,6 @@ function Table() {
                                     <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                 </tr> 
                             </Tippy>
                             <Tippy 
@@ -137,8 +126,6 @@ function Table() {
                                     <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
@@ -148,9 +135,7 @@ function Table() {
                                     <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+
                                 </tr> 
                             </Tippy>
                             <Tippy 
@@ -183,6 +168,126 @@ function Table() {
                                     <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}>
+                                        <th className={cx('left', colorYellow)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorRed)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
@@ -194,9 +299,982 @@ function Table() {
                                     <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                     <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
-                                    <th className={cx('right')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                                                        <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}>
+                                        <th className={cx('left', colorYellow)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorRed)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                                                        <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}>
+                                        <th className={cx('left', colorYellow)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorRed)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                                                        <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}>
+                                        <th className={cx('left', colorYellow)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorRed)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                                                        <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}>
+                                        <th className={cx('left', colorYellow)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorRed)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                                                        <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}>
+                                        <th className={cx('left', colorYellow)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorRed)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                                                        <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}>
+                                        <th className={cx('left', colorYellow)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorRed)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                                                        <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}>
+                                        <th className={cx('left', colorYellow)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorRed)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                                                        <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}>
+                                        <th className={cx('left', colorYellow)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorRed)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+
+                                </tr> 
+                            </Tippy>
+                            <Tippy 
+                            content='Click để đặt lệnh' 
+                            arrow={false}
+                            followCursor={true}
+                            plugins={[followCursor]} 
+                            theme={'table'}
+                            >
+                                <tr>     
+                                    <th className={cx('center')} ><i className="fas fa-thumbtack"></i></th>
+                                    <Tippy 
+                                    content='Công ty | ACBsdasdasd' 
+                                    arrow={false}
+                                    followCursor={true}
+                                    plugins={[followCursor]} 
+                                    theme={'tomato'}
+                                    >
+                                        <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                    </Tippy>
+
+                                    <th className={cx('right', 'violet', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>122.40</th>
+                                    <th className={cx('right', 'blue', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'yellow', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light')} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={()=>{dispatch(actions.setLayout(true))}}>22.40</th>
                                 </tr> 
                             </Tippy>
 

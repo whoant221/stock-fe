@@ -39,8 +39,7 @@ function Search() {
                         </div>
                     </Wrapper>
                 </div>
-            )}
-        >
+            )}>
             <div className={cx('wrapper', {activeSearch: showResult } )}>
                 <div className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                     <i className="fal fa-search"></i>

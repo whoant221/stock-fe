@@ -36,7 +36,8 @@ function Nav(className) {
                             <Link className="navbar-brand" to={'/'}>
                                 <img src={'https://bit-bank.io/wp-content/uploads/2021/10/BIT-BANK-_final-logo-3-01-1.png'} alt="logo"></img>
                             </Link>
-                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="tf-ion-android-menu"></span>
                             </button>
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">

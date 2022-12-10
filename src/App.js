@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 //Layout
 import DefaultLayout from '~/layouts';
-
 //Page
 // import Home from '~/pages/Home';
 import Register from './pages/Register';

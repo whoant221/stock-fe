@@ -18,13 +18,13 @@ function History() {
                         setCheckOpen('tab-link-active')
                         setCheckHistory(null)
                     }}> 
-                        Lệnh mở
+                        Cổ phiếu đang khóa
                     </div>
                     <div className={cx('tab-link', checkHistory)} onClick={() => {
                         setCheckOpen(null)
                         setCheckHistory('tab-link-active')
                     }}> 
-                        Lịch sử đặt lệnh
+                        Cổ phiếu hợp lệ
                     </div>
                 </div>
                 </div>
