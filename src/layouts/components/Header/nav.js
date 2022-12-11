@@ -18,14 +18,13 @@ function Nav(className) {
     const logout = () => { 
         blockChainStorage.removeInfoClient()
         blockChainStorage.removeInfoFirebase()
+        blockChainStorage.removeInfoRegister()
     }
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (!user) setSetUser('none')
-            else setSetUserLogin('none')
-        })
-    }, [navigate]);
+        if (!blockChainStorage.getInfoFirebase() || !blockChainStorage.getInfoClient()) setSetUser('none')
+        else setSetUserLogin('none')
+    }, []);
 
     return (
         <section className={cx("header", "navigation", "top_margin", 'className')}>
@@ -53,6 +52,10 @@ function Nav(className) {
 
                                         <li className={cx("nav-item", setUser)}>
                                             <MenuItem to={'/profile'} title = {'Profile'}></MenuItem>
+                                        </li>
+
+                                        <li className={cx("nav-item", setUser)}>
+                                            <MenuItem to={'/asset'} title = {'Tài Sản'}></MenuItem>
                                         </li>
 
                                         <li className={cx("nav-item", setUser)}>

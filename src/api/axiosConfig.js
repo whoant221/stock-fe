@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL:`https://apizingmp3.herokuapp.com`,
-    // timeout: 10000,
+    baseURL:`https://api-stock.votuan.xyz`,
+    timeout: 10000,
 });
 instance.interceptors.request.use(function (config) {
     // Do something before request is sent

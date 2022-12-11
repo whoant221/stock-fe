@@ -27,15 +27,16 @@ function Profile() {
                     <img src="https://source.unsplash.com/random/200x200?sig=incrementingIdentifier" className="avatar img-circle img-thumbnail" alt="avatar"></img>
                 </div>
                 
-                {infoFirebase ? infoFirebase.providerData.map((items => {
+                {/* {infoFirebase ? infoFirebase.providerData.map((items => {
                     return(
                     <div className={cx("list-group")} onClick={() => setOpenUpdate('block')}>
-                        <div className={cx('green')}><span className={cx("pull-left")}>Số dư:</span> 0</div>
+                        <div className={cx('green')}><span className={cx("pull-left")}>Tổng tài sản ví cơ bản:</span> 0</div>
                         <div className={cx('violet')}><span className={cx("pull-left")}>Họ Tên:</span> {items.displayName}</div>
                         <div className={cx('blue')}><span className={cx("pull-left")}>Số điện thoại:</span> {items.phoneNumber}</div>
-                    </div>  
+                        <div className={cx('yellow')}><span className={cx("pull-left")}>Địa chỉ:</span> {items.phoneNumber}</div>
+                    </div>
                     )
-                })) : null}
+                })) : null} */}
 
 
             </div>

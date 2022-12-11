@@ -3,6 +3,9 @@ import { auth, googleProvider, facebookProvider, githubAuthProvider } from '~/fi
 import blockChainStorage from '~/utils/storage';
 import { getUser, addNewUser } from '~/firebase/firebaseHandler';
 import { onAuthStateChanged } from '@firebase/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import inforUser from "../../api/inforUser";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux';
 import * as actions from '~/redux/actions';
@@ -18,17 +21,36 @@ function Login() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
 
-    const login = (e) => {
-        e.preventDefault();
-        console.log(name, password);
-        const userData = {
-            name,
-            password,
-        };
-        blockChainStorage.setInfoClient(userData)
-        setName('');
-        setPassword('');
-    };
+    const infoRegister = blockChainStorage.getInfoRegister()
+
+
+    useEffect(() => {
+        if(infoRegister){
+            setName(infoRegister.username)
+            setPassword(infoRegister.password)
+        }
+    }, []);
+
+    const Login = async () => {
+        if ( name == '' || password == '') toast.error("Vui lòng nhập thông tin đầy đủ !");
+        else {
+            try {
+                const res = await inforUser.postLogin({
+                    username: name,
+                    password: password,
+                });
+                if (res.success === false) toast.error("Dữ liệu nhập vào sai !");
+                else {
+                    blockChainStorage.setInfoClient(res)
+                    toast.success("Đăng nhập thành công !");
+                    navigate('/');
+                }
+            }
+            catch (err) {
+                toast.error('Tài khoản ko tồn tại !');
+            }
+        }
+    }
 
     const checkUser = async (user) => {
         try {
@@ -39,7 +61,7 @@ function Login() {
             } catch (err) {
                 console.log(err);
             }
-      };
+        };
 
     const handleLogin = async (provider) => {
         try {
@@ -53,14 +75,7 @@ function Login() {
     };
     
 
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                navigate('/login');
-            }
-            console.log(user);
-        })
-    }, [navigate]);
+
 
   return (
     <div className={cx('container')}>
@@ -77,28 +92,53 @@ function Login() {
                 <div className={cx('content-agile2_header')}>Đăng nhập</div>
 
 
-                <div className={cx('content-agile2_content')}>
-                    <div className={cx('name')}>Mã khách hàng</div>
-                    <div className={cx("form-control")}>
-                        <i className="fal fa-user"></i>
-                        <input type="text" className={cx("lock")} placeholder={'Họ và tên'} 
-                        onChange={(e) => setName(e.target.value)}
-                        value={name}></input>
-                    </div>
-                </div>
+                {infoRegister
+                    ? 
+                    <>
+                        <div className={cx('content-agile2_content')}>
+                            <div className={cx('name')}>Mã khách hàng</div>
+                            <div className={cx("form-control")}>
+                                <i className="fal fa-user"></i>
+                                <input type="text" className={cx("lock")} placeholder={'Họ và tên'} 
+                                onChange={(e) => setName(e.target.value)}
+                                value={`${infoRegister.username}`}></input>
+                            </div>
+                        </div>
 
-                <div className={cx('content-agile2_content')}>
-                    <div className={cx('name')}>Mật khẩu</div>
-                    <div className={cx("form-control")}>
-                        <i className="far fa-lock-alt"></i>
-                        <input type="password" className={cx("lock")} placeholder={'Mật khẩu'}
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={password}></input>
-                    </div>	
-                </div>
+                        <div className={cx('content-agile2_content')}>
+                            <div className={cx('name')}>Mật khẩu</div>
+                            <div className={cx("form-control")}>
+                                <i className="far fa-lock-alt"></i>
+                                <input type="password" className={cx("lock")} placeholder={'Mật khẩu'}
+                                onChange={(e) => setPassword(e.target.value)}
+                                value={`${infoRegister.password}`}></input>
+                            </div>	
+                        </div>
+                    </>
+                    : 
+                    <>
+                        <div className={cx('content-agile2_content')}>
+                            <div className={cx('name')}>Mã khách hàng</div>
+                            <div className={cx("form-control")}>
+                                <i className="fal fa-user"></i>
+                                <input type="text" className={cx("lock")} placeholder={'Họ và tên'} 
+                                onChange={(e) => setName(e.target.value)}></input>
+                            </div>
+                        </div>
+
+                        <div className={cx('content-agile2_content')}>
+                            <div className={cx('name')}>Mật khẩu</div>
+                            <div className={cx("form-control")}>
+                                <i className="far fa-lock-alt"></i>
+                                <input type="password" className={cx("lock")} placeholder={'Mật khẩu'}
+                                onChange={(e) => setPassword(e.target.value)}></input>
+                            </div>	
+                        </div>
+                    </>
+                }
 		
                 
-                <div className={cx("signIn")}>Đăng nhập</div>
+                <div className={cx("signIn")} onClick={Login}>Đăng nhập</div>
 
                 <div className={cx('register')}>Bạn chưa có tài khoản? 
                     <Link to={'/register'}> Mở tài khoản </Link>

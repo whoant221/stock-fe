@@ -82,18 +82,18 @@ a:hover{
 }
 
 .login {
-	width: 320px;
+	width: 350px;
 	padding: 30px;
 }
 
 .login__field {
-	padding: 20px 0px;	
+	padding: 12px 0px;	
 	position: relative;	
 }
 
 .login__icon {
 	position: absolute;
-	top: 28px;
+	top: 20px;
 	color: #7875B5;
 }
 
@@ -175,3 +175,62 @@ a:hover{
 .social-login__icon:hover {
 	transform: scale(1.5);	
 }
+
+
+label {
+	display: block;
+  }
+  
+  fieldset {
+	border: none;
+	background: #efefef;
+	margin-bottom: 0.5rem;
+  }
+  
+  legend {
+	text-align: right;
+  }
+  
+  input,
+  select {
+	font-family: 'Roboto', sans-serif;
+	border: solid 1px #89a6bb;
+	padding: 0.5rem;
+	border-radius: 3px;
+	-webkit-appearance: none;
+  }
+  
+  h2 {
+	margin: 3rem 0 1rem;
+  }
+  
+  .date-field {
+	width: 50px;
+	text-align: center;
+	&--year {
+	  width: 60px;
+	}
+  }
+  
+  .single-date-field {
+	width: 120px;
+  }
+  
+  .field-inline-block {
+	display: inline-block;
+	margin-right: 5px;
+	margin-left: 5px;  
+	color: #89a6bb;
+	font-weight: 500 !important;
+	label {
+	  text-align: center;
+	}
+	input{
+		background-color: #D4D3E8;
+		color: #4C489D;
+		font-weight: 700 !important;
+		&:focus{
+			outline: none;
+		}
+	}
+  }
