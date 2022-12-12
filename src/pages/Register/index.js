@@ -27,8 +27,8 @@ function Register() {
   const [month, setMonth] = useState('');
   const [year, setYear] = useState('');
 
-  // console.log(typeof Number.parseInt(phone_number))
-
+  console.log(typeof phone_number)
+  console.log(typeof identification_Number.trim())
 
   const addAccout = async () => {
     if ( name === '' ||
@@ -48,8 +48,8 @@ function Register() {
           password: password,
           fullName: fullName,
           address: address,
-          phone_number: phone_number.toString(),
-          identification_number: identification_Number.toString().trim(),
+          phonenumber: phone_number,
+          identificationNumber: identification_Number.trim(),
           birthday: `${year}-${month}-${day}`
         });
         if (res.success === false) toast.error("Dữ liệu nhập vào sai !");
@@ -101,7 +101,7 @@ function Register() {
             <div className={cx("login__field")}>
               <i className={cx("login__icon", "far fa-id-card")}></i>
               <input type="text" className={cx("login__input")} 
-              pattern="[0-9]*" maxLength="15" size="15" placeholder="Số Chứng Minh"
+              pattern="[0-9]*" maxLength="9" size="9" placeholder="Số Chứng Minh"
               onChange={(e)=> setIdentification_Number(e.target.value) }></input>
             </div>
 
