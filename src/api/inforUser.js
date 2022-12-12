@@ -1,14 +1,36 @@
 import axios from "./axiosConfig";
 
-const postRegister = async (body) => {
+//post
+const postRegister =(body) => {
     return axios.post(`/api/v1/auth/register`, body)
 };
 
-const postLogin = async (body) => {
+const postLogin =(body) => {
     return axios.post(`/api/v1/auth/login`, body)
 };
 
+const postRefills =(body) => {
+    return axios.post(`/api/v1/assets/deposit`, body)
+};
+
+const postWithdraw =(body) => {
+    return axios.post(`/api/v1/assets/withdraw`, body)
+};
+
+
+//get
+const getListAssets = () => {
+    return axios.get(`/api/v1/assets/`)
+};
+
+
 export default {
+    //post
     postRegister,
     postLogin,
+    postRefills,
+    postWithdraw,
+
+    //get
+    getListAssets,
 };

@@ -48,7 +48,7 @@ function Register() {
           password: password,
           fullName: fullName,
           address: address,
-          phonenumber: phone_number,
+          // phone_number: phone_number,
           identificationNumber: identification_Number.trim(),
           birthday: `${year}-${month}-${day}`
         });
@@ -113,19 +113,19 @@ function Register() {
 
             <div className={cx("field-inline-block")}>
               <label>Ngày</label>
-              <input type="text" pattern="[0-9]*" maxLength="2" size="2" className={cx("date-field")} 
+              <input type="text" pattern="[0-9]*" maxLength="2" size="2" className={cx("date-field", 'input')} 
               onChange={(e)=> setDay(e.target.value) }></input>
             </div>
             /
             <div className={cx("field-inline-block")}>
               <label>Tháng</label>
-              <input type="text" pattern="[0-9]*" maxLength="2" size="2" className={cx("date-field")} 
+              <input type="text" pattern="[0-9]*" maxLength="2" size="2" className={cx("date-field", 'input')} 
               onChange={(e)=> setMonth(e.target.value) }></input>
             </div>
             /
             <div className={cx("field-inline-block")}>
               <label>Năm</label>
-              <input type="text" pattern="[0-9]*" maxLength="4" size="4" className={cx("date-field date-field--year")} 
+              <input type="text" pattern="[0-9]*" maxLength="4" size="4" className={cx("date-field date-field--year", 'input')} 
               onChange={(e)=> setYear(e.target.value) }></input>
             </div>
 

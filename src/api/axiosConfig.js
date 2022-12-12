@@ -1,24 +1,29 @@
 import axios from 'axios'
+import blockChainStorage from '~/utils/storage';
 
 const instance = axios.create({
     baseURL:`https://api-stock.votuan.xyz`,
-    timeout: 10000,
+    timeout: 3000,
+
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+      withCredentials: true,
+    }
 });
-instance.interceptors.request.use(function (config) {
-    // Do something before request is sent
+
+  instance.interceptors.request.use(function (config) {
+    const TOKEN = blockChainStorage.getInfoClient()
+    config.headers.Authorization = TOKEN ? `Bearer ${TOKEN.data.token}` : ''
     return config;
   }, function (error) {
-    // Do something with request error
     return Promise.reject(error);
   });
-// Add a response interceptor
-instance.interceptors.response.use(function (response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
-    return response;
+
+  instance.interceptors.response.use(function (response) {
+    return response.data;
   }, function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
     return Promise.reject(error);
   });
 export default instance;
