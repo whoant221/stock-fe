@@ -10,4 +10,13 @@ export const setInfo = (data) => ({
     payload: data,
 });
 
+export const setNameBank = (data) => ({
+    type: types.SET_NAME_BANK,
+    payload: data,
+});
+
+export const setDetailBank = (data) => ({
+    type: types.SET_DETAIL_BANK,
+    payload: data,
+});
 

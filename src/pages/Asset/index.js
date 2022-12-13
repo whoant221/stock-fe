@@ -10,7 +10,6 @@ function Asset() {
     const [assetsLock, setAssetsLock] = useState();
     const [sumAssets, setSumAssets] = useState();
     const [listStock, setListStock] = useState();
-    const [listRender, setListRender] = useState();
 
     let coinVND = Intl.NumberFormat("vi-US", {
         style: "currency",

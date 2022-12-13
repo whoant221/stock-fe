@@ -1,5 +1,6 @@
 import classNames from "classnames/bind";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import inforStock from "~/api/inforStock";
 import { ToastContainer, toast } from 'react-toastify';
 import inforUser from "~/api/inforUser";
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +15,10 @@ const cx = classNames.bind(styles)
 
 function SidebarRight() {
     const dispatch = useDispatch();
+
     const activeMenu = useSelector(state => state.header.active)
+    const nameBank = useSelector(state => state.header.name)
+    const detailBank = useSelector(state => state.header.detail)
 
     if (activeMenu[1] === 'none'){
         dispatch(actions.setLayout(false))
@@ -22,7 +26,7 @@ function SidebarRight() {
 
     const [amount, setAmount] = useState('');
     const [price, setPrice] = useState('');
-    console.log(amount, price);
+    const [ACB, setACB] = useState();
 
     const Bid = async () => {
         if ( amount == '' || price == '') toast.error("Vui lòng nhập thông tin đầy đủ !");
@@ -32,10 +36,10 @@ function SidebarRight() {
                     price: price,
                     amount: amount,
                     type: 'bid',
-                    symbol: "ACB"
+                    symbol: nameBank[1] ? nameBank[1] :'ACB'
                 });
                 if (res.success === false) toast.error("Dữ liệu nhập vào sai !");
-                else toast.success("Đặt lệnh mua thành công !");
+                else toast.success(`Đặt lệnh mua thành công cổ phiếu ${nameBank[1] ? nameBank[1] :'ACB'} !`);
             }
             catch (err) {
                 toast.error('Không thể hỗ trợ khách hàng !');
@@ -51,16 +55,29 @@ function SidebarRight() {
                     price: price,
                     amount: amount,
                     type: 'ask',
-                    symbol: "ACB"
+                    symbol: nameBank[1] ? nameBank[1] :'ACB'
                 });
                 if (res.success === false) toast.error("Dữ liệu nhập vào sai !");
-                else toast.success("Đặt lệnh bán thành công !");
+                else toast.success(`Đặt lệnh bán thành công cổ phiếu ${nameBank[1] ? nameBank[1] :'ACB'}!`);
             }
             catch (err) {
                 toast.error('Không thể hỗ trợ khách hàng !');
             }
         }
     }
+
+    useEffect(() => {
+        const money = async ()  =>{
+            try{
+                const data = await inforStock.getACB()
+                setACB(data.data);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+        money()
+    }, []);
 
     return ( 
         <div className={cx('wrapper', {active: activeMenu[1]})}>
@@ -83,16 +100,28 @@ function SidebarRight() {
 
             <div className={cx('content')}>
                 <div className={cx('content-parameter')}>
-                    <div className={cx('green', 'content-parameter_span')}>ACB <span>( 7.70 )</span></div>
+                    <div className={cx('green', 'content-parameter_span')}>{nameBank[1] ? nameBank[1] :'ACB'} <span>( 1.25% )</span></div>
                     <span className={cx('content-parameter_item')}>Đóng cửa</span>
                 </div>
+
+                {detailBank[1] ?
                 <div className={cx('content-parameter')}>
                     <div>
-                        <span className={cx('violet', 'mg_left')}>17.00</span> 
-                        <span className={cx('yellow', 'mg_left')}>15.90</span> 
-                        <span className={cx('blue', 'mg_left')}>14.80</span></div>
-                    <span className={cx('content-parameter_item')}>Tổng KL: 20,501,900</span>
+                        <span className={cx('violet', 'mg_left')}>{detailBank[1].floor_price}</span> 
+                        <span className={cx('blue', 'mg_left')}>{detailBank[1].ceil_price}</span> 
+                        <span className={cx('yellow', 'mg_left')}>{detailBank[1].ref_price}</span></div>
+                    <span className={cx('content-parameter_item')}>Tổng KL: {detailBank[1].total_volume}</span>
+                </div> 
+                : ACB ? 
+                <div className={cx('content-parameter')}>
+                    <div>
+                        <span className={cx('violet', 'mg_left')}>{ACB.floor_price}</span> 
+                        <span className={cx('blue', 'mg_left')}>{ACB.ceil_price}</span> 
+                        <span className={cx('yellow', 'mg_left')}>{ACB.ref_price}</span></div>
+                    <span className={cx('content-parameter_item')}>Tổng KL: {ACB.total_volume}</span>
                 </div>
+                : null}
+
                 <div className={cx('content-input')}>
                     <div className={cx('content-input_lable')}>Khối lượng</div>
                     <input placeholder="Nhập số lượng lệnh" onChange={(e) => setAmount(e.target.value)}></input>

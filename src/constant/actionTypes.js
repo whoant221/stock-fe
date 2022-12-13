@@ -2,3 +2,7 @@ export const SET_ACTIVE_LAYOUT = 'SET_ACTIVE_LAYOUT'
 
 export const SET_INFO_CLIENT = 'SET_INFO_CLIENT';
 
+export const SET_NAME_BANK = 'SET_NAME_BANK';
+
+export const SET_DETAIL_BANK = 'SET_DETAIL_BANK';
+
