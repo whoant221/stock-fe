@@ -17,6 +17,10 @@ const postWithdraw =(body) => {
     return axios.post(`/api/v1/assets/withdraw`, body)
 };
 
+const postCommand =(body) => {
+    return axios.post(`/api/v1/orders`, body)
+};
+
 
 //get
 const getListAssets = () => {
@@ -30,6 +34,7 @@ export default {
     postLogin,
     postRefills,
     postWithdraw,
+    postCommand,
 
     //get
     getListAssets,

@@ -10,37 +10,42 @@ function Asset() {
     const [assetsLock, setAssetsLock] = useState();
     const [sumAssets, setSumAssets] = useState();
     const [listStock, setListStock] = useState();
-    const [total, setTotal] = useState();
+    const [listRender, setListRender] = useState();
+
     let coinVND = Intl.NumberFormat("vi-US", {
         style: "currency",
         currency: "VND",
     });
+
+
     useEffect(() => {
         const money = async ()  =>{
             try{
                 const data = await inforUser.getListAssets()
-
-                setAssets(coinVND.format(data?.data.assets.slice(-1)[0].free_asset));
-                setAssetsLock(coinVND.format(data?.data.assets.slice(-1)[0].locked_asset));
+                const findStock = data?.data?.assets.findIndex(items => items.name === 'VND');
+                setAssets(coinVND.format(data?.data.assets[findStock].free_asset));
+                setAssetsLock(coinVND.format(data?.data.assets[findStock].locked_asset));
                 setSumAssets(coinVND.format(
-                    Number.parseInt(data?.data.assets.slice(-1)[0].free_asset) + 
-                    Number.parseInt(data?.data.assets.slice(-1)[0].locked_asset)
+                    Number.parseInt(data?.data.assets[findStock].free_asset) + 
+                    Number.parseInt(data?.data.assets[findStock].locked_asset)
                 ));
+
                 setListStock(data.data.assets);
-                setTotal(data.data.assets.length-1)
+
+                // setListRender(listStock.splice(findStock, 1))
             }
             catch (err) {
                 alert(err);
             }
         }
         money()
-        
     }, []);
 
-    console.log(total);
+
 
     const renderListStock =() => {
-        if(listStock){  listStock.splice(total, 1)
+        if(listStock){ 
+
             return listStock.map((items, index) => {
                 return(
                     <div className={cx('asset-total-info-div')} key={index}>

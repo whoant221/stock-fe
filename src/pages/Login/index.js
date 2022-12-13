@@ -39,7 +39,7 @@ function Login() {
                     username: name,
                     password: password,
                 });
-                if (res.success === false) toast.error("Dữ liệu nhập vào sai !");
+                if (res.success === false) toast.error("Đường truyền bị ngắt ngoãng !");
                 else {
                     blockChainStorage.setInfoClient(res)
                     toast.success("Đăng nhập thành công !");

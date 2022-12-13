@@ -26,7 +26,8 @@ function Withdraw() {
                     style: "currency",
                     currency: "VND",
                 });
-                setAssets(coinVND.format(data?.data.assets.slice(-1)[0].free_asset));
+                const findStock = data?.data?.assets.findIndex(items => items.name === 'VND');
+                setAssets(coinVND.format(data?.data?.assets[findStock].free_asset));
             }
             catch (err) {
                 alert(err);
@@ -57,16 +58,16 @@ function Withdraw() {
     }
 
 
-    
 
   return (
     <div className={cx('container')}>
         <div className={cx('text')}>Thông tin người nhận & giao dịch</div>
-
+        
         <div className={cx('line')}>
             <div className={cx('line-name')}>Số tiền có thể chuyển</div>
             <div className={cx('right')}>{assets}</div>
         </div>
+
         <div className={cx('line')}>
             <div className={cx('line-name')}>Tên người chuyển</div>
             <input type={'text'} placeholder='Tài khoản ngân hàng cùng tên' value={infoClient.data.username}></input>
