@@ -7,7 +7,6 @@ import classNames from 'classnames/bind';
 import styles from './Table.module.scss';
 import Tippy from '@tippyjs/react';
 import {followCursor} from 'tippy.js';
-import { setNameBank } from '../../../redux/actions';
 const cx = classNames.bind(styles);
 
 function Table() {
@@ -21,23 +20,46 @@ function Table() {
     const [TCB, setTCB] = useState();
     const [VCB, setVCB] = useState();
 
+    const [priceACB, setPriceACB] = useState();
+    const [priceTCB, setPriceTCB] = useState();
+    const [priceVCB, setPriceVCB] = useState();
+
+    const [ask, setAsk] = useState();
+    const [bid, setBid] = useState();
+    const [thanh, setthanh] = useState();
+
     useEffect(() => {
-        setInterval(() => {
+        // setInterval(() => {
             const money = async ()  =>{
                 try{
                     const data1 = await inforStock.getACB()
                     const data2 = await inforStock.getTCB()
                     const data3 = await inforStock.getVCB()
+
+                    const data4 = await inforStock.getPriceACB()
+                    const data5 = await inforStock.getPriceTCB()
+                    const data6 = await inforStock.getPriceVCB()
+
+                    const data7 = await inforStock.getOrderAsk()
+                    const data8 = await inforStock.getOrderBid()
+
                     setACB(data1.data);
                     setTCB(data2.data);
                     setVCB(data3.data);
+
+                    setPriceACB(data4.data)
+                    setPriceTCB(data5.data)
+                    setPriceVCB(data6.data)
+                    
+                    setAsk(data7.data.orders)
+                    setBid(data8.data.orders)
                 }
                 catch (err) {
                     console.log(err);
                 }
             }
             money()
-        }, 3000);
+        // }, 200);
     }, []);
 
     const acb =() => {
@@ -57,6 +79,10 @@ function Table() {
         dispatch(actions.setNameBank('VCB'));
         dispatch(actions.setDetailBank(VCB))
     }
+
+
+
+    // console.log(bid);
     
   return (
     <div className={cx('price-board-table')}>
@@ -72,7 +98,7 @@ function Table() {
                                 <th rowSpan={2}>Sàn</th>  
                                 <th rowSpan={2}>TC</th>  
                                 <th colSpan={6}>Bên mua</th>  
-                                <th colSpan={1}>Khớp lệnh</th>  
+                                <th colSpan={2}>Khớp lệnh</th>  
                                 <th colSpan={6}>Bên bán</th>  
                                 <th rowSpan={2}>Tổng KL</th>  
                                 <th rowSpan={2}>Cao</th>  
@@ -87,6 +113,7 @@ function Table() {
                                 <td>Giá 1</td>  
                                 <td>KL 1</td>  
                                 <td>Giá</td>  
+                                <td>KL</td>
                                 <td>Giá 1</td>  
                                 <td>KL 1</td>   
                                 <td>Giá 2</td>  
@@ -96,7 +123,7 @@ function Table() {
                         
                             </tr> 
                         </thead>
-                        {ACB && TCB && VCB ?
+                        {ACB && TCB && VCB && priceACB && priceTCB && priceVCB && ask && bid?
                         <tbody id={cx('customers')}>                        
    
                             <Tippy 
@@ -119,20 +146,37 @@ function Table() {
                                     <th className={cx('right', 'violet', 'set_light')} onClick={acb}>{ACB.floor_price}</th>
                                     <th className={cx('right', 'blue', 'set_light')} onClick={acb}>{ACB.ceil_price}</th>
                                     <th className={cx('right', 'yellow', 'set_light')} onClick={acb}>{ACB.ref_price}</th>
+
+                                    {/* {ask.map((items, index) => { console.log(items);
+                                        return(
+                                            <div key={index}>
+                                                <th className={cx('right', colorYellow)} onClick={acb}>{items.price_per_unit}</th>
+                                                <th className={cx('right', colorYellow)} onClick={acb}>{items.coin_amount}</th>
+                                            </div>
+                                        )
+                                    })} */}
+
                                     <th className={cx('right', colorYellow)} onClick={acb}>-</th>
                                     <th className={cx('right', colorYellow)} onClick={acb}>-</th>
                                     <th className={cx('right', colorYellow)} onClick={acb}>-</th>
                                     <th className={cx('right', colorYellow)} onClick={acb}>-</th>
                                     <th className={cx('right', colorYellow)} onClick={acb}>-</th>
                                     <th className={cx('right', colorYellow)} onClick={acb}>-</th>
-                                    <th className={cx('right', 'set_light', colorYellow)} onClick={acb}>
-                                        { parseFloat(ACB.ref_price) + (1 % 100)}</th>
-                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
-                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
-                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
-                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
-                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
-                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={acb}>{priceACB.price_per_unit === undefined ? 0 : priceACB.price_per_unit}</th>
+                                    <th className={cx('right', 'set_light', colorYellow)} onClick={acb}>{priceACB.coin_amount === '' ? 0 : priceACB.coin_amount}</th>
+
+                                    {bid.map((items) => {
+                                        return(
+                                            <>
+                                                <th className={cx('right', colorYellow)} onClick={acb}>{items.price_per_unit}</th>
+                                                <th className={cx('right', colorYellow)} onClick={acb}>{items.coin_amount}</th>
+                                            </>
+                                        )
+                                    })}
+
+
+
                                     <th className={cx('right', 'set_light')} onClick={acb}>{ACB.total_volume}</th>
                                     <th className={cx('right', 'set_light', colorYellow)} onClick={acb}>{ACB.highest_price}</th>
                                     <th className={cx('right', 'set_light', colorYellow)} onClick={acb}>
@@ -167,8 +211,8 @@ function Table() {
                                     <th className={cx('right', colorRed)} onClick={tcb}>-</th>
                                     <th className={cx('right', colorRed)} onClick={tcb}>-</th>
                                     <th className={cx('right', colorRed)} onClick={tcb}>-</th>
-                                    <th className={cx('right', 'set_light', colorRed)} onClick={tcb}>
-                                        { parseFloat(TCB.ref_price) + (1 % 100)}</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={acb}>{ priceTCB.price_per_unit === undefined ? 0 : priceTCB.price_per_unit}</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={acb}>{priceTCB.coin_amount === undefined ? 0 : priceTCB.coin_amount}</th>
                                     <th className={cx('right', colorRed)} onClick={tcb}>-</th>
                                     <th className={cx('right', colorRed)} onClick={tcb}>-</th>
                                     <th className={cx('right', colorRed)} onClick={tcb}>-</th>
@@ -209,8 +253,8 @@ function Table() {
                                     <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
                                     <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
                                     <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
-                                    <th className={cx('right', 'set_light', colorGreen)} onClick={vcb}>
-                                        { parseFloat(VCB.ref_price) + (1 % 100)}</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={acb}>{ priceVCB.price_per_unit === undefined ? 0 : priceVCB.price_per_unit}</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={acb}>{priceVCB.coin_amount === undefined ? 0 : priceVCB.coin_amount}</th>
                                     <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
                                     <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
                                     <th className={cx('right', colorGreen)} onClick={vcb}>-</th>

@@ -42,6 +42,7 @@ function Asset() {
 
 
 
+
     const renderListStock =() => {
         if(listStock){ 
 
