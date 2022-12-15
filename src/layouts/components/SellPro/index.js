@@ -85,47 +85,49 @@ function SellPro() {
           <div className={cx('market-container-icon')} onClick={()=>{dispatch(actions.setLayout('none'))}}> 
             <i className="fal fa-times"></i>  
           </div>
+          {detailBank[1] || nameBank[1]?
+                      <div className={cx('trading-pair')}>
+              <div className={cx('pair-switcher')}>
+                <div className={cx('toggle', 'current-coin-name')}>
+                  {nameBank[1]}
+                </div>
+              </div>
+              <div className={cx('ticker-last', 'c-up')}>
+                <div className={cx('market24h')}>
+                  <span>1.11%</span>
+                </div>
+                <div className={cx('lastestPrice')}>
+                  <span>{detailBank[1].ref_price}</span>
+                </div>
+              </div>
+              <div className={cx('ticker-list')}>
 
-          <div className={cx('trading-pair')}>
-            <div className={cx('pair-switcher')}>
-              <div className={cx('toggle', 'current-coin-name')}>
-                {nameBank[1]}
+                <div className={cx('ticket-item')}>
+                  <span className={cx('label')}>24h thấp nhất</span>
+                  <span className={cx('value')}>{detailBank[1].lowest_price}</span>
+                </div>
+                <div className={cx('ticket-item')}>
+                  <span className={cx('label')}>24h cao nhất</span>
+                  <span className={cx('value')}>{detailBank[1].highest_price}</span>
+                </div>
+                <div className={cx('ticket-item')}>
+                  <span className={cx('label')}>KL 24h (AVAX)</span>
+                  <span className={cx('value')}>{detailBank[1].total_volume}</span>
+                </div>
+                <div className={cx('ticket-item')}>
+                  <span className={cx('label')}>Giá sàn 24h (VND)</span>
+                  <span className={cx('value')}>{detailBank[1].ceil_price}</span>
+                </div>
+                <div className={cx('ticket-item')}>
+                  <span className={cx('label')}>Giá trần 24h (VND)</span>
+                  <span className={cx('value')}>{detailBank[1].floor_price}</span>
+                </div>
+                
               </div>
+  
             </div>
-            <div className={cx('ticker-last', 'c-up')}>
-              <div className={cx('market24h')}>
-                <span>1.11%</span>
-              </div>
-              <div className={cx('lastestPrice')}>
-                <span>{detailBank[1].ref_price}</span>
-              </div>
-            </div>
-            <div className={cx('ticker-list')}>
+          : null}
 
-              <div className={cx('ticket-item')}>
-                <span className={cx('label')}>24h thấp nhất</span>
-                <span className={cx('value')}>{detailBank[1].lowest_price}</span>
-              </div>
-              <div className={cx('ticket-item')}>
-                <span className={cx('label')}>24h cao nhất</span>
-                <span className={cx('value')}>{detailBank[1].highest_price}</span>
-              </div>
-              <div className={cx('ticket-item')}>
-                <span className={cx('label')}>KL 24h (AVAX)</span>
-                <span className={cx('value')}>{detailBank[1].total_volume}</span>
-              </div>
-              <div className={cx('ticket-item')}>
-                <span className={cx('label')}>Giá sàn 24h (VND)</span>
-                <span className={cx('value')}>{detailBank[1].ceil_price}</span>
-              </div>
-              <div className={cx('ticket-item')}>
-                <span className={cx('label')}>Giá trần 24h (VND)</span>
-                <span className={cx('value')}>{detailBank[1].floor_price}</span>
-              </div>
-              
-            </div>
- 
-          </div>
 
           <div className={cx('chart-container')}>
             <div className={cx('app')}>
