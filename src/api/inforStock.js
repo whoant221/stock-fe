@@ -42,11 +42,11 @@ const getOrderBidTCB = () => {
 };
 
 const getOrderAskVCB = () => {
-    return axios.get(`/api/v1/orders?type=ask&symbol=TCB&limit=3`)
+    return axios.get(`/api/v1/orders?type=ask&symbol=VCB&limit=3`)
 };
 
 const getOrderBidVCB = () => {
-    return axios.get(`/api/v1/orders?type=bid&symbol=TCB&limit=3`)
+    return axios.get(`/api/v1/orders?type=bid&symbol=VCB&limit=3`)
 };
 
 const getChartACB = () => {

@@ -78,58 +78,12 @@ function StockTCB(polling = 1000) {
             <th className={cx('right', 'blue', 'set_light')} onClick={tcb}>{TCB.ceil_price}</th>
             <th className={cx('right', 'yellow', 'set_light')} onClick={tcb}>{TCB.ref_price}</th>
 
-            {askTCB.length == 2 ?  
+            {bidTCB.length == 2 ?  
                 <>
                     <th className={cx('right', 'red')} onClick={tcb}>-</th>
                     <th className={cx('right', 'red')} onClick={tcb}>-</th> 
                 </>
             :null}
-
-            {askTCB.length == 0 ?  
-                <>
-                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                </>                                   
-            :askTCB.length == 1 ? 
-                askTCB.map((items, index) => {
-                    return(
-                        <>
-                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>{items.price_per_unit}</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
- 
-                        </>
-                    )
-                })
-            :askTCB.length == 2 ?
-                askTCB.map((items, index) => {
-                    return(
-                        <>
-                            <th className={cx('right', 'red')} onClick={tcb}>{items.price_per_unit}</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
-                        </>
-                    )
-                }).reverse()
-            :askTCB.length == 3 ?
-                askTCB.map((items, index) => {
-                    return(
-                        <>
-                            <th className={cx('right', 'red')} onClick={tcb}>{items.price_per_unit}</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
-                        </>
-                    )
-                }).reverse()
-            :null}
-
-            <th className={cx('right', 'set_light', 'red')} onClick={tcb}>{ priceTCB.price_per_unit === undefined ? 0 : priceTCB.price_per_unit}</th>
-            <th className={cx('right', 'set_light', 'red')} onClick={tcb}>{priceTCB.coin_amount === undefined ? 0 : priceTCB.coin_amount}</th>
 
             {bidTCB.length == 0 ?  
                 <>
@@ -144,12 +98,13 @@ function StockTCB(polling = 1000) {
                 bidTCB.map((items, index) => {
                     return(
                         <>
+                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
                             <th className={cx('right', 'red')} onClick={tcb}>{items.price_per_unit}</th>
                             <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
+ 
                         </>
                     )
                 })
@@ -161,9 +116,64 @@ function StockTCB(polling = 1000) {
                             <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
                         </>
                     )
-                })
+                }).reverse()
             :bidTCB.length == 3 ?
                 bidTCB.map((items, index) => {
+                    return(
+                        <>
+                            <th className={cx('right', 'red')} onClick={tcb}>{items.price_per_unit}</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
+                        </>
+                    )
+                }).reverse()
+            :null}
+
+
+
+
+
+            <th className={cx('right', 'set_light', 'red')} onClick={tcb}>{ priceTCB.price_per_unit === undefined ? 0 : priceTCB.price_per_unit}</th>
+            <th className={cx('right', 'set_light', 'red')} onClick={tcb}>{priceTCB.coin_amount === undefined ? 0 : priceTCB.coin_amount}</th>
+
+
+
+
+
+
+
+            {askTCB.length == 0 ?  
+                <>
+                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                </>                                   
+            :askTCB.length == 1 ? 
+                askTCB.map((items, index) => {
+                    return(
+                        <>
+                            <th className={cx('right', 'red')} onClick={tcb}>{items.price_per_unit}</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                        </>
+                    )
+                })
+            :askTCB.length == 2 ?
+                askTCB.map((items, index) => {
+                    return(
+                        <>
+                            <th className={cx('right', 'red')} onClick={tcb}>{items.price_per_unit}</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
+                        </>
+                    )
+                })
+            :askTCB.length == 3 ?
+                askTCB.map((items, index) => {
                     return(
                         <>
                             <th className={cx('right', 'red')} onClick={tcb}>{items.price_per_unit}</th>
@@ -174,7 +184,7 @@ function StockTCB(polling = 1000) {
             :null}
 
             
-            {bidTCB.length == 2 ?  
+            {askTCB.length == 2 ?  
                 <>
                     <th className={cx('right', 'red')} onClick={tcb}>-</th>
                     <th className={cx('right', 'red')} onClick={tcb}>-</th> 
