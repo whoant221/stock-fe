@@ -18,6 +18,7 @@ function StockTCB(polling = 1000) {
     const [bidTCB, setBidTCB] = useState();
 
     useEffect(() => {
+        // setInterval(() => {
             const money = async ()  =>{
                 try{
                     const data2 = await inforStock.getTCB()
@@ -35,6 +36,7 @@ function StockTCB(polling = 1000) {
                 }
             }
             money()
+        // }, 300);
     }, [TCB || priceTCB || askTCB || bidTCB]);
     const tcb =() => {
         dispatch(actions.setLayout(true));

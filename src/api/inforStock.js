@@ -61,6 +61,32 @@ const getChartVCB = () => {
     return axios.get(`/api/v1/kLineChart?symbol=VCB`)
 };
 
+
+
+const getOrderBookAskACB = () => {
+    return axios.get(`/api/v1/orders?type=ask&symbol=ACB&limit=10`)
+};
+
+const getOrderBookBidACB = () => {
+    return axios.get(`/api/v1/orders?type=bid&symbol=ACB&limit=10`)
+};
+
+const getOrderBookAskTCB = () => {
+    return axios.get(`/api/v1/orders?type=ask&symbol=TCB&limit=10`)
+};
+
+const getOrderBookBidTCB = () => {
+    return axios.get(`/api/v1/orders?type=bid&symbol=TCB&limit=10`)
+};
+
+const getOrderBookAskVCB = () => {
+    return axios.get(`/api/v1/orders?type=ask&symbol=VCB&limit=10`)
+};
+
+const getOrderBookBidVCB = () => {
+    return axios.get(`/api/v1/orders?type=bid&symbol=VCB&limit=10`)
+};
+
 export default {
 
     //get
@@ -82,4 +108,11 @@ export default {
     getChartACB,
     getChartTCB,
     getChartVCB,
+
+    getOrderBookAskACB,
+    getOrderBookBidACB,
+    getOrderBookAskTCB,
+    getOrderBookBidTCB,
+    getOrderBookAskVCB,
+    getOrderBookBidVCB,
 };

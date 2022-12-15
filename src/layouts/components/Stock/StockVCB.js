@@ -35,7 +35,7 @@ function StockVCB( polling = 1000 ) {
                 }
             }
             money()
-        // }, 1000);
+        // }, 300);
     }, [VCB || priceVCB || askVCB || bidVCB]);
 
     const vcb =() => {

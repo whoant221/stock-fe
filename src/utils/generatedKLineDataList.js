@@ -13,7 +13,7 @@ export default function (baseTimestamp = Date.now(), basePrice = 20) {
     let timestamp = Math.floor(baseTimestamp / 60 / 1000) * 60 * 1000
 
     // console.log(Math.round(Date.parse("11/29/2018 10:5:20") / 1000));
-    console.log(new Date('2015-03-04T00:00:00.000Z'));
+    // console.log(new Date('2015-03-04T00:00:00.000Z'));
 
     // console.log(new Date(123213123123).toLocaleString());
 

@@ -17,8 +17,6 @@ function SellPro() {
   const nameBank = useSelector(state => state.header.name)
   const detailBank = useSelector(state => state.header.detail)
 
-  console.log(nameBank[1], detailBank[1]);
-
   const dispatch = useDispatch();
   
 

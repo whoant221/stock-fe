@@ -2,6 +2,7 @@ import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
 import { useState, useEffect } from 'react';
 import styles from './OrderBook.module.scss';
+import inforStock from "~/api/inforStock";
 const cx = classNames.bind(styles);
 
 function OrderBook({style}) {
@@ -11,6 +12,28 @@ function OrderBook({style}) {
     const [checkDown, setCheckDown] = useState();
     const [checkHandelUp, setCheckHandeUp] = useState();
     const [checkHandeDown, setCheckHandeDown] = useState();
+
+    const [orderBookAskACB, setOrderBookAskACB] = useState();
+    const [orderBookBidACB, setOrderBookBidACB] = useState();
+    console.log(orderBookAskACB);
+
+
+    useEffect(() => {
+        const money = async ()  =>{
+            try{
+                const data1 = await inforStock.getOrderBookAskACB()
+                const data2 = await inforStock.getOrderBookBidACB()
+                setOrderBookAskACB(data1.data.orders);
+                setOrderBookBidACB(data2.data.orders);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+        money()
+    }, []);
+    
+
   return (
     <div className={cx('order-book')} style={ style }>
         <div className={cx('area-title')}>Sổ lệnh</div>
@@ -51,76 +74,17 @@ function OrderBook({style}) {
         <div className={cx('orderbooklist-container')}>
             <div className={cx('area-tbody', checkHandelUp)}>
                 <div className={cx('orderbook-progress')}>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-down')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
+
+                    {orderBookAskACB ? 
+                    orderBookAskACB.map((items, index) => {
+                        return(
+                            <div className={cx('item-tr')} key={index}>
+                                <div className={cx('c-down')}>{items.price_per_unit}</div>
+                                <div className={cx('a-right')}>{items.coin_amount}</div>
+                                <div className={cx('a-right')}>{parseInt(items.price_per_unit) * parseInt(items.coin_amount)}</div>
+                            </div>
+                    )}): null}
+
                 </div>
             </div>
             <div className={cx('orderbook-ticker', 'c-down')}>
@@ -130,71 +94,15 @@ function OrderBook({style}) {
             </div>
             <div className={cx('area-tbody', checkHandeDown)}>
                 <div className={cx('orderbook-progress')}>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
-                    <div className={cx('item-tr')}>
-                        <div className={cx('c-up')}>17.04</div>
-                        <div className={cx('a-right')}>1256.475</div>
-                        <div className={cx('a-right')}>35386.591</div>
-                    </div>
+                    {orderBookBidACB ? 
+                        orderBookBidACB.map((items, index) => {
+                            return(
+                                <div className={cx('item-tr')} key={index}>
+                                    <div className={cx('c-up')}>{items.price_per_unit}</div>
+                                    <div className={cx('a-right')}>{items.coin_amount}</div>
+                                    <div className={cx('a-right')}>{parseInt(items.price_per_unit) * parseInt(items.coin_amount)}</div>
+                                </div>
+                    )}): null}
                 </div>
             </div>
         </div>

@@ -18,7 +18,10 @@ function StockACB(polling = 1000) {
     const [askACB, setAskACB] = useState();
     const [bidACB, setBidACB] = useState();
 
+    const [orderBookACB, setOrderBookACB] = useState();
+
     useEffect(() => {
+        // setInterval(() => {
             const money = async ()  =>{
                 try{
                     const data1 = await inforStock.getACB()
@@ -35,6 +38,7 @@ function StockACB(polling = 1000) {
                 }
             }
             money()
+        // }, 300);
     }, [ACB || priceACB || bidACB || bidACB]);
 
     const chartACB = async ()  =>{
@@ -50,11 +54,27 @@ function StockACB(polling = 1000) {
         }
     }
 
+    useEffect(() => {
+        const money = async ()  =>{
+            try{
+                const data = await inforStock.getOrderBookACB()
+                setOrderBookACB(data.data);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+        money()
+    }, []);
+
+
+
     const acb =() => {
         dispatch(actions.setLayout(true));
         dispatch(actions.setNameBank('ACB'));
         dispatch(actions.setDetailBank(ACB))
     }
+
 
   return (
     <Tippy 
