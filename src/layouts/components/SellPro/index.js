@@ -7,22 +7,72 @@ import OrderBook from '~/layouts/components/OrderBook';
 import Chart from '~/layouts/components/Chart';
 import styles from './SellPro.module.scss';
 import History from '../History';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import inforUser from "~/api/inforUser";
 const cx = classNames.bind(styles);
 
 function SellPro() {
   const thanhMV = useSelector(state => state.header.active)
+  const nameBank = useSelector(state => state.header.name)
+  const detailBank = useSelector(state => state.header.detail)
+
+  console.log(nameBank[1], detailBank[1]);
+
   const dispatch = useDispatch();
+  
 
   const [checkChart, setCheckChart] = useState('candle_solid');
   const [check1m, setCheck1m] = useState('active');
   const [check5m, setCheck5m] = useState('');
   const [check15m, setCheck15m] = useState('');
   const [check30m, setCheck30m] = useState('');
+
+  const [amount, setAmount] = useState('');
+  const [price, setPrice] = useState('');
   
   useEffect(() => {
     document.title = 'Bitbank | Giao dịch chứng khoán';
     window.scrollTo(0, 0)
   }, [])
+
+  const Bid = async () => {
+    if ( amount == '' || price == '') toast.error("Vui lòng nhập thông tin đầy đủ !");
+    else {
+        try {
+            const res = await inforUser.postCommand({
+                price: price,
+                amount: amount,
+                type: 'bid',
+                symbol: nameBank[1] ? nameBank[1] :'ACB'
+            });
+            if (res.success === false) toast.error("Dữ liệu nhập vào sai !");
+            else toast.success(`Đặt lệnh mua thành công cổ phiếu ${nameBank[1] ? nameBank[1] :'ACB'} !`);
+        }
+        catch (err) {
+            toast.error('Bạn phải thực hiện đăng nhập !');
+        }
+    }
+  }
+
+  const Ask = async () => {
+      if ( amount == '' || price == '') toast.error("Vui lòng nhập thông tin đầy đủ !");
+      else {
+          try {
+              const res = await inforUser.postCommand({
+                  price: price,
+                  amount: amount,
+                  type: 'ask',
+                  symbol: nameBank[1] ? nameBank[1] :'ACB'
+              });
+              if (res.success === false) toast.error("Dữ liệu nhập vào sai !");
+              else toast.success(`Đặt lệnh bán thành công cổ phiếu ${nameBank[1] ? nameBank[1] :'ACB'}!`);
+          }
+          catch (err) {
+              toast.error('Bạn phải thực hiện đăng nhập !');
+          }
+      }
+  }
 
 
   return (
@@ -39,9 +89,7 @@ function SellPro() {
           <div className={cx('trading-pair')}>
             <div className={cx('pair-switcher')}>
               <div className={cx('toggle', 'current-coin-name')}>
-                <img src="https://static.coinall.ltd/cdn/assets/imgs/221/CF408EA4DD2B5F00.png" alt="AVAX" width="28px" height="28px"></img>
-                AVAX
-                <i className={cx('fix',"fas fa-sort-down")}></i>
+                {nameBank[1]}
               </div>
             </div>
             <div className={cx('ticker-last', 'c-up')}>
@@ -49,26 +97,30 @@ function SellPro() {
                 <span>1.11%</span>
               </div>
               <div className={cx('lastestPrice')}>
-                <span>17.35</span>
+                <span>{detailBank[1].ref_price}</span>
               </div>
             </div>
             <div className={cx('ticker-list')}>
 
               <div className={cx('ticket-item')}>
                 <span className={cx('label')}>24h thấp nhất</span>
-                <span className={cx('value')}>16.7</span>
+                <span className={cx('value')}>{detailBank[1].lowest_price}</span>
               </div>
               <div className={cx('ticket-item')}>
                 <span className={cx('label')}>24h cao nhất</span>
-                <span className={cx('value')}>17.47</span>
+                <span className={cx('value')}>{detailBank[1].highest_price}</span>
               </div>
               <div className={cx('ticket-item')}>
                 <span className={cx('label')}>KL 24h (AVAX)</span>
-                <span className={cx('value')}>142401.59</span>
+                <span className={cx('value')}>{detailBank[1].total_volume}</span>
               </div>
               <div className={cx('ticket-item')}>
-                <span className={cx('label')}>KL 24h (USDT)</span>
-                <span className={cx('value')}>2.43M</span>
+                <span className={cx('label')}>Giá sàn 24h (VND)</span>
+                <span className={cx('value')}>{detailBank[1].ceil_price}</span>
+              </div>
+              <div className={cx('ticket-item')}>
+                <span className={cx('label')}>Giá trần 24h (VND)</span>
+                <span className={cx('value')}>{detailBank[1].floor_price}</span>
               </div>
               
             </div>
@@ -246,8 +298,8 @@ function SellPro() {
                   <div className={cx('trading-tabs')}>
                     
                     <div className={cx('trading-nav-tabs')}>
-                      <div className={cx('tab-link', 'tab-link-mua')}>Mua</div>
-                      <div className={cx('tab-link', 'tab-link-ban')}>Bán</div>
+                      <div className={cx('tab-link', 'tab-link-mua')} onClick={Bid}>Mua</div>
+                      <div className={cx('tab-link', 'tab-link-ban')} onClick={Ask}>Bán</div>
                     </div>
 
                     <div className={cx('tab-content')}> 
@@ -261,23 +313,23 @@ function SellPro() {
                           <div className={cx('field')}>
                             <label>Tỉ giá</label>
                             <div className={cx('field-input-extend')}>
-                              <input className={cx('input-field')} placeholder={'0'}></input>
+                              <input className={cx('input-field')} placeholder={'0'} onChange={(e) => setPrice(e.target.value)}></input>
                             </div>
-                            <label className={cx('unit')}>USDT</label>
+                            <label className={cx('unit')}>VND</label>
                           </div>
                           <div className={cx('field')}>
                             <label>Số lượng</label>
                             <div className={cx('field-input-extend')}>
-                              <input className={cx('input-field')} placeholder={'Min 0.01'}></input>
+                              <input className={cx('input-field')} placeholder={'Min 0.01'} onChange={(e) => setAmount(e.target.value)}></input>
                             </div>
                             <label className={cx('unit')}>AVAX</label>
                           </div>
                           <div className={cx('field')}>
                             <label>Tổng cộng</label>
                             <div className={cx('field-input-extend')}>
-                              <input className={cx('input-field')}></input>
+                              <input className={cx('input-field')} value={`${amount*price}`}></input>
                             </div>
-                            <label className={cx('unit')}>USDT</label>
+                            <label className={cx('unit')}>VND</label>
                           </div>
                         </div>
 

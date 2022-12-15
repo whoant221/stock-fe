@@ -38,6 +38,7 @@ const header = (state = initialState, actions) => {
                 ...state,
                 detail: detail,
             }
+
         default:
                 return state;
     }

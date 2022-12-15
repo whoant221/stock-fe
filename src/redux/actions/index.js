@@ -20,3 +20,4 @@ export const setDetailBank = (data) => ({
     payload: data,
 });
 
+

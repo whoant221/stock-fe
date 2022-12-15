@@ -15,6 +15,8 @@ function Profile() {
     // console.log(info);
 
     const infoFirebase = blockChainStorage.getInfoFirebase()
+
+    const infoLogin = blockChainStorage.getInfoClient()
     
   return (
     <div className={cx("container")}>
@@ -27,16 +29,22 @@ function Profile() {
                     <img src="https://source.unsplash.com/random/200x200?sig=incrementingIdentifier" className="avatar img-circle img-thumbnail" alt="avatar"></img>
                 </div>
                 
-                {/* {infoFirebase ? infoFirebase.providerData.map((items => {
+                {infoFirebase == '' ? infoFirebase.providerData.map((items => {
                     return(
-                    <div className={cx("list-group")} onClick={() => setOpenUpdate('block')}>
-                        <div className={cx('green')}><span className={cx("pull-left")}>Tổng tài sản ví cơ bản:</span> 0</div>
-                        <div className={cx('violet')}><span className={cx("pull-left")}>Họ Tên:</span> {items.displayName}</div>
-                        <div className={cx('blue')}><span className={cx("pull-left")}>Số điện thoại:</span> {items.phoneNumber}</div>
-                        <div className={cx('yellow')}><span className={cx("pull-left")}>Địa chỉ:</span> {items.phoneNumber}</div>
-                    </div>
+                        <div className={cx("list-group")} onClick={() => setOpenUpdate('block')}>
+                            <div className={cx('violet')}><span className={cx("pull-left")}>Họ Tên:</span> {items.displayName}</div>
+                            <div className={cx('blue')}><span className={cx("pull-left")}>Số điện thoại:</span> {items.phoneNumber}</div>
+                            <div className={cx('yellow')}><span className={cx("pull-left")}>Địa chỉ:</span> {items.phoneNumber}</div>
+                        </div>
                     )
-                })) : null} */}
+                })) : infoLogin.data ?
+                <div className={cx("list-group")} onClick={() => setOpenUpdate('block')}>
+                    <div ><span className={cx("pull-left")}>Tên sử dụng:</span> {infoLogin.data.name}</div>
+                    <div ><span className={cx("pull-left")}>Họ tên:</span> {infoLogin.data.username}</div>
+                    <div ><span className={cx("pull-left")}>Số điện thoại:</span> {infoLogin.data.phone_number}</div>
+                    <div ><span className={cx("pull-left")}>CMND:</span> {infoLogin.data.identification_number}</div>
+                    <div ><span className={cx("pull-left")}>Địa chỉ:</span> {infoLogin.data.address}</div>
+                </div> :null}
 
 
             </div>

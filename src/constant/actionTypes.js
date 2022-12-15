@@ -6,3 +6,4 @@ export const SET_NAME_BANK = 'SET_NAME_BANK';
 
 export const SET_DETAIL_BANK = 'SET_DETAIL_BANK';
 
+

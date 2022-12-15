@@ -1,9 +1,11 @@
 import { init, dispose } from 'klinecharts';
 import generatedKLineDataList from '~/utils/generatedKLineDataList'
+import blockChainStorage from '~/utils/storage';
 import { useEffect, useState, useRef } from 'react';
 import React from 'react'
 
 function Chart({style, checkChart}) {
+  const chartBank = blockChainStorage.getChartBank()
 
     function getTooltipOptions (candleShowType, candleShowRule, technicalIndicatorShowRule) {
       return {
@@ -35,12 +37,12 @@ function Chart({style, checkChart}) {
               const change = (kLineData.close - kLineData.open) / kLineData.open * 100
               return [
                 { value: new Date(kLineData.timestamp).toLocaleString() },
-                { value: kLineData.open.toFixed(2) },
-                { value: kLineData.close.toFixed(2) },
-                { value: kLineData.high.toFixed(2) },
-                { value: kLineData.low.toFixed(2) },
+                { value: kLineData.open },
+                { value: kLineData.close },
+                { value: kLineData.high },
+                { value: kLineData.low },
                 {
-                  value: `${change.toFixed(2)}%`,
+                  value: `${change}%`,
                   color: change < 0 ? '#EF5350' : '#26A69A'
                 }
               ]
@@ -68,7 +70,7 @@ function Chart({style, checkChart}) {
         candleShowType
       ))
       return () => { dispose('tooltip-k-line') }
-    }, [checkChart])
+    }, [checkChart && style ])
 
 
     return <div id="tooltip-k-line" className="k-line-chart" style={ style }/>        

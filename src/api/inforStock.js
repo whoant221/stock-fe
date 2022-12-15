@@ -25,12 +25,40 @@ const getPriceVCB = () => {
     return axios.get(`/api/v1/orders/getLatestOrders?symbol=VCB`)
 };
 
-const getOrderAsk = () => {
+const getOrderAskACB = () => {
     return axios.get(`/api/v1/orders?type=ask&symbol=ACB&limit=3`)
 };
 
-const getOrderBid = () => {
+const getOrderBidACB = () => {
     return axios.get(`/api/v1/orders?type=bid&symbol=ACB&limit=3`)
+};
+
+const getOrderAskTCB = () => {
+    return axios.get(`/api/v1/orders?type=ask&symbol=TCB&limit=3`)
+};
+
+const getOrderBidTCB = () => {
+    return axios.get(`/api/v1/orders?type=bid&symbol=TCB&limit=3`)
+};
+
+const getOrderAskVCB = () => {
+    return axios.get(`/api/v1/orders?type=ask&symbol=TCB&limit=3`)
+};
+
+const getOrderBidVCB = () => {
+    return axios.get(`/api/v1/orders?type=bid&symbol=TCB&limit=3`)
+};
+
+const getChartACB = () => {
+    return axios.get(`/api/v1/kLineChart?symbol=ACB`)
+};
+
+const getChartTCB = () => {
+    return axios.get(`/api/v1/kLineChart?symbol=TCB`)
+};
+
+const getChartVCB = () => {
+    return axios.get(`/api/v1/kLineChart?symbol=VCB`)
 };
 
 export default {
@@ -44,7 +72,14 @@ export default {
     getPriceTCB,
     getPriceVCB,
 
-    getOrderAsk,
-    getOrderBid,
+    getOrderAskACB,
+    getOrderBidACB,
+    getOrderAskTCB,
+    getOrderBidTCB,
+    getOrderAskVCB,
+    getOrderBidVCB,
 
+    getChartACB,
+    getChartTCB,
+    getChartVCB,
 };

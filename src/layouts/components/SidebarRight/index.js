@@ -1,8 +1,8 @@
 import classNames from "classnames/bind";
 import { useState, useEffect } from "react";
 import inforStock from "~/api/inforStock";
-import { ToastContainer, toast } from 'react-toastify';
 import inforUser from "~/api/inforUser";
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import OrderBook from '~/layouts/components/OrderBook';
 import Search from '~/layouts/components/Search';
@@ -42,7 +42,7 @@ function SidebarRight() {
                 else toast.success(`Đặt lệnh mua thành công cổ phiếu ${nameBank[1] ? nameBank[1] :'ACB'} !`);
             }
             catch (err) {
-                toast.error('Không thể hỗ trợ khách hàng !');
+                toast.error('Bạn phải thực hiện đăng nhập !');
             }
         }
     }
@@ -61,7 +61,7 @@ function SidebarRight() {
                 else toast.success(`Đặt lệnh bán thành công cổ phiếu ${nameBank[1] ? nameBank[1] :'ACB'}!`);
             }
             catch (err) {
-                toast.error('Không thể hỗ trợ khách hàng !');
+                toast.error('Bạn phải thực hiện đăng nhập !');
             }
         }
     }

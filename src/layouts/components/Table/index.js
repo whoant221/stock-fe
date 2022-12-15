@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import {useDispatch} from 'react-redux';
 import * as actions from '~/redux/actions';
+import blockChainStorage from '~/utils/storage';
 import inforStock from "~/api/inforStock";
 import classNames from 'classnames/bind';
 import styles from './Table.module.scss';
@@ -9,7 +10,7 @@ import Tippy from '@tippyjs/react';
 import {followCursor} from 'tippy.js';
 const cx = classNames.bind(styles);
 
-function Table() {
+function Table( polling = 5000) {
     const dispatch = useDispatch();
 
     const [colorGreen, setColorGreen] = useState('green');
@@ -24,12 +25,15 @@ function Table() {
     const [priceTCB, setPriceTCB] = useState();
     const [priceVCB, setPriceVCB] = useState();
 
-    const [ask, setAsk] = useState();
-    const [bid, setBid] = useState();
-    const [thanh, setthanh] = useState();
+    const [askACB, setAskACB] = useState();
+    const [bidACB, setBidACB] = useState();
+    const [askTCB, setAskTCB] = useState();
+    const [bidTCB, setBidTCB] = useState();
+    const [askVCB, setAskVCB] = useState();
+    const [bidVCB, setBidVCB] = useState();
 
     useEffect(() => {
-        // setInterval(() => {
+        setInterval(() => {
             const money = async ()  =>{
                 try{
                     const data1 = await inforStock.getACB()
@@ -40,8 +44,12 @@ function Table() {
                     const data5 = await inforStock.getPriceTCB()
                     const data6 = await inforStock.getPriceVCB()
 
-                    const data7 = await inforStock.getOrderAsk()
-                    const data8 = await inforStock.getOrderBid()
+                    const data7 = await inforStock.getOrderAskACB()
+                    const data8 = await inforStock.getOrderBidACB()
+                    const data9 = await inforStock.getOrderAskTCB()
+                    const data10 = await inforStock.getOrderBidTCB()
+                    const data11 = await inforStock.getOrderAskVCB()
+                    const data12 = await inforStock.getOrderBidVCB()
 
                     setACB(data1.data);
                     setTCB(data2.data);
@@ -51,15 +59,19 @@ function Table() {
                     setPriceTCB(data5.data)
                     setPriceVCB(data6.data)
                     
-                    setAsk(data7.data.orders)
-                    setBid(data8.data.orders)
+                    setAskACB(data7.data.orders)
+                    setBidACB(data8.data.orders)
+                    setAskTCB(data9.data.orders)
+                    setBidTCB(data10.data.orders)
+                    setAskVCB(data11.data.orders)
+                    setBidVCB(data12.data.orders)
                 }
                 catch (err) {
-                    console.log(err);
+                    // console.log(err);
                 }
             }
             money()
-        // }, 200);
+        }, 1000);
     }, []);
 
     const acb =() => {
@@ -80,9 +92,44 @@ function Table() {
         dispatch(actions.setDetailBank(VCB))
     }
 
+    const chartACB = async ()  =>{
+        try{
+            const res = await inforStock.getChartACB()
+            blockChainStorage.setCharTBank(res.data.charts)
+            dispatch(actions.setLayout(''))
+            dispatch(actions.setNameBank('ACB'));
+            dispatch(actions.setDetailBank(ACB))
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
 
+    const chartTCB = async ()  =>{
+        try{
+            const res = await inforStock.getChartTCB()
+            blockChainStorage.setCharTBank(res.data.charts)
+            dispatch(actions.setLayout(''))
+            dispatch(actions.setNameBank('TCB'));
+            dispatch(actions.setDetailBank(TCB))
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
 
-    // console.log(bid);
+    const chartVCB = async ()  =>{
+        try{
+            const res = await inforStock.getChartVCB()
+            blockChainStorage.setCharTBank(res.data.charts)
+            dispatch(actions.setLayout(''))
+            dispatch(actions.setNameBank('VCB'));
+            dispatch(actions.setDetailBank(VCB))
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
     
   return (
     <div className={cx('price-board-table')}>
@@ -123,7 +170,7 @@ function Table() {
                         
                             </tr> 
                         </thead>
-                        {ACB && TCB && VCB && priceACB && priceTCB && priceVCB && ask && bid?
+                        {ACB && TCB && VCB && priceACB && priceTCB && priceVCB && askACB && bidACB && askTCB && bidTCB && askVCB && bidVCB?
                         <tbody id={cx('customers')}>                        
    
                             <Tippy 
@@ -141,40 +188,102 @@ function Table() {
                                     followCursor={true}
                                     plugins={[followCursor]} 
                                     theme={'tomato'}>
-                                        <th className={cx('left', colorYellow)} onClick={()=>{dispatch(actions.setLayout(''))}}> ACB </th> 
+                                        <th className={cx('left', colorYellow)} onClick={chartACB}> ACB </th> 
                                     </Tippy>
                                     <th className={cx('right', 'violet', 'set_light')} onClick={acb}>{ACB.floor_price}</th>
                                     <th className={cx('right', 'blue', 'set_light')} onClick={acb}>{ACB.ceil_price}</th>
                                     <th className={cx('right', 'yellow', 'set_light')} onClick={acb}>{ACB.ref_price}</th>
 
-                                    {/* {ask.map((items, index) => { console.log(items);
-                                        return(
-                                            <div key={index}>
-                                                <th className={cx('right', colorYellow)} onClick={acb}>{items.price_per_unit}</th>
-                                                <th className={cx('right', colorYellow)} onClick={acb}>{items.coin_amount}</th>
-                                            </div>
-                                        )
-                                    })} */}
-
-                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
-                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
-                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
-                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
-                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
-                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                    {askACB.length == 0 ?  
+                                        <>
+                                            <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                            <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                            <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                            <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                            <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                            <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                        </>                                   
+                                    :askACB.length == 1 ? 
+                                        askACB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>{items.coin_amount}</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                                </>
+                                            )
+                                        })
+                                    :askACB.length == 2 ?
+                                        askACB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>{items.coin_amount}</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                                </>
+                                            )
+                                        })
+                                    :askACB.length == 3 ?
+                                        askACB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>{items.coin_amount}</th>
+                                                </>
+                                            )
+                                        })
+                                    :null}
 
                                     <th className={cx('right', 'set_light', colorYellow)} onClick={acb}>{priceACB.price_per_unit === undefined ? 0 : priceACB.price_per_unit}</th>
                                     <th className={cx('right', 'set_light', colorYellow)} onClick={acb}>{priceACB.coin_amount === '' ? 0 : priceACB.coin_amount}</th>
 
-                                    {bid.map((items) => {
-                                        return(
-                                            <>
-                                                <th className={cx('right', colorYellow)} onClick={acb}>{items.price_per_unit}</th>
-                                                <th className={cx('right', colorYellow)} onClick={acb}>{items.coin_amount}</th>
-                                            </>
-                                        )
-                                    })}
-
+                                    {bidACB.length == 0 ?  
+                                        <>
+                                            <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                            <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                            <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                            <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                            <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                            <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                        </>                                   
+                                    :bidACB.length == 1 ? 
+                                        bidACB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>{items.coin_amount}</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                                </>
+                                            )
+                                        })
+                                    :bidACB.length == 2 ?
+                                        bidACB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>{items.coin_amount}</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>-</th>
+                                                </>
+                                            )
+                                        })
+                                    :bidACB.length == 3 ?
+                                        bidACB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorYellow)} onClick={acb}>{items.coin_amount}</th>
+                                                </>
+                                            )
+                                        })
+                                    :null}
 
 
                                     <th className={cx('right', 'set_light')} onClick={acb}>{ACB.total_volume}</th>
@@ -200,25 +309,103 @@ function Table() {
                                     followCursor={true}
                                     plugins={[followCursor]} 
                                     theme={'tomato'}>
-                                        <th className={cx('left', colorRed)} onClick={()=>{dispatch(actions.setLayout(''))}}> TCB </th> 
+                                        <th className={cx('left', colorRed)} onClick={chartTCB}> TCB </th> 
                                     </Tippy>
                                     <th className={cx('right', 'violet', 'set_light')} onClick={tcb}>{TCB.floor_price}</th>
                                     <th className={cx('right', 'blue', 'set_light')} onClick={tcb}>{TCB.ceil_price}</th>
                                     <th className={cx('right', 'yellow', 'set_light')} onClick={tcb}>{TCB.ref_price}</th>
-                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
-                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
-                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
-                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
-                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
-                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
-                                    <th className={cx('right', 'set_light', colorRed)} onClick={acb}>{ priceTCB.price_per_unit === undefined ? 0 : priceTCB.price_per_unit}</th>
-                                    <th className={cx('right', 'set_light', colorRed)} onClick={acb}>{priceTCB.coin_amount === undefined ? 0 : priceTCB.coin_amount}</th>
-                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
-                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
-                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
-                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
-                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
-                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+
+                                    {askTCB.length == 0 ?  
+                                        <>
+                                            <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                            <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                            <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                            <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                            <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                            <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                        </>                                   
+                                    :askTCB.length == 1 ? 
+                                        askTCB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>{items.coin_amount}</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                                </>
+                                            )
+                                        })
+                                    :askTCB.length == 2 ?
+                                        askTCB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>{items.coin_amount}</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                                </>
+                                            )
+                                        })
+                                    :askTCB.length == 3 ?
+                                        askTCB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>{items.coin_amount}</th>
+                                                </>
+                                            )
+                                        })
+                                    :null}
+
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={tcb}>{ priceTCB.price_per_unit === undefined ? 0 : priceTCB.price_per_unit}</th>
+                                    <th className={cx('right', 'set_light', colorRed)} onClick={tcb}>{priceTCB.coin_amount === undefined ? 0 : priceTCB.coin_amount}</th>
+
+                                    {bidTCB.length == 0 ?  
+                                        <>
+                                            <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                            <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                            <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                            <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                            <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                            <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                        </>                                   
+                                    :bidTCB.length == 1 ? 
+                                        bidTCB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>{items.coin_amount}</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                                </>
+                                            )
+                                        })
+                                    :bidTCB.length == 2 ?
+                                        bidTCB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>{items.coin_amount}</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>-</th>
+                                                </>
+                                            )
+                                        })
+                                    :bidTCB.length == 3 ?
+                                        bidTCB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorRed)} onClick={tcb}>{items.coin_amount}</th>
+                                                </>
+                                            )
+                                        })
+                                    :null}
+
                                     <th className={cx('right', 'set_light')} onClick={tcb}>{TCB.total_volume}</th>
                                     <th className={cx('right', 'set_light', colorRed)} onClick={tcb}>{TCB.highest_price}</th>
                                     <th className={cx('right', 'set_light', colorRed)} onClick={tcb}>
@@ -242,25 +429,103 @@ function Table() {
                                     followCursor={true}
                                     plugins={[followCursor]} 
                                     theme={'tomato'}>
-                                        <th className={cx('left', colorGreen)} onClick={()=>{dispatch(actions.setLayout(''))}}> VCB </th> 
+                                        <th className={cx('left', colorGreen)} onClick={chartVCB}> VCB </th> 
                                     </Tippy>
                                     <th className={cx('right', 'violet', 'set_light')} onClick={vcb}>{VCB.floor_price}</th>
                                     <th className={cx('right', 'blue', 'set_light')} onClick={vcb}>{VCB.ceil_price}</th>
                                     <th className={cx('right', 'yellow', 'set_light')} onClick={vcb}>{VCB.ref_price}</th>
-                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
-                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
-                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
-                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
-                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
-                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
-                                    <th className={cx('right', 'set_light', colorGreen)} onClick={acb}>{ priceVCB.price_per_unit === undefined ? 0 : priceVCB.price_per_unit}</th>
-                                    <th className={cx('right', 'set_light', colorGreen)} onClick={acb}>{priceVCB.coin_amount === undefined ? 0 : priceVCB.coin_amount}</th>
-                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
-                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
-                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
-                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
-                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
-                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+
+                                    {askVCB.length == 0 ?  
+                                        <>
+                                            <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                            <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                            <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                            <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                            <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                            <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                        </>                                   
+                                    :askVCB.length == 1 ? 
+                                        askVCB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>{items.coin_amount}</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                                </>
+                                            )
+                                        })
+                                    :askVCB.length == 2 ?
+                                        askVCB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>{items.coin_amount}</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                                </>
+                                            )
+                                        })
+                                    :askVCB.length == 3 ?
+                                        askVCB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>{items.coin_amount}</th>
+                                                </>
+                                            )
+                                        })
+                                    :null}
+
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={vcb}>{ priceVCB.price_per_unit === undefined ? 0 : priceVCB.price_per_unit}</th>
+                                    <th className={cx('right', 'set_light', colorGreen)} onClick={vcb}>{priceVCB.coin_amount === undefined ? 0 : priceVCB.coin_amount}</th>
+                                    
+                                    {bidVCB.length == 0 ?
+                                        <>
+                                            <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                            <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                            <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                            <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                            <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                            <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                        </>                                   
+                                    :bidVCB.length == 1 ? 
+                                        bidVCB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>{items.coin_amount}</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                                </>
+                                            )
+                                        })
+                                    :bidVCB.length == 2 ?
+                                        bidVCB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>{items.coin_amount}</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>-</th>
+                                                </>
+                                            )
+                                        })
+                                    :bidVCB.length == 3 ?
+                                        bidVCB.map((items, index) => {
+                                            return(
+                                                <>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>{items.price_per_unit}</th>
+                                                    <th className={cx('right', colorGreen)} onClick={vcb}>{items.coin_amount}</th>
+                                                </>
+                                            )
+                                        })
+                                    :null}
+
                                     <th className={cx('right', 'set_light')} onClick={vcb}>{VCB.total_volume}</th>
                                     <th className={cx('right', 'set_light', colorGreen)} onClick={vcb}>{VCB.highest_price}</th>
                                     <th className={cx('right', 'set_light', colorGreen)} onClick={vcb}>

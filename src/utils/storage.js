@@ -22,6 +22,7 @@ const storage = createStorage("blockchain")
 const PROFILE_CLIENT = 'info_client';
 const PROFILE_FIREBASE = 'info_client';
 const PROFILE_REGISTER = 'info_register'
+const CHART_BANK = 'chart_bank'
 
 const blockChainStorage = {
     setInfoClient: (data) => storage.set(PROFILE_CLIENT, data),
@@ -35,6 +36,10 @@ const blockChainStorage = {
     setInfoRegister: (data) => storage.set(PROFILE_REGISTER, data),
     getInfoRegister: () => storage.get(PROFILE_REGISTER),
     removeInfoRegister: () => storage.remove(PROFILE_REGISTER),
+
+    setCharTBank: (data) => storage.set(CHART_BANK, data),
+    getChartBank: () => storage.get(CHART_BANK),
+
 }
 
 
