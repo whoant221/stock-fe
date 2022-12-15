@@ -78,6 +78,13 @@ function StockTCB(polling = 1000) {
             <th className={cx('right', 'blue', 'set_light')} onClick={tcb}>{TCB.ceil_price}</th>
             <th className={cx('right', 'yellow', 'set_light')} onClick={tcb}>{TCB.ref_price}</th>
 
+            {askTCB.length == 2 ?  
+                <>
+                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                    <th className={cx('right', 'red')} onClick={tcb}>-</th> 
+                </>
+            :null}
+
             {askTCB.length == 0 ?  
                 <>
                     <th className={cx('right', 'red')} onClick={tcb}>-</th>
@@ -91,12 +98,13 @@ function StockTCB(polling = 1000) {
                 askTCB.map((items, index) => {
                     return(
                         <>
+                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
+                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
                             <th className={cx('right', 'red')} onClick={tcb}>{items.price_per_unit}</th>
                             <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                            <th className={cx('right', 'red')} onClick={tcb}>-</th>
+ 
                         </>
                     )
                 })
@@ -108,7 +116,7 @@ function StockTCB(polling = 1000) {
                             <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
                         </>
                     )
-                })
+                }).reverse()
             :askTCB.length == 3 ?
                 askTCB.map((items, index) => {
                     return(
@@ -117,14 +125,7 @@ function StockTCB(polling = 1000) {
                             <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
                         </>
                     )
-                })
-            :null}
-
-            {askTCB.length == 2 ?  
-                <>
-                    <th className={cx('right', 'red')} onClick={tcb}>-</th>
-                    <th className={cx('right', 'red')} onClick={tcb}>-</th> 
-                </>
+                }).reverse()
             :null}
 
             <th className={cx('right', 'set_light', 'red')} onClick={tcb}>{ priceTCB.price_per_unit === undefined ? 0 : priceTCB.price_per_unit}</th>

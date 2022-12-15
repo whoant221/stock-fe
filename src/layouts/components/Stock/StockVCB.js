@@ -81,6 +81,13 @@ function StockVCB( polling = 1000 ) {
             <th className={cx('right', 'blue', 'set_light')} onClick={vcb}>{VCB.ceil_price}</th>
             <th className={cx('right', 'yellow', 'set_light')} onClick={vcb}>{VCB.ref_price}</th>
 
+            {askVCB.length == 2 ?  
+                <>
+                    <th className={cx('right', 'green')} onClick={vcb}>-</th>
+                    <th className={cx('right', 'green')} onClick={vcb}>-</th> 
+                </>
+            :null}
+
             {askVCB.length == 0 ?  
                 <>
                     <th className={cx('right', 'green')} onClick={vcb}>-</th>
@@ -94,12 +101,13 @@ function StockVCB( polling = 1000 ) {
                 askVCB.map((items, index) => {
                     return(
                         <>
+                            <th className={cx('right', 'green')} onClick={vcb}>-</th>
+                            <th className={cx('right', 'green')} onClick={vcb}>-</th>
+                            <th className={cx('right', 'green')} onClick={vcb}>-</th>
+                            <th className={cx('right', 'green')} onClick={vcb}>-</th>
                             <th className={cx('right', 'green')} onClick={vcb}>{items.price_per_unit}</th>
                             <th className={cx('right', 'green')} onClick={vcb}>{items.coin_amount}</th>
-                            <th className={cx('right', 'green')} onClick={vcb}>-</th>
-                            <th className={cx('right', 'green')} onClick={vcb}>-</th>
-                            <th className={cx('right', 'green')} onClick={vcb}>-</th>
-                            <th className={cx('right', 'green')} onClick={vcb}>-</th>
+
                         </>
                     )
                 })
@@ -109,11 +117,9 @@ function StockVCB( polling = 1000 ) {
                         <>
                             <th className={cx('right', 'green')} onClick={vcb}>{items.price_per_unit}</th>
                             <th className={cx('right', 'green')} onClick={vcb}>{items.coin_amount}</th>
-                            <th className={cx('right', 'green')} onClick={vcb}>-</th>
-                            <th className={cx('right', 'green')} onClick={vcb}>-</th>
                         </>
                     )
-                })
+                }).reverse()
             :askVCB.length == 3 ?
                 askVCB.map((items, index) => {
                     return(
@@ -122,7 +128,7 @@ function StockVCB( polling = 1000 ) {
                             <th className={cx('right', 'green')} onClick={vcb}>{items.coin_amount}</th>
                         </>
                     )
-                })
+                }).reverse()
             :null}
 
             <th className={cx('right', 'set_light', 'green')} onClick={vcb}>{ priceVCB.price_per_unit === undefined ? 0 : priceVCB.price_per_unit}</th>
@@ -156,8 +162,6 @@ function StockVCB( polling = 1000 ) {
                         <>
                             <th className={cx('right', 'green')} onClick={vcb}>{items.price_per_unit}</th>
                             <th className={cx('right', 'green')} onClick={vcb}>{items.coin_amount}</th>
-                            <th className={cx('right', 'green')} onClick={vcb}>-</th>
-                            <th className={cx('right', 'green')} onClick={vcb}>-</th>
                         </>
                     )
                 })
@@ -170,6 +174,13 @@ function StockVCB( polling = 1000 ) {
                         </>
                     )
                 })
+            :null}
+
+            {bidVCB.length == 2 ?  
+                <>
+                    <th className={cx('right', 'green')} onClick={vcb}>-</th>
+                    <th className={cx('right', 'green')} onClick={vcb}>-</th> 
+                </>
             :null}
 
             <th className={cx('right', 'set_light')} onClick={vcb}>{VCB.total_volume}</th>
