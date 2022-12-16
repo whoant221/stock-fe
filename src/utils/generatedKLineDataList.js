@@ -28,7 +28,7 @@ export default function (baseTimestamp = Date.now(), basePrice = 20) {
 
         volume: chartBank[i].volume,
 
-        timestamp
+        // timestamp: 1233333333213
       }
 
       kLineModel.turnover = (kLineModel.open + kLineModel.close + kLineModel.high + kLineModel.low) / 4 * kLineModel.volume

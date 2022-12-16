@@ -17,6 +17,9 @@ function StockTCB(polling = 1000) {
     const [askTCB, setAskTCB] = useState();
     const [bidTCB, setBidTCB] = useState();
 
+    const [orderBookAskTCB, setOrderBookAskTCB] = useState();
+    const [orderBookBidTCB, setOrderBookBidTCB] = useState();
+
     useEffect(() => {
         // setInterval(() => {
             const money = async ()  =>{
@@ -37,11 +40,27 @@ function StockTCB(polling = 1000) {
             }
             money()
         // }, 300);
+        const orderBook = async () => {
+            try{
+                const data1 = await inforStock.getOrderBookAskTCB()
+                const data2 = await inforStock.getOrderBookBidTCB()
+                setOrderBookAskTCB(data1.data.orders);
+                setOrderBookBidTCB(data2.data.orders);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+        orderBook()
     }, [TCB || priceTCB || askTCB || bidTCB]);
+
     const tcb =() => {
         dispatch(actions.setLayout(true));
         dispatch(actions.setNameBank('TCB'));
         dispatch(actions.setDetailBank(TCB))
+        dispatch(actions.setOrderBookAsk( orderBookAskTCB))
+        dispatch(actions.setOrderBookBid( orderBookBidTCB))
+        dispatch(actions.setPriceStock(priceTCB))
     }
 
     const chartTCB = async ()  =>{
@@ -51,6 +70,9 @@ function StockTCB(polling = 1000) {
             dispatch(actions.setLayout(''))
             dispatch(actions.setNameBank('TCB'));
             dispatch(actions.setDetailBank(TCB))
+            dispatch(actions.setOrderBookAsk( orderBookAskTCB))
+            dispatch(actions.setOrderBookBid( orderBookBidTCB))
+            dispatch(actions.setPriceStock(priceTCB))
         }
         catch (err) {
             console.log(err);
@@ -118,7 +140,7 @@ function StockTCB(polling = 1000) {
                             <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
                         </>
                     )
-                }).reverse()
+                })
             :bidTCB.length == 3 ?
                 bidTCB.map((items, index) => {
                     return(
@@ -127,7 +149,7 @@ function StockTCB(polling = 1000) {
                             <th className={cx('right', 'red')} onClick={tcb}>{items.coin_amount}</th>
                         </>
                     )
-                }).reverse()
+                })
             :null}
 
 

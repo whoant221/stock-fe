@@ -87,6 +87,30 @@
                 }
             }
         }
+        .area-tbody_down {
+            padding: 0;
+            color: var(--global-text-highlight-color);
+            flex: 1 1 0%;
+            overflow: overlay;
+            display: flex;
+            // flex-direction: column-reverse;
+            // max-height: 140px;
+            .item-tr {
+                display: flex;
+                padding: 2px 14px 2px 16px;
+                gap: 8px;
+                width: 100%;
+                .c-up {
+                    color: var(--global-bid-color);
+                }
+                .c-down{
+                    color: var(--global-ask-color);
+                }
+                .a-right {
+                    text-align: right;
+                }
+            }
+        }
         .hide{
             display: none;
         }
@@ -94,6 +118,7 @@
             padding: 4px 16px;
             font-size: 20px;
             font-weight: 600;
+            color:darkgoldenrod;
         }
         .c-up {
             color: var(--global-bid-color);

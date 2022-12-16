@@ -3,9 +3,15 @@ import classNames from 'classnames/bind';
 import { useState, useEffect } from 'react';
 import styles from './OrderBook.module.scss';
 import inforStock from "~/api/inforStock";
+import {useDispatch, useSelector} from 'react-redux';
 const cx = classNames.bind(styles);
 
 function OrderBook({style}) {
+
+    const orderBookAsk = useSelector(state => state.header.orderAsk)
+    const orderBookBid = useSelector(state => state.header.orderBid)
+    const priceStock = useSelector(state => state.header.price)
+    console.log(priceStock);
 
     const [checkCover, setCheckCover] = useState('active');
     const [checkUp, setCheckUp] = useState();
@@ -15,16 +21,17 @@ function OrderBook({style}) {
 
     const [orderBookAskACB, setOrderBookAskACB] = useState();
     const [orderBookBidACB, setOrderBookBidACB] = useState();
-    console.log(orderBookAskACB);
-
+    const [priceACB, setPriceACB] = useState();
 
     useEffect(() => {
         const money = async ()  =>{
             try{
                 const data1 = await inforStock.getOrderBookAskACB()
                 const data2 = await inforStock.getOrderBookBidACB()
+                const data3 = await inforStock.getPriceACB()
                 setOrderBookAskACB(data1.data.orders);
                 setOrderBookBidACB(data2.data.orders);
+                setPriceACB(data3.data)
             }
             catch (err) {
                 console.log(err);
@@ -32,7 +39,6 @@ function OrderBook({style}) {
         }
         money()
     }, []);
-    
 
   return (
     <div className={cx('order-book')} style={ style }>
@@ -75,34 +81,50 @@ function OrderBook({style}) {
             <div className={cx('area-tbody', checkHandelUp)}>
                 <div className={cx('orderbook-progress')}>
 
-                    {orderBookAskACB ? 
-                    orderBookAskACB.map((items, index) => {
+                    { orderBookAsk[1]
+                    ? orderBookAsk[1].map((items, index) => {
                         return(
                             <div className={cx('item-tr')} key={index}>
                                 <div className={cx('c-down')}>{items.price_per_unit}</div>
                                 <div className={cx('a-right')}>{items.coin_amount}</div>
                                 <div className={cx('a-right')}>{parseInt(items.price_per_unit) * parseInt(items.coin_amount)}</div>
-                            </div>
-                    )}): null}
-
+                            </div>)})
+                    : orderBookBidACB ? orderBookBidACB.map((items, index) => {
+                        return(
+                            <div className={cx('item-tr')} key={index}>
+                                <div className={cx('c-down')}>{items.price_per_unit}</div>
+                                <div className={cx('a-right')}>{items.coin_amount}</div>
+                                <div className={cx('a-right')}>{parseInt(items.price_per_unit) * parseInt(items.coin_amount)}</div>
+                            </div>)}) : null}
                 </div>
             </div>
-            <div className={cx('orderbook-ticker', 'c-down')}>
+            <div className={cx('orderbook-ticker')}>
                 <Tippy content='Giá khớp lệnh gần nhất' placement={'right-end'}>
-                    <span>17.05</span>
+                    <span className={cx('view_cover')}>
+                        {priceStock[1] ? priceStock[1].price_per_unit :
+                        priceACB ? priceACB.price_per_unit : null}
+                    </span>
                 </Tippy>
             </div>
-            <div className={cx('area-tbody', checkHandeDown)}>
+            <div className={cx('area-tbody_down', checkHandeDown)}>
                 <div className={cx('orderbook-progress')}>
-                    {orderBookBidACB ? 
-                        orderBookBidACB.map((items, index) => {
-                            return(
-                                <div className={cx('item-tr')} key={index}>
-                                    <div className={cx('c-up')}>{items.price_per_unit}</div>
-                                    <div className={cx('a-right')}>{items.coin_amount}</div>
-                                    <div className={cx('a-right')}>{parseInt(items.price_per_unit) * parseInt(items.coin_amount)}</div>
-                                </div>
-                    )}): null}
+
+                { orderBookBid[1]
+                    ? orderBookBid[1].map((items, index) => {
+                        return(
+                            <div className={cx('item-tr')} key={index}>
+                                <div className={cx('c-up')}>{items.price_per_unit}</div>
+                                <div className={cx('a-right')}>{items.coin_amount}</div>
+                                <div className={cx('a-right')}>{parseInt(items.price_per_unit) * parseInt(items.coin_amount)}</div>
+                            </div>)})
+                    : orderBookAskACB ? orderBookAskACB.map((items, index) => {
+                        return(
+                            <div className={cx('item-tr')} key={index}>
+                                <div className={cx('c-up')}>{items.price_per_unit}</div>
+                                <div className={cx('a-right')}>{items.coin_amount}</div>
+                                <div className={cx('a-right')}>{parseInt(items.price_per_unit) * parseInt(items.coin_amount)}</div>
+                            </div>)}) : null}
+
                 </div>
             </div>
         </div>

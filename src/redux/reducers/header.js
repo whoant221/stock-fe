@@ -5,6 +5,9 @@ const initialState = {
     info: '',
     name: '',
     detail: '',
+    orderAsk: '',
+    orderBid: '',
+    price: '',
 }
 
 const header = (state = initialState, actions) => {
@@ -37,6 +40,28 @@ const header = (state = initialState, actions) => {
             return {
                 ...state,
                 detail: detail,
+            }
+        case types.SET_ORDER_BOOK_ASK:      
+            let orderAsk = [state.orderAsk !== '']
+            orderAsk.push(actions.payload)     
+            return {
+                ...state,
+                orderAsk: orderAsk,
+            }
+
+        case types.SET_ORDER_BOOK_BID:      
+            let orderBid = [state.orderBid !== '']
+            orderBid.push(actions.payload)     
+            return {
+                ...state,
+                orderBid: orderBid,
+            }
+        case types.SET_PRICE_STOCK:      
+            let price = [state.price !== '']
+            price.push(actions.payload)     
+            return {
+                ...state,
+                price: price,
             }
 
         default:

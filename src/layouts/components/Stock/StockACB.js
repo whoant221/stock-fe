@@ -18,7 +18,10 @@ function StockACB(polling = 1000) {
     const [askACB, setAskACB] = useState();
     const [bidACB, setBidACB] = useState();
 
-    const [orderBookACB, setOrderBookACB] = useState();
+    const [orderBookAskACB, setOrderBookAskACB] = useState();
+    const [orderBookBidACB, setOrderBookBidACB] = useState();
+
+    // const [orderBookACB, setOrderBookACB] = useState();
 
     useEffect(() => {
         // setInterval(() => {
@@ -39,6 +42,18 @@ function StockACB(polling = 1000) {
             }
             money()
         // }, 300);
+        const orderBook = async () => {
+            try{
+                const data1 = await inforStock.getOrderBookAskACB()
+                const data2 = await inforStock.getOrderBookBidACB()
+                setOrderBookAskACB(data1.data.orders);
+                setOrderBookBidACB(data2.data.orders);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+        orderBook()
     }, [ACB || priceACB || bidACB || bidACB]);
 
     const chartACB = async ()  =>{
@@ -48,24 +63,14 @@ function StockACB(polling = 1000) {
             dispatch(actions.setLayout(''))
             dispatch(actions.setNameBank('ACB'));
             dispatch(actions.setDetailBank(ACB))
+            dispatch(actions.setOrderBookAsk( orderBookAskACB))
+            dispatch(actions.setOrderBookBid( orderBookBidACB))
+            dispatch(actions.setPriceStock(priceACB))
         }
         catch (err) {
             console.log(err);
         }
     }
-
-    useEffect(() => {
-        const money = async ()  =>{
-            try{
-                const data = await inforStock.getOrderBookACB()
-                setOrderBookACB(data.data);
-            }
-            catch (err) {
-                console.log(err);
-            }
-        }
-        money()
-    }, []);
 
 
 
@@ -73,6 +78,9 @@ function StockACB(polling = 1000) {
         dispatch(actions.setLayout(true));
         dispatch(actions.setNameBank('ACB'));
         dispatch(actions.setDetailBank(ACB))
+        dispatch(actions.setOrderBookAsk( orderBookAskACB))
+        dispatch(actions.setOrderBookBid( orderBookBidACB))
+        dispatch(actions.setPriceStock(priceACB))
     }
 
 
@@ -137,7 +145,7 @@ function StockACB(polling = 1000) {
                             <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
                         </>
                     )
-                }).reverse()
+                })
             :bidACB.length == 3 ?
                 bidACB.map((items, index) => {
                     return(
@@ -146,7 +154,7 @@ function StockACB(polling = 1000) {
                             <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
                         </>
                     )
-                }).reverse()
+                })
             :null}
 
 

@@ -20,4 +20,17 @@ export const setDetailBank = (data) => ({
     payload: data,
 });
 
+export const setOrderBookAsk = (data) => ({
+    type: types.SET_ORDER_BOOK_ASK,
+    payload: data,
+});
 
+export const setOrderBookBid = (data) => ({
+    type: types.SET_ORDER_BOOK_BID,
+    payload: data,
+});
+
+export const setPriceStock = (data) => ({
+    type: types.SET_PRICE_STOCK,
+    payload: data,
+});

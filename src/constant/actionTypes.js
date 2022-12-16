@@ -6,4 +6,13 @@ export const SET_NAME_BANK = 'SET_NAME_BANK';
 
 export const SET_DETAIL_BANK = 'SET_DETAIL_BANK';
 
+export const SET_ORDER_BOOK_ASK = 'SET_ORDER_BOOK_ASK';
+
+export const SET_ORDER_BOOK_BID = 'SET_ORDER_BOOK_BID';
+
+export const SET_PRICE_STOCK = 'SET_PRICE_STOCK';
+
+
+
+
 

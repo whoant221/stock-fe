@@ -17,6 +17,9 @@ function StockVCB( polling = 1000 ) {
     const [askVCB, setAskVCB] = useState();
     const [bidVCB, setBidVCB] = useState();
 
+    const [orderBookAskVCB, setOrderBookAskVCB] = useState();
+    const [orderBookBidVCB, setOrderBookBidVCB] = useState();
+
     useEffect(() => {
         // setInterval(() => {
             const money = async ()  =>{
@@ -36,12 +39,29 @@ function StockVCB( polling = 1000 ) {
             }
             money()
         // }, 300);
+
+        const orderBook = async () => {
+            try{
+                const data1 = await inforStock.getOrderBookAskVCB()
+                const data2 = await inforStock.getOrderBookBidVCB()
+                setOrderBookAskVCB(data1.data.orders);
+                setOrderBookBidVCB(data2.data.orders);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+        orderBook()
+
     }, [VCB || priceVCB || askVCB || bidVCB]);
 
     const vcb =() => {
-        dispatch(actions.setLayout(true));
-        dispatch(actions.setNameBank('VCB'));
+        dispatch(actions.setLayout(true))
+        dispatch(actions.setNameBank('VCB'))
         dispatch(actions.setDetailBank(VCB))
+        dispatch(actions.setOrderBookAsk( orderBookAskVCB))
+        dispatch(actions.setOrderBookBid( orderBookBidVCB))
+        dispatch(actions.setPriceStock(priceVCB))
     }
 
     const chartVCB = async ()  =>{
@@ -51,6 +71,9 @@ function StockVCB( polling = 1000 ) {
             dispatch(actions.setLayout(''))
             dispatch(actions.setNameBank('VCB'));
             dispatch(actions.setDetailBank(VCB))
+            dispatch(actions.setOrderBookAsk( orderBookAskVCB))
+            dispatch(actions.setOrderBookBid( orderBookBidVCB))
+            dispatch(actions.setPriceStock(priceVCB))
         }
         catch (err) {
             console.log(err);
@@ -119,7 +142,7 @@ function StockVCB( polling = 1000 ) {
                             <th className={cx('right', 'green')} onClick={vcb}>{items.coin_amount}</th>
                         </>
                     )
-                }).reverse()
+                })
             :bidVCB.length == 3 ?
                 bidVCB.map((items, index) => {
                     return(
@@ -128,24 +151,13 @@ function StockVCB( polling = 1000 ) {
                             <th className={cx('right', 'green')} onClick={vcb}>{items.coin_amount}</th>
                         </>
                     )
-                }).reverse()
+                })
             :null}
-
-
-
-
 
 
             <th className={cx('right', 'set_light', 'green')} onClick={vcb}>{ priceVCB.price_per_unit === undefined ? 0 : priceVCB.price_per_unit}</th>
             <th className={cx('right', 'set_light', 'green')} onClick={vcb}>{priceVCB.coin_amount === undefined ? 0 : priceVCB.coin_amount}</th>
-            
-
-
-
-
-
-
-
+   
 
             
             {askVCB.length == 0 ?

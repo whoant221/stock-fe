@@ -34,7 +34,7 @@ function Chart({style, checkChart}) {
             showRule: candleShowRule,
             labels: ['Time: ', 'Open: ', 'Close: ', 'High: ','Low: ', 'Chg: '],
             values: kLineData => {
-              const change = (kLineData.close - kLineData.open) / kLineData.open * 100
+              const change = (kLineData.close - kLineData.open) / kLineData.open
               return [
                 { value: new Date(kLineData.timestamp).toLocaleString() },
                 { value: kLineData.open },
@@ -63,7 +63,7 @@ function Chart({style, checkChart}) {
   
     useEffect(() => {
       chart.current = init('tooltip-k-line')
-      chart.current.createTechnicalIndicator('MA', true, { id: 'candle_pane' })
+      // chart.current.createTechnicalIndicator('MA', true, { id: 'candle_pane' })
       chart.current.applyNewData(generatedKLineDataList())
       chart.current && chart.current.setStyleOptions({ candle: { type: checkChart }} )
       chart.current && chart.current.setStyleOptions(getTooltipOptions(
