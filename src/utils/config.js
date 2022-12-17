@@ -1,2 +1,2 @@
 
-// process.env.COUTDOWN || 10000
+process.env.COUTDOWN || 1000

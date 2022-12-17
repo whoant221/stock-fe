@@ -35,7 +35,7 @@ function StockTCB(polling = 1000) {
                     setBidTCB(data10.data.orders)
                 }
                 catch (err) {
-                    // console.log(err);
+                    window.location.reload();
                 }
             }
             money()

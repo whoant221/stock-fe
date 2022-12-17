@@ -5,15 +5,20 @@ import MenuItem from './NavbarHeader/MenuItem';
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 import blockChainStorage from '~/utils/storage';
-import { auth } from '~/firebase/config';
+import {useDispatch, useSelector} from 'react-redux';
 import { useEffect, useState } from 'react';
-import { onAuthStateChanged } from '@firebase/auth';
 const cx = classNames.bind(styles);
 
 function Nav(className) {
     const navigate = useNavigate();
     const [setUser, setSetUser] = useState(null);
     const [setUserLogin, setSetUserLogin] = useState(null);
+
+
+    const infoRegister = blockChainStorage.getInfoClient()
+    console.log(infoRegister.data.name);
+
+
 
     const logout = () => { 
         blockChainStorage.removeInfoClient()
@@ -24,6 +29,7 @@ function Nav(className) {
     useEffect(() => {
         if (!blockChainStorage.getInfoFirebase() || !blockChainStorage.getInfoClient()) setSetUser('none')
         else setSetUserLogin('none')
+        
     }, []);
 
     return (
@@ -72,6 +78,9 @@ function Nav(className) {
                                     </Menu> 
                                 </ul>
                             </div>
+
+                            {infoRegister ? infoRegister.data.name : null}
+
                         </nav>
                     </div>
                 </div>

@@ -11,7 +11,6 @@ function OrderBook({style}) {
     const orderBookAsk = useSelector(state => state.header.orderAsk)
     const orderBookBid = useSelector(state => state.header.orderBid)
     const priceStock = useSelector(state => state.header.price)
-    console.log(priceStock);
 
     const [checkCover, setCheckCover] = useState('active');
     const [checkUp, setCheckUp] = useState();
