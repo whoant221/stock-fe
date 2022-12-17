@@ -16,8 +16,6 @@ function Nav(className) {
 
 
     const infoRegister = blockChainStorage.getInfoClient()
-    console.log(infoRegister.data.name);
-
 
 
     const logout = () => { 
