@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 //Layout
 import DefaultLayout from '~/layouts';
 //Page
@@ -13,8 +12,6 @@ import Profile from './pages/Profile';
 import Refills from './pages/Refills';
 import Withdraw from './pages/Withdraw';
 import Asset from './pages/Asset';
-
-
 function App() {
     return (
         <Router>
@@ -36,5 +33,4 @@ function App() {
         </Router>
     );
 }
-
 export default App;

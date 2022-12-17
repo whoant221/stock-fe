@@ -34,7 +34,7 @@ function StockVCB( polling = 1000 ) {
                     setBidVCB(data12.data.orders)
                 }
                 catch (err) {
-                    window.location.reload();
+                    // window.location.reload();
                 }
             }
             money()

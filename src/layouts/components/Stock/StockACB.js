@@ -37,7 +37,7 @@ function StockACB(polling = 1000) {
                     setBidACB(data8.data.orders)
                 }
                 catch (err) {
-                    window.location.reload();
+                    // window.location.reload();
                 }
             }
             money()
