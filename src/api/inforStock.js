@@ -5,21 +5,22 @@ const getACB = () => {
     return axios.get(`/api/v1/sessions/currentReport?symbol=ACB`) 
 };
 
-const getPriceACB = () => {
-    return axios.get(`/api/v1/orders/getLatestOrders?symbol=ACB`)
-};
-
 const getTCB = () => {
     return axios.get(`/api/v1/sessions/currentReport?symbol=TCB`)
+};
+
+const getVCB = () => {
+    return axios.get(`/api/v1/sessions/currentReport?symbol=VCB`)
+};
+
+const getPriceACB = () => {
+    return axios.get(`/api/v1/orders/getLatestOrders?symbol=ACB`)
 };
 
 const getPriceTCB = () => {
     return axios.get(`/api/v1/orders/getLatestOrders?symbol=TCB`)
 };
 
-const getVCB = () => {
-    return axios.get(`/api/v1/sessions/currentReport?symbol=VCB`)
-};
 
 const getPriceVCB = () => {
     return axios.get(`/api/v1/orders/getLatestOrders?symbol=VCB`)
@@ -61,31 +62,26 @@ const getChartVCB = () => {
     return axios.get(`/api/v1/kLineChart?symbol=VCB`)
 };
 
-
-
-const getOrderBookAskACB = () => {
-    return axios.get(`/api/v1/orders?type=ask&symbol=ACB&limit=10`)
+const getOrderBookAsk = (id) => {
+    return axios.get(`/api/v1/orders?type=ask&symbol=${id}&limit=10`)
 };
 
-const getOrderBookBidACB = () => {
-    return axios.get(`/api/v1/orders?type=bid&symbol=ACB&limit=10`)
+const getOrderBookBid = (id) => {
+    return axios.get(`/api/v1/orders?type=bid&symbol=${id}&limit=10`)
 };
 
-const getOrderBookAskTCB = () => {
-    return axios.get(`/api/v1/orders?type=ask&symbol=TCB&limit=10`)
-};
+const getHistoryStock = (id) => {
+    return axios.get(`api/v1/orders/historyMatched?symbol=${id}`)
+}
 
-const getOrderBookBidTCB = () => {
-    return axios.get(`/api/v1/orders?type=bid&symbol=TCB&limit=10`)
-};
+const getOpenOrder = (id) => {
+    return axios.get(`/api/v1/orders/enabled?symbol=${id}`)
+}
 
-const getOrderBookAskVCB = () => {
-    return axios.get(`/api/v1/orders?type=ask&symbol=VCB&limit=10`)
-};
+const getHistotyOrder = (id) => {
+    return axios.get(`/api/v1/orders/history?symbol=${id}`)
+}
 
-const getOrderBookBidVCB = () => {
-    return axios.get(`/api/v1/orders?type=bid&symbol=VCB&limit=10`)
-};
 
 export default {
 
@@ -109,10 +105,10 @@ export default {
     getChartTCB,
     getChartVCB,
 
-    getOrderBookAskACB,
-    getOrderBookBidACB,
-    getOrderBookAskTCB,
-    getOrderBookBidTCB,
-    getOrderBookAskVCB,
-    getOrderBookBidVCB,
+    getOrderBookAsk,
+    getOrderBookBid,
+
+    getHistoryStock,
+    getOpenOrder,
+    getHistotyOrder,
 };

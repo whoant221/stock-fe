@@ -44,6 +44,57 @@
         .trade-history-wrapper{
             clear: both;
             min-height: 240px;
+            .area-thead {
+                display: flex;
+                padding: 4px 14px 8px 16px;
+                gap: 4px;
+                font-size: 14px !important;
+                font-weight: 400;
+                .item-td {
+                    flex: 1 1 0%;
+                    color: var(--inside-global-text-color);
+                }
+                .a-right {
+                    text-align: right;
+                }
+        
+                @media (min-width: 961px){
+                    .item-td {
+                        white-space: nowrap;
+                    }
+                }
+                
+            }
+            .area-tbody {
+                height: 312px;
+                overflow-y: overlay;
+                padding: 0;
+                margin-right: 4px;
+                color: var(--global-text-highlight-color);
+                font-size: var(--global-fontSize-body-XS);
+                line-height: var(--global-lineHeight-body-XS);   
+                .c-up {
+                    color: var(--global-bid-color);
+                }
+                .c-down{
+                    color: var(--global-ask-color);
+                }
+                .item-tr {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 2px 14px 2px 16px;
+                    gap: 8px;
+                    .c-up {
+                        color: var(--global-bid-color);
+                    }
+                    .c-down{
+                        color: var(--global-ask-color);
+                    }
+                    .a-right {
+                        text-align: right;
+                    }
+                }
+            }
         }
         .no-orders{
             text-align: center;

@@ -7,6 +7,7 @@ import OrderBook from '~/layouts/components/OrderBook';
 import Chart from '~/layouts/components/Chart';
 import styles from './SellPro.module.scss';
 import History from '../History';
+import HistoryStock from '../HistoryStock';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import inforUser from "~/api/inforUser";
@@ -174,112 +175,7 @@ function SellPro() {
 
           <OrderBook/>
 
-          <div className={cx('trades')}>
-            <div className={cx('area-title')}>Giao dịch thị trường</div>
-
-            <div className={cx('area-thead')}>
-              <div className={cx('item-td')}>Giá (USDT)</div>
-              <div className={cx('item-td', 'a-right')}>Số lượng (AVAX)</div>
-              <div className={cx('item-td', 'a-right')}>Thời gian</div>
-            </div>
-
-            <div className={cx('area-tbody')}>
-              <div className={cx('orderbook-progress')}>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-                <div className={cx('item-tr')}>
-                  <div className={cx('c-up')}>17.04</div>
-                  <div className={cx('a-right')}>0.97734</div>
-                  <div className={cx('a-right')}>22:38:19</div>
-                </div>
-              </div>
-            </div>
-            
-            
-          </div>
+          <HistoryStock/>
 
           <div className={cx('trade-container')}>
             <div className={cx('purchase-container')}>

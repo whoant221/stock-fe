@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as actions from '~/redux/actions';
 import blockChainStorage from '~/utils/storage';
 import inforStock from "~/api/inforStock";
@@ -12,13 +12,11 @@ const cx = classNames.bind(styles);
 
 function StockVCB( polling = 1000 ) {
     const dispatch = useDispatch();
+    const id = useSelector(state => state.header.name)
     const [VCB, setVCB] = useState();
     const [priceVCB, setPriceVCB] = useState();
     const [askVCB, setAskVCB] = useState();
     const [bidVCB, setBidVCB] = useState();
-
-    const [orderBookAskVCB, setOrderBookAskVCB] = useState();
-    const [orderBookBidVCB, setOrderBookBidVCB] = useState();
 
     useEffect(() => {
         // setInterval(() => {
@@ -40,27 +38,12 @@ function StockVCB( polling = 1000 ) {
             money()
         // }, 300);
 
-        const orderBook = async () => {
-            try{
-                const data1 = await inforStock.getOrderBookAskVCB()
-                const data2 = await inforStock.getOrderBookBidVCB()
-                setOrderBookAskVCB(data1.data.orders);
-                setOrderBookBidVCB(data2.data.orders);
-            }
-            catch (err) {
-                console.log(err);
-            }
-        }
-        orderBook()
-
     }, [VCB || priceVCB || askVCB || bidVCB]);
 
     const vcb =() => {
         dispatch(actions.setLayout(true))
         dispatch(actions.setNameBank('VCB'))
         dispatch(actions.setDetailBank(VCB))
-        dispatch(actions.setOrderBookAsk( orderBookAskVCB))
-        dispatch(actions.setOrderBookBid( orderBookBidVCB))
         dispatch(actions.setPriceStock(priceVCB))
     }
 
@@ -71,8 +54,6 @@ function StockVCB( polling = 1000 ) {
             dispatch(actions.setLayout(''))
             dispatch(actions.setNameBank('VCB'));
             dispatch(actions.setDetailBank(VCB))
-            dispatch(actions.setOrderBookAsk( orderBookAskVCB))
-            dispatch(actions.setOrderBookBid( orderBookBidVCB))
             dispatch(actions.setPriceStock(priceVCB))
         }
         catch (err) {
@@ -90,7 +71,7 @@ function StockVCB( polling = 1000 ) {
     theme={'table'}
     >
         {VCB && priceVCB && askVCB && bidVCB?
-        <tr>     
+        <tr className={cx('tr')}>     
             <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
             <Tippy 
             content='Công ty | ACBsdasdasd' 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as actions from '~/redux/actions';
 import blockChainStorage from '~/utils/storage';
 import inforStock from "~/api/inforStock";
@@ -11,6 +11,9 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 function StockACB(polling = 1000) {
+
+    const id = useSelector(state => state.header.name)
+    
     const dispatch = useDispatch();
 
     const [ACB, setACB] = useState();
@@ -18,10 +21,6 @@ function StockACB(polling = 1000) {
     const [askACB, setAskACB] = useState();
     const [bidACB, setBidACB] = useState();
 
-    const [orderBookAskACB, setOrderBookAskACB] = useState();
-    const [orderBookBidACB, setOrderBookBidACB] = useState();
-
-    // const [orderBookACB, setOrderBookACB] = useState();
 
     useEffect(() => {
         // setInterval(() => {
@@ -44,10 +43,10 @@ function StockACB(polling = 1000) {
         // }, 300);
         const orderBook = async () => {
             try{
-                const data1 = await inforStock.getOrderBookAskACB()
-                const data2 = await inforStock.getOrderBookBidACB()
-                setOrderBookAskACB(data1.data.orders);
-                setOrderBookBidACB(data2.data.orders);
+                const data1 = await inforStock.getOrderBookAsk(`${id[1] ? id[1] : 'ACB'}`)
+                const data2 = await inforStock.getOrderBookBid(`${id[1] ? id[1] : 'ACB'}`)
+                dispatch(actions.setOrderBookAsk(data1.data.orders));
+                dispatch(actions.setOrderBookBid(data2.data.orders));
             }
             catch (err) {
                 console.log(err);
@@ -63,8 +62,6 @@ function StockACB(polling = 1000) {
             dispatch(actions.setLayout(''))
             dispatch(actions.setNameBank('ACB'));
             dispatch(actions.setDetailBank(ACB))
-            dispatch(actions.setOrderBookAsk( orderBookAskACB))
-            dispatch(actions.setOrderBookBid( orderBookBidACB))
             dispatch(actions.setPriceStock(priceACB))
         }
         catch (err) {
@@ -78,8 +75,6 @@ function StockACB(polling = 1000) {
         dispatch(actions.setLayout(true));
         dispatch(actions.setNameBank('ACB'));
         dispatch(actions.setDetailBank(ACB))
-        dispatch(actions.setOrderBookAsk( orderBookAskACB))
-        dispatch(actions.setOrderBookBid( orderBookBidACB))
         dispatch(actions.setPriceStock(priceACB))
     }
 
@@ -93,7 +88,7 @@ function StockACB(polling = 1000) {
     theme={'table'}
     >
         {ACB && priceACB && bidACB && askACB?
-        <tr>     
+        <tr className={cx('tr')}>     
             <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
             <Tippy 
             content='Công ty | ACBsdasdasd' 
@@ -158,21 +153,8 @@ function StockACB(polling = 1000) {
             :null}
 
 
-
-
-
-
-
-
-
             <th className={cx('right', 'set_light', 'yellow')} onClick={acb}>{priceACB.price_per_unit === undefined ? 0 : priceACB.price_per_unit}</th>
             <th className={cx('right', 'set_light', 'yellow')} onClick={acb}>{priceACB.coin_amount === '' ? 0 : priceACB.coin_amount}</th>
-
-
-
-
-
-
 
 
             {askACB.length == 0 ?  

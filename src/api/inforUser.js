@@ -21,7 +21,6 @@ const postCommand =(body) => {
     return axios.post(`/api/v1/orders`, body)
 };
 
-
 //get
 const getListAssets = () => {
     return axios.get(`/api/v1/assets/`)

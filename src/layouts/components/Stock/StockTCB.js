@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as actions from '~/redux/actions';
 import blockChainStorage from '~/utils/storage';
 import inforStock from "~/api/inforStock";
@@ -12,13 +12,11 @@ const cx = classNames.bind(styles);
 
 function StockTCB(polling = 1000) {
     const dispatch = useDispatch();
+    const id = useSelector(state => state.header.name)
     const [TCB, setTCB] = useState();
     const [priceTCB, setPriceTCB] = useState();
     const [askTCB, setAskTCB] = useState();
     const [bidTCB, setBidTCB] = useState();
-
-    const [orderBookAskTCB, setOrderBookAskTCB] = useState();
-    const [orderBookBidTCB, setOrderBookBidTCB] = useState();
 
     useEffect(() => {
         // setInterval(() => {
@@ -40,26 +38,12 @@ function StockTCB(polling = 1000) {
             }
             money()
         // }, 300);
-        const orderBook = async () => {
-            try{
-                const data1 = await inforStock.getOrderBookAskTCB()
-                const data2 = await inforStock.getOrderBookBidTCB()
-                setOrderBookAskTCB(data1.data.orders);
-                setOrderBookBidTCB(data2.data.orders);
-            }
-            catch (err) {
-                console.log(err);
-            }
-        }
-        orderBook()
-    }, [TCB || priceTCB || askTCB || bidTCB]);
+    }, [TCB || priceTCB || askTCB || bidTCB || id[1]]);
 
     const tcb =() => {
         dispatch(actions.setLayout(true));
         dispatch(actions.setNameBank('TCB'));
         dispatch(actions.setDetailBank(TCB))
-        dispatch(actions.setOrderBookAsk( orderBookAskTCB))
-        dispatch(actions.setOrderBookBid( orderBookBidTCB))
         dispatch(actions.setPriceStock(priceTCB))
     }
 
@@ -70,8 +54,6 @@ function StockTCB(polling = 1000) {
             dispatch(actions.setLayout(''))
             dispatch(actions.setNameBank('TCB'));
             dispatch(actions.setDetailBank(TCB))
-            dispatch(actions.setOrderBookAsk( orderBookAskTCB))
-            dispatch(actions.setOrderBookBid( orderBookBidTCB))
             dispatch(actions.setPriceStock(priceTCB))
         }
         catch (err) {
@@ -88,7 +70,7 @@ function StockTCB(polling = 1000) {
     theme={'table'}
     >
         {TCB && priceTCB && askTCB && bidTCB?
-        <tr>     
+        <tr className={cx('tr')}>     
             <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
             <Tippy 
             content='Công ty | ACBsdasdasd' 

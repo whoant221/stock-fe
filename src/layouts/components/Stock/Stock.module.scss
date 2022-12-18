@@ -1,5 +1,6 @@
-tr:nth-child(even){background-color: #f2f2f21e;}
-tr:hover {
+
+.tr:nth-child(even){background-color: #f2f2f21e;}
+.tr:hover {
     background-color: var(--color-theme-price-table-border) !important; 
     .set_light{
         background-color: var(--color-theme-price-table-border) !important; 
