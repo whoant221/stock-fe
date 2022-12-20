@@ -21,17 +21,15 @@ function StockACB(polling = 1000) {
     const [askACB, setAskACB] = useState();
     const [bidACB, setBidACB] = useState();
 
-    // const [listStock, setinforStock] = useState();
-
-    
+    const [listStock, setinforStock] = useState();
 
 
     useEffect(() => {
         // setInterval(() => {
             const money = async ()  =>{
                 try{    
-                    // const data3 = await inforStock.getListStock()
-                    // setinforStock(data3.data);
+                    const data3 = await inforStock.getListStock()
+                    setinforStock(data3.data);
 
                     // const data2 = await inforStock.getinforStock(id)
                     // console.log(data2);

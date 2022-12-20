@@ -66,27 +66,6 @@ function Asset() {
         }
     }
 
-
-
-    // const renderListStock =() => {
-    //     // if(listStock){
-    //     for(var i =0 ; i<listStock.length-1; i++){
-    //         return(
-    //             <div className={cx('asset-total-info-div')}>
-    //                 <tr className={cx('border-table-border-tr')}>
-    //                     <td className={cx('td_3')}>{listStock[i].name}</td>
-    //                     <td className={cx('td_2', 'focus', 'right')}>-</td>
-    //                     <td className={cx('td_4')}>Chờ khớp M/B</td>
-    //                     <td className={cx('td_1', 'green', 'right')}>-</td>
-    //                     <td className={cx('td_1', 'red', 'right')}>-</td>
-    //                 </tr>
-    //             </div>  
-    //         )
-    //     }
-
-    //     // }
-    // }
-
     
 
   return (

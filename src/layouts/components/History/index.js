@@ -21,7 +21,7 @@ function History() {
     useEffect(() => {
         const HistoryOrder = async () => {
             try {
-                const res = await inforStock.getHistotyOrder(`${id[1] === '' ? 'ACB' : id[1]}`);
+                const res = await inforStock.getHistotyOrder(`${id[1]}`);
                 const res1 = await inforStock.getOpenOrder(`${id[1]}`);
                 setListrender(res.data.orders);
                 setListrender1(res1.data.orders);
