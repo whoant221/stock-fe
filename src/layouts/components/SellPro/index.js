@@ -110,7 +110,7 @@ function SellPro() {
                   <span className={cx('value')}>{detailBank[1].highest_price}</span>
                 </div>
                 <div className={cx('ticket-item')}>
-                  <span className={cx('label')}>KL 24h (AVAX)</span>
+                  <span className={cx('label')}>KL 24h</span>
                   <span className={cx('value')}>{detailBank[1].total_volume}</span>
                 </div>
                 <div className={cx('ticket-item')}>
