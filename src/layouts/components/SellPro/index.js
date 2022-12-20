@@ -202,23 +202,23 @@ function SellPro() {
                       <div className={cx('buyform')}>
 
                         <div className={cx('form-inline')}>
-                          <div className={cx('field-text')}>
+                          {/* <div className={cx('field-text')}>
                             <label>Số dư khả dụng:</label>                     
                             <span>0 USDT</span>
-                          </div>
+                          </div> */}
                           <div className={cx('field')}>
-                            <label>Tỉ giá</label>
+                            <label>Giá</label>
                             <div className={cx('field-input-extend')}>
                               <input className={cx('input-field')} placeholder={'0'} onChange={(e) => setPrice(e.target.value)}></input>
                             </div>
                             <label className={cx('unit')}>VND</label>
                           </div>
                           <div className={cx('field')}>
-                            <label>Số lượng</label>
+                            <label>Khối lượng</label>
                             <div className={cx('field-input-extend')}>
                               <input className={cx('input-field')} placeholder={'Min 0.01'} onChange={(e) => setAmount(e.target.value)}></input>
                             </div>
-                            <label className={cx('unit')}>AVAX</label>
+                            <label className={cx('unit')}></label>
                           </div>
                           <div className={cx('field')}>
                             <label>Tổng cộng</label>

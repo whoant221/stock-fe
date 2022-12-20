@@ -4,7 +4,7 @@ import {useSelector,useDispatch} from 'react-redux';
 import classNames from 'classnames/bind';
 import styles from './History.module.scss';
 import inforStock from '~/api/inforStock';
-import moment from 'moment';
+import moment from 'moment-timezone';
 const cx = classNames.bind(styles);
 
 function History() {
@@ -67,17 +67,19 @@ function History() {
                         <div className={cx('item-td', 'a-right')}>Thời gian</div>
                     </div>
                     : null }
+
+                    
                     <div className={cx('area-tbody')}>
                         <div className={cx('orderbook-progress')}>
                             {listrender1 ?      
                             listrender1.map((items, index) => {
                                 return(
-                                <div className={cx('item-tr', items.type === 'ask' ? 'c-up' : 'c-down')} key={index}>
+                                <div className={cx('item-tr', items.type === 'ask' ? 'c-down' : 'c-up')} key={index}>
                                     <div className={cx()}>{items.price_per_unit}</div>
                                     <div className={cx()}>{items.state}</div>
                                     <div className={cx('a-right')}>{items.coin_amount}</div>
                                     <div className={cx('a-right')}>{items.original_coin_amount}</div>
-                                    <div className={cx('a-right')}>{moment(items.created_at).utc().format('HH:mm')}</div>
+                                    <div className={cx('a-right')}>{ moment(items.created_at).tz("Asia/Ho_Chi_Minh").format('HH:mm') }</div>
                                 </div>
                             )})
                             : <div className={cx('no-orders')}>
@@ -110,12 +112,12 @@ function History() {
                             {listrender ?      
                             listrender.map((items, index) => {
                                 return(
-                                <div className={cx('item-tr', items.type === 'ask' ? 'c-up' : 'c-down')} key={index}>
+                                <div className={cx('item-tr', items.type === 'ask' ? 'c-down' : 'c-up')} key={index}>
                                     <div className={cx()}>{items.price_per_unit}</div>
                                     <div className={cx()}>{items.state}</div>
                                     <div className={cx('a-right')}>{items.coin_amount}</div>
                                     <div className={cx('a-right')}>{items.original_coin_amount}</div>
-                                    <div className={cx('a-right')}>{moment(items.created_at).utc().format('HH:mm')}</div>
+                                    <div className={cx('a-right')}>{moment(items.created_at).tz("Asia/Ho_Chi_Minh").format('HH:mm') }</div>
                                 </div>
                             )})
                             : <div className={cx('no-orders')}>

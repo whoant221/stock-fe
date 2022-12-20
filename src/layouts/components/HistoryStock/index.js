@@ -22,7 +22,7 @@ function HistoryStock() {
             }
         };
         HistoryStock();
-    },[id[1]])
+    },[id[1], listrender])
 
   return (
     <div className={cx('trades')}>
@@ -39,7 +39,7 @@ function HistoryStock() {
                         <div className={cx('item-tr')} key={index}>
                             <div className={cx(items.type === 'ask' ? 'c-up' : 'c-down')}>{items.price_per_unit}</div>
                             <div className={cx('a-right')}>{items.original_coin_amount}</div>
-                            <div className={cx('a-right')}>{moment(items.matched_at).utc().format('HH:mm')}</div>
+                            <div className={cx('a-right')}>{moment(items.matched_at).tz("Asia/Ho_Chi_Minh").format('HH:mm')}</div>
                         </div>
                     )})
 

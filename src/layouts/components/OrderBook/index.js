@@ -69,7 +69,7 @@ function OrderBook({style}) {
             </div> 
         </div>
         <div className={cx('area-thead')}>
-            <div className={cx('item-td')}>Giá (USDT)</div>
+            <div className={cx('item-td')}>Giá</div>
             <div className={cx('item-td', 'a-right')}>Số lượng</div>
             <div className={cx('item-td', 'a-right')}>Tổng</div>
         </div>
