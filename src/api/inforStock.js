@@ -1,6 +1,15 @@
 import axios from "./axiosConfig";
 
 //get
+
+const getListStock = () => {
+    return axios.get(`/api/v1/stocks`) 
+};
+
+const getinforStock = (id) => {
+    return axios.get(`/api/v1/sessions/currentReport?symbol=${id}`) 
+};
+
 const getACB = () => {
     return axios.get(`/api/v1/sessions/currentReport?symbol=ACB`) 
 };
@@ -74,18 +83,22 @@ const getHistoryStock = (id) => {
     return axios.get(`api/v1/orders/historyMatched?symbol=${id}`)
 }
 
-const getOpenOrder = (id) => {
+const getHistotyOrder = (id) => {
     return axios.get(`/api/v1/orders/enabled?symbol=${id}`)
 }
 
-const getHistotyOrder = (id) => {
-    return axios.get(`/api/v1/orders/history?symbol=${id}`)
+const getOpenOrder= (id) => {
+    return axios.get(`/api/v1/orders/history?symbol=${id}&state=enabled`)
 }
 
 
 export default {
 
     //get
+    getListStock,
+
+    getinforStock,
+
     getACB,
     getTCB,
     getVCB,

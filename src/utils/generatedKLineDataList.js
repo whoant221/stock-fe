@@ -1,10 +1,9 @@
-
-import inforStock from "~/api/inforStock";
 import blockChainStorage from '~/utils/storage';
 
-export default function (baseTimestamp = Date.now(), basePrice = 20) {
-  const chartBank = blockChainStorage.getChartBank()
-  if(chartBank){
+export default function (arr) {
+
+    const chartBank = blockChainStorage.getChartBank()
+    
     const dataList = []
 
     for (let i = 0; i < chartBank.length; i++) {
@@ -19,5 +18,6 @@ export default function (baseTimestamp = Date.now(), basePrice = 20) {
       dataList.unshift(kLineModel)
     }
     return dataList
-  }
+
+  
 }

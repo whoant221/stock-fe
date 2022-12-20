@@ -21,11 +21,19 @@ function StockACB(polling = 1000) {
     const [askACB, setAskACB] = useState();
     const [bidACB, setBidACB] = useState();
 
+    const [listStock, setinforStock] = useState();
+
 
     useEffect(() => {
         // setInterval(() => {
             const money = async ()  =>{
-                try{
+                try{    
+                    const data3 = await inforStock.getListStock()
+                    setinforStock(data3.data);
+
+                    // const data2 = await inforStock.getinforStock(id)
+                    // console.log(data2);
+
                     const data1 = await inforStock.getACB()
                     const data4 = await inforStock.getPriceACB()
                     const data7 = await inforStock.getOrderAskACB()
@@ -49,7 +57,7 @@ function StockACB(polling = 1000) {
                 dispatch(actions.setOrderBookBid(data2.data.orders));
             }
             catch (err) {
-                console.log(err);
+                console.log(err)
             }
         }
         orderBook()
@@ -69,8 +77,6 @@ function StockACB(polling = 1000) {
         }
     }
 
-
-
     const acb =() => {
         dispatch(actions.setLayout(true));
         dispatch(actions.setNameBank('ACB'));
@@ -80,141 +86,145 @@ function StockACB(polling = 1000) {
 
 
   return (
-    <Tippy 
-    content='Click để đặt lệnh' 
-    arrow={false}
-    followCursor={true}
-    plugins={[followCursor]} 
-    theme={'table'}
-    >
-        {ACB && priceACB && bidACB && askACB?
-        <tr className={cx('tr')}>     
-            <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
-            <Tippy 
-            content='Công ty | ACBsdasdasd' 
-            arrow={false}
-            followCursor={true}
-            plugins={[followCursor]} 
-            theme={'tomato'}>
-                <th className={cx('left', 'yellow')} onClick={chartACB}> ACB </th> 
-            </Tippy>
-            <th className={cx('right', 'violet', 'set_light')} onClick={acb}>{ACB.floor_price}</th>
-            <th className={cx('right', 'blue', 'set_light')} onClick={acb}>{ACB.ceil_price}</th>
-            <th className={cx('right', 'yellow', 'set_light')} onClick={acb}>{ACB.ref_price}</th>
 
-            {bidACB.length == 2 ?  
-                <>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th> 
-                </>
-            :null}
+        <Tippy  
+        content='Click để đặt lệnh' 
+        arrow={false}
+        followCursor={true}
+        plugins={[followCursor]} 
+        theme={'table'}
+        >
+            {ACB && priceACB && bidACB && askACB?
+            <tr className={cx('tr')}>     
+                <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
+                <Tippy 
+                content='Công ty | ACBsdasdasd' 
+                arrow={false}
+                followCursor={true}
+                plugins={[followCursor]} 
+                theme={'tomato'}>
+                    <th className={cx('left', 'yellow')} onClick={chartACB}> ACB </th> 
+                </Tippy>
+                <th className={cx('right', 'violet', 'set_light')} onClick={acb}>{ACB.floor_price}</th>
+                <th className={cx('right', 'blue', 'set_light')} onClick={acb}>{ACB.ceil_price}</th>
+                <th className={cx('right', 'yellow', 'set_light')} onClick={acb}>{ACB.ref_price}</th>
 
-            {bidACB.length == 0 ?  
-                <>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                </>                                   
-            :bidACB.length == 1 ? 
-                bidACB.map((items, index) => {
-                    return(
-                        <>
-                            <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>{items.price_per_unit}</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
+                {bidACB.length == 2 ?  
+                    <>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th> 
+                    </>
+                :null}
 
-                        </>
-                    )
-                })
-            :bidACB.length === 2 ?
-                bidACB.map((items, index) => {
-                    return(
-                        <>
-                            <th className={cx('right', 'yellow')} onClick={acb}>{items.price_per_unit}</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
-                        </>
-                    )
-                })
-            :bidACB.length == 3 ?
-                bidACB.map((items, index) => {
-                    return(
-                        <>
-                            <th className={cx('right', 'yellow')} onClick={acb}>{items.price_per_unit}</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
-                        </>
-                    )
-                })
-            :null}
+                {bidACB.length == 0 ?  
+                    <>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                    </>                                   
+                :bidACB.length == 1 ? 
+                    bidACB.map((items, index) => {
+                        return(
+                            <>
+                                <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>{items.price_per_unit}</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
 
-
-            <th className={cx('right', 'set_light', 'yellow')} onClick={acb}>{priceACB.price_per_unit === undefined ? 0 : priceACB.price_per_unit}</th>
-            <th className={cx('right', 'set_light', 'yellow')} onClick={acb}>{priceACB.coin_amount === '' ? 0 : priceACB.coin_amount}</th>
+                            </>
+                        )
+                    })
+                :bidACB.length === 2 ?
+                    bidACB.map((items, index) => {
+                        return(
+                            <>
+                                <th className={cx('right', 'yellow')} onClick={acb}>{items.price_per_unit}</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
+                            </>
+                        )
+                    })
+                :bidACB.length == 3 ?
+                    bidACB.map((items, index) => {
+                        return(
+                            <>
+                                <th className={cx('right', 'yellow')} onClick={acb}>{items.price_per_unit}</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
+                            </>
+                        )
+                    })
+                :null}
 
 
-            {askACB.length == 0 ?  
-                <>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                </>                                   
-            :askACB.length == 1 ? 
-                askACB.map((items, index) => {
-                    return(
-                        <>
-                            <th className={cx('right', 'yellow')} onClick={acb}>{items.price_per_unit}</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                        </>
-                    )
-                })
-            :askACB.length == 2 ?
-                askACB.map((items, index) => {
-                    return(
-                        <>
-                            <th className={cx('right', 'yellow')} onClick={acb}>{items.price_per_unit}</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
-                        </>
-                    )
-                })
-            :askACB.length == 3 ?
-                askACB.map((items, index) => {
-                    return(
-                        <>
-                            <th className={cx('right', 'yellow')} onClick={acb}>{items.price_per_unit}</th>
-                            <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
-                        </>
-                    )
-                })
-            :null}
+                <th className={cx('right', 'set_light', 'yellow')} onClick={acb}>{priceACB.price_per_unit === undefined ? 0 : priceACB.price_per_unit}</th>
+                <th className={cx('right', 'set_light', 'yellow')} onClick={acb}>{priceACB.coin_amount === '' ? 0 : priceACB.coin_amount}</th>
 
-            {askACB.length == 2 ?  
-                <>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th>
-                    <th className={cx('right', 'yellow')} onClick={acb}>-</th> 
-                </>
-            :null}
-            
 
-            <th className={cx('right', 'set_light')} onClick={acb}>{ACB.total_volume}</th>
-            <th className={cx('right', 'set_light', 'yellow')} onClick={acb}>{ACB.highest_price}</th>
-            <th className={cx('right', 'set_light', 'yellow')} onClick={acb}>
-                {ACB.lowest_price == 99999999 ? '0' : ACB.lowest_price}
-            </th>
-        </tr> 
-        :null}
-    </Tippy>
+                {askACB.length == 0 ?  
+                    <>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                    </>                                   
+                :askACB.length == 1 ? 
+                    askACB.map((items, index) => {
+                        return(
+                            <>
+                                <th className={cx('right', 'yellow')} onClick={acb}>{items.price_per_unit}</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                            </>
+                        )
+                    })
+                :askACB.length == 2 ?
+                    askACB.map((items, index) => {
+                        return(
+                            <>
+                                <th className={cx('right', 'yellow')} onClick={acb}>{items.price_per_unit}</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
+                            </>
+                        )
+                    })
+                :askACB.length == 3 ?
+                    askACB.map((items, index) => {
+                        return(
+                            <>
+                                <th className={cx('right', 'yellow')} onClick={acb}>{items.price_per_unit}</th>
+                                <th className={cx('right', 'yellow')} onClick={acb}>{items.coin_amount}</th>
+                            </>
+                        )
+                    })
+                :null}
+
+                {askACB.length == 2 ?  
+                    <>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th>
+                        <th className={cx('right', 'yellow')} onClick={acb}>-</th> 
+                    </>
+                :null}
+                
+
+                <th className={cx('right', 'set_light')} onClick={acb}>{ACB.total_volume}</th>
+                <th className={cx('right', 'set_light', 'yellow')} onClick={acb}>{ACB.highest_price}</th>
+                <th className={cx('right', 'set_light', 'yellow')} onClick={acb}>
+                    {ACB.lowest_price == 99999999 ? '0' : ACB.lowest_price}
+                </th>
+            </tr> 
+            : null}
+        </Tippy>
+        
+
+
   )
 }
 
