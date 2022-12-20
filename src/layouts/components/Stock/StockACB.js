@@ -23,6 +23,8 @@ function StockACB(polling = 1000) {
 
     const [listStock, setinforStock] = useState();
 
+    
+
 
     useEffect(() => {
         // setInterval(() => {
