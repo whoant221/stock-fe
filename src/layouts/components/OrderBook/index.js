@@ -89,7 +89,7 @@ function OrderBook({style}) {
                                 <div className={cx('c-down')}>{items.price_per_unit}</div>
                                 <div className={cx('a-right')}>{items.coin_amount}</div>
                                 <div className={cx('a-right')}>{parseInt(items.price_per_unit) * parseInt(items.coin_amount)}</div>
-                            </div>)})
+                            </div>)}).reverse()
                     : null }
                 </div>
             </div>
@@ -110,7 +110,7 @@ function OrderBook({style}) {
                                 <div className={cx('c-up')}>{items.price_per_unit}</div>
                                 <div className={cx('a-right')}>{items.coin_amount}</div>
                                 <div className={cx('a-right')}>{parseInt(items.price_per_unit) * parseInt(items.coin_amount)}</div>
-                            </div>)}).reverse()
+                            </div>)})
                     : null
                 }
 
