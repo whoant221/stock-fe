@@ -8,32 +8,36 @@ import {useDispatch, useSelector} from 'react-redux';
 const cx = classNames.bind(styles);
 
 function OrderBook({style}) {
-
-    const orderBookAsk = useSelector(state => state.header.orderAsk)   
-    const orderBookBid = useSelector(state => state.header.orderBid)
-    const priceStock = useSelector(state => state.header.price)
+    const nameBank = useSelector(state => state.header.name)
 
     const [checkCover, setCheckCover] = useState('active');
     const [checkUp, setCheckUp] = useState();
     const [checkDown, setCheckDown] = useState();
     const [checkHandelUp, setCheckHandeUp] = useState();
     const [checkHandeDown, setCheckHandeDown] = useState();
-    const [priceACB, setPriceACB] = useState();
+
+    const [price, setPrice] = useState();
+    const [orderAsk, setOrderAsk] = useState();
+    const [orderBid, setOrderBid] = useState();
 
     
 
     useEffect(() => {
         const money = async ()  =>{
             try{
-                const data3 = await inforStock.getPriceACB()
-                setPriceACB(data3.data)
+                const data = await inforStock.getPrice(`${nameBank[1] ? nameBank[1] : 'ACB'}`)
+                const data1 = await inforStock.getOrderAsk(`${nameBank[1] ? nameBank[1] : 'ACB'}`)
+                const data2 = await inforStock.getOrderBid(`${nameBank[1] ? nameBank[1] : 'ACB'}`)
+                setPrice(data.data)
+                setOrderAsk(data1.data.orders)
+                setOrderBid(data2.data.orders)
             }
             catch (err) {
                 console.log(err);
             }
         }
         money()
-    }, []);
+    }, [nameBank[1] && price && orderAsk && orderBid]);
 
 
   return (
@@ -78,8 +82,8 @@ function OrderBook({style}) {
                 <div className={cx('orderbook-progress')}>
 
 
-                    { orderBookAsk[1]
-                    ? orderBookAsk[1].map((items, index) => {
+                    { orderAsk
+                    ? orderAsk.map((items, index) => {
                         return(
                             <div className={cx('item-tr')} key={index}>
                                 <div className={cx('c-down')}>{items.price_per_unit}</div>
@@ -92,16 +96,15 @@ function OrderBook({style}) {
             <div className={cx('orderbook-ticker')}>
                 <Tippy content='Giá khớp lệnh gần nhất' placement={'right-end'}>
                     <span className={cx('view_cover')}>
-                        {priceStock[1] ? priceStock[1].price_per_unit :
-                        priceACB ? priceACB.price_per_unit : null}
+                        {price ? price.price_per_unit == null ? '0' : price.price_per_unit : null}
                     </span>
                 </Tippy>
             </div>
             <div className={cx('area-tbody_down', checkHandeDown)}>
                 <div className={cx('orderbook-progress')}>
 
-                { orderBookBid[1] 
-                    ? orderBookBid[1].map((items, index) => {
+                { orderBid 
+                    ? orderBid.map((items, index) => {
                         return(
                             <div className={cx('item-tr')} key={index}>
                                 <div className={cx('c-up')}>{items.price_per_unit}</div>

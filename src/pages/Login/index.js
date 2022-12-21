@@ -2,7 +2,6 @@ import { signInWithPopup } from '@firebase/auth';
 import { auth, googleProvider, facebookProvider, githubAuthProvider } from '~/firebase/config';
 import blockChainStorage from '~/utils/storage';
 import { getUser, addNewUser } from '~/firebase/firebaseHandler';
-import { onAuthStateChanged } from '@firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import inforUser from "../../api/inforUser";

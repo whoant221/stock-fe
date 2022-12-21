@@ -5,7 +5,6 @@ import { useEffect, useState, useRef } from 'react';
 import React from 'react'
 
 function Chart({style, checkChart}) {
-  const chartBank = blockChainStorage.getChartBank()
 
     function getTooltipOptions (candleShowType, candleShowRule, technicalIndicatorShowRule) {
       return {
@@ -34,7 +33,7 @@ function Chart({style, checkChart}) {
             showRule: candleShowRule,
             labels: ['Time: ', 'Open: ', 'Close: ', 'High: ','Low: ', 'Chg: '],
             values: kLineData => {
-              const change = (kLineData.close - kLineData.open) / kLineData.open
+              const change = (kLineData.close - kLineData.open) / kLineData.open * 100
               return [
                 { value: new Date(kLineData.timestamp).toLocaleString() },
                 { value: kLineData.open },

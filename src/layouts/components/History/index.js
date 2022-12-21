@@ -5,6 +5,8 @@ import classNames from 'classnames/bind';
 import styles from './History.module.scss';
 import inforStock from '~/api/inforStock';
 import moment from 'moment-timezone';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const cx = classNames.bind(styles);
 
 function History() {
@@ -26,11 +28,11 @@ function History() {
                 setListrender(res.data.orders);
                 setListrender1(res1.data.orders);
             } catch (error) {
-                console.log(error);
+                toast.error('Vui lòng thực hiện đăng nhập !');
             }
         };
         HistoryOrder();
-    },[id[1]])
+    },[id[1], checkOpen])
 
   return (
     <div className={cx('orders-container')}>
@@ -62,7 +64,6 @@ function History() {
                     <div className={cx('area-thead')}>
                         <div className={cx('item-td')}>Giá</div>
                         <div className={cx('item-td')}>Trạng thái</div>
-                        <div className={cx('item-td', 'a-right')}>Số Lượng</div>
                         <div className={cx('item-td', 'a-right')}>SL đầu</div>
                         <div className={cx('item-td', 'a-right')}>Thời gian</div>
                     </div>
@@ -76,8 +77,7 @@ function History() {
                                 return(
                                 <div className={cx('item-tr', items.type === 'ask' ? 'c-down' : 'c-up')} key={index}>
                                     <div className={cx()}>{items.price_per_unit}</div>
-                                    <div className={cx()}>{items.state}</div>
-                                    <div className={cx('a-right')}>{items.coin_amount}</div>
+                                    <div className={cx()}>{items.state === 'enabled' ? 'đang mở' : 'thành công'}</div>
                                     <div className={cx('a-right')}>{items.original_coin_amount}</div>
                                     <div className={cx('a-right')}>{ moment(items.created_at).tz("Asia/Ho_Chi_Minh").format('HH:mm') }</div>
                                 </div>
@@ -101,7 +101,7 @@ function History() {
                     <div className={cx('area-thead')}>
                         <div className={cx('item-td')}>Giá</div>
                         <div className={cx('item-td')}>Trạng thái</div>
-                        <div className={cx('item-td', 'a-right')}>Số Lượng</div>
+                        <div className={cx('item-td', 'a-right')}>SL hiện tại</div>
                         <div className={cx('item-td', 'a-right')}>SL đầu</div>
                         <div className={cx('item-td', 'a-right')}>Thời gian</div>
                     </div>
@@ -112,9 +112,9 @@ function History() {
                             {listrender ?      
                             listrender.map((items, index) => {
                                 return(
-                                <div className={cx('item-tr', items.type === 'ask' ? 'c-up' : 'c-down')} key={index}>
+                                <div className={cx('item-tr', items.type === 'ask' ? 'c-down' : 'c-up')} key={index}>
                                     <div className={cx()}>{items.price_per_unit}</div>
-                                    <div className={cx()}>{items.state}</div>
+                                    <div className={cx()}>{items.state === 'enabled' ? 'đang mở' : 'thành công'}</div>
                                     <div className={cx('a-right')}>{items.coin_amount}</div>
                                     <div className={cx('a-right')}>{items.original_coin_amount}</div>
                                     <div className={cx('a-right')}>{moment(items.created_at).tz("Asia/Ho_Chi_Minh").format('HH:mm') }</div>

@@ -18,7 +18,6 @@ function SidebarRight() {
 
     const activeMenu = useSelector(state => state.header.active)
     const nameBank = useSelector(state => state.header.name)
-    const detailBank = useSelector(state => state.header.detail)
 
     if (activeMenu[1] === 'none'){
         dispatch(actions.setLayout(false))
@@ -26,7 +25,7 @@ function SidebarRight() {
 
     const [amount, setAmount] = useState('');
     const [price, setPrice] = useState('');
-    const [ACB, setACB] = useState();
+    const [infoStock, setInfoStock] = useState('');
 
     const Bid = async () => {
         if ( amount == '' || price == '') toast.error("Vui lòng nhập thông tin đầy đủ !");
@@ -69,15 +68,15 @@ function SidebarRight() {
     useEffect(() => {
         const money = async ()  =>{
             try{
-                const data = await inforStock.getACB()
-                setACB(data.data);
+                const data1 = await inforStock.getinforStock(`${nameBank[1] ? nameBank[1] : 'ACB'}`)
+                setInfoStock(data1.data)
             }
             catch (err) {
                 console.log(err);
             }
         }
         money()
-    }, []);
+    }, [infoStock || nameBank[1]]);
 
     return ( 
         <div className={cx('wrapper', {active: activeMenu[1]})}>
@@ -104,23 +103,21 @@ function SidebarRight() {
                     <span className={cx('content-parameter_item')}>Đóng cửa</span>
                 </div>
 
-                {detailBank[1] ?
+                {infoStock ?
                 <div className={cx('content-parameter')}>
                     <div>
-                        <span className={cx('violet', 'mg_left')}>{detailBank[1].floor_price}</span> 
-                        <span className={cx('blue', 'mg_left')}>{detailBank[1].ceil_price}</span> 
-                        <span className={cx('yellow', 'mg_left')}>{detailBank[1].ref_price}</span></div>
-                    <span className={cx('content-parameter_item')}>Tổng KL: {detailBank[1].total_volume}</span>
-                </div> 
-                : ACB ? 
-                <div className={cx('content-parameter')}>
-                    <div>
-                        <span className={cx('violet', 'mg_left')}>{ACB.floor_price}</span> 
-                        <span className={cx('blue', 'mg_left')}>{ACB.ceil_price}</span> 
-                        <span className={cx('yellow', 'mg_left')}>{ACB.ref_price}</span></div>
-                    <span className={cx('content-parameter_item')}>Tổng KL: {ACB.total_volume}</span>
-                </div>
-                : null}
+                        <span className={cx('violet', 'mg_left')}>
+                            {parseFloat(infoStock.floor_price).toFixed(2) === 'NaN' ? '-' : parseFloat(infoStock.floor_price).toFixed(2)}
+                        </span> 
+                        <span className={cx('blue', 'mg_left')}>
+                            {parseFloat(infoStock.ceil_price).toFixed(2) === 'NaN' ? '-' : parseFloat(infoStock.ceil_price).toFixed(2)}
+                        </span> 
+                        <span className={cx('yellow', 'mg_left')}>
+                            {parseFloat(infoStock.ref_price).toFixed(2) === 'NaN' ? '-' : parseFloat(infoStock.ref_price).toFixed(2)}
+                        </span>
+                    </div>
+                    <span className={cx('content-parameter_item')}>Tổng KL: {infoStock.total_volume} </span>
+                </div> : null}
 
                 <div className={cx('content-input')}>
                     <div className={cx('content-input_lable')}>Khối lượng</div>

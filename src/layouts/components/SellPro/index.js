@@ -84,7 +84,7 @@ function SellPro() {
           <div className={cx('market-container-icon')} onClick={()=>{dispatch(actions.setLayout('none'))}}> 
             <i className="fal fa-times"></i>  
           </div>
-          {detailBank[1] || nameBank[1]?
+          {/* {detailBank[1] || nameBank[1]?
                       <div className={cx('trading-pair')}>
               <div className={cx('pair-switcher')}>
                 <div className={cx('toggle', 'current-coin-name')}>
@@ -110,7 +110,7 @@ function SellPro() {
                   <span className={cx('value')}>{detailBank[1].highest_price}</span>
                 </div>
                 <div className={cx('ticket-item')}>
-                  <span className={cx('label')}>KL 24h</span>
+                  <span className={cx('label')}>Khối lượng 24h</span>
                   <span className={cx('value')}>{detailBank[1].total_volume}</span>
                 </div>
                 <div className={cx('ticket-item')}>
@@ -125,7 +125,7 @@ function SellPro() {
               </div>
   
             </div>
-          : null}
+          : null} */}
 
 
           <div className={cx('chart-container')}>

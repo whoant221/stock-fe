@@ -1,9 +1,7 @@
 import React from 'react'
 import classNames from 'classnames/bind';
 import styles from './Table.module.scss';
-import StockACB from '../Stock/StockACB'
-import StockTCB from '../Stock/StockTCB';
-import StockVCB from '../Stock/StockVCB';
+import Stock from '../Stock';
 
 const cx = classNames.bind(styles);
 
@@ -49,11 +47,8 @@ function Table( polling = 5000) {
                             </tr> 
                         </thead>
 
-                        <tbody id={cx('customers')}>                        
-                            <StockACB></StockACB>
-                            <StockTCB></StockTCB>
-                            <StockVCB></StockVCB>
-                        </tbody>
+                        <Stock/>
+
 
                     </table>  
                 </div>
