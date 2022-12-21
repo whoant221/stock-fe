@@ -23,6 +23,7 @@ function StockACB(polling = 1000) {
     const [color, setcolor] = useState('yellow');
 
     const [listStock, setinforStock] = useState();
+    const [infoStock, setInfoStock] = useState('');
 
 
     useEffect(() => {
@@ -31,7 +32,9 @@ function StockACB(polling = 1000) {
                 try{   
                     const arr = []
                     const data3 = await inforStock.getListStock()
+                    
                     const listStocksymbol = data3.data.stocks;
+
                     const listDetail = await Promise.all(listStocksymbol.map((item) => {return inforStock.getinforStock(item.symbol);}));
                     const listDetail1 = await Promise.all(listStocksymbol.map((item) => {return inforStock.getPrice(item.symbol);}));
                     const listDetail2 = await Promise.all(listStocksymbol.map((item) => {return inforStock.getOrderAsk(item.symbol);}));
@@ -65,15 +68,6 @@ function StockACB(polling = 1000) {
                         i.data.orders.map(it => it ))
                     )
                     setinforStock(arr);
-  
-                    const data1 = await inforStock.getACB()
-                    const data4 = await inforStock.getPriceACB()
-                    const data7 = await inforStock.getOrderAskACB()
-                    const data8 = await inforStock.getOrderBidACB()
-                    setACB(data1.data)
-                    setPriceACB(data4.data)  
-                    setAskACB(data7.data.orders)
-                    setBidACB(data8.data.orders)
                 }
                 catch (err) {
                     window.location.reload();
@@ -95,16 +89,16 @@ function StockACB(polling = 1000) {
         orderBook()
     }, [listStock]);
 
-    const chartACB = async ()  =>{
+    const chartACB = async(e)  =>{
         try{
-            const res = await inforStock.getChartACB()
+            const res = await inforStock.getChart(e)
             blockChainStorage.setCharTBank(res.data.charts)
-            dispatch(actions.setLayout(''))
-            dispatch(actions.setNameBank('TCB'));
         }
         catch (err) {
             console.log(err);
         }
+        dispatch(actions.setLayout(''))
+        dispatch(actions.setNameBank(e));
     }
 
     const acb =(e) => {
@@ -124,7 +118,6 @@ function StockACB(polling = 1000) {
             theme={'table'}
             key ={ index }
             >
-                {ACB && priceACB && bidACB && askACB?
                 <tr className={cx('tr')}>     
                     <th className={cx('center')}><i className="fas fa-thumbtack"></i></th>
                     <Tippy 
@@ -133,18 +126,17 @@ function StockACB(polling = 1000) {
                     followCursor={true}
                     plugins={[followCursor]} 
                     theme={'tomato'}>
-                        <th className={cx('left', color)} onClick={chartACB}> {i[0].symbol} </th> 
+                        <th className={cx('left', color)} onClick={e => {chartACB( i[0].symbol)} }> {i[0].symbol} </th> 
                     </Tippy>
-
-                    <th className={cx('right', 'violet', 'set_light')} onClick={e => {acb( i[0].symbol)} } >
-
-                        {i[1].floor_price === 'undefined' ? '-' : parseFloat(i[1].floor_price).toFixed(2)}
-                    </th>
+                    
                     <th className={cx('right', 'blue', 'set_light')} onClick={e => {acb( i[0].symbol)} }>
                         {i[1].ceil_price === 'undefined' ? '-' : parseFloat(i[1].ceil_price).toFixed(2) }
                     </th>
                     <th className={cx('right', color, 'set_light')} onClick={e => {acb( i[0].symbol)} }>
                         {i[1].ref_price === 'undefined' ? '-' : parseFloat(i[1].ref_price).toFixed(2)}
+                    </th>
+                    <th className={cx('right', 'violet', 'set_light')} onClick={e => {acb( i[0].symbol)} } >
+                        {i[1].floor_price === 'undefined' ? '-' : parseFloat(i[1].floor_price).toFixed(2)}
                     </th>
 
                     {i[4].length == 2 ?  
@@ -266,7 +258,6 @@ function StockACB(polling = 1000) {
                         {i[1].lowest_price === '99999999' || i[1].lowest_price === 'undefined' ? '0' : i[1].lowest_price}
                     </th>
                 </tr> 
-                : null}
             </Tippy>
         )) : null}
     </tbody>

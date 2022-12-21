@@ -18,6 +18,7 @@ function History() {
 
     const [listrender, setListrender] = useState();
     const [listrender1, setListrender1] = useState();
+
     const id = useSelector(state => state.header.name)
 
     useEffect(() => {
@@ -60,7 +61,7 @@ function History() {
 
             <div className={cx('tab-content', 'tab-content-visible')} style={{display: LayoutOrderOpen}}>
                 <div className={cx('trade-history-wrapper')} >
-                    {listrender1 ?                    
+                    {listrender1 && listrender1 != '' ?                    
                     <div className={cx('area-thead')}>
                         <div className={cx('item-td')}>Giá</div>
                         <div className={cx('item-td')}>Trạng thái</div>
@@ -72,7 +73,7 @@ function History() {
                     
                     <div className={cx('area-tbody')}>
                         <div className={cx('orderbook-progress')}>
-                            {listrender1 ?      
+                            {listrender1 && listrender1 != ''?      
                             listrender1.map((items, index) => {
                                 return(
                                 <div className={cx('item-tr', items.type === 'ask' ? 'c-down' : 'c-up')} key={index}>
@@ -97,7 +98,7 @@ function History() {
             <div className={cx('tab-content', 'tab-content-visible')} style={{display: HistoryOrder}}>
                 <div className={cx('trade-history-wrapper')} >
 
-                    {listrender ?                    
+                    {listrender && listrender != ''?                    
                     <div className={cx('area-thead')}>
                         <div className={cx('item-td')}>Giá</div>
                         <div className={cx('item-td')}>Trạng thái</div>
@@ -109,7 +110,7 @@ function History() {
 
                     <div className={cx('area-tbody')}>
                         <div className={cx('orderbook-progress')}>
-                            {listrender ?      
+                            {listrender && listrender != '' ?      
                             listrender.map((items, index) => {
                                 return(
                                 <div className={cx('item-tr', items.type === 'ask' ? 'c-down' : 'c-up')} key={index}>

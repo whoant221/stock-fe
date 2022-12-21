@@ -11,16 +11,15 @@ import HistoryStock from '../HistoryStock';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import inforUser from "~/api/inforUser";
+import inforStock from "~/api/inforStock";
 const cx = classNames.bind(styles);
 
 function SellPro() {
   const thanhMV = useSelector(state => state.header.active)
   const nameBank = useSelector(state => state.header.name)
-  const detailBank = useSelector(state => state.header.detail)
-
+  
   const dispatch = useDispatch();
   
-
   const [checkChart, setCheckChart] = useState('candle_solid');
   const [check1m, setCheck1m] = useState('active');
   const [check5m, setCheck5m] = useState('');
@@ -29,6 +28,20 @@ function SellPro() {
 
   const [amount, setAmount] = useState('');
   const [price, setPrice] = useState('');
+  const [infoStock, setInfoStock] = useState('');
+
+  useEffect(() => {
+    const money = async ()  =>{
+        try{
+            const data1 = await inforStock.getinforStock(`${nameBank[1] ? nameBank[1] : 'ACB'}`)
+            setInfoStock(data1.data)
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+    money()
+  }, [infoStock || nameBank[1]]);
   
   useEffect(() => {
     document.title = 'Bitbank | Giao dịch chứng khoán';
@@ -76,57 +89,44 @@ function SellPro() {
 
   return (
       <div className={cx('main-page')} style={{display: `${thanhMV[1]===undefined ? 'none' : thanhMV[1]}`}}>
-
         <div className={cx('main-page-map')} onClick={()=>{dispatch(actions.setLayout('none'))}}></div>
-
         <div className={cx('market-container')}>    
-        
           <div className={cx('market-container-icon')} onClick={()=>{dispatch(actions.setLayout('none'))}}> 
             <i className="fal fa-times"></i>  
           </div>
-          {/* {detailBank[1] || nameBank[1]?
-                      <div className={cx('trading-pair')}>
+          
+          {infoStock || nameBank[1]?
+            <div className={cx('trading-pair')}>
               <div className={cx('pair-switcher')}>
-                <div className={cx('toggle', 'current-coin-name')}>
-                  {nameBank[1]}
-                </div>
+                <div className={cx('toggle', 'current-coin-name')}>{nameBank[1]}</div>
               </div>
               <div className={cx('ticker-last', 'c-up')}>
-                <div className={cx('market24h')}>
-                  <span>1.11%</span>
-                </div>
-                <div className={cx('lastestPrice')}>
-                  <span>{detailBank[1].ref_price}</span>
-                </div>
+                <div className={cx('market24h')}><span>1.11%</span></div>
+                <div className={cx('lastestPrice')}><span>{infoStock.ref_price}</span></div>
               </div>
               <div className={cx('ticker-list')}>
-
                 <div className={cx('ticket-item')}>
                   <span className={cx('label')}>24h thấp nhất</span>
-                  <span className={cx('value')}>{detailBank[1].lowest_price}</span>
+                  <span className={cx('value')}>{infoStock.lowest_price}</span>
                 </div>
                 <div className={cx('ticket-item')}>
                   <span className={cx('label')}>24h cao nhất</span>
-                  <span className={cx('value')}>{detailBank[1].highest_price}</span>
+                  <span className={cx('value')}>{infoStock.highest_price}</span>
                 </div>
                 <div className={cx('ticket-item')}>
                   <span className={cx('label')}>Khối lượng 24h</span>
-                  <span className={cx('value')}>{detailBank[1].total_volume}</span>
+                  <span className={cx('value')}>{infoStock.total_volume}</span>
                 </div>
                 <div className={cx('ticket-item')}>
                   <span className={cx('label')}>Giá sàn 24h (VND)</span>
-                  <span className={cx('value')}>{detailBank[1].ceil_price}</span>
+                  <span className={cx('value')}>{parseFloat(infoStock.ceil_price).toFixed(2) === 'NaN' ? '-' : parseFloat(infoStock.ceil_price).toFixed(2)}</span>
                 </div>
                 <div className={cx('ticket-item')}>
                   <span className={cx('label')}>Giá trần 24h (VND)</span>
-                  <span className={cx('value')}>{detailBank[1].floor_price}</span>
+                  <span className={cx('value')}>{parseFloat(infoStock.floor_price).toFixed(2) === 'NaN' ? '-' : parseFloat(infoStock.floor_price).toFixed(2)}</span>
                 </div>
-                
               </div>
-  
-            </div>
-          : null} */}
-
+            </div>: null}
 
           <div className={cx('chart-container')}>
             <div className={cx('app')}>

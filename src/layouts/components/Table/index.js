@@ -17,9 +17,9 @@ function Table( polling = 5000) {
                             <tr>  
                                 <th rowSpan={2}> </th>  
                                 <th rowSpan={2}>CK</th>  
-                                <th rowSpan={2}>Trần</th>  
                                 <th rowSpan={2}>Sàn</th>  
                                 <th rowSpan={2}>TC</th>  
+                                <th rowSpan={2}>Trần</th> 
                                 <th colSpan={6}>Bên mua</th>  
                                 <th colSpan={2}>Khớp lệnh</th>  
                                 <th colSpan={6}>Bên bán</th>  
