@@ -27,18 +27,18 @@ function StockACB(polling = 1000) {
 
 
     useEffect(() => {
-        // setInterval(() => {
             const money = async ()  =>{
                 try{   
                     const arr = []
                     const data3 = await inforStock.getListStock()
-                    
+
                     const listStocksymbol = data3.data.stocks;
 
                     const listDetail = await Promise.all(listStocksymbol.map((item) => {return inforStock.getinforStock(item.symbol);}));
                     const listDetail1 = await Promise.all(listStocksymbol.map((item) => {return inforStock.getPrice(item.symbol);}));
                     const listDetail2 = await Promise.all(listStocksymbol.map((item) => {return inforStock.getOrderAsk(item.symbol);}));
-                    const listDetail3 = await Promise.all(listStocksymbol.map((item) => {return inforStock.getOrderBid(item.symbol);}));
+                    const listDetail3 = await Promise.all(listStocksymbol.map((item) => {return inforStock.getOrderBid(item.symbol);})); 
+
                     listStocksymbol.map((i) => {
                         arr.push([{
                             symbol: `${i.symbol}`,
@@ -67,14 +67,17 @@ function StockACB(polling = 1000) {
                     listDetail3.map((i, index) =>arr[index].push(
                         i.data.orders.map(it => it ))
                     )
+
+                    const position = arr.findIndex(i => i[0].symbol === 'VND');
+                    arr.splice(position, 1);
                     setinforStock(arr);
+
                 }
                 catch (err) {
                     window.location.reload();
                 }
             }
             money()
-        // }, 300);
         const orderBook = async () => {
             try{
                 const data1 = await inforStock.getOrderBookAsk(`${id[1] ? id[1] : 'ACB'}`)
@@ -105,7 +108,6 @@ function StockACB(polling = 1000) {
         dispatch(actions.setLayout(true));
         dispatch(actions.setNameBank(e));
     }
-
 
   return (
     <tbody id={cx('customers')}>
@@ -246,7 +248,6 @@ function StockACB(polling = 1000) {
                             <th className={cx('right', color)} onClick={e => {acb( i[0].symbol)} }>-</th> 
                         </>
                     :null}
-                    
 
                     <th className={cx('right', 'set_light')} onClick={e => {acb( i[0].symbol)} }>
                         {i[1].total_volume === 'undefined' ? '-' : i[1].total_volume}

@@ -79,6 +79,9 @@
                 .c-down{
                     color: var(--global-ask-color);
                 }
+                .c-button{
+                    color: darkgoldenrod !important;
+                }
                 .item-tr {
                     display: flex;
                     justify-content: space-between;
@@ -92,6 +95,7 @@
                     }
                     .a-right {
                         text-align: right;
+                        margin-bottom: 20px;
                     }
                 }
             }

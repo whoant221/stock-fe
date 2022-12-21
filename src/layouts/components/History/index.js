@@ -5,6 +5,8 @@ import classNames from 'classnames/bind';
 import styles from './History.module.scss';
 import inforStock from '~/api/inforStock';
 import moment from 'moment-timezone';
+import Icon from '~/components/Icon'
+import Tippy from "@tippyjs/react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const cx = classNames.bind(styles);
@@ -33,7 +35,22 @@ function History() {
             }
         };
         HistoryOrder();
-    },[id[1], checkOpen])
+    },[id[1] && checkOpen && listrender && listrender1])
+
+    // console.log(listrender);
+
+    const Cancle = async (e) => {
+        try {
+            const res = await inforStock.postCancleOrderBook({
+                orderId: e,
+            });
+            if (res.success === false) toast.error("Bạn phải thực hiện đăng nhập !");
+            else toast.success(`Hủy thành công lệnh ${e} !`);
+        }
+        catch (err) {
+            toast.error('Không hỗ trợ khách hàng hủy !');
+        }
+    }
 
   return (
     <div className={cx('orders-container')}>
@@ -69,8 +86,7 @@ function History() {
                         <div className={cx('item-td', 'a-right')}>Thời gian</div>
                     </div>
                     : null }
-
-                    
+                
                     <div className={cx('area-tbody')}>
                         <div className={cx('orderbook-progress')}>
                             {listrender1 && listrender1 != ''?      
@@ -102,9 +118,10 @@ function History() {
                     <div className={cx('area-thead')}>
                         <div className={cx('item-td')}>Giá</div>
                         <div className={cx('item-td')}>Trạng thái</div>
-                        <div className={cx('item-td', 'a-right')}>SL hiện tại</div>
+                        <div className={cx('item-td', 'a-right')}>SL</div>
                         <div className={cx('item-td', 'a-right')}>SL đầu</div>
                         <div className={cx('item-td', 'a-right')}>Thời gian</div>
+                        <div className={cx('item-td', 'a-right')}></div>
                     </div>
                     : null }
 
@@ -117,8 +134,20 @@ function History() {
                                     <div className={cx()}>{items.price_per_unit}</div>
                                     <div className={cx()}>{items.state === 'enabled' ? 'đang mở' : 'thành công'}</div>
                                     <div className={cx('a-right')}>{items.coin_amount}</div>
-                                    <div className={cx('a-right')}>{items.original_coin_amount}</div>
+                                    <div className={cx('a-right')}>{items.original_coin_amount}</div>                                  
                                     <div className={cx('a-right')}>{moment(items.created_at).tz("Asia/Ho_Chi_Minh").format('HH:mm') }</div>
+                            
+                                    <div className={cx('a-right', 'c-button')}>
+                                        <Tippy placement= {'right'} content={'Hủy lệnh'} theme={'table'} duration={0}>
+                                            <div className={cx('header-btn')}>
+                                                <Icon 
+                                                    hover
+                                                    onClick={e => Cancle(items.order_id)}
+                                                    icon={<i className="fal fa-times"></i>}
+                                                />
+                                            </div>
+                                        </Tippy>
+                                    </div>
                                 </div>
                             )})
                             : <div className={cx('no-orders')}>
@@ -127,12 +156,8 @@ function History() {
                             </div> }
                         </div>
                     </div>
-  
-
-
                 </div> 
             </div>
-
         </div>
     </div>
   )
