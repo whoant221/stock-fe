@@ -22,16 +22,13 @@ function Asset() {
             try{
                 const data = await inforUser.getListAssets()
                 const findStock = data?.data?.assets.findIndex(items => items.name === 'VND');
-                setAssets(coinVND.format(data?.data.assets[findStock].free_asset));
-                setAssetsLock(coinVND.format(data?.data.assets[findStock].locked_asset));
-                setSumAssets(coinVND.format(
+                setAssets(data?.data.assets[findStock].free_asset);
+                setAssetsLock(data?.data.assets[findStock].locked_asset);
+                setSumAssets(
                     Number.parseInt(data?.data.assets[findStock].free_asset) + 
                     Number.parseInt(data?.data.assets[findStock].locked_asset)
-                ));
-
+                );
                 setListStock(data.data.assets);
-
-                // setListRender(listStock.splice(findStock, 1))
             }
             catch (err) {
                 alert(err);
@@ -45,27 +42,24 @@ function Asset() {
 
     const renderListStock =() => {
         if(listStock){ 
-
+            const findStock1 = listStock.findIndex(items => items.symbol === 'VND');
+            listStock.splice(findStock1,1)
             return listStock.map((items, index) => {
                 return(
-                    <div className={cx('asset-total-info-div')} key={index}>
-                        <tr className={cx('border-table-border-tr')}>
-                            <td className={cx('td_3')}>{items.name}</td>
-                            <td className={cx('td_2', 'focus', 'right')}>
-                                {coinVND.format(Number.parseInt(items.free_asset) + Number.parseInt(items.locked_asset))}
-                            </td>
-                            <td className={cx('td_4')}>{items.symbol}</td>
-                            <td className={cx('td_1', 'green', 'right')}>{coinVND.format(items.free_asset)}</td>
-                            <td className={cx('td_1', 'red', 'right')}>{coinVND.format(items.locked_asset)}</td>
-                        </tr>
-                    </div>  
-                )
+                <div className={cx('asset-total-info-div')} key={index}>
+                    <tr className={cx('border-table-border-tr')}>
+                        <td className={cx('td_3')}>{items.name}</td>
+                        <td className={cx('td_2', 'focus', 'right')}>
+                            {Number.parseInt(items.free_asset) + Number.parseInt(items.locked_asset)} VND
+                        </td>
+                        <td className={cx('td_4')}>{items.symbol}</td>
+                        <td className={cx('td_1', 'green', 'right')}>{items.free_asset} VND</td>
+                        <td className={cx('td_1', 'red', 'right')}>{items.locked_asset} VND</td>
+                    </tr>
+                </div>  )
             })
-
-            
         }
     }
-
     
 
   return (
@@ -77,7 +71,7 @@ function Asset() {
                     Số dư khả dụng
                 </div>
                 <div className={cx('asset-total-item-value')}>
-                    {assets}
+                    {assets} VND
                 </div>
             </div>
             <div className={cx('asset-total-item')}>
@@ -85,7 +79,7 @@ function Asset() {
                     Số dư đang khóa
                 </div>
                 <div className={cx('asset-total-item-value')}>
-                    {assetsLock}
+                    {assetsLock} VND
                 </div>
             </div>
             <div className={cx('asset-total-item')}>
@@ -93,7 +87,7 @@ function Asset() {
                     Tổng số dư khả dụng
                 </div>
                 <div className={cx('asset-total-item-value')}>
-                    {sumAssets}
+                    {sumAssets} VND
                 </div>
             </div>  
         </div>

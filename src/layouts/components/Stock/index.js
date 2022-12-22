@@ -13,17 +13,10 @@ const cx = classNames.bind(styles);
 function StockACB(polling = 1000) {
 
     const id = useSelector(state => state.header.name)
-    
     const dispatch = useDispatch();
-
-    const [ACB, setACB] = useState();
-    const [priceACB, setPriceACB] = useState();
-    const [askACB, setAskACB] = useState();
-    const [bidACB, setBidACB] = useState();
     const [color, setcolor] = useState('yellow');
 
     const [listStock, setinforStock] = useState();
-    const [infoStock, setInfoStock] = useState('');
 
 
     useEffect(() => {
@@ -74,7 +67,7 @@ function StockACB(polling = 1000) {
 
                 }
                 catch (err) {
-                    window.location.reload();
+                    // window.location.reload();
                 }
             }
             money()
