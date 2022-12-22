@@ -79,9 +79,9 @@ function Profile() {
                    
             </div>
 
-            <div className={cx("row_history")}>
+            {/* <div className={cx("row_history")}>
                 <History/>
-            </div>
+            </div> */}
         </div>
     </div>
   )

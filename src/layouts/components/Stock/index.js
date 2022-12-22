@@ -68,6 +68,7 @@ function StockACB(polling = 1000) {
                 }
                 catch (err) {
                     // window.location.reload();
+                    console.log(err);
                 }
             }
             money()
