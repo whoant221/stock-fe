@@ -101,8 +101,8 @@ function Asset() {
                                 <td className={cx('td_3')}>Tên cổ phiếu</td>
                                 <td className={cx('td_2')}>Tổng giá cổ phiếu sở hữu</td>
                                 <td className={cx('td_4')}>Biểu tượng</td>
-                                <td className={cx('td_1', 'green')}>Giá sở hữu</td>
-                                <td className={cx('td_1')}>Giá khóa</td>
+                                <td className={cx('td_1', 'green')}>Số cổ phiếu hợp lệ</td>
+                                <td className={cx('td_1')}>Số cổ phiếu khóa</td>
                             </tr>
                         </div>
 
