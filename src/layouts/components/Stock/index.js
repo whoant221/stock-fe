@@ -20,58 +20,54 @@ function StockACB(polling = 1000) {
 
 
     useEffect(() => {
-            const money = async ()  =>{
-                try{   
-                    const arr = []
-                    const data3 = await inforStock.getListStock()
-
-                    const listStocksymbol = data3.data.stocks;
-
-                    const listDetail = await Promise.all(listStocksymbol.map((item) => {return inforStock.getinforStock(item.symbol);}));
-                    const listDetail1 = await Promise.all(listStocksymbol.map((item) => {return inforStock.getPrice(item.symbol);}));
-                    const listDetail2 = await Promise.all(listStocksymbol.map((item) => {return inforStock.getOrderAsk(item.symbol);}));
-                    const listDetail3 = await Promise.all(listStocksymbol.map((item) => {return inforStock.getOrderBid(item.symbol);})); 
-
-                    listStocksymbol.map((i) => {
-                        arr.push([{
-                            symbol: `${i.symbol}`,
-                            name: `${i.name}`,
-                        }]);
-                    })
-                    listDetail.map((i, index) => {
-                        arr[index].push({
-                            ceil_price: `${i.data.ceil_price}`,
-                            floor_price: `${i.data.floor_price}`,
-                            ref_price: `${i.data.ref_price}`,
-                            total_volume: `${i.data.total_volume}`,
-                            highest_price: `${i.data.highest_price}`,
-                            lowest_price: `${i.data.lowest_price}`,
-                        });
-                    })
-                    listDetail1.map((i, index) => {
-                        arr[index].push({
-                            coin_amount: `${i.data.coin_amount}`,
-                            price_per_unit: `${i.data.price_per_unit}`,
-                        });
-                    })
-                    listDetail2.map((i, index) =>arr[index].push(
-                        i.data.orders.map(it => it ))
-                    )
-                    listDetail3.map((i, index) =>arr[index].push(
-                        i.data.orders.map(it => it ))
-                    )
-
-                    const position = arr.findIndex(i => i[0].symbol === 'VND');
-                    arr.splice(position, 1);
-                    setinforStock(arr);
-
-                }
-                catch (err) {
-                    // window.location.reload();
-                    console.log(err);
-                }
+        const money = async ()  =>{
+            try{   
+                const arr = []
+                const data3 = await inforStock.getListStock()
+                const listStocksymbol = data3.data.stocks;
+                const listDetail = await Promise.all(listStocksymbol.map((item) => {return inforStock.getinforStock(item.symbol);}));
+                const listDetail1 = await Promise.all(listStocksymbol.map((item) => {return inforStock.getPrice(item.symbol);}));
+                const listDetail2 = await Promise.all(listStocksymbol.map((item) => {return inforStock.getOrderAsk(item.symbol);}));
+                const listDetail3 = await Promise.all(listStocksymbol.map((item) => {return inforStock.getOrderBid(item.symbol);})); 
+                listStocksymbol.map((i) => {
+                    arr.push([{
+                        symbol: `${i.symbol}`,
+                        name: `${i.name}`,
+                    }]);
+                })
+                listDetail.map((i, index) => {
+                    arr[index].push({
+                        ceil_price: `${i.data.ceil_price}`,
+                        floor_price: `${i.data.floor_price}`,
+                        ref_price: `${i.data.ref_price}`,
+                        total_volume: `${i.data.total_volume}`,
+                        highest_price: `${i.data.highest_price}`,
+                        lowest_price: `${i.data.lowest_price}`,
+                    });
+                })
+                listDetail1.map((i, index) => {
+                    arr[index].push({
+                        coin_amount: `${i.data.coin_amount}`,
+                        price_per_unit: `${i.data.price_per_unit}`,
+                    });
+                })
+                listDetail2.map((i, index) =>arr[index].push(
+                    i.data.orders.map(it => it ))
+                )
+                listDetail3.map((i, index) =>arr[index].push(
+                    i.data.orders.map(it => it ))
+                )
+                const position = arr.findIndex(i => i[0].symbol === 'VND');
+                arr.splice(position, 1);
+                setinforStock(arr);
             }
-            money()
+            catch (err) {
+                window.location.reload();
+                console.log(err);
+            }
+        }
+        money()
+
         const orderBook = async () => {
             try{
                 const data1 = await inforStock.getOrderBookAsk(`${id[1] ? id[1] : 'ACB'}`)
@@ -84,6 +80,7 @@ function StockACB(polling = 1000) {
             }
         }
         orderBook()
+        
     }, [listStock]);
 
     const chartACB = async(e)  =>{

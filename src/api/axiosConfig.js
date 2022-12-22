@@ -3,7 +3,7 @@ import blockChainStorage from '~/utils/storage';
 
 const instance = axios.create({
     baseURL:`https://api-stock.votuan.xyz`,
-    timeout: 3000,
+    // timeout: 3000,
 
     headers: {
       'Content-Type': 'application/json',
