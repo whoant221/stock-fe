@@ -31,7 +31,7 @@ function History() {
                 setListrender(res.data.orders);
                 setListrender1(res1.data.orders);
             } catch (error) {
-                toast.error('Vui lòng thực hiện đăng nhập !');
+                // toast.error('Vui lòng thực hiện đăng nhập !');
             }
         };
         HistoryOrder();
