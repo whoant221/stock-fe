@@ -48,7 +48,7 @@ function Register() {
           password: password,
           fullName: fullName,
           address: address,
-          // phone_number: phone_number,
+          phoneNumber: phone_number,
           identificationNumber: identification_Number.trim(),
           birthday: `${year}-${month}-${day}`
         });
